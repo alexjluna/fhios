@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ */
+
+ use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help()
+ */
+function fhios_search_help($route_name, RouteMatchInterface $route_match) {
+  switch($route_name) {
+    case 'help.page.fhios_search':
+      $output = '';
+      $output = '<h2>'.t('Help to search user').'</h3>';
+      $output = '<p>'.t('Write the username to search').'</p>';
+      return $output;
+
+    default:
+  }
+}

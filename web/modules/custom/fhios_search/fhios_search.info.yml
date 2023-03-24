@@ -1,0 +1,5 @@
+name: Fhios Search Module
+type: module
+description: Module to search user
+package: Luna
+core_version_requirement: ^9 || ^10

@@ -1,0 +1,14 @@
+fhios_search.search:
+  path: '/search/user'
+  defaults:
+    _form: '\Drupal\fhios_search\Form\SearchUser'
+    _title: 'Search user'
+  requirements:
+    _permission: 'access content'
+
+fhios_search.username:
+  path: '/search/user/{username}'
+  defaults:
+    _controller: '\Drupal\fhios_search\Controller\FhiosSearchController::username'
+  requirements:
+    _permission: 'access content'
