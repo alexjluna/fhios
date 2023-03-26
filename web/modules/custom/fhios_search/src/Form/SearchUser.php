@@ -35,7 +35,7 @@ class SearchUser extends FormBase {
 
   public function submitForm(array &$form, FormStateInterface $form_state) {
 
-    $username = strtolower(trim($form_state->getValue('username')));
+    $username = trim($form_state->getValue('username'));
     $form_state->setRedirectUrl(\Drupal\Core\Url::fromUri('internal:' . '/search/user/'.$username));
   }
 }
