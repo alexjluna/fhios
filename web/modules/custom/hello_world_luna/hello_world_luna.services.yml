@@ -1,0 +1,3 @@
+services:
+  hello_world_luna.salutation:
+    class: Drupal\hello_world_luna\HelloWorldLunaSalutation
