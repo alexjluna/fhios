@@ -1,0 +1,7 @@
+hello_world.hello:
+  path: '/hello'
+  defaults:
+    _controller: 'Drupal\hello_world_luna\Controller\HelloWorldController::helloWorld'
+    _title: 'Our first module'
+  requirements:
+    _permission: 'access content'

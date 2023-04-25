@@ -1,0 +1,5 @@
+name: Hello World Luna
+type: module
+description: Hello world module by Alex J. Luna
+core_version_requirement: ^9 || ^10
+package: Luna
