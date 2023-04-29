@@ -13,7 +13,7 @@ use Drupal\Core\Menu\LocalTaskInterface;
 use Drupal\Core\Menu\LocalTaskManager;
 use Drupal\Tests\UnitTestCase;
 use Prophecy\Argument;
-use Symfony\Component\HttpFoundation\ParameterBag;
+use Symfony\Component\HttpFoundation\InputBag;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -186,7 +186,7 @@ class LocalTaskManagerTest extends UnitTestCase {
       );
     $this->cacheBackend->expects($this->exactly(2))
       ->method('set')
-      ->withConsecutive(
+      ->willReturnOnConsecutiveCalls(
         ['local_task_plugins:en', $definitions, Cache::PERMANENT],
         ['local_task_plugins:en:menu_local_task_test_tasks_view', $this->getLocalTasksCache(), Cache::PERMANENT, ['local_task']],
       );
@@ -207,7 +207,7 @@ class LocalTaskManagerTest extends UnitTestCase {
 
     $this->setupLocalTaskManager();
 
-    $result = $this->getLocalTasksCache($mock_plugin);
+    $result = $this->getLocalTasksCache();
 
     $this->cacheBackend->expects($this->once())
       ->method('get')
@@ -428,7 +428,7 @@ class LocalTaskManagerTest extends UnitTestCase {
       ->willReturn('menu_local_task_test_tasks_view');
     $this->routeMatch->expects($this->any())
       ->method('getRawParameters')
-      ->willReturn(new ParameterBag());
+      ->willReturn(new InputBag());
 
     $cacheability = new CacheableMetadata();
     $this->manager->getTasksBuild('menu_local_task_test_tasks_view', $cacheability);

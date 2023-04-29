@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\serialization\Unit\Normalizer;
 
+use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\EntityTypeRepositoryInterface;
@@ -95,7 +96,7 @@ class EntityNormalizerTest extends UnitTestCase {
       ->getMock();
     $serializer->expects($this->exactly(2))
       ->method('normalize')
-      ->withConsecutive(
+      ->willReturnOnConsecutiveCalls(
         [$list_item_1, 'test_format'],
         [$list_item_2, 'test_format'],
       );
@@ -187,7 +188,7 @@ class EntityNormalizerTest extends UnitTestCase {
     $key_1 = $this->createMock(FieldItemListInterface::class);
     $key_2 = $this->createMock(FieldItemListInterface::class);
 
-    $entity = $this->createMock(FieldableEntityInterface::class);
+    $entity = $this->createMock(ContentEntityBase::class);
     $entity->expects($this->exactly(2))
       ->method('get')
       ->willReturnMap([
@@ -221,7 +222,7 @@ class EntityNormalizerTest extends UnitTestCase {
       ->getMock();
     $serializer->expects($this->exactly(2))
       ->method('denormalize')
-      ->withConsecutive(
+      ->willReturnOnConsecutiveCalls(
         ['value_1', get_class($key_1), NULL, ['target_instance' => $key_1, 'entity_type' => 'test']],
         ['value_2', get_class($key_2), NULL, ['target_instance' => $key_2, 'entity_type' => 'test']],
       );
@@ -340,7 +341,7 @@ class EntityNormalizerTest extends UnitTestCase {
     $key_1 = $this->createMock(FieldItemListInterface::class);
     $key_2 = $this->createMock(FieldItemListInterface::class);
 
-    $entity = $this->createMock(FieldableEntityInterface::class);
+    $entity = $this->createMock(ContentEntityBase::class);
     $entity->expects($this->exactly(2))
       ->method('get')
       ->willReturnMap([
@@ -370,7 +371,7 @@ class EntityNormalizerTest extends UnitTestCase {
       ->getMock();
     $serializer->expects($this->exactly(2))
       ->method('denormalize')
-      ->withConsecutive(
+      ->willReturnOnConsecutiveCalls(
         ['value_1', get_class($key_1), NULL, ['target_instance' => $key_1, 'entity_type' => 'test']],
         ['value_2', get_class($key_2), NULL, ['target_instance' => $key_2, 'entity_type' => 'test']],
       );
@@ -409,7 +410,7 @@ class EntityNormalizerTest extends UnitTestCase {
     $storage->expects($this->once())
       ->method('create')
       ->with($test_data)
-      ->willReturn($this->createMock('Drupal\Core\Entity\EntityInterface'));
+      ->willReturn($this->createMock(ContentEntityBase::class));
 
     $this->entityTypeManager->expects($this->once())
       ->method('getStorage')

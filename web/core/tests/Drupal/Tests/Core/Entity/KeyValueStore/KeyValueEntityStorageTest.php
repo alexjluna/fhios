@@ -5,6 +5,7 @@ namespace Drupal\Tests\Core\Entity\KeyValueStore;
 use Drupal\Core\Cache\MemoryCache\MemoryCache;
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
+use Drupal\Core\Entity\EntityBase;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityMalformedException;
@@ -157,7 +158,7 @@ class KeyValueEntityStorageTest extends UnitTestCase {
 
     $this->moduleHandler->expects($this->exactly(2))
       ->method('invokeAll')
-      ->withConsecutive(['test_entity_type_create'], ['entity_create']);
+      ->willReturnOnConsecutiveCalls(['test_entity_type_create'], ['entity_create']);
     $this->uuidService->expects($this->never())
       ->method('generate');
 
@@ -180,7 +181,7 @@ class KeyValueEntityStorageTest extends UnitTestCase {
 
     $this->moduleHandler->expects($this->exactly(2))
       ->method('invokeAll')
-      ->withConsecutive(['test_entity_type_create'], ['entity_create']);
+      ->willReturnOnConsecutiveCalls(['test_entity_type_create'], ['entity_create']);
     $this->uuidService->expects($this->never())
       ->method('generate');
 
@@ -197,7 +198,7 @@ class KeyValueEntityStorageTest extends UnitTestCase {
    * @return \Drupal\Core\Entity\EntityInterface
    */
   public function testCreate() {
-    $entity = $this->getMockEntity('Drupal\Core\Entity\EntityBase', [], ['toArray']);
+    $entity = $this->getMockEntity(EntityBaseTest::class, [], ['toArray']);
     $this->entityType->expects($this->once())
       ->method('getClass')
       ->willReturn(get_class($entity));
@@ -205,7 +206,7 @@ class KeyValueEntityStorageTest extends UnitTestCase {
 
     $this->moduleHandler->expects($this->exactly(2))
       ->method('invokeAll')
-      ->withConsecutive(['test_entity_type_create'], ['entity_create']);
+      ->willReturnOnConsecutiveCalls(['test_entity_type_create'], ['entity_create']);
     $this->uuidService->expects($this->once())
       ->method('generate')
       ->willReturn('bar');
@@ -247,7 +248,7 @@ class KeyValueEntityStorageTest extends UnitTestCase {
 
     $this->moduleHandler->expects($this->exactly(4))
       ->method('invokeAll')
-      ->withConsecutive(
+      ->willReturnOnConsecutiveCalls(
         ['test_entity_type_presave'],
         ['entity_presave'],
         ['test_entity_type_insert'],
@@ -291,7 +292,7 @@ class KeyValueEntityStorageTest extends UnitTestCase {
       ->method('delete');
     $this->moduleHandler->expects($this->exactly(4))
       ->method('invokeAll')
-      ->withConsecutive(
+      ->willReturnOnConsecutiveCalls(
         ['test_entity_type_presave'],
         ['entity_presave'],
         ['test_entity_type_update'],
@@ -442,7 +443,7 @@ class KeyValueEntityStorageTest extends UnitTestCase {
   public function testSaveDuplicate() {
     $this->setUpKeyValueEntityStorage();
 
-    $entity = $this->getMockEntity('Drupal\Core\Entity\EntityBase', [['id' => 'foo']]);
+    $entity = $this->getMockEntity(EntityBaseTest::class, [['id' => 'foo']]);
     $entity->enforceIsNew();
     $this->keyValueStore->expects($this->once())
       ->method('has')
@@ -497,8 +498,8 @@ class KeyValueEntityStorageTest extends UnitTestCase {
    * @covers ::doLoadMultiple
    */
   public function testLoadMultipleAll() {
-    $expected['foo'] = $this->getMockEntity('Drupal\Core\Entity\EntityBase', [['id' => 'foo']]);
-    $expected['bar'] = $this->getMockEntity('Drupal\Core\Entity\EntityBase', [['id' => 'bar']]);
+    $expected['foo'] = $this->getMockEntity(EntityBaseTest::class, [['id' => 'foo']]);
+    $expected['bar'] = $this->getMockEntity(EntityBaseTest::class, [['id' => 'bar']]);
     $this->entityType->expects($this->once())
       ->method('getClass')
       ->willReturn(get_class(reset($expected)));
@@ -522,7 +523,7 @@ class KeyValueEntityStorageTest extends UnitTestCase {
    * @covers ::doLoadMultiple
    */
   public function testLoadMultipleIds() {
-    $entity = $this->getMockEntity('Drupal\Core\Entity\EntityBase', [['id' => 'foo']]);
+    $entity = $this->getMockEntity(EntityBaseTest::class, [['id' => 'foo']]);
     $this->entityType->expects($this->once())
       ->method('getClass')
       ->willReturn(get_class($entity));
@@ -563,13 +564,13 @@ class KeyValueEntityStorageTest extends UnitTestCase {
    * @covers ::doDelete
    */
   public function testDelete() {
-    $entities['foo'] = $this->getMockEntity('Drupal\Core\Entity\EntityBase', [['id' => 'foo']]);
-    $entities['bar'] = $this->getMockEntity('Drupal\Core\Entity\EntityBase', [['id' => 'bar']]);
+    $entities['foo'] = $this->getMockEntity(EntityBaseTest::class, [['id' => 'foo']]);
+    $entities['bar'] = $this->getMockEntity(EntityBaseTest::class, [['id' => 'bar']]);
     $this->setUpKeyValueEntityStorage();
 
     $this->moduleHandler->expects($this->exactly(8))
       ->method('invokeAll')
-      ->withConsecutive(
+      ->willReturnOnConsecutiveCalls(
         ['test_entity_type_predelete'],
         ['entity_predelete'],
       );
@@ -611,7 +612,7 @@ class KeyValueEntityStorageTest extends UnitTestCase {
    *
    * @return \Drupal\Core\Entity\EntityInterface|\PHPUnit\Framework\MockObject\MockObject
    */
-  public function getMockEntity($class = 'Drupal\Core\Entity\EntityBase', array $arguments = [], $methods = []) {
+  public function getMockEntity($class = EntityBaseTest::class, array $arguments = [], $methods = []) {
     // Ensure the entity is passed at least an array of values and an entity
     // type ID
     if (!isset($arguments[0])) {
@@ -622,6 +623,15 @@ class KeyValueEntityStorageTest extends UnitTestCase {
     }
     return $this->getMockForAbstractClass($class, $arguments, '', TRUE, TRUE, TRUE, $methods);
   }
+
+}
+
+class EntityBaseTest extends EntityBase {
+  public $id;
+  public $langcode;
+  public $uuid;
+  public $label;
+  public $original;
 
 }
 
