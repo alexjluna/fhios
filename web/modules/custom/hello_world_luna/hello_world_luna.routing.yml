@@ -5,3 +5,11 @@ hello_world_luna.hello:
     _title: 'Our first module'
   requirements:
     _permission: 'access content'
+
+hello_world_luna.greeting_form:
+  path: '/admin/config/luna-salutation-form'
+  defaults:
+    _form: Drupal\hello_world_luna\Form\SalutationConfigurationForm
+    _title: 'Luna Salutation Configuration'
+  requirements:
+    _permission: 'administer site configuration'
