@@ -1,0 +1,20 @@
+uuid: 76b1b9d3-dd02-4a59-9505-270c15efca5b
+langcode: en
+status: true
+dependencies:
+  module:
+    - hello_world_luna
+  theme:
+    - olivero
+id: helloworldlunasalutation
+theme: olivero
+region: content
+weight: -7
+provider: null
+plugin: hello_world_luna_salutation_block
+settings:
+  id: hello_world_luna_salutation_block
+  label: 'Hello litte bitch ;)'
+  label_display: visible
+  provider: hello_world_luna
+visibility: {  }
