@@ -1,5 +1,5 @@
-hello_world.hello:
-  path: '/hello'
+hello_world_luna.hello:
+  path: '/luna/hello'
   defaults:
     _controller: 'Drupal\hello_world_luna\Controller\HelloWorldController::helloWorld'
     _title: 'Our first module'
