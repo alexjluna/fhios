@@ -59,6 +59,8 @@ class ViewsDataTest extends UnitTestCase {
    * {@inheritdoc}
    */
   protected function setUp(): void {
+    parent::setUp();
+
     $this->cacheTagsInvalidator = $this->createMock('Drupal\Core\Cache\CacheTagsInvalidatorInterface');
     $this->cacheBackend = $this->createMock('Drupal\Core\Cache\CacheBackendInterface');
     $this->getContainerWithCacheTagsInvalidator($this->cacheTagsInvalidator);
@@ -369,7 +371,7 @@ class ViewsDataTest extends UnitTestCase {
       );
     $this->cacheBackend->expects($this->exactly(2))
       ->method('set')
-      ->willReturnOnConsecutiveCalls(
+      ->withConsecutive(
         ['views_data:en', $expected_views_data],
         ['views_data:views_test_data:en', $expected_views_data['views_test_data']],
       );
@@ -600,7 +602,7 @@ class ViewsDataTest extends UnitTestCase {
       );
     $this->cacheBackend->expects($this->exactly(2))
       ->method('set')
-      ->willReturnOnConsecutiveCalls(
+      ->withConsecutive(
         ["views_data:$table_name:en", $expected_views_data[$table_name]],
         ["views_data:$table_name_2:en", $expected_views_data[$table_name_2]],
       );

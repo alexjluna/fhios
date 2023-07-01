@@ -687,9 +687,16 @@
         .toggleClass('form-disabled', e.value)
         .find('select, input, textarea')
         .prop('disabled', e.value);
+    }
+  });
 
-      // Note: WebKit nightlies don't reflect that change correctly.
-      // See https://bugs.webkit.org/show_bug.cgi?id=23789
+  $document.on('state:readonly', (e) => {
+    if (e.trigger) {
+      $(e.target)
+        .closest('.js-form-item, .js-form-submit, .js-form-wrapper')
+        .toggleClass('form-readonly', e.value)
+        .find('input, textarea')
+        .prop('readonly', e.value);
     }
   });
 
