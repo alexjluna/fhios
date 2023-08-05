@@ -36,5 +36,5 @@
   "intelephense.environment.documentRoot": "web/index.php",
   "php-docblocker.gap": true,
   "php-docblocker.useShortNames": true,
-  "intelephense.environment.phpVersion": "8.2"
+  "intelephense.environment.phpVersion": "8.2",
 }

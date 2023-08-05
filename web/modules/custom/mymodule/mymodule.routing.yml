@@ -1,0 +1,15 @@
+mymodule.hello_world:
+  path: /hello-world
+  defaults:
+    _controller: Drupal\mymodule\Controller\HelloWorldController::page
+    _title: 'Hello world!'
+  requirements:
+    _permission: 'access content'
+
+mymodule.create_article:
+  path: /articles
+  defaults:
+    _controller: Drupal\mymodule\Controller\ArticleController::store
+  methods: [POST]
+  requirements:
+    _access: 'TRUE'

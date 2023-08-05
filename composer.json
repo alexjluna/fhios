@@ -36,7 +36,11 @@
             "composer/installers": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "phpstan/extension-installer": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "cweagans/composer-patches": true,
+            "phpro/grumphp": true,
+            "ergebnis/composer-normalize": true
         },
         "sort-packages": true
     },
@@ -96,5 +100,14 @@
                 "      composer remove drupal/core-project-message"
             ]
         }
+    },
+    "scripts": {
+        "phpcbf": "phpcbf --standard=web/core/phpcs.xml.dist",
+        "phpcs": "phpcs --standard=web/core/phpcs.xml.dist"
+    },
+    "require-dev": {
+        "drupal/coder": "^8.3",
+        "slevomat/coding-standard": "^8.13",
+        "squizlabs/php_codesniffer": "^3.7"
     }
 }
