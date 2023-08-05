@@ -18,7 +18,7 @@ class ProductForm extends ContentEntityForm {
 
     $status = parent::save($form, $form_state);
 
-    switch($status) {
+    switch ($status) {
       case SAVED_NEW:
         $this->messenger()->addMessage($this->t('Created the %label Product.', ['%label' => $entity->label()]));
         break;
@@ -29,4 +29,5 @@ class ProductForm extends ContentEntityForm {
 
     $form_state->setRedirect('entity.product.canonical', ['product' => $entity->id()]);
   }
+
 }

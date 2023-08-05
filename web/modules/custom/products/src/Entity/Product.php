@@ -9,7 +9,7 @@ use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\products\Entity\ProductInterface;
 
 /**
- * Defines the Product entity
+ * Defines the Product entity.
  *
  * @ContentEntityType (
  *  id = "product",
@@ -43,8 +43,8 @@ use Drupal\products\Entity\ProductInterface;
  *    "collection" = "/admin/structure/product",
  *  },
  * )
-*/
-class Product extends ContentEntityBase implements  ProductInterface {
+ */
+class Product extends ContentEntityBase implements ProductInterface {
 
   use EntityChangedTrait;
 
@@ -103,7 +103,7 @@ class Product extends ContentEntityBase implements  ProductInterface {
   /**
    * {@inheritDoc}
    */
-  public function setSource($source){
+  public function setSource($source) {
     $this->set('source', $source);
     return $this;
   }
@@ -118,11 +118,14 @@ class Product extends ContentEntityBase implements  ProductInterface {
   /**
    * {@inheritDoc}
    */
-  public function setCreatedTime($timestamp){
+  public function setCreatedTime($timestamp) {
     $this->set('created', $timestamp);
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
     $fields = parent::baseFieldDefinitions($entity_type);
 
@@ -151,7 +154,7 @@ class Product extends ContentEntityBase implements  ProductInterface {
       ->setDescription(t('The product number.'))
       ->setSettings([
         'min' => 1,
-        'max' => 10000
+        'max' => 10000,
       ])
       ->setDisplayOptions('view', [
         'label' => 'above',
@@ -191,7 +194,7 @@ class Product extends ContentEntityBase implements  ProductInterface {
       ->setLabel(t('Changed'))
       ->setDescription(t('The time that the entity was last edited.'));
 
-  return $fields;
+    return $fields;
   }
 
 }

@@ -23,9 +23,10 @@ class ProductListBuilder extends EntityListBuilder {
    * {@inheritDoc}
    */
   public function buildRow(EntityInterface $entity) {
-    /* @var $entity \Drupal\products\Entity\Produc */
+    /** @var $entity \Drupal\products\Entity\Produc */
     $row['id'] = $entity->id();
     $row['name'] = $entity->toLink();
     return $row + parent::buildRow($entity);
   }
+
 }
