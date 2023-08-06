@@ -1,5 +1,4 @@
-name: 'Products Entities'
-type: module
-description: 'A products entities'
+name: Products
+description: A module that stores product information imported from various sources
 core_version_requirement: ^10
-package: Custom
+type: module

@@ -2,20 +2,20 @@
 
 namespace Drupal\products;
 
+use Drupal\Core\Config\Entity\ConfigEntityListBuilder;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Entity\EntityListBuilder;
 
 /**
- * EntityListBuilderInterface implementation for the Product entities.
+ * List builder for ProductType entities.
  */
-class ProductListBuilder extends EntityListBuilder {
+class ProductTypeListBuilder extends ConfigEntityListBuilder {
 
   /**
    * {@inheritdoc}
    */
   public function buildHeader() {
-    $header['id'] = $this->t('Product ID');
-    $header['name'] = $this->t('Name');
+    $header['label'] = $this->t('Product type');
+    $header['id'] = $this->t('Machine name');
     return $header + parent::buildHeader();
   }
 
@@ -23,10 +23,8 @@ class ProductListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
-    /* @var $entity \Drupal\products\Entity\Product */
+    $row['label'] = $entity->label();
     $row['id'] = $entity->id();
-    $row['name'] = $entity->toLink();
     return $row + parent::buildRow($entity);
   }
-
 }

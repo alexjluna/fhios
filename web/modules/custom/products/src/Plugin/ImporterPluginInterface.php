@@ -12,8 +12,17 @@ interface ImporterPluginInterface extends PluginInspectionInterface {
   /**
    * Performs the import.
    *
-   * Returns TRUE if the import was successful or FALSE otherwise.
+   * @return bool
+   *   Whether the import was successful.
    */
-  public function import() : bool;
+  public function import();
+
+  /**
+   * Returns the Importer configuration entity.
+   *
+   * @return \Drupal\products\Entity\ImporterInterface
+   *   The importer config.
+   */
+  public function getConfig();
 
 }

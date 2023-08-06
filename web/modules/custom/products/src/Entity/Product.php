@@ -6,42 +6,46 @@ use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
-use Drupal\products\Entity\ProductInterface;
 
 /**
  * Defines the Product entity.
  *
- * @ContentEntityType (
- *  id = "product",
- *  label = @Translation("Product"),
- *  handlers = {
- *    "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
- *    "list_builder" = "Drupal\products\ProductListBuilder",
+ * @ContentEntityType(
+ *   id = "product",
+ *   label = @Translation("Product"),
+ *   bundle_label = @Translation("Product type"),
+ *   handlers = {
+ *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
+ *     "list_builder" = "Drupal\products\ProductListBuilder",
  *
- *    "form" = {
- *      "default" = "Drupal\products\Form\ProductForm",
- *      "add" = "Drupal\products\Form\ProductForm",
- *      "edit" = "Drupal\products\Form\ProductForm",
- *      "delete" = "Drupal\Core\Entity\ContentEntityDeleteForm",
- *    },
- *    "route_provider" = {
- *      "html" = "Drupal\Core\Entity\Routing\AdminHtmlRouteProvider",
+ *     "form" = {
+ *       "default" = "Drupal\products\Form\ProductForm",
+ *       "add" = "Drupal\products\Form\ProductForm",
+ *       "edit" = "Drupal\products\Form\ProductForm",
+ *       "delete" = "Drupal\Core\Entity\ContentEntityDeleteForm",
  *     },
- *  },
- *  base_table = "product",
- *  admin_permission = "administer site configuration",
- *  entity_keys = {
- *    "id" = "id",
- *    "label" = "name",
- *    "uuid" = "uuid",
- *  },
- *  links = {
- *    "canonical" = "/admin/structure/product/{product}",
- *    "add-form" = "/admin/structure/product/add",
- *    "edit-form" = "/admin/structure/product/{product}/edit",
- *    "delete-form" = "/admin/structure/product/{product}/delete",
- *    "collection" = "/admin/structure/product",
- *  },
+ *    "route_provider" = {
+ *      "html" = "Drupal\Core\Entity\Routing\AdminHtmlRouteProvider"
+ *    }
+ *   },
+ *   base_table = "product",
+ *   admin_permission = "administer site configuration",
+ *   entity_keys = {
+ *     "id" = "id",
+ *     "label" = "name",
+ *     "uuid" = "uuid",
+ *     "bundle" = "type"
+ *   },
+ *   links = {
+ *     "canonical" = "/admin/structure/product/{product}",
+ *     "add-form" = "/admin/structure/product/add/{product_type}",
+ *     "add-page" = "/admin/structure/product/add",
+ *     "edit-form" = "/admin/structure/product/{product}/edit",
+ *     "delete-form" = "/admin/structure/product/{product}/delete",
+ *     "collection" = "/admin/structure/product",
+ *   },
+ *   bundle_entity_type = "product_type",
+ *   field_ui_base_route = "entity.product_type.edit_form"
  * )
  */
 class Product extends ContentEntityBase implements ProductInterface {
@@ -49,14 +53,14 @@ class Product extends ContentEntityBase implements ProductInterface {
   use EntityChangedTrait;
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   public function getName() {
     return $this->get('name')->value;
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   public function setName($name) {
     $this->set('name', $name);
@@ -64,14 +68,14 @@ class Product extends ContentEntityBase implements ProductInterface {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   public function getProductNumber() {
     return $this->get('number')->value;
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   public function setProductNumber($number) {
     $this->set('number', $number);
@@ -79,14 +83,14 @@ class Product extends ContentEntityBase implements ProductInterface {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   public function getRemoteId() {
     return $this->get('remote_id')->value;
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   public function setRemoteId($id) {
     $this->set('remote_id', $id);
@@ -94,14 +98,14 @@ class Product extends ContentEntityBase implements ProductInterface {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   public function getSource() {
     return $this->get('source')->value;
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   public function setSource($source) {
     $this->set('source', $source);
@@ -109,14 +113,14 @@ class Product extends ContentEntityBase implements ProductInterface {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   public function getCreatedTime() {
     return $this->get('created')->value;
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   public function setCreatedTime($timestamp) {
     $this->set('created', $timestamp);
@@ -131,9 +135,9 @@ class Product extends ContentEntityBase implements ProductInterface {
 
     $fields['name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Name'))
-      ->setDescription(t('The name of the product'))
+      ->setDescription(t('The name of the Product.'))
       ->setSettings([
-        'max-length' => 255,
+        'max_length' => 255,
         'text_processing' => 0,
       ])
       ->setDefaultValue('')
@@ -143,7 +147,7 @@ class Product extends ContentEntityBase implements ProductInterface {
         'weight' => -4,
       ])
       ->setDisplayOptions('form', [
-        'type' => 'string_testfield',
+        'type' => 'string_textfield',
         'weight' => -4,
       ])
       ->setDisplayConfigurable('form', TRUE)
@@ -151,7 +155,7 @@ class Product extends ContentEntityBase implements ProductInterface {
 
     $fields['number'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Number'))
-      ->setDescription(t('The product number.'))
+      ->setDescription(t('The Product number.'))
       ->setSettings([
         'min' => 1,
         'max' => 10000,
@@ -179,9 +183,9 @@ class Product extends ContentEntityBase implements ProductInterface {
 
     $fields['source'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Source'))
-      ->setDescription(t('The source of the product'))
+      ->setDescription(t('The source of the Product.'))
       ->setSettings([
-        'max_lenght' => 255,
+        'max_length' => 255,
         'text_processing' => 0,
       ])
       ->setDefaultValue('');

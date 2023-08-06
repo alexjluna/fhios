@@ -6,23 +6,23 @@ use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityChangedInterface;
 
 /**
- * Represents a product entity.
+ * Represents a Product entity.
  */
 interface ProductInterface extends ContentEntityInterface, EntityChangedInterface {
 
   /**
-   * Gets the product name.
+   * Gets the Product name.
    *
    * @return string
-   *   The product name.
+   *   The name.
    */
   public function getName();
 
   /**
-   * Sets the product name.
+   * Sets the Product name.
    *
    * @param string $name
-   *   Set de name product.
+   *   The name.
    *
    * @return \Drupal\products\Entity\ProductInterface
    *   The called Product entity.
@@ -30,10 +30,10 @@ interface ProductInterface extends ContentEntityInterface, EntityChangedInterfac
   public function setName($name);
 
   /**
-   * Gets the product number.
+   * Gets the Product number.
    *
    * @return int
-   *   The number product.
+   *   The product number.
    */
   public function getProductNumber();
 
@@ -41,10 +41,10 @@ interface ProductInterface extends ContentEntityInterface, EntityChangedInterfac
    * Sets the Product number.
    *
    * @param int $number
-   *   Set de number product.
+   *   The product number.
    *
    * @return \Drupal\products\Entity\ProductInterface
-   *   The called Product entity
+   *   The called Product entity.
    */
   public function setProductNumber($number);
 
@@ -52,7 +52,7 @@ interface ProductInterface extends ContentEntityInterface, EntityChangedInterfac
    * Gets the Product remote ID.
    *
    * @return string
-   *   The remote id product.
+   *   The product remote ID.
    */
   public function getRemoteId();
 
@@ -60,7 +60,7 @@ interface ProductInterface extends ContentEntityInterface, EntityChangedInterfac
    * Sets the Product remote ID.
    *
    * @param string $id
-   *   Set remote id product.
+   *   The product remote ID.
    *
    * @return \Drupal\products\Entity\ProductInterface
    *   The called Product entity.
@@ -71,7 +71,7 @@ interface ProductInterface extends ContentEntityInterface, EntityChangedInterfac
    * Gets the Product source.
    *
    * @return string
-   *   The source product.
+   *   The product source.
    */
   public function getSource();
 
@@ -79,7 +79,7 @@ interface ProductInterface extends ContentEntityInterface, EntityChangedInterfac
    * Sets the Product source.
    *
    * @param string $source
-   *   Set the source product.
+   *   The product source.
    *
    * @return \Drupal\products\Entity\ProductInterface
    *   The called Product entity.
@@ -90,15 +90,15 @@ interface ProductInterface extends ContentEntityInterface, EntityChangedInterfac
    * Gets the Product creation timestamp.
    *
    * @return int
-   *   The created time product.
+   *   The created timestamp.
    */
   public function getCreatedTime();
 
   /**
-   * Sets the Produtc creation timestamp.
+   * Sets the Product creation timestamp.
    *
    * @param int $timestamp
-   *   Set the created time product.
+   *   The created timestamp.
    *
    * @return \Drupal\products\Entity\ProductInterface
    *   The called Product entity.
