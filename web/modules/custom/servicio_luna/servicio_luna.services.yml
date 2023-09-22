@@ -1,0 +1,5 @@
+services:
+  servicio_luna.fulfillment_order_item_guard:
+    class: Drupal\servicio_luna\Guard\FulfillmentOrderGuard
+    tags:
+      - { name: state_machine.guard, group: servicio_luna_order_item }

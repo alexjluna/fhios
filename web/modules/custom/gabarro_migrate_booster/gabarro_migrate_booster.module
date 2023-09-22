@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations for the Gabarro Migrate Booster module.
+ */
+
+use Drupal\Core\Logger\RfcLogLevel;
+use Drupal\gabarro_migrate_booster\GabarroMigrateBooster;
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function gabarro_migrate_booster_module_implements_alter(array &$implementations, $hook) {
+  GabarroMigrateBooster::alter($implementations, $hook);
+}
+
+/**
+ * Implements hook_cron().
+ */
+function gabarro_migrate_booster_cron() {
+  // Define the command you want to run.
+  $command = 'drush migrate:import article_variation_import,article_import';
+
+  // Execute the Drush command.
+  exec($command, $output, $return_var);
+
+  // Log the result or error.
+  if ($return_var !== 0) {
+    \Drupal::logger('gabarro_migrate_booster')->error('Error executing Drush command: @command', ['@command' => $command]);
+  }
+  else {
+    \Drupal::logger('gabarro_migrate_booster')->log(RfcLogLevel::DEBUG, 'Successfully executed Drush command: @command', ['@command' => $command]);
+  }
+}

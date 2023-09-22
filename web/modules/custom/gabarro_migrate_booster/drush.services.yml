@@ -1,0 +1,6 @@
+services:
+  gabarro_migrate_booster.commands:
+    class: \Drupal\gabarro_migrate_booster\Commands\GabarroMigrateBoosterCommands
+    arguments: ['@plugin.manager.migration', '@date.formatter', '@entity_type.manager', '@keyvalue']
+    tags:
+      - { name: drush.command }

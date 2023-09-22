@@ -2,11 +2,11 @@
 
 namespace Drupal\products\Plugin;
 
-use Drupal\products\Entity\ImporterInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Plugin\DefaultPluginManager;
 use Drupal\Core\Cache\CacheBackendInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Plugin\DefaultPluginManager;
+use Drupal\products\Entity\ImporterInterface;
 
 /**
  * Provides the Importer plugin manager.

@@ -1,0 +1,3 @@
+servicio_luna_order_item:
+  label: 'Order item'
+  entity_type: commerce_order_item

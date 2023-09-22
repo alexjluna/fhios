@@ -1,0 +1,7 @@
+name: Gabarro migrate booster
+type: module
+description: Hooks disabler
+core_version_requirement: ^9 || ^10
+package: 'Gabarró'
+dependencies:
+  - migrate
