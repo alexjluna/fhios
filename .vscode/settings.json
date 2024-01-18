@@ -37,4 +37,7 @@
   "php-docblocker.gap": true,
   "php-docblocker.useShortNames": true,
   "intelephense.environment.phpVersion": "8.2",
+  "compile-hero.disable-compile-files-on-did-save-code": true,
+  "compile-hero.javascript-output-toggle": false,
+  "compile-hero.jade-output-toggle": false
 }
