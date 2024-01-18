@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\Tests\Core\Menu;
 
 use Drupal\Component\Plugin\Exception\PluginException;
@@ -94,7 +96,6 @@ class ContextualLinkManagerTest extends UnitTestCase {
     );
 
     $property = new \ReflectionProperty('Drupal\Core\Menu\ContextualLinkManager', 'discovery');
-    $property->setAccessible(TRUE);
     $property->setValue($this->contextualLinkManager, $this->pluginDiscovery);
   }
 

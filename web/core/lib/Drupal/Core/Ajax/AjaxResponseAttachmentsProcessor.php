@@ -100,7 +100,7 @@ class AjaxResponseAttachmentsProcessor implements AttachmentsResponseProcessorIn
     $this->renderer = $renderer;
     $this->moduleHandler = $module_handler;
     if (!isset($languageManager)) {
-      @trigger_error('Calling ' . __METHOD__ . '() without the $language_manager argument is deprecated in drupal:10.1.0 and will be required in drupal:11.0.0', E_USER_DEPRECATED);
+      @trigger_error('Calling ' . __METHOD__ . '() without the $language_manager argument is deprecated in drupal:10.1.0 and will be required in drupal:11.0.0. See https://www.drupal.org/node/3347754', E_USER_DEPRECATED);
       $this->languageManager = \Drupal::languageManager();
     }
   }
@@ -133,10 +133,11 @@ class AjaxResponseAttachmentsProcessor implements AttachmentsResponseProcessorIn
    */
   protected function buildAttachmentsCommands(AjaxResponse $response, Request $request) {
     $ajax_page_state = $request->get('ajax_page_state');
+    $maintenance_mode = defined('MAINTENANCE_MODE') || \Drupal::state()->get('system.maintenance_mode');
 
     // Aggregate CSS/JS if necessary, but only during normal site operation.
-    $optimize_css = !defined('MAINTENANCE_MODE') && $this->config->get('css.preprocess');
-    $optimize_js = !defined('MAINTENANCE_MODE') && $this->config->get('js.preprocess');
+    $optimize_css = !$maintenance_mode && $this->config->get('css.preprocess');
+    $optimize_js = $maintenance_mode && $this->config->get('js.preprocess');
 
     $attachments = $response->getAttachments();
 

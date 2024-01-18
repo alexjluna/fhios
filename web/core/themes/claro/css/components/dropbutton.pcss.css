@@ -37,10 +37,12 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
-.form-actions .dropbutton-wrapper {
+.form-actions .dropbutton-wrapper,
+.field-actions .dropbutton-wrapper {
   margin: var(--space-xs) var(--space-m) var(--space-xs) 0;
 }
-[dir="rtl"] .form-actions .dropbutton-wrapper {
+[dir="rtl"] .form-actions .dropbutton-wrapper,
+[dir="rtl"] .field-actions .dropbutton-wrapper {
   margin-right: 0;
   margin-left: var(--space-m);
 }
@@ -77,10 +79,6 @@
   background-color: var(--button-bg-color);
 }
 
-.dropbutton-action {
-  border-inline-end: var(--dropbutton-border-size) solid white;
-}
-
 /* Variants. */
 .dropbutton--small {
   height: var(--dropbutton-small-toggle-size);
@@ -95,6 +93,7 @@
  */
 .dropbutton--multiple .dropbutton__item:first-of-type {
   margin-right: calc(var(--dropbutton-toggle-size) + var(--dropbutton-toggle-size-spacing)); /* LTR */
+  white-space: nowrap;
 }
 [dir="rtl"] .dropbutton--multiple .dropbutton__item:first-of-type {
   margin-right: 0;
@@ -104,6 +103,7 @@
 /* First dropbutton list item variants */
 .no-touchevents .dropbutton--multiple.dropbutton--small .dropbutton__item:first-of-type {
   margin-right: calc(var(--dropbutton-small-toggle-size) + var(--dropbutton-toggle-size-spacing)); /* LTR */
+  white-space: nowrap;
 }
 [dir="rtl"].no-touchevents .dropbutton--multiple.dropbutton--small .dropbutton__item:first-of-type {
   margin-right: 0;
@@ -112,6 +112,7 @@
 
 .no-touchevents .dropbutton--multiple.dropbutton--extrasmall .dropbutton__item:first-of-type {
   margin-right: calc(var(--dropbutton-extrasmall-toggle-size) + var(--dropbutton-toggle-size-spacing)); /* LTR */
+  white-space: nowrap;
 }
 [dir="rtl"].no-touchevents .dropbutton--multiple.dropbutton--extrasmall .dropbutton__item:first-of-type {
   margin-right: 0;
@@ -130,6 +131,7 @@
   width: var(--dropbutton-toggle-size);
   height: var(--dropbutton-toggle-size);
   border: var(--dropbutton-border-size) solid transparent !important; /* 1 */
+  border-inline-start: var(--dropbutton-border-size) solid white !important;
   border-radius: 0 var(--button-border-radius-size) var(--button-border-radius-size) 0; /* LTR */
   background: var(--button-bg-color);
   font-size: 1px; /* iOS Safari sets a minimum button-width based on font-size. */

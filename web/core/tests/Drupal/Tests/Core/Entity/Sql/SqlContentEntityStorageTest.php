@@ -1,9 +1,6 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\Core\Entity\Sql\SqlContentEntityStorageTest.
- */
+declare(strict_types=1);
 
 namespace Drupal\Tests\Core\Entity\Sql;
 
@@ -1426,7 +1423,6 @@ class SqlContentEntityStorageTest extends UnitTestCase {
       ->willReturnMap([['id', 'id']]);
 
     $method = new \ReflectionMethod($this->entityStorage, 'cleanIds');
-    $method->setAccessible(TRUE);
     $this->assertEquals($valid_ids, $method->invoke($this->entityStorage, $valid_ids));
 
     $invalid_ids = [

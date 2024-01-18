@@ -57,7 +57,7 @@ abstract class AssetControllerBase extends FileDownloadController {
    * for the file will be served from disk and be cached. This is done to
    * avoid situations such as where one CDN endpoint is serving a version
    * cached from PHP, while another is serving a version cached from disk.
-   * Should there be any discrepancy in behaviour between those files, this
+   * Should there be any discrepancy in behavior between those files, this
    * can make debugging very difficult.
    */
   protected const CACHE_CONTROL = 'private, no-store';
@@ -117,7 +117,12 @@ abstract class AssetControllerBase extends FileDownloadController {
     // Check to see whether a file matching the $uri already exists, this can
     // happen if it was created while this request was in progress.
     if (file_exists($uri)) {
-      return new BinaryFileResponse($uri, 200, ['Cache-control' => static::CACHE_CONTROL]);
+      return new BinaryFileResponse($uri, 200, [
+        'Cache-control' => static::CACHE_CONTROL,
+        // @todo: remove the explicit setting of Content-Type once this is
+        // fixed in https://www.drupal.org/project/drupal/issues/3172550.
+        'Content-Type' => $this->contentType,
+      ]);
     }
 
     // First validate that the request is valid enough to produce an asset group
@@ -136,6 +141,10 @@ abstract class AssetControllerBase extends FileDownloadController {
       throw new BadRequestHttpException('The libraries to include must be passed as a query argument');
     }
     $file_parts = explode('_', basename($file_name, '.' . $this->fileExtension), 2);
+    // Ensure the filename is correctly prefixed.
+    if ($file_parts[0] !== $this->fileExtension) {
+      throw new BadRequestHttpException('The filename prefix must match the file extension');
+    }
 
     // The hash is the second segment of the filename.
     if (!isset($file_parts[1])) {
@@ -186,11 +195,7 @@ abstract class AssetControllerBase extends FileDownloadController {
     // from filling the disk, while still serving aggregates that may be
     // referenced in cached HTML.
     if (hash_equals($generated_hash, $received_hash)) {
-      $uri = $this->dumper->dumpToUri($data, $this->assetType, $uri);
-      $state_key = 'drupal_' . $this->assetType . '_cache_files';
-      $files = $this->state()->get($state_key, []);
-      $files[] = $uri;
-      $this->state()->set($state_key, $files);
+      $this->dumper->dumpToUri($data, $this->assetType, $uri);
     }
     return new Response($data, 200, [
       'Cache-control' => static::CACHE_CONTROL,

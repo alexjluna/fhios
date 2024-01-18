@@ -64,7 +64,7 @@ class EntityReferenceFieldDefaultValueTest extends BrowserTestBase {
     // Create a node to be referenced.
     $referenced_node = $this->drupalCreateNode(['type' => 'referenced_content']);
 
-    $field_name = mb_strtolower($this->randomMachineName());
+    $field_name = $this->randomMachineName();
     $field_storage = FieldStorageConfig::create([
       'field_name' => $field_name,
       'entity_type' => 'node',
@@ -129,7 +129,7 @@ class EntityReferenceFieldDefaultValueTest extends BrowserTestBase {
     $referenced_node_type = $this->drupalCreateContentType(['type' => 'referenced_config_to_delete']);
     $referenced_node_type2 = $this->drupalCreateContentType(['type' => 'referenced_config_to_preserve']);
 
-    $field_name = mb_strtolower($this->randomMachineName());
+    $field_name = $this->randomMachineName();
     $field_storage = FieldStorageConfig::create([
       'field_name' => $field_name,
       'entity_type' => 'node',
@@ -157,6 +157,10 @@ class EntityReferenceFieldDefaultValueTest extends BrowserTestBase {
       'default_value_input[' . $field_name . '][1][target_id]' => $referenced_node_type2->label() . ' (' . $referenced_node_type2->id() . ')',
     ];
     $this->drupalGet('admin/structure/types/manage/reference_content/fields/node.reference_content.' . $field_name);
+    $this->assertSession()->fieldExists("default_value_input[{$field_name}][0][target_id]");
+    $this->assertSession()->fieldNotExists("default_value_input[{$field_name}][1][target_id]");
+    $this->submitForm([], 'Add another item');
+    $this->assertSession()->fieldExists("default_value_input[{$field_name}][1][target_id]");
     $this->submitForm($field_edit, 'Save settings');
 
     // Check that the field has a dependency on the default value.

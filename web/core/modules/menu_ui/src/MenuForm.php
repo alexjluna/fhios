@@ -3,6 +3,7 @@
 namespace Drupal\menu_ui;
 
 use Drupal\Component\Utility\NestedArray;
+use Drupal\Component\Utility\SortArray;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
@@ -434,6 +435,21 @@ class MenuForm extends EntityForm {
           '#default_value' => $link->getParent(),
         ];
         $operations = $link->getOperations();
+        if ($element->depth < $this->menuTree->maxDepth()) {
+          $add_link_url = Url::fromRoute(
+            'entity.menu.add_link_form',
+            ['menu' => $this->entity->id()],
+            ['query' => ['parent' => $link->getPluginId()]]
+          );
+          $operations += [
+            'add-child' => [
+              'title' => $this->t('Add child'),
+              'weight' => 20,
+              'url' => $add_link_url,
+            ],
+          ];
+          uasort($operations, [SortArray::class, 'sortByWeightElement']);
+        }
         foreach ($operations as $key => $operation) {
           if (!isset($operations[$key]['query'])) {
             // Bring the user back to the menu overview.
@@ -498,7 +514,7 @@ class MenuForm extends EntityForm {
         if ($updated_values) {
           // Use the ID from the actual plugin instance since the hidden value
           // in the form could be tampered with.
-          $this->menuLinkManager->updateDefinition($element['#item']->link->getPLuginId(), $updated_values);
+          $this->menuLinkManager->updateDefinition($element['#item']->link->getPluginId(), $updated_values);
         }
       }
     }
