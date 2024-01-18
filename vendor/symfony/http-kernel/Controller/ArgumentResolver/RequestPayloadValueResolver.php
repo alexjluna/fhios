@@ -119,7 +119,7 @@ class RequestPayloadValueResolver implements ValueResolverInterface, EventSubscr
                     $payload = $e->getData();
                 }
 
-                if (null !== $payload) {
+                if (null !== $payload && !\count($violations)) {
                     $violations->addAll($this->validator->validate($payload, null, $argument->validationGroups ?? null));
                 }
 
@@ -161,7 +161,7 @@ class RequestPayloadValueResolver implements ValueResolverInterface, EventSubscr
             return null;
         }
 
-        return $this->serializer->denormalize($data, $type, null, self::CONTEXT_DENORMALIZE + $attribute->serializationContext);
+        return $this->serializer->denormalize($data, $type, null, $attribute->serializationContext + self::CONTEXT_DENORMALIZE);
     }
 
     private function mapRequestPayload(Request $request, string $type, MapRequestPayload $attribute): ?object
@@ -175,7 +175,7 @@ class RequestPayloadValueResolver implements ValueResolverInterface, EventSubscr
         }
 
         if ($data = $request->request->all()) {
-            return $this->serializer->denormalize($data, $type, null, self::CONTEXT_DENORMALIZE + $attribute->serializationContext);
+            return $this->serializer->denormalize($data, $type, null, $attribute->serializationContext + self::CONTEXT_DENORMALIZE);
         }
 
         if ('' === $data = $request->getContent()) {
