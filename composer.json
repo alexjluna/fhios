@@ -23,6 +23,7 @@
         "drupal/core-recommended": "10.2.2",
         "drupal/devel": "^5.1",
         "drupal/inline_entity_form": "^1.0@RC",
+        "drupal/paragraphs": "^1.17",
         "drupal/upgrade_status": "^4.0",
         "drush/drush": "12.4.3"
     },
