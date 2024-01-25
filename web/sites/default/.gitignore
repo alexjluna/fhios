@@ -1,0 +1,3 @@
+# Ignore Drupal's file directory
+/web/sites/*/files/
+/web/sites/*/private/

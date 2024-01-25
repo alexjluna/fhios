@@ -24,7 +24,11 @@
         "drupal/devel": "^5.1",
         "drupal/inline_entity_form": "^1.0@RC",
         "drupal/paragraphs": "^1.17",
+        "drupal/shs": "^2.0@RC",
+        "drupal/tfa": "^2.0@alpha",
         "drupal/upgrade_status": "^4.0",
+        "drupal/webform": "^6.2",
+        "drupal/webform_shs": "^2.0@beta",
         "drush/drush": "12.4.3"
     },
     "conflict": {

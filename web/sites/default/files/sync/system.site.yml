@@ -1,0 +1,14 @@
+_core:
+  default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
+langcode: en
+uuid: eea31eb7-e08d-4dd9-86cd-4fe54b8afcb9
+name: 'Prueba Técnica'
+mail: pruebatecnica@anticipa.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /search/user
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en
