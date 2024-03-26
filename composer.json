@@ -22,6 +22,7 @@
         "drupal/core-project-message": "10.2.2",
         "drupal/core-recommended": "10.2.2",
         "drupal/devel": "^5.1",
+        "drupal/gutenberg": "^2.8",
         "drupal/inline_entity_form": "^1.0@RC",
         "drupal/paragraphs": "^1.17",
         "drupal/shs": "^2.0@RC",

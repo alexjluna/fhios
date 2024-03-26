@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - filter.format.basic_html
+    - filter.format.webform_default
   module:
     - comment
     - commerce_checkout
@@ -34,5 +35,6 @@ permissions:
   - 'search content'
   - 'skip comment approval'
   - 'use text format basic_html'
+  - 'use text format webform_default'
   - 'view commerce_product'
   - 'view own commerce_order'

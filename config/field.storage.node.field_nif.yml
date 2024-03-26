@@ -1,0 +1,19 @@
+uuid: 6021eae0-a2c6-46c9-b192-18078d7e8461
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_nif_nie_cif
+    - node
+id: node.field_nif
+field_name: field_nif
+entity_type: node
+type: nif_nie_cif
+settings: {  }
+module: field_nif_nie_cif
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

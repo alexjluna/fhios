@@ -2930,6 +2930,92 @@
             "install-path": "../../web/modules/contrib/entity_reference_revisions"
         },
         {
+            "name": "drupal/gutenberg",
+            "version": "2.8.0",
+            "version_normalized": "2.8.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/gutenberg.git",
+                "reference": "8.x-2.8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/gutenberg-8.x-2.8.zip",
+                "reference": "8.x-2.8",
+                "shasum": "4fdcf7bc65e67063e5f266b733a93e8176ad7a79"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10",
+                "ext-json": "*",
+                "php": ">=7.4"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.8",
+                    "datestamp": "1697496069",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Fernandes (marcofernandes)",
+                    "homepage": "https://www.drupal.org/u/marcofernandes"
+                },
+                {
+                    "name": "Thor Andre Gretland (thorandre)",
+                    "homepage": "https://www.drupal.org/u/thorandre"
+                },
+                {
+                    "name": "Roberto Ornelas (roborn)",
+                    "homepage": "https://www.drupal.org/u/roborn"
+                },
+                {
+                    "name": "codebymikey",
+                    "homepage": "https://www.drupal.org/u/codebymikey"
+                },
+                {
+                    "name": "Stephan Zeidler (szeidler)",
+                    "homepage": "https://www.drupal.org/u/szeidler"
+                },
+                {
+                    "name": "perandre",
+                    "homepage": "https://www.drupal.org/user/221337"
+                },
+                {
+                    "name": "roborn",
+                    "homepage": "https://www.drupal.org/user/139474"
+                },
+                {
+                    "name": "szeidler",
+                    "homepage": "https://www.drupal.org/user/767652"
+                },
+                {
+                    "name": "thorandre",
+                    "homepage": "https://www.drupal.org/user/223878"
+                },
+                {
+                    "name": "truls1502",
+                    "homepage": "https://www.drupal.org/user/325866"
+                }
+            ],
+            "description": "Drupal Gutenberg brings the powerful admin features of Gutenberg Editor to Drupal.",
+            "homepage": "https://www.drupal.org/project/gutenberg",
+            "support": {
+                "source": "https://git.drupalcode.org/project/gutenberg",
+                "issues": "https://www.drupal.org/project/issues/gutenberg"
+            },
+            "install-path": "../../web/modules/contrib/gutenberg"
+        },
+        {
             "name": "drupal/inline_entity_form",
             "version": "1.0.0-rc15",
             "version_normalized": "1.0.0.0-RC15",

@@ -1,0 +1,12 @@
+_core:
+  default_config_hash: 5oQHXazvYBtudrjV6mhLh3N8n3BPj0C5OhGJP6u3G5w
+environment: test
+merchant_code: '999008881'
+merchant_key: sq7HjrUOBfKmC576ILgskD5srU870gJ7
+terminal: '001'
+currency: '978'
+transaction_type: '0'
+url_ok: null
+url_ko: null
+language: '001'
+notification_email: alejolumend@gmail.com

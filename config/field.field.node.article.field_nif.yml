@@ -1,0 +1,21 @@
+uuid: e76c5cd1-b8ea-44b9-8f85-58f965c26e17
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_nif
+    - node.type.article
+  module:
+    - field_nif_nie_cif
+id: node.article.field_nif
+field_name: field_nif
+entity_type: node
+bundle: article
+label: Nif
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: nif_nie_cif

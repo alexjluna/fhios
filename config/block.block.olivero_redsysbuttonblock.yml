@@ -1,0 +1,20 @@
+uuid: 7cfbff0c-6292-4822-93b0-bec95cae8ebe
+langcode: en
+status: true
+dependencies:
+  module:
+    - redsys_button
+  theme:
+    - olivero
+id: olivero_redsysbuttonblock
+theme: olivero
+region: content
+weight: -7
+provider: null
+plugin: redsys_button_block
+settings:
+  id: redsys_button_block
+  label: Payment
+  label_display: visible
+  provider: redsys_button
+visibility: {  }

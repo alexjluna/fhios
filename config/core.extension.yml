@@ -36,9 +36,12 @@ module:
   entity_reference_revisions: 0
   fhios_search: 0
   field: 0
+  field_nif_nie_cif: 0
+  field_nif_nie_cif_webform: 0
   field_ui: 0
   file: 0
   filter: 0
+  gutenberg: 0
   help: 0
   history: 0
   image: 0
@@ -59,8 +62,11 @@ module:
   phpass: 0
   products: 0
   profile: 0
+  redsys_button: 0
+  rsvplist: 0
   search: 0
   shortcut: 0
+  shs: 0
   state_machine: 0
   system: 0
   taxonomy: 0
@@ -72,6 +78,23 @@ module:
   update: 0
   user: 0
   views_ui: 0
+  webform: 0
+  webform_access: 0
+  webform_attachment: 0
+  webform_image_select: 0
+  webform_node: 0
+  webform_options_custom: 0
+  webform_options_limit: 0
+  webform_scheduled_email: 0
+  webform_schema: 0
+  webform_share: 0
+  webform_shortcuts: 0
+  webform_shs: 0
+  webform_submission_export_import: 0
+  webform_submission_log: 0
+  webform_templates: 0
+  webform_ui: 0
+  webform_bootstrap: 1
   views: 10
   paragraphs: 11
   standard: 1000
