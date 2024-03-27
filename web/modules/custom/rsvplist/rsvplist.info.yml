@@ -1,8 +1,8 @@
-name: RSVP List
+name: 'RSVP List'
 type: module
 core_version_requirement: ^10
-description: Allows user to RSVP for Events.
-package: RSVP List
+description: 'Allows user to RSVP for Events.'
+package: 'RSVP List'
 
 dependencies:
   - drupal:block

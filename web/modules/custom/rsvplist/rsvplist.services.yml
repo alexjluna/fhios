@@ -1,0 +1,4 @@
+services:
+  rsvplist.enabler:
+    class: Drupal\rsvplist\Servicies\EnablerService
+    arguments: ['@database']
