@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\rsvplist;
+namespace Drupal\rsvplist\Servicies;
 
 /**
  * @file
