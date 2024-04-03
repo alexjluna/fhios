@@ -70,6 +70,7 @@ module:
   state_machine: 0
   system: 0
   taxonomy: 0
+  taxonomy_revisions_ui: 0
   text: 0
   tfa: 0
   token: 0

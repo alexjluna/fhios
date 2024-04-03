@@ -1,0 +1,9 @@
+{
+    "name": "drupal/taxonomy_revisions_ui",
+    "description": "Adds Revision UI to Taxonomy term entities.",
+    "type": "drupal-module",
+    "require": {
+        "php": ">=8.0",
+        "drupal/core": "^10"
+    }
+}

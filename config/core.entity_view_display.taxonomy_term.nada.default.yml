@@ -1,0 +1,30 @@
+uuid: 107d5f3a-34d7-4092-86e3-07216d5f0d42
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.nada.field_nada2
+    - taxonomy.vocabulary.nada
+  module:
+    - text
+id: taxonomy_term.nada.default
+targetEntityType: taxonomy_term
+bundle: nada
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_nada2:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

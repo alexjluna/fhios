@@ -1,0 +1,17 @@
+name: 'Taxonomy Revisions UI'
+type: module
+description: 'Adds revisions interface for Taxonomy entity'
+core_version_requirement: ^10
+package: 'Taxonomy'
+dependencies:
+  - drupal:taxonomy
+
+# Information added by Drupal.org packaging script on 2022-11-06
+# version: '2.1.0'
+# project: 'taxonomy_revisions_ui'
+# datestamp: 1667711321
+
+# Information added by Drupal.org packaging script on 2022-11-09
+version: '2.1.0'
+project: 'taxonomy_revisions_ui'
+datestamp: 1667970664

@@ -1,0 +1,20 @@
+uuid: 68f28f4f-30dd-4300-a04b-54329937f555
+langcode: en
+status: true
+dependencies:
+  module:
+    - rsvplist
+  theme:
+    - olivero
+id: olivero_thersvpblock
+theme: olivero
+region: sidebar
+weight: 0
+provider: null
+plugin: rsvp_block
+settings:
+  id: rsvp_block
+  label: 'The RSVP Block'
+  label_display: visible
+  provider: rsvplist
+visibility: {  }

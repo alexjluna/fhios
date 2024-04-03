@@ -1,0 +1,64 @@
+entity.taxonomy_term.version_history:
+  path: '/taxonomy/{taxonomy_term}/revisions'
+  defaults:
+    _title: 'Revisions'
+    _controller: 'Drupal\taxonomy_revisions_ui\Controller\TaxonomyRevisionController::revisionOverview'
+  requirements:
+    _entity_access: 'taxonomy_term.view all revisions'
+    taxonomy_term: \d+
+  options:
+    parameters:
+      taxonomy_term:
+        type: entity:taxonomy_term
+    _admin_route: TRUE
+
+entity.taxonomy_term.revision_revert_confirm:
+  path: '/taxonomy/{taxonomy_term}/revisions/{taxonomy_term_revision}/revert'
+  defaults:
+    _form: '\Drupal\taxonomy_revisions_ui\Form\TaxonomyRevisionRevertForm'
+    _title: 'Revert to earlier revision'
+  requirements:
+    _entity_access: 'taxonomy_term_revision.revert revision'
+    taxonomy_term: \d+
+    taxonomy_term_revision: \d+
+  options:
+    parameters:
+      taxonomy_term:
+        type: entity:taxonomy_term
+      taxonomy_term_revision:
+        type: entity_revision:taxonomy_term
+    _admin_route: TRUE
+
+entity.taxonomy_term.revision_revert_translation_confirm:
+  path: '/taxonomy/{taxonomy_term}/revisions/{taxonomy_term_revision}/revert/{langcode}'
+  defaults:
+    _form: '\Drupal\taxonomy_revisions_ui\Form\TaxonomyRevisionRevertTranslationForm'
+    _title: 'Revert to earlier revision of a translation'
+  requirements:
+    _entity_access: 'taxonomy_term_revision.revert revision'
+    taxonomy_term: \d+
+    taxonomy_term_revision: \d+
+  options:
+    parameters:
+      taxonomy_term:
+        type: entity:taxonomy_term
+      taxonomy_term_revision:
+        type: entity_revision:taxonomy_term
+    _admin_route: TRUE
+
+entity.taxonomy_term.revision_delete_confirm:
+  path: '/taxonomy/{taxonomy_term}/revisions/{taxonomy_term_revision}/delete'
+  defaults:
+    _form: '\Drupal\taxonomy_revisions_ui\Form\TaxonomyRevisionDeleteForm'
+    _title: 'Delete earlier revision'
+  requirements:
+    _entity_access: 'taxonomy_term_revision.delete revision'
+    taxonomy_term: \d+
+    taxonomy_term_revision: \d+
+  options:
+    parameters:
+      taxonomy_term:
+        type: entity:taxonomy_term
+      taxonomy_term_revision:
+        type: entity_revision:taxonomy_term
+    _admin_route: TRUE

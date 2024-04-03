@@ -1,0 +1,10 @@
+revert all taxonomy revisions:
+  title: 'Revert all taxonomy revisions'
+  description: 'To revert a revision, you also need permission to edit the taxonomy item.'
+
+delete all taxonomy revisions:
+  title: 'Delete all taxonomy revisions'
+  description: 'To delete a revision, you also need permission to delete the taxonomy item.'
+
+permission_callbacks:
+  - \Drupal\taxonomy_revisions_ui\TaxonomyRevisionPermissions::taxonomyRevisionTypePermissions
