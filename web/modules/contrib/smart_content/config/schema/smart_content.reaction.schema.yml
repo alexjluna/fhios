@@ -1,0 +1,13 @@
+smart_content.reaction:
+  type: config_object
+  label: 'Reaction config'
+  mapping:
+    id:
+      type: string
+      label: 'Reaction ID'
+    segment_id:
+      type: string
+      label: 'Segment ID'
+
+smart_content.reaction.plugin.*:
+  type: smart_content.reaction

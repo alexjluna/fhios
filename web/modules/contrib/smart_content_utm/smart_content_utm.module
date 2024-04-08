@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Implements hook_page_attachments().
+ */
+function smart_content_utm_page_attachments(array &$attachments) {
+  // Add UTM query param parser to all non-admin pages.
+  $is_admin_page = \Drupal::service('router.admin_context')->isAdminRoute();
+  if (!$is_admin_page) {
+    $attachments['#attached']['library'][] = 'smart_content_utm/url_parser';
+  }
+}

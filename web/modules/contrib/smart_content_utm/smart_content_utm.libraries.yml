@@ -1,0 +1,28 @@
+condition.utm:
+  header: true
+  version: 2.x
+  js:
+    js/condition.utm.js: {}
+  dependencies:
+    - smart_content/condition_type.standard
+    - smart_content_utm/url_parser
+
+url_parser:
+  header: true
+  version: 2.x
+  js:
+    js/url-parser.js: {}
+  dependencies:
+    - core/drupal
+    - smart_content/storage
+    - smart_content_utm/ungap.url-search-params
+
+ungap.url-search-params:
+  remote: https://github.com/ungap/url-search-params
+  version: 0.2.2
+  license:
+    name: ISC
+    url: https://github.com/ungap/url-search-params/blob/master/LICENSE
+    gpl-compatible: true
+  js:
+    https://unpkg.com/@ungap/url-search-params@0.2.2/min.js: { type: external, minified: true }

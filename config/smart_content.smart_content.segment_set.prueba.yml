@@ -1,0 +1,30 @@
+uuid: 1dac24e9-81fb-4b0f-a485-b92a2abb1f02
+langcode: en
+status: true
+dependencies: {  }
+id: prueba
+label: prueba
+settings:
+  segments:
+    64f806d1-67e4-4f23-a3d0-42bb326431de:
+      uuid: 64f806d1-67e4-4f23-a3d0-42bb326431de
+      weight: 0
+      label: '1'
+      default: false
+      conditions:
+        group:
+          id: group
+          weight: 0
+          negate: false
+          type: 'plugin:group'
+          op: AND
+          conditions:
+            'utm:utm_source':
+              id: 'utm:utm_source'
+              weight: 0
+              negate: false
+              type: 'type:textfield'
+              condition_type_settings:
+                negate: '0'
+                op: equals
+                value: emailO

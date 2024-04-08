@@ -1,0 +1,14 @@
+# Parent menu link for Smart Content
+smart_content.overview:
+  title: 'Smart Content'
+  description: 'Administer Smart Content.'
+  route_name: system.admin_structure_smart_content
+  parent: system.admin_structure
+
+# SegmentSet menu items definition
+entity.smart_content_segment_set.collection:
+  title: 'Manage Segment Sets'
+  route_name: entity.smart_content_segment_set.collection
+  description: 'List SegmentSet (bundles)'
+  parent: smart_content.overview
+  weight: 99

@@ -1,0 +1,109 @@
+<?php
+
+/**
+ * @file
+ * Implements hooks required by smart content block.
+ */
+
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\smart_content_block\BlockFieldEntityOperations;
+use Drupal\smart_content_block\ConfigBlockEntityOperations;
+use Drupal\smart_content_block\LayoutBuilderEntityOperations;
+
+/**
+ * Implements hook_entity_presave().
+ */
+function smart_content_block_entity_presave(EntityInterface $entity) {
+  $entity_operations = \Drupal::classResolver(ConfigBlockEntityOperations::class);
+  $entity_operations->handlePreSave($entity);
+
+  if (\Drupal::moduleHandler()->moduleExists('layout_builder')) {
+    /** @var \Drupal\smart_content_block\LayoutBuilderEntityOperation $entity_operations */
+    $entity_operations = \Drupal::classResolver(LayoutBuilderEntityOperations::class);
+    $entity_operations->handlePreSave($entity);
+  }
+  if (\Drupal::moduleHandler()->moduleExists('block_field') && $entity instanceof ContentEntityInterface) {
+    /** @var \Drupal\smart_content_block\BlockFieldEntityOperations $entity_operations */
+    $entity_operations = \Drupal::classResolver(BlockFieldEntityOperations::class);
+    $entity_operations->handlePreSave($entity);
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function smart_content_block_entity_insert(EntityInterface $entity) {
+  if (\Drupal::moduleHandler()->moduleExists('layout_builder')) {
+    /** @var \Drupal\smart_content_block\LayoutBuilderEntityOperation $entity_operations */
+    $entity_operations = \Drupal::classResolver(LayoutBuilderEntityOperations::class);
+    $entity_operations->handleInsert($entity);
+  }
+  if (\Drupal::moduleHandler()->moduleExists('block_field') && $entity instanceof ContentEntityInterface) {
+    /** @var \Drupal\smart_content_block\BlockFieldEntityOperations $entity_operations */
+    $entity_operations = \Drupal::classResolver(BlockFieldEntityOperations::class);
+    $entity_operations->handleInsert($entity);
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function smart_content_block_entity_update(EntityInterface $entity) {
+  if (\Drupal::moduleHandler()->moduleExists('layout_builder')) {
+    /** @var \Drupal\smart_content_block\LayoutBuilderEntityOperation $entity_operations */
+    $entity_operations = \Drupal::classResolver(LayoutBuilderEntityOperations::class);
+    $entity_operations->handleUpdate($entity);
+  }
+  if (\Drupal::moduleHandler()->moduleExists('block_field') && $entity instanceof ContentEntityInterface) {
+    /** @var \Drupal\smart_content_block\BlockFieldEntityOperations $entity_operations */
+    $entity_operations = \Drupal::classResolver(BlockFieldEntityOperations::class);
+    $entity_operations->handleUpdate($entity);
+  }
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function smart_content_block_entity_predelete(EntityInterface $entity) {
+  $entity_operations = \Drupal::classResolver(ConfigBlockEntityOperations::class);
+  $entity_operations->handlePreDelete($entity);
+
+  if (\Drupal::moduleHandler()->moduleExists('layout_builder')) {
+    /** @var \Drupal\smart_content_block\LayoutBuilderEntityOperation $entity_operations */
+    $entity_operations = \Drupal::classResolver(LayoutBuilderEntityOperations::class);
+    $entity_operations->handlePreDelete($entity);
+  }
+  if (\Drupal::moduleHandler()->moduleExists('block_field') && $entity instanceof ContentEntityInterface) {
+    /** @var \Drupal\smart_content_block\BlockFieldEntityOperations $entity_operations */
+    $entity_operations = \Drupal::classResolver(BlockFieldEntityOperations::class);
+    $entity_operations->handlePreDelete($entity);
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function smart_content_block_theme() {
+  $theme['block__smart_content_decision_block'] = [
+    'template' => 'block--smart-content-decision-block',
+    'base hook' => 'block',
+    'render element' => 'elements',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function smart_content_block_preprocess_block(&$variables) {
+  if ($variables['base_plugin_id'] == 'smart_content_decision_block') {
+    $variables['attributes']['class'][] = 'smart-content-decision-block';
+    // @todo: this breaks layout builder editor...
+    if (isset($variables['content']['#attributes']['data-smart-content-placeholder'])) {
+      // Provides a temporary solution for the issue below.
+      // @see https://www.drupal.org/project/drupal/issues/3084744.
+      $variables['attributes']['data-smart-content-placeholder'] = $variables['content']['#attributes']['data-smart-content-placeholder'];
+    }
+  }
+}

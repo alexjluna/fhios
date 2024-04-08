@@ -1,0 +1,127 @@
+smart_content.condition:
+  type: config_object
+  label: 'Condition config'
+  mapping:
+    id:
+      type: string
+      label: 'Condition ID'
+    weight:
+      type: integer
+      label: 'Condition weight'
+    negate:
+      type: boolean
+      label: 'Negate condition'
+    type:
+      type: string
+      label: 'Condition type'
+
+smart_content.condition.plugin.*:
+  type: smart_content.condition
+
+"smart_content.condition.plugin.plugin:group":
+  type: smart_content.condition
+  mapping:
+    op:
+      type: string
+      label: 'Operator'
+    conditions:
+      type: sequence
+      label: 'Group conditions'
+      sequence:
+        type: smart_content.condition.plugin.[type]
+
+"smart_content.condition.plugin.type:array_textfield":
+  type: smart_content.condition
+  mapping:
+    condition_type_settings:
+      type: mapping
+      label: 'Condition type settings'
+      mapping:
+        negate:
+          type: string
+          label: 'Negate'
+        op:
+          type: string
+          label: 'Operator'
+        value:
+          type: string
+          label: 'Value'
+
+"smart_content.condition.plugin.type:boolean":
+  type: smart_content.condition
+  mapping:
+    condition_type_settings:
+      type: mapping
+      label: 'Condition type settings'
+      mapping:
+        negate:
+          type: string
+          label: 'Negate'
+
+"smart_content.condition.plugin.type:key_value":
+  type: smart_content.condition
+  mapping:
+    condition_type_settings:
+      type: mapping
+      label: 'Condition type settings'
+      mapping:
+        negate:
+          type: string
+          label: 'Negate'
+        op:
+          type: string
+          label: 'Operator'
+        key:
+          type: string
+          label: 'Key'
+        value:
+          type: string
+          label: 'Value'
+
+"smart_content.condition.plugin.type:number":
+  type: smart_content.condition
+  mapping:
+    condition_type_settings:
+      type: mapping
+      label: 'Condition type settings'
+      mapping:
+        negate:
+          type: string
+          label: 'Negate'
+        op:
+          type: string
+          label: 'Operator'
+        value:
+          type: string
+          label: 'Value'
+
+"smart_content.condition.plugin.type:select":
+  type: smart_content.condition
+  mapping:
+    condition_type_settings:
+      type: mapping
+      label: 'Condition type settings'
+      mapping:
+        negate:
+          type: string
+          label: 'Negate'
+        value:
+          type: string
+          label: 'Value'
+
+"smart_content.condition.plugin.type:textfield":
+  type: smart_content.condition
+  mapping:
+    condition_type_settings:
+      type: mapping
+      label: 'Condition type settings'
+      mapping:
+        negate:
+          type: string
+          label: 'Negate'
+        op:
+          type: string
+          label: 'Operator'
+        value:
+          type: string
+          label: 'Value'

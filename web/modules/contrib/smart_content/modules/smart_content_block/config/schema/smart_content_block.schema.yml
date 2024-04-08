@@ -1,0 +1,23 @@
+smart_content.reaction.plugin.display_blocks:
+  type: smart_content.reaction
+  mapping:
+    blocks:
+      type: sequence
+      label: 'Blocks'
+      sequence:
+        type: block.settings.[id]
+
+block.settings.smart_content_decision_block:
+  type: block_settings
+  label: 'Decision block config'
+  mapping:
+    decision_storage:
+      type: mapping
+      label: 'Decision storage settings'
+      mapping:
+        plugin_id:
+          type: string
+          label: 'Decision storage plugin ID'
+        id:
+          type: string
+          label: 'Decision storage UUID'

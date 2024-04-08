@@ -1,0 +1,28 @@
+{
+    "name": "drupal/smart_content_utm",
+    "description": "Provides UTM conditions for Smart Content.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Gurwinder Antal (gantal)",
+            "email": "gantal@elevatedthird.com",
+            "homepage": "https://www.drupal.org/u/gantal",
+            "role": "Maintainer"
+        },
+        {
+            "name": "Michael Lander (michaellander)",
+            "email": "mlander@elevatedthird.com",
+            "homepage": "https://www.drupal.org/u/michaellander",
+            "role": "Maintainer"
+        }
+    ],
+    "homepage": "https://drupal.org/project/smart_content_utm",
+    "support": {
+        "issues": "https://drupal.org/project/issues/smart_content_utm",
+        "source": "https://git.drupalcode.org/project/smart_content_utm"
+    },
+    "require": {
+        "drupal/smart_content": "^3.0"
+    }
+}

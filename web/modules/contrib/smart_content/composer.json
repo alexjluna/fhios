@@ -1,0 +1,33 @@
+{
+  "name": "drupal/smart_content",
+  "description": "Provides an API and toolset for personalizing user experiences for anonymous and authenticated users.",
+  "type": "drupal-module",
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev",
+  "homepage": "https://drupal.org/project/smart_content",
+  "authors": [
+    {
+      "name": "Michael Lander (michaellander)",
+      "homepage": "https://www.drupal.org/u/michaellander",
+      "role": "Maintainer"
+    },
+    {
+      "name": "Gurwinder Antal (gantal)",
+      "homepage": "https://www.drupal.org/u/gantal",
+      "role": "Co-maintainer"
+    },
+    {
+      "name": "Nick Switzer (switzern)",
+      "homepage": "https://www.drupal.org/u/switzern",
+      "role": "Co-maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://drupal.org/project/issues/smart_content",
+    "irc": "irc://irc.freenode.org/drupal-contribute",
+    "source": "https://cgit.drupalcode.org/smart_content"
+  },
+  "require-dev": {
+    "drupal/block_field": "~1.0"
+  }
+}

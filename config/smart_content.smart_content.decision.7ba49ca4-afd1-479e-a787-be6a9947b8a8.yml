@@ -1,0 +1,19 @@
+uuid: 7d778a9f-cd83-43a6-9f30-fc9170544943
+langcode: en
+status: true
+dependencies:
+  module:
+    - smart_content_block
+id: 7ba49ca4-afd1-479e-a787-be6a9947b8a8
+settings:
+  id: multiple_block_decision
+  default: ''
+  segmentStorage:
+    id: 'global_segment_set:prueba'
+  token: 32ae42fc-8ee0-4e4d-9605-383ce954cf1e
+  storage_id: config_entity
+  reactions:
+    64f806d1-67e4-4f23-a3d0-42bb326431de:
+      id: display_blocks
+      segment_id: 64f806d1-67e4-4f23-a3d0-42bb326431de
+      blocks: {  }

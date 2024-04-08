@@ -1,0 +1,33 @@
+condition.common:
+  header: true
+  version: 1.x
+  js:
+    js/condition.common.js:  { }
+  dependencies:
+    - core/drupal
+condition_type.standard:
+  header: true
+  version: 1.x
+  js:
+    js/condition_type.standard.js: { }
+  dependencies:
+    - core/drupal
+form:
+  version: 1.x
+  css:
+    theme:
+      css/form.css: {}
+  js:
+    js/form.js: { }
+storage:
+  header: true
+  version: 1.x
+  js:
+    js/smart_content.storage.js: { }
+smart_content:
+  version: 1.x
+  js:
+    js/smart_content.js: { }
+  dependencies:
+    - core/drupal
+    - core/drupal.ajax

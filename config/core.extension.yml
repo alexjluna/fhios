@@ -67,6 +67,10 @@ module:
   search: 0
   shortcut: 0
   shs: 0
+  smart_content: 0
+  smart_content_block: 0
+  smart_content_browser: 0
+  smart_content_utm: 0
   state_machine: 0
   system: 0
   taxonomy: 0

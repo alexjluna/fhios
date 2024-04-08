@@ -1,0 +1,110 @@
+<?php
+
+/**
+ * @file
+ * Contains smart content update hooks and schema.
+ */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+
+/**
+ * Implements hook_schema().
+ */
+function smart_content_schema() {
+  $schema['decision_config_token'] = [
+    'description' => 'Assign decision config entities a token.',
+    'fields' => [
+      'id' => [
+        'type' => 'varchar_ascii',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The config entity id.',
+      ],
+      'token' => [
+        'type' => 'varchar_ascii',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The token UUID',
+      ],
+    ],
+    'primary key' => [
+      'token',
+    ],
+  ];
+  $schema['decision_content_token'] = [
+    'description' => 'Assign decision content entities a token.',
+    'fields' => [
+      'id' => [
+        'description' => 'The decision content entity ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'vid' => [
+        'description' => 'The decision content revision ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+      ],
+      'langcode' => [
+        'type' => 'varchar_ascii',
+        'length' => 32,
+        'not null' => FALSE,
+        'default' => '',
+        'description' => 'The language code for this data item.',
+      ],
+      'token' => [
+        'type' => 'varchar_ascii',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The token UUID',
+      ],
+    ],
+    'primary key' => [
+      'token',
+    ],
+  ];
+  $schema['decision_content_usage'] = [
+    'description' => 'Save usage to remove orphaned decisions',
+    'fields' => [
+      'parent_entity_type' => [
+        'description' => 'The parent entity type.',
+        'type' => 'varchar_ascii',
+        'length' => EntityTypeInterface::ID_MAX_LENGTH,
+        'not null' => TRUE,
+      ],
+      'parent_entity_id' => [
+        'description' => 'The parent entity ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'parent_entity_vid' => [
+        'description' => 'The parent entity revision ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+      ],
+      'decision_entity_id' => [
+        'description' => 'The decision entity ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'decision_entity_vid' => [
+        'description' => 'The decision entity VD.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => [
+      'decision_entity_id',
+      'decision_entity_vid',
+    ],
+  ];
+  return $schema;
+}

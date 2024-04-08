@@ -1,0 +1,45 @@
+smart_content.segment:
+  type: config_object
+  label: 'Segment config'
+  mapping:
+    uuid:
+      type: string
+      label: 'Segment UUID'
+    weight:
+      type: integer
+      label: 'Segment weight'
+    label:
+      type: string
+      label: 'Segment label'
+    default:
+      type: boolean
+      label: 'Is default'
+    conditions:
+      type: sequence
+      label: 'Conditions'
+      sequence:
+        type: smart_content.condition.plugin.[type]
+
+smart_content.segment_storage:
+  type: config_object
+  label: 'Segment storage config'
+  mapping:
+    id:
+      type: string
+      label: 'Segment storage ID'
+
+smart_content.segment_storage.plugin.*:
+  type: smart_content.segment_storage
+
+smart_content.segment_storage.plugin.inline:
+  type: smart_content.segment_storage
+  mapping:
+    settings:
+      type: mapping
+      label: 'Segment storage settings'
+      mapping:
+        segments:
+          type: sequence
+          label: 'Segments'
+          sequence:
+            type: smart_content.segment

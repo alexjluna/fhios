@@ -1,0 +1,5 @@
+entity.smart_content_segment_set.add_form:
+  route_name: entity.smart_content_segment_set.add_form
+  title: 'Add Global Segment Set'
+  appears_on:
+    - entity.smart_content_segment_set.collection

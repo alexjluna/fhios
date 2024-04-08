@@ -1,0 +1,23 @@
+{
+  "name": "smart_content",
+  "version": "3.x-dev",
+  "description": "Provides an API and toolset for personalizing user experiences for anonymous and authenticated users.",
+  "main": "index.js",
+  "repository": "git@git.drupal.org:project/smart_content.git",
+  "author": "Michael Lander <mlander@elevatedthird.com>",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5"
+  }
+}

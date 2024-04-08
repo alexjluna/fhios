@@ -1,0 +1,23 @@
+uuid: 0968b762-0272-4476-8694-e8571be4ffe6
+langcode: en
+status: true
+dependencies:
+  module:
+    - smart_content_block
+  theme:
+    - olivero
+id: olivero_decisionblock
+theme: olivero
+region: content
+weight: 0
+provider: null
+plugin: smart_content_decision_block
+settings:
+  id: smart_content_decision_block
+  label: 'Decision Block'
+  label_display: '0'
+  provider: smart_content_block
+  decision_storage:
+    plugin_id: config_entity
+    id: 7ba49ca4-afd1-479e-a787-be6a9947b8a8
+visibility: {  }

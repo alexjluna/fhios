@@ -1,0 +1,22 @@
+uuid: 41c0f313-58eb-4727-a5e1-94d115399766
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.prueba
+    - field.field.block_content.prueba.body
+  module:
+    - text
+id: block_content.prueba.default
+targetEntityType: block_content
+bundle: prueba
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

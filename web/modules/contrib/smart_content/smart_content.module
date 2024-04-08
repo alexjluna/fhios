@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * Implements hooks required by smart content.
+ */
+
+use Drupal\Core\Config\ConfigImporter;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\smart_content\RevisionableParentEntityUsageCleanup;
+use Drupal\smart_content\Plugin\smart_content\Decision\Storage\ConfigEntity;
+
+/**
+ * Implements hook_entity_delete().
+ */
+function smart_content_entity_delete(EntityInterface $entity) {
+
+  $entity_operations = \Drupal::classResolver(RevisionableParentEntityUsageCleanup::class);
+  $entity_operations->handleDelete($entity);
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ *
+ * @todo: Decide if we need to use module_set_weight() on install.
+ */
+function smart_content_module_implements_alter(&$implementations, $hook) {
+  switch ($hook) {
+    // Move our hook_entity_type_alter() implementation to the end of the list.
+    case 'entity_delete':
+      $group = $implementations['smart_content'];
+      unset($implementations['smart_content']);
+      $implementations['smart_content'] = $group;
+      break;
+  }
+}
+
+/**
+ * Implements hook_config_import_steps_alter().
+ */
+function smart_content_config_import_steps_alter(&$sync_steps, ConfigImporter $config_importer) {
+  $create_list = $config_importer->getStorageComparer()->getChangelist('create');
+  $filtered_create_list = ConfigEntity::importerFilter($create_list);
+  $delete_list = $config_importer->getStorageComparer()->getChangelist('delete');
+  $filtered_delete_list = ConfigEntity::importerFilter($delete_list);
+  if ($filtered_create_list || $filtered_delete_list) {
+    $sync_steps[] = ['\Drupal\smart_content\Plugin\smart_content\Decision\Storage\ConfigEntity', 'importerProcess'];
+  }
+}

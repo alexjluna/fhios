@@ -1,0 +1,12 @@
+name: Smart Content Browser
+type: module
+description: Enables browser conditions for Smart Content
+core_version_requirement: ^9.1 || ^10
+package: Smart Content
+dependencies:
+  - smart_content:smart_content
+
+# Information added by Drupal.org packaging script on 2023-08-07
+version: '3.1.0'
+project: 'smart_content'
+datestamp: 1691446304

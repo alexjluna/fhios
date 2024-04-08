@@ -1,0 +1,19 @@
+system.admin_structure_smart_content:
+  path: '/admin/structure/smart-content'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Smart Content'
+  requirements:
+    _permission: 'administer smart content'
+
+smart_content.reaction:
+  path: '/ajax/smart_content/{decision_storage}/{token}/{reaction}'
+  defaults:
+    _controller: '\Drupal\smart_content\Controller\ReactionController::getReactionResponse'
+    _title: 'Reaction Response'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      decision_storage:
+        type: decision_storage

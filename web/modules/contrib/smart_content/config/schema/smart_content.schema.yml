@@ -1,0 +1,50 @@
+smart_content.smart_content.decision.*:
+  type: config_entity
+  label: 'Decision config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    settings:
+      type: mapping
+      label: 'Decision settings'
+      mapping:
+        id:
+          type: string
+          label: 'Decision plugin ID'
+        default:
+          type: string
+          label: 'Default segment ID'
+        segmentStorage:
+          type: smart_content.segment_storage.plugin.[id]
+        token:
+          type: string
+          label: 'Token'
+        storage_id:
+          type: string
+          label: 'Storage type ID'
+        reactions:
+          type: sequence
+          label: 'Reactions'
+          sequence:
+            type: smart_content.reaction.plugin.[id]
+
+smart_content.smart_content.segment_set.*:
+  type: config_entity
+  label: 'Decision config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: string
+      label: 'Label'
+    settings:
+      type: mapping
+      label: 'Segment set settings'
+      mapping:
+        segments:
+          type: sequence
+          label: 'Segments'
+          sequence:
+            type: smart_content.segment

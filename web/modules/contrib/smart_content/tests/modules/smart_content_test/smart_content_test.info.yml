@@ -1,0 +1,12 @@
+name: 'Smart Content module tests'
+type: module
+description: 'Support module for Smart Content that provides setup for tests.'
+package: Testing
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - smart_content
+
+# Information added by Drupal.org packaging script on 2023-08-07
+version: '3.1.0'
+project: 'smart_content'
+datestamp: 1691446304
