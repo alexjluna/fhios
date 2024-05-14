@@ -1,0 +1,23 @@
+uuid: 831e31fa-af36-4d2a-a6a0-1ea13b08d42c
+langcode: en
+status: true
+dependencies: {  }
+id: blockchain_block
+label: blockchain_block
+blockchainId: e364688c-e85d-4629-b4af-dc4a33438844
+nodeId: 8eb09576-bb48-40bc-a1ba-555bea9cc551
+type: single
+auth: none
+filterType: blacklist
+filterList: null
+poolManagement: manual
+announceManagement: immediate
+intervalPool: 600
+timeoutPool: 600
+intervalAnnounce: 600
+pullSizeAnnounce: 5
+searchIntervalAnnounce: 2
+powPosition: start
+powExpression: '00'
+dataHandler: raw
+allowNotSecure: true
