@@ -3,7 +3,7 @@
         'name' => 'drupal/recommended-project',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => 'e0f1cadbf5bc465ecf14fa33956f433f89e4dbe6',
+        'reference' => '5c88b702d30bcd1cde8c12edfc0a6d9c8748478f',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -514,6 +514,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/flipbook' => array(
+            'pretty_version' => '10.0.0',
+            'version' => '10.0.0.0',
+            'reference' => '10.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/flipbook',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/gutenberg' => array(
             'pretty_version' => '2.8.0',
             'version' => '2.8.0.0',
@@ -562,7 +571,7 @@
         'drupal/recommended-project' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => 'e0f1cadbf5bc465ecf14fa33956f433f89e4dbe6',
+            'reference' => '5c88b702d30bcd1cde8c12edfc0a6d9c8748478f',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
