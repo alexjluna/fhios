@@ -87,7 +87,9 @@ class TaxNumberTest extends CommerceWebDriverTestBase {
         'country_code' => 'RS',
         'postal_code' => '11000',
         'locality' => 'Belgrade',
+        // cspell:disable-next-line
         'address_line1' => 'Cetinjska 15',
+        // cspell:disable-next-line
         'given_name' => 'Dusan',
         'family_name' => 'Popov',
       ],
@@ -103,15 +105,17 @@ class TaxNumberTest extends CommerceWebDriverTestBase {
     ]);
     $order_item->save();
 
-    $this->order = Order::create([
+    $order = Order::create([
       'type' => 'default',
+      'order_number' => '1',
       'store_id' => $this->store,
       'uid' => $this->adminUser,
       'billing_profile' => $this->customerProfile,
       'order_items' => [$order_item],
       'state' => 'completed',
     ]);
-    $this->order->save();
+    $order->save();
+    $this->order = $this->reloadEntity($order);
   }
 
   /**

@@ -2,6 +2,7 @@
 
 namespace Drupal\commerce_cart;
 
+use Drupal\commerce\CronInterface;
 use Drupal\commerce\Interval;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -54,7 +55,7 @@ class Cron implements CronInterface {
   /**
    * {@inheritdoc}
    */
-  public function run() {
+  public function run(): void {
     /** @var \Drupal\commerce_order\Entity\OrderTypeInterface[] $order_types */
     $order_types = $this->orderTypeStorage->loadMultiple();
     foreach ($order_types as $order_type) {

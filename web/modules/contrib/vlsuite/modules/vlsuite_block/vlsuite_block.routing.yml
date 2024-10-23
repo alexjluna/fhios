@@ -1,0 +1,7 @@
+vlsuite_block.settings:
+  path: '/admin/config/vlsuite/block'
+  defaults:
+    _title: 'VLSuite - Block'
+    _form: 'Drupal\vlsuite_block\Form\VLSuiteBlockSettingsForm'
+  requirements:
+    _permission: 'administer vlsuite settings'

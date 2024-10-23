@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Vlsuite utility classes options.
+ */
+
+/**
+ * Implements hook_vlsuite_utility_classes_utility_apply_to_options_alter().
+ */
+function vlsuite_utility_classes_test_vlsuite_utility_classes_utility_apply_to_options_alter(array &$apply_to_options) {
+  $apply_to_options['test'] = 'test';
+}

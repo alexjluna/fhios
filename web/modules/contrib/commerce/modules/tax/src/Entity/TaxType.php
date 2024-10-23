@@ -226,6 +226,8 @@ class TaxType extends ConfigEntityBase implements TaxTypeInterface {
     else {
       return parent::set($property_name, $value);
     }
+
+    return $this;
   }
 
   /**

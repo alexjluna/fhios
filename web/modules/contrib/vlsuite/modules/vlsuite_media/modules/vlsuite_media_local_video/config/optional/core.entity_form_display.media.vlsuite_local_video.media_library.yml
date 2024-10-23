@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.vlsuite_local_video.field_media_video_file
+    - media.type.vlsuite_local_video
+  enforced:
+    module:
+      - vlsuite_media_local_video
+id: media.vlsuite_local_video.media_library
+targetEntityType: media
+bundle: vlsuite_local_video
+mode: media_library
+content: {  }
+hidden:
+  created: true
+  field_media_video_file: true
+  langcode: true
+  name: true
+  path: true
+  status: true
+  uid: true

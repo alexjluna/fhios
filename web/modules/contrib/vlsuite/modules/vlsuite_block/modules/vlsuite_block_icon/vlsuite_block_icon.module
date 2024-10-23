@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Block - Icon main module file.
+ */
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Render\Element;
+use Drupal\vlsuite_block_icon\Entity\Bundle\VLSuiteBlockIcon;
+
+/**
+ * Implements hook_entity_bundle_info_alter().
+ */
+function vlsuite_block_icon_entity_bundle_info_alter(array &$bundles): void {
+  if (!empty($bundles['block_content'][VLSuiteBlockIcon::BUNDLE_KEY])) {
+    $bundles['block_content'][VLSuiteBlockIcon::BUNDLE_KEY]['class'] = VLSuiteBlockIcon::class;
+  }
+}
+
+/**
+ * Implements hook_entity_view_alter().
+ */
+function vlsuite_block_icon_entity_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  // Block icon just show media icon over font icon when available.
+  if ($entity->getEntityTypeId() === 'block_content' && $entity->bundle() === VLSuiteBlockIcon::BUNDLE_KEY &&
+    !empty($build['vlsuite_icon']) && !empty($build['vlsuite_icon_font_icon'])) {
+    if (!Element::isEmpty($build['vlsuite_icon'])) {
+      $build['vlsuite_icon_font_icon']['#access'] = FALSE;
+    }
+  }
+  // Use link field to link image icon (responsive image allows to set url).
+  if ($entity->getEntityTypeId() === 'block_content' && $entity->bundle() === VLSuiteBlockIcon::BUNDLE_KEY &&
+    !empty($build['vlsuite_icon']) && !empty($build['vlsuite_link'])) {
+    $build['vlsuite_link']['#access'] = FALSE;
+    foreach (Element::children($build['vlsuite_icon']) as $delta) {
+      $build['vlsuite_icon'][$delta]['#url'] = $build['vlsuite_link'][$delta]['#url'] ?? NULL;
+    }
+  }
+  // Use link field to link font icon (vlsuite icon font allows to set url).
+  if ($entity->getEntityTypeId() === 'block_content' && $entity->bundle() === VLSuiteBlockIcon::BUNDLE_KEY &&
+    !empty($build['vlsuite_icon_font_icon']) && !empty($build['vlsuite_link'])) {
+    $build['vlsuite_link']['#access'] = FALSE;
+    foreach (Element::children($build['vlsuite_icon_font_icon']) as $delta) {
+      $build['vlsuite_icon_font_icon'][$delta]['#url'] = $build['vlsuite_link'][$delta]['#url'] ?? NULL;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+name: VLSuite - Block
+type: module
+description: Visual Layout Suite (VLSuite) - Block
+package: Visual Layout Suite (VLSuite)
+core_version_requirement: ^9.5 || ^10
+
+dependencies:
+  - drupal:block_content
+  - drupal:views
+  - layout_builder_restrictions:layout_builder_restrictions
+  - vlsuite:vlsuite_bundle_field
+  - vlsuite:vlsuite_utility_classes
+  - vlsuite:vlsuite_media
+  - vlsuite:vlsuite_slider
+  - vlsuite:vlsuite_animations
+
+# Information added by Drupal.org packaging script on 2024-06-14
+version: '1.1.7'
+project: 'vlsuite'
+datestamp: 1718361880

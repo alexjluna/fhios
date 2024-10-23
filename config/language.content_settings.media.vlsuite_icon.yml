@@ -1,0 +1,23 @@
+uuid: 71dbbe82-f7d3-4398-b534-41d80aba355d
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.vlsuite_icon
+  module:
+    - content_translation
+  enforced:
+    module:
+      - vlsuite_media_icon
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: NO6JxUYqvd__J5erxTcM6BUM9olRVb6WKe3ACqE3Rzw
+id: media.vlsuite_icon
+target_entity_type_id: media
+target_bundle: vlsuite_icon
+default_langcode: current_interface
+language_alterable: false

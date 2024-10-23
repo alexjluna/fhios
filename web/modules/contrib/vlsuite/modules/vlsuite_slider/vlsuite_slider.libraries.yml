@@ -1,0 +1,21 @@
+slider:
+  css:
+    component:
+      css/vlsuite-slider.css: {}
+  js:
+    js/vlsuite-slider.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - vlsuite_slider/swiperjs
+
+swiperjs:
+  version: "10"
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/nolimits4web/swiper/f4afd9d0fec3be48c17ab75c462c23e69e98a571/LICENSE
+  css:
+    component:
+      '//cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css': { minified: true, external: true }
+  js:
+    '//cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js': { minified: true, external: true }

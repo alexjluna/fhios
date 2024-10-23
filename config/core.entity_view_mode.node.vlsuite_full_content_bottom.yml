@@ -1,0 +1,16 @@
+uuid: cd91c9d9-355c-419a-a870-2e4789f7fce1
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - vlsuite
+_core:
+  default_config_hash: CHtHuEEMV4a8wRPEwRxyRkXTrlaDPTJKy2_mFCChbWI
+id: node.vlsuite_full_content_bottom
+label: 'Full content bottom (VLSuite)'
+description: ''
+targetEntityType: node
+cache: true

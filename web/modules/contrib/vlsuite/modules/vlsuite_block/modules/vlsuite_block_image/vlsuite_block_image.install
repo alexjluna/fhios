@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Block - Image install module file.
+ */
+
+use Drupal\vlsuite_block_image\Entity\Bundle\VLSuiteBlockImage;
+
+/**
+ * Implements hook_install().
+ */
+function vlsuite_block_image_install() {
+  \Drupal::service('vlsuite_bundle_field.helper')->installBlockContentBundleFields(VLSuiteBlockImage::BUNDLE_KEY, VLSuiteBlockImage::class);
+  _vlsuite_block_update_helper_save_default_icon_file('block_content.type.vlsuite_image', 'linuxfoundation.svg', 'fefae60e-aee5-4b95-bfda-862f51fc8593');
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function vlsuite_block_image_update_10001() {
+  \Drupal::configFactory()->getEditable('block_content.type.vlsuite_image')->set('vlsuite_block_icon', 'fefae60e-aee5-4b95-bfda-862f51fc8593')->save();
+  _vlsuite_block_update_helper_save_default_icon_file('block_content.type.vlsuite_image', 'linuxfoundation.svg', 'fefae60e-aee5-4b95-bfda-862f51fc8593');
+}
+
+/**
+ * New optional linked to field.
+ */
+function vlsuite_block_image_update_10002() {
+  \Drupal::service('vlsuite_bundle_field.helper')->installBlockContentBundleFields(VLSuiteBlockImage::BUNDLE_KEY, VLSuiteBlockImage::class);
+}

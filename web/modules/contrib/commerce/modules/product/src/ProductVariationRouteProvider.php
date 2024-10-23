@@ -3,8 +3,8 @@
 namespace Drupal\commerce_product;
 
 use Drupal\commerce_product\Controller\ProductVariationController;
-use Drupal\entity\Routing\AdminHtmlRouteProvider;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\entity\Routing\AdminHtmlRouteProvider;
 use Symfony\Component\Routing\Route;
 
 /**

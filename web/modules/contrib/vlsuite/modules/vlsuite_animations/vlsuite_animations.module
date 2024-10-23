@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for VLSuite - Animations module.
+ */
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function vlsuite_animations_library_info_alter(&$libraries, $extension) {
+  if ($extension === 'vlsuite_utility_classes' && isset($libraries['live_previewer'])) {
+    // Add dependency to live previewer to execute after animations.
+    $libraries['live_previewer']['dependencies'][] = 'vlsuite_animations/animations';
+  }
+}
+
+/**
+ * Implements hook_vlsuite_animations_animation_apply_at_options_alter().
+ */
+function vlsuite_animations_vlsuite_animations_animation_apply_at_options_alter(&$apply_at_options) {
+  $apply_at_options['entrance_down'] = [
+    'title' => t('Entrance down'),
+    'description' => t('Choose animation to run when appears scrolling down (not visible until that occurs), avoid using it into main content top section.'),
+  ];
+  $apply_at_options['entrance_up'] = [
+    'title' => t('Entrance up'),
+    'description' => t('Choose animation to run when appears scrolling up (not visible until that occurs), avoid using it into main content top section.'),
+  ];
+  $apply_at_options['exit_down'] = [
+    'title' => t('Exit down'),
+    'description' => t('Choose animation to run when disappear scrolling down (entrance up / down must be used), avoid using it into main content top section.'),
+  ];
+  $apply_at_options['exit_up'] = [
+    'title' => t('Exit up'),
+    'description' => t('Choose animation to run when disappear scrolling up (entrance up / down must be used), avoid using it into main content top section.'),
+  ];
+  $apply_at_options['entrance'] = [
+    'title' => t('Entrance'),
+    'description' => t('Choose animation to run when appears (visible when that occurs), avoid using it into main content top section. Other animation options will not be used when active.'),
+  ];
+  $apply_at_options['infinite'] = [
+    'title' => t('Infinite'),
+    'description' => t('Choose animation to run perpetually, avoid using it into main content top section. Other animation options will not be used when active.'),
+  ];
+}

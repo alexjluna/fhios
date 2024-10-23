@@ -1,4 +1,4 @@
-uuid: f24c3f8f-c823-4a54-9911-997126369ab8
+uuid: 4f5be0fa-3841-4a6e-8d2f-1236599c57c7
 langcode: en
 status: true
 dependencies:
@@ -10,7 +10,7 @@ weight: null
 plugin: redsys_redirect_payment_checkout
 configuration:
   display_label: Redsys
-  mode: live
+  mode: test
   payment_method_types:
     - credit_card
   collect_billing_information: true

@@ -1,0 +1,16 @@
+uuid: d8ec60ee-7084-43b3-9ad8-9fbee39c8e2c
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+  enforced:
+    module:
+      - vlsuite_block
+_core:
+  default_config_hash: WblLlHJpslbfz-BsZOF5Iw0TYyfWQHcVQH0OKp3p0Xk
+id: block_content.vlsuite_customizable
+label: 'Customizable (VLSuite)'
+description: ''
+targetEntityType: block_content
+cache: true

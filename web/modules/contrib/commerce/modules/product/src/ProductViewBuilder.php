@@ -10,8 +10,8 @@ use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\EntityViewBuilder;
 use Drupal\Core\Language\LanguageManagerInterface;
-use Drupal\layout_builder\Entity\LayoutEntityDisplayInterface;
 use Drupal\Core\Theme\Registry;
+use Drupal\layout_builder\Entity\LayoutEntityDisplayInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**

@@ -3,6 +3,7 @@
 namespace Drupal\Tests\commerce_payment\FunctionalJavascript;
 
 use Drupal\commerce_checkout\Entity\CheckoutFlow;
+use Drupal\commerce_event_recorder_test\CommerceEventRecorder;
 use Drupal\commerce_order\Adjustment;
 use Drupal\commerce_order\Entity\Order;
 use Drupal\commerce_payment\Entity\Payment;
@@ -80,6 +81,7 @@ class PaymentCheckoutTest extends CommerceWebDriverTestBase {
     'commerce_checkout',
     'commerce_payment',
     'commerce_payment_example',
+    'commerce_event_recorder_test',
   ];
 
   /**
@@ -219,7 +221,7 @@ class PaymentCheckoutTest extends CommerceWebDriverTestBase {
       'billing_profile' => $profile,
       'remote_id' => 789,
       'reusable' => TRUE,
-      'expires' => strtotime('2028/03/24'),
+      'expires' => strtotime($this->futureYear() . '/03/24'),
     ]);
     $payment_method->setBillingProfile($profile);
     $payment_method->save();
@@ -325,7 +327,7 @@ class PaymentCheckoutTest extends CommerceWebDriverTestBase {
     $this->submitForm([
       'payment_information[add_payment_method][payment_details][number]' => '4012888888881881',
       'payment_information[add_payment_method][payment_details][expiration][month]' => '02',
-      'payment_information[add_payment_method][payment_details][expiration][year]' => '2024',
+      'payment_information[add_payment_method][payment_details][expiration][year]' => $this->futureYear(),
       'payment_information[add_payment_method][payment_details][security_code]' => '123',
       'payment_information[add_payment_method][billing_information][address][0][address][given_name]' => 'Johnny',
       'payment_information[add_payment_method][billing_information][address][0][address][family_name]' => 'Appleseed',
@@ -336,7 +338,7 @@ class PaymentCheckoutTest extends CommerceWebDriverTestBase {
     ], 'Continue to review');
     $this->assertSession()->pageTextContains('Payment information');
     $this->assertSession()->pageTextContains('Visa ending in 1881');
-    $this->assertSession()->pageTextContains('Expires 2/2024');
+    $this->assertSession()->pageTextContains('Expires 2/' . $this->futureYear());
     $this->assertSession()->pageTextContains('Johnny Appleseed');
     $this->assertSession()->pageTextContains('123 New York Drive');
     $this->submitForm([], 'Pay and complete purchase');
@@ -410,7 +412,7 @@ class PaymentCheckoutTest extends CommerceWebDriverTestBase {
     ], 'Continue to review');
     $this->assertSession()->pageTextContains('Payment information');
     $this->assertSession()->pageTextContains('Visa ending in 1111');
-    $this->assertSession()->pageTextContains('Expires 3/2028');
+    $this->assertSession()->pageTextContains('Expires 3/' . $this->futureYear());
     $this->assertSession()->pageTextContains('Frederick Pabst');
     $this->assertSession()->pageTextContains('Pabst Blue Ribbon Dr');
     $this->submitForm([], 'Pay and complete purchase');
@@ -459,7 +461,7 @@ class PaymentCheckoutTest extends CommerceWebDriverTestBase {
     $this->submitForm([
       'payment_information[add_payment_method][payment_details][number]' => '4111111111111111',
       'payment_information[add_payment_method][payment_details][expiration][month]' => '02',
-      'payment_information[add_payment_method][payment_details][expiration][year]' => '2024',
+      'payment_information[add_payment_method][payment_details][expiration][year]' => $this->futureYear(),
       'payment_information[add_payment_method][payment_details][security_code]' => '123',
       'payment_information[add_payment_method][billing_information][address][0][address][given_name]' => 'Johnny',
       'payment_information[add_payment_method][billing_information][address][0][address][family_name]' => 'Appleseed',
@@ -470,7 +472,7 @@ class PaymentCheckoutTest extends CommerceWebDriverTestBase {
     ], 'Continue to review');
     $this->assertSession()->pageTextContains('Payment information');
     $this->assertSession()->pageTextContains('Visa ending in 1111');
-    $this->assertSession()->pageTextContains('Expires 2/2024');
+    $this->assertSession()->pageTextContains('Expires 2/' . $this->futureYear());
     $this->submitForm([], 'Pay and complete purchase');
     $this->assertSession()->pageTextNotContains('Your order number is 1. You can view your order on your account page when logged in.');
     $this->assertSession()->pageTextContains('We encountered an error processing your payment method. Please verify your details and try again.');
@@ -580,9 +582,9 @@ class PaymentCheckoutTest extends CommerceWebDriverTestBase {
     $manual_gateway = PaymentGateway::load('manual');
     $manual_gateway->setStatus(FALSE);
     $manual_gateway->save();
-    $offiste_stored_gateway = PaymentGateway::load('stored_offsite');
-    $offiste_stored_gateway->setStatus(FALSE);
-    $offiste_stored_gateway->save();
+    $offsite_stored_gateway = PaymentGateway::load('stored_offsite');
+    $offsite_stored_gateway->setStatus(FALSE);
+    $offsite_stored_gateway->save();
 
     $payment_gateway = PaymentGateway::load('offsite');
     $payment_gateway->setPluginConfiguration([
@@ -643,10 +645,23 @@ class PaymentCheckoutTest extends CommerceWebDriverTestBase {
     $this->assertSession()->pageTextContains('Example');
     $this->assertSession()->pageTextContains('Bryan FAIL');
     $this->assertSession()->pageTextContains('9 Drupal Ave');
+    $this->assertNull(\Drupal::state()->get(CommerceEventRecorder::STATE_KEY_PREFIX . 'onPaymentFailure'), 'No payment failure events have been recorded');
     $this->submitForm([], 'Pay and complete purchase');
     $this->assertSession()->pageTextNotContains('Your order number is 1. You can view your order on your account page when logged in.');
+
     $this->assertSession()->pageTextContains('We encountered an unexpected error processing your payment. Please try again later.');
     $this->assertSession()->addressEquals('checkout/1/order_information');
+
+    // Ensure the expected payment failure event has been recorded.
+    $expected = [
+      [
+        'order_id' => '1',
+        'payment_type' => 'Default',
+        'payment_gateway' => 'Off-site',
+        'payment_method' => '',
+      ],
+    ];
+    $this->assertSame($expected, \Drupal::state()->get(CommerceEventRecorder::STATE_KEY_PREFIX . 'onPaymentFailure'));
 
     $order = Order::load(1);
     $this->assertFalse($order->isLocked());
@@ -759,7 +774,6 @@ class PaymentCheckoutTest extends CommerceWebDriverTestBase {
     $this->createScreenshot('../checkout_3.png');
     $radio_button = $this->getSession()->getPage()->findField('Visa ending in 1111');
     $radio_button->click();
-    $this->assertSession()->assertWaitOnAjaxRequest();
     $this->submitForm([], 'Continue to review');
     $this->submitForm([], 'Pay and complete purchase');
     $this->assertSession()->pageTextContains('Your order number is 2. You can view your order on your account page when logged in.');
@@ -979,7 +993,7 @@ class PaymentCheckoutTest extends CommerceWebDriverTestBase {
     $this->submitForm([
       'payment_information[add_payment_method][payment_details][number]' => '4012888888881881',
       'payment_information[add_payment_method][payment_details][expiration][month]' => '02',
-      'payment_information[add_payment_method][payment_details][expiration][year]' => '2024',
+      'payment_information[add_payment_method][payment_details][expiration][year]' => $this->futureYear(),
       'payment_information[add_payment_method][payment_details][security_code]' => '123',
       'payment_information[add_payment_method][billing_information][address][0][address][given_name]' => 'Johnny',
       'payment_information[add_payment_method][billing_information][address][0][address][family_name]' => 'Appleseed',
@@ -990,7 +1004,7 @@ class PaymentCheckoutTest extends CommerceWebDriverTestBase {
     ], 'Continue to review');
     $this->assertSession()->pageTextContains('Payment information');
     $this->assertSession()->pageTextContains('Visa ending in 1881');
-    $this->assertSession()->pageTextContains('Expires 2/2024');
+    $this->assertSession()->pageTextContains('Expires 2/' . $this->futureYear());
     $this->assertSession()->pageTextContains('Johnny Appleseed');
     $this->assertSession()->pageTextContains('123 New York Drive');
 

@@ -1,0 +1,69 @@
+utilities:
+  text-align:
+    apply_to:
+      'block_content:vlsuite_collection_hero:vlsuite_link': 'block_content:vlsuite_collection_hero:vlsuite_link'
+      'block_content:vlsuite_collection_stmt:vlsuite_link': 'block_content:vlsuite_collection_stmt:vlsuite_link'
+      'block_content:vlsuite_collection_card:vlsuite_link': 'block_content:vlsuite_collection_card:vlsuite_link'
+  padding:
+    apply_to:
+      'block_content:vlsuite_collection_hero:vlsuite_link': 'block_content:vlsuite_collection_hero:vlsuite_link'
+      'block_content:vlsuite_collection_hero:vlsuite_text': 'block_content:vlsuite_collection_hero:vlsuite_text'
+  padding-y:
+    apply_to:
+      'block_content:vlsuite_collection_stmt:vlsuite_text': 'block_content:vlsuite_collection_stmt:vlsuite_text'
+      'block_content:vlsuite_collection_stmt:vlsuite_link': 'block_content:vlsuite_collection_stmt:vlsuite_link'
+      'block_content:vlsuite_collection_card:vlsuite_text': 'block_content:vlsuite_collection_card:vlsuite_text'
+  btn:
+    apply_to:
+      'block_content:vlsuite_collection_hero:vlsuite_link:item': 'block_content:vlsuite_collection_hero:vlsuite_link:item'
+      'block_content:vlsuite_collection_stmt:vlsuite_link:item': 'block_content:vlsuite_collection_stmt:vlsuite_link:item'
+      'block_content:vlsuite_collection_card:vlsuite_link:item': 'block_content:vlsuite_collection_card:vlsuite_link:item'
+      'node:vlsuite_landing:field_vlsuite_landing_cta_link:item': 'node:vlsuite_landing:field_vlsuite_landing_cta_link:item'
+  btn-size:
+    apply_to:
+      'block_content:vlsuite_collection_hero:vlsuite_link:item': 'block_content:vlsuite_collection_hero:vlsuite_link:item'
+      'block_content:vlsuite_collection_stmt:vlsuite_link:item': 'block_content:vlsuite_collection_stmt:vlsuite_link:item'
+      'block_content:vlsuite_collection_card:vlsuite_link:item': 'block_content:vlsuite_collection_card:vlsuite_link:item'
+  rounded:
+    apply_to:
+      'block_content:vlsuite_collection_hero:vlsuite_link:item': 'block_content:vlsuite_collection_hero:vlsuite_link:item'
+      'block_content:vlsuite_collection_hero:vlsuite_media:item': 'block_content:vlsuite_collection_hero:vlsuite_media:item'
+      'block_content:vlsuite_collection_stmt:vlsuite_image:item': 'block_content:vlsuite_collection_stmt:vlsuite_image:item'
+      'block_content:vlsuite_collection_stmt:vlsuite_link:item': 'block_content:vlsuite_collection_stmt:vlsuite_link:item'
+      'block_content:vlsuite_collection_card:vlsuite_link:item': 'block_content:vlsuite_collection_card:vlsuite_link:item'
+    class_prefix: 'overflow-hidden rounded '
+  position:
+    apply_to:
+      'block_content:vlsuite_collection_stmt:vlsuite_image': 'block_content:vlsuite_collection_stmt:vlsuite_image'
+      'block_content:vlsuite_collection_card:vlsuite_icon': 'block_content:vlsuite_collection_card:vlsuite_icon'
+    values:
+      bottom-left-translate-middle:
+        visual_name: 'Bottom left translate middle'
+        class_suffix: 'absolute bottom-0 start-0 translate-middle'
+      top-center-translate-middle:
+        visual_name: 'Top center translate middle'
+        class_suffix: 'absolute top-0 start-50 translate-middle'
+  width:
+    apply_to:
+      'block_content:vlsuite_collection_hero:vlsuite_link:item': 'block_content:vlsuite_collection_hero:vlsuite_link:item'
+      'node:vlsuite_landing:field_vlsuite_landing_cta_link:item': 'node:vlsuite_landing:field_vlsuite_landing_cta_link:item'
+  ratio:
+    apply_to:
+      'block_content:vlsuite_collection_hero:vlsuite_media:item': 'block_content:vlsuite_collection_hero:vlsuite_media:item'
+      'block_content:vlsuite_collection_stmt:vlsuite_image': 'block_content:vlsuite_collection_stmt:vlsuite_image'
+      'block_content:vlsuite_collection_stmt:vlsuite_image:item': 'block_content:vlsuite_collection_stmt:vlsuite_image:item'
+      'block_content:vlsuite_collection_card:vlsuite_media:item': 'block_content:vlsuite_collection_card:vlsuite_media:item'
+      'block_content:vlsuite_collection_gallery:vlsuite_medias:item': 'block_content:vlsuite_collection_gallery:vlsuite_medias:item'
+    class_prefix: 'vlsuite-ratio vlsuite-ratio-'
+  fit:
+    icon: ''
+    advanced: true
+    apply_to:
+      'block_content:vlsuite_collection_stmt:vlsuite_image:item': 'block_content:vlsuite_collection_stmt:vlsuite_image:item'
+    visual_name: Fit
+    class_prefix: position-
+    values:
+      parent:
+        icon: ''
+        visual_name: Parent
+        class_suffix: 'absolute top-0 start-0 w-100 h-100'

@@ -1,0 +1,168 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_collection_card
+    - responsive_image.styles.vlsuite_original_optimized_icon
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - media_responsive_thumbnail
+    - vlsuite_block
+    - vlsuite_layout
+  enforced:
+    module:
+      - vlsuite_collection_card
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: vlsuite_layout_onecol
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          column_widths: '100'
+          optional_regions: true
+          edge_to_edge: true
+          vlsuite_utility_class:
+            'vlsuite_layout:main_regions':
+              color: white
+              background-color: dark
+              padding: spacer-4
+          edge_to_edge_bg: true
+          media_bg: null
+          identifier: ''
+          vlsuite_slider:
+            scope: main
+        components:
+          35e81487-18a2-4f0b-9718-24e586208e9e:
+            uuid: 35e81487-18a2-4f0b-9718-24e586208e9e
+            region: main
+            configuration:
+              id: 'vlsuite_block_field_block:block_content:vlsuite_collection_card:vlsuite_link'
+              label: Link
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: link
+                label: hidden
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: '0'
+                  target: '0'
+                third_party_settings: {  }
+              vlsuite_utility_class:
+                'block_content:vlsuite_collection_card:vlsuite_link':
+                  padding-y: spacer-3
+                  text-align: right
+                'block_content:vlsuite_collection_card:vlsuite_link:item':
+                  btn: light
+                  rounded: pill
+            weight: 8
+            additional: {  }
+          56eadd37-7165-4911-85f8-838e655a8ee1:
+            uuid: 56eadd37-7165-4911-85f8-838e655a8ee1
+            region: top
+            configuration:
+              id: 'vlsuite_block_field_block:block_content:vlsuite_collection_card:vlsuite_media'
+              label: Media
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: media_responsive_thumbnail
+                label: hidden
+                settings:
+                  responsive_image_style: vlsuite_original_optimized_medium
+                  image_link: ''
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+              vlsuite_utility_class:
+                'block_content:vlsuite_collection_card:vlsuite_media:item':
+                  ratio: 16-9
+            weight: 1
+            additional: {  }
+          0dfc8cdb-b6b7-48b2-a7ed-410a444d1fa7:
+            uuid: 0dfc8cdb-b6b7-48b2-a7ed-410a444d1fa7
+            region: main
+            configuration:
+              id: 'vlsuite_block_field_block:block_content:vlsuite_collection_card:vlsuite_icon'
+              label: Icon
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: media_responsive_thumbnail
+                label: hidden
+                settings:
+                  responsive_image_style: vlsuite_original_optimized_icon
+                  image_link: ''
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+              vlsuite_utility_class:
+                'block_content:vlsuite_collection_card:vlsuite_icon':
+                  position: top-center-translate-middle
+            weight: 5
+            additional: {  }
+          b2cefb8a-622f-4707-aa47-c0d96771ddfe:
+            uuid: b2cefb8a-622f-4707-aa47-c0d96771ddfe
+            region: main
+            configuration:
+              id: 'vlsuite_block_field_block:block_content:vlsuite_collection_card:vlsuite_text'
+              label: Text
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+              vlsuite_utility_class: {  }
+            weight: 7
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+id: block_content.vlsuite_collection_card.default
+targetEntityType: block_content
+bundle: vlsuite_collection_card
+mode: default
+content:
+  vlsuite_icon:
+    type: media_responsive_thumbnail
+    label: hidden
+    settings:
+      responsive_image_style: vlsuite_original_optimized_icon
+      image_link: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: main
+hidden:
+  langcode: true
+  vlsuite_background: true
+  vlsuite_link: true
+  vlsuite_media: true
+  vlsuite_text: true

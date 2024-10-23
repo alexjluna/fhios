@@ -1,0 +1,66 @@
+{#
+/**
+ * @file
+ * VLSuite layout tabs accordion.
+ */
+#}
+{% set identifier_prefix = content['#identifier_prefix'] %}
+{% set tabs_always_open = content['#tabs_always_open'] %}
+{% if content %}
+  {% if settings.edge_to_edge_bg %}{{ content.media_bg }}{% endif %}
+  <div{{ attributes }}>
+    {% if not settings.edge_to_edge_bg %}{{ content.media_bg }}{% endif %}
+    <div{{ content['#row_attributes'] }}>
+      {% set content_top_render = content.top|render %}
+      {% if settings.optional_regions and content_top_render|trim %}
+        <div {{ content['#top_col_attributes'] }}>
+          <div {{ region_attributes.top.addClass(content['#top_class']).addClass('vlsuite-layout__region', 'vlsuite-layout__region--top') }}>
+            {{ content_top_render }}
+          </div>
+        </div>
+      {% endif %}
+      <div class="{{ content['#grid_classes'] }}">
+        <div class="accordion" id="{{ identifier_prefix ~ '-accordion'}}">
+          {% for tab_index,tab in settings.tabs %}
+            <div class="accordion-item">
+              {% set is_default = settings.tabs_default == tab_index %}
+              <h2
+                class="accordion-header"
+                id="{{ identifier_prefix ~ '-' ~ tab_index|clean_class ~ '-tab'}}">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#{{ identifier_prefix ~ '-' ~ tab_index|clean_class ~ '-content'}}"
+                  aria-expanded="{{ is_default ? 'true' : 'false' }}"
+                  aria-controls="{{ identifier_prefix ~ '-' ~ tab_index|clean_class ~ '-tab'}}">{{ vlsuite_icon_font_icon(tab['icon']) }} {{ tab['title'] }}</button>
+              </h2>
+              <div
+                id="{{ identifier_prefix ~ '-' ~ tab_index|clean_class ~ '-content'}}"
+                class="accordion-collapse collapse {{ is_default ? 'show' : ''}}"
+                aria-labelledby="{{ identifier_prefix ~ '-' ~ tab_index|clean_class ~ '-tab'}}"
+                {% if not tabs_always_open %}
+                  data-bs-parent="#{{ identifier_prefix ~ '-accordion'}}"
+                {% endif %}
+                >
+                <div class="accordion-body p-0">
+                  <div {{ content['#' ~ tab_index ~ '_col_attributes'] }}>
+                    <div {{ region_attributes[tab_index].addClass(content['#' ~ tab_index ~ '_class']).addClass('vlsuite-layout__region', 'vlsuite-layout__region--tab') }}>{{ content[tab_index] }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% set content_bottom_render = content.bottom|render %}
+      {% if settings.optional_regions and content_bottom_render|trim %}
+        <div {{ content['#bottom_col_attributes'] }}>
+          <div {{ region_attributes.bottom.addClass(content['#bottom_class']).addClass('vlsuite-layout__region', 'vlsuite-layout__region--bottom') }}>
+            {{ content_bottom_render }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

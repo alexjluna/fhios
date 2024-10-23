@@ -1,0 +1,4 @@
+services:
+  vlsuite_bundle_field.helper:
+    class: Drupal\vlsuite_bundle_field\VLSuiteBundleFieldHelper
+    arguments: ['@entity.definition_update_manager', '@entity_type.manager']

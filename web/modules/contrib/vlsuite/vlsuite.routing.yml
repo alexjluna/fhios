@@ -1,0 +1,7 @@
+vlsuite.admin_index:
+  path: '/admin/config/vlsuite'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Visual Layout Suite (VLSuite)'
+  requirements:
+    _permission: 'administer vlsuite settings'

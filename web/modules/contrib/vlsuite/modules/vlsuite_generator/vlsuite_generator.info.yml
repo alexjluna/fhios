@@ -1,0 +1,16 @@
+name: VLSuite - Generator
+type: module
+description: 'VLSuite - Generator. Create modules with components of chosen library template "drush generate vlsuite-module."'
+package: Visual Layout Suite (VLSuite) [EXPERIMENTAL]
+core_version_requirement: ^9.5 || ^10
+
+dependencies:
+  - vlsuite:vlsuite_block
+  - vlsuite:vlsuite_layout
+  - section_library:section_library
+  - default_content:default_content
+
+# Information added by Drupal.org packaging script on 2024-06-14
+version: '1.1.7'
+project: 'vlsuite'
+datestamp: 1718361880

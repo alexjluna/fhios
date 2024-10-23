@@ -3,8 +3,8 @@
 namespace Drupal\commerce_price\Element;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\Element\FormElement;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Render\Element\FormElement;
 
 /**
  * Provides a number form element with support for language-specific input.

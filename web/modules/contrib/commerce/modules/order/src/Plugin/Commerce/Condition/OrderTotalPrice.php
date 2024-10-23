@@ -3,9 +3,9 @@
 namespace Drupal\commerce_order\Plugin\Commerce\Condition;
 
 use Drupal\commerce\Plugin\Commerce\Condition\ConditionBase;
+use Drupal\commerce_price\Price;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\commerce_price\Price;
 
 /**
  * Provides the total price condition for orders.

@@ -1,0 +1,7 @@
+vlsuite_animations.settings:
+  path: '/admin/config/vlsuite/animations'
+  defaults:
+    _title: 'VLSuite - Animations'
+    _form: 'Drupal\vlsuite_animations\Form\VLSuiteAnimationsSettingsForm'
+  requirements:
+    _permission: 'administer vlsuite settings'

@@ -1,0 +1,66 @@
+vlsuite_utility_classes_utility:
+  type: mapping
+  label: 'Layout settings'
+  mapping:
+    icon:
+      type: string
+      label: 'Icon'
+    advanced:
+      type: boolean
+      label: 'Advanced'
+    apply_to:
+      type: sequence
+      label: 'Apply to'
+      sequence:
+        type: string
+        label: ‘Values’
+    visual_name:
+      type: label
+      label: 'Visual name'
+    class_prefix:
+      type: string
+      label: 'Class'
+    values:
+      type: sequence
+      label: 'Values'
+      sequence:
+        type: mapping
+        mapping:
+          icon:
+            type: string
+            label: 'Icon'
+          visual_name:
+            type: label
+            label: 'Visual name'
+          class_suffix:
+            type: string
+            label: 'Class'
+
+vlsuite_utility_classes.settings:
+  type: config_object
+  label: 'VLSuite - Utility classes settings'
+  mapping:
+    column_widths_icon:
+      type: string
+      label: 'Column widths icon'
+    list_unstyled_classes:
+      type: string
+      label: 'List unstyled class (or classes)'
+    container_classes:
+      type: string
+      label: 'Container class (or classes)'
+    row_classes:
+      type: string
+      label: 'Row class (or classes)'
+    col_classes:
+      type: sequence
+      label: 'Col class (or classes)'
+      sequence:
+        type: string
+        label: 'Col class (or classes)'
+    utilities:
+      type: sequence
+      label: 'Utilities'
+      sequence:
+        type: vlsuite_utility_classes_utility
+        label: ‘Utilities’

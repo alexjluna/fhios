@@ -1,0 +1,75 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.vlsuite_landing.body
+    - field.field.node.vlsuite_landing.field_vlsuite_landing_cta_link
+    - field.field.node.vlsuite_landing.field_vlsuite_landing_main_image
+    - field.field.node.vlsuite_landing.layout_builder__layout
+    - node.type.vlsuite_landing
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - user
+  enforced:
+    module:
+      - vlsuite_landing
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_builder_blank
+        layout_settings:
+          label: ''
+        components: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories:
+      - VLSuite
+      - 'VLSuite: Field blocks'
+      - 'VLSuite: Inline blocks'
+      - 'VLSuite: List block (views)'
+      - 'VLSuite: Media background field block'
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - vlsuite_layout_onecol
+        - vlsuite_layout_twocols
+        - vlsuite_layout_threecols
+        - vlsuite_layout_fourcols
+      denylisted_blocks: {  }
+      allowlisted_blocks:
+        VLSuite:
+          - vlsuite_block_headings_menu
+        'VLSuite: Field blocks':
+          - 'vlsuite_block_field_block:node:vlsuite_landing:body'
+          - 'vlsuite_block_field_block:node:vlsuite_landing:field_vlsuite_landing_cta_link'
+          - 'vlsuite_block_field_block:node:vlsuite_landing:field_vlsuite_landing_main_image'
+          - 'vlsuite_block_field_block:node:vlsuite_landing:title'
+        'VLSuite: Inline blocks':
+          - 'vlsuite_block_inline_block:vlsuite_attachments'
+          - 'vlsuite_block_inline_block:vlsuite_cta'
+          - 'vlsuite_block_inline_block:vlsuite_icon'
+          - 'vlsuite_block_inline_block:vlsuite_image'
+          - 'vlsuite_block_inline_block:vlsuite_local_video'
+          - 'vlsuite_block_inline_block:vlsuite_remote_video'
+          - 'vlsuite_block_inline_block:vlsuite_text'
+        'VLSuite: List block (views)':
+          - 'vlsuite_block_views_block:vlsuite_landing_recent_content-block'
+        'VLSuite: Media background field block':
+          - 'vlsuite_block_media_bg_block:node:vlsuite_landing:field_vlsuite_landing_main_image'
+      restricted_categories: {  }
+id: node.vlsuite_landing.full
+targetEntityType: node
+bundle: vlsuite_landing
+mode: full
+content: {  }
+hidden:
+  body: true
+  field_vlsuite_landing_cta_link: true
+  field_vlsuite_landing_main_image: true
+  langcode: true
+  layout_builder__layout: true
+  links: true

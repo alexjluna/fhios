@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.vlsuite_collection_gallery_main
+    - field.field.media.vlsuite_remote_video.field_media_oembed_video
+    - media.type.vlsuite_remote_video
+  module:
+    - layout_builder
+    - media
+  enforced:
+    module:
+      - vlsuite_media_remote_video
+      - vlsuite_collection_gallery
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: media.vlsuite_remote_video.vlsuite_collection_gallery_main
+targetEntityType: media
+bundle: vlsuite_remote_video
+mode: vlsuite_collection_gallery_main
+content:
+  field_media_oembed_video:
+    type: oembed
+    label: visually_hidden
+    settings:
+      max_width: 0
+      max_height: 0
+      loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

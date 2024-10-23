@@ -1,0 +1,17 @@
+name: VLSuite - Shuttle
+type: module
+description: 'Visual Layout Suite (VLSuite) - Shuttle. Install this module to automatically setup the VLSuite. IMPORTANT: Note this module will be auto-disabled after doing his job.'
+package: Visual Layout Suite (VLSuite)
+core_version_requirement: ^9.5 || ^10
+
+dependencies:
+  - vlsuite:vlsuite_landing_content_editor
+  - vlsuite:vlsuite_collection_hero
+  - vlsuite:vlsuite_collection_stmt
+  - vlsuite:vlsuite_collection_card
+  - vlsuite:vlsuite_collection_gallery
+
+# Information added by Drupal.org packaging script on 2024-06-14
+version: '1.1.7'
+project: 'vlsuite'
+datestamp: 1718361880

@@ -2,8 +2,8 @@
 
 namespace Drupal\commerce_price\Repository;
 
-use CommerceGuys\Intl\NumberFormat\NumberFormatRepositoryInterface;
 use CommerceGuys\Intl\NumberFormat\NumberFormatRepository as ExternalNumberFormatRepository;
+use CommerceGuys\Intl\NumberFormat\NumberFormatRepositoryInterface;
 use Drupal\commerce_price\Event\NumberFormatDefinitionEvent;
 use Drupal\commerce_price\Event\PriceEvents;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;

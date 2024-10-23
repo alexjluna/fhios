@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_block_remote_video
+id: vlsuite_remote_video
+label: 'Remote video (VLSuite)'
+revision: 0
+description: ''
+vlsuite_block_icon: a5462dc4-afa3-43c0-9079-936d56f57ba0

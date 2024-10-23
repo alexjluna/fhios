@@ -1,0 +1,18 @@
+uuid: 72d091ba-93ee-4772-882f-1a4c3a075533
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_redsys_button
+id: redsys_bizum
+label: 'Redsys Bizum'
+weight: null
+plugin: redsys_bizum_redirect_payment_checkout
+configuration:
+  display_label: 'Redsys Bizum'
+  mode: test
+  payment_method_types:
+    - bizum
+  collect_billing_information: true
+conditions: {  }
+conditionOperator: AND

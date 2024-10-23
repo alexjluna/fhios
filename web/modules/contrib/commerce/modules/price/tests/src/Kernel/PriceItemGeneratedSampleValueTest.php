@@ -44,7 +44,7 @@ class PriceItemGeneratedSampleValueTest extends CommerceKernelTestBase {
    * @return \Generator
    *   The test data.
    */
-  public function dataForGeneratedSamples() {
+  public static function dataForGeneratedSamples() {
     yield [
       ['USD'],
     ];

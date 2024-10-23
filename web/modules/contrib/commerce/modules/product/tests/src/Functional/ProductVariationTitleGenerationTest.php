@@ -2,8 +2,8 @@
 
 namespace Drupal\Tests\commerce_product\Functional;
 
-use Drupal\commerce_product\Entity\ProductVariationType;
 use Drupal\commerce_product\Entity\ProductVariation;
+use Drupal\commerce_product\Entity\ProductVariationType;
 use Drupal\Tests\commerce_cart\Traits\CartBrowserTestTrait;
 use Drupal\Tests\commerce_product\Traits\ProductAttributeTestTrait;
 

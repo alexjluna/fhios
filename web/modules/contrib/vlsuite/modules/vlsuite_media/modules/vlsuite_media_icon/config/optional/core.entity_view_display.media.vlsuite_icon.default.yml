@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.vlsuite_icon.field_media_image
+    - media.type.vlsuite_icon
+    - responsive_image.styles.vlsuite_original_optimized_icon
+  module:
+    - responsive_image
+  enforced:
+    module:
+      - vlsuite_media_icon
+id: media.vlsuite_icon.default
+targetEntityType: media
+bundle: vlsuite_icon
+mode: default
+content:
+  field_media_image:
+    type: responsive_image
+    label: visually_hidden
+    settings:
+      responsive_image_style: vlsuite_original_optimized_icon
+      image_link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * VLSuite onecol layout.
+ */
+#}
+{% if content %}
+  {% if settings.edge_to_edge_bg %}{{ content.media_bg }}{% endif %}
+  <div{{ attributes }}>
+    {% if not settings.edge_to_edge_bg %}{{ content.media_bg }}{% endif %}
+    <div{{ content['#row_attributes'] }}>
+      {% set content_top_render = content.top|render %}
+      {% if settings.optional_regions and content_top_render|trim %}
+        <div {{ content['#top_col_attributes'] }}>
+          <div {{ region_attributes.top.addClass(content['#top_class']).addClass('vlsuite-layout__region', 'vlsuite-layout__region--top') }}>
+            {{ content_top_render }}
+          </div>
+        </div>
+      {% endif %}
+      <div {{ content['#main_col_attributes'] }}>
+        <div {{ region_attributes.main.addClass(content['#main_class']).addClass('vlsuite-layout__region', 'vlsuite-layout__region--main') }}>
+          {{ content.main }}
+        </div>
+      </div>
+      {% set content_bottom_render = content.bottom|render %}
+      {% if settings.optional_regions and content_bottom_render|trim %}
+        <div {{ content['#bottom_col_attributes'] }}>
+          <div {{ region_attributes.bottom.addClass(content['#bottom_class']).addClass('vlsuite-layout__region', 'vlsuite-layout__region--bottom') }}>
+            {{ content_bottom_render }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

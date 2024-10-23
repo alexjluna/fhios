@@ -1,0 +1,25 @@
+uuid: f525e47f-5d16-46d9-af2e-a3a441ebdde7
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - node
+  enforced:
+    module:
+      - vlsuite_landing
+_core:
+  default_config_hash: J0Co8ze816MVmigBCGHc_B5y7jO-z3V9bZYs8i8s8mU
+id: node.field_vlsuite_landing_main_image
+field_name: field_vlsuite_landing_main_image
+entity_type: node
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

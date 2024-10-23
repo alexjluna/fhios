@@ -1,0 +1,47 @@
+uuid: 93826cde-cc92-42ac-b4d5-ed3e3cfe5cfb
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_remote_video
+  module:
+    - media_library
+  enforced:
+    module:
+      - vlsuite_block_remote_video
+_core:
+  default_config_hash: 1Z0FegleWJGntI_C4JgMKV1l6XA2Al-UFjLzp7N74eU
+id: block_content.vlsuite_remote_video.default
+targetEntityType: block_content
+bundle: vlsuite_remote_video
+mode: default
+content:
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  vlsuite_remote_video:
+    type: media_library_widget
+    weight: 3
+    region: content
+    settings:
+      media_types:
+        - vlsuite_remote_video
+    third_party_settings: {  }
+hidden: {  }

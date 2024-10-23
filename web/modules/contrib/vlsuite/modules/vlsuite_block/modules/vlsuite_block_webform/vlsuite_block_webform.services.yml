@@ -1,0 +1,6 @@
+services:
+  vlsuite_block_webform.uninstall_validator:
+    class: Drupal\vlsuite_block_webform\VLSuiteBlockWebformUninstallValidator
+    tags:
+      - { name: module_install.uninstall_validator }
+    arguments: ['@entity_type.manager']

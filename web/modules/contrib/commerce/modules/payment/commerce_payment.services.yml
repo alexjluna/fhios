@@ -30,22 +30,22 @@ services:
     class: Drupal\commerce_payment\EventSubscriber\OrderAssignSubscriber
     arguments: ['@commerce_order.address_book']
     tags:
-    - { name: event_subscriber }
+      - { name: event_subscriber }
 
   commerce_payment.order_paid_subscriber:
     class: Drupal\commerce_payment\EventSubscriber\OrderPaidSubscriber
     tags:
-    - { name: event_subscriber }
+      - { name: event_subscriber }
 
   commerce_payment.options_builder:
     class: Drupal\commerce_payment\PaymentOptionsBuilder
-    arguments: ['@entity_type.manager', '@string_translation']
+    arguments: ['@entity_type.manager', '@string_translation', '@event_dispatcher']
 
   commerce_payment.order_processor:
     class: Drupal\commerce_payment\PaymentOrderProcessor
     arguments: ['@commerce_payment.order_updater']
     tags:
-    - { name: commerce_order.order_processor, priority: 400, adjustment_type: tax }
+      - { name: commerce_order.order_processor, priority: 400, adjustment_type: tax }
 
   commerce_payment.order_updater:
     class: Drupal\commerce_payment\PaymentOrderUpdater

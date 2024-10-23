@@ -1,0 +1,73 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_collection_gallery
+    - core.entity_view_mode.block_content.vlsuite_collection_2
+  module:
+    - layout_builder
+    - vlsuite_block
+    - vlsuite_layout
+  enforced:
+    module:
+      - vlsuite_collection_gallery
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: vlsuite_layout_onecol
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          column_widths: '100'
+          optional_regions: false
+          edge_to_edge: false
+          vlsuite_utility_class:
+            'vlsuite_layout:section':
+              padding-y: spacer-5
+              padding-x: no-spacer
+          edge_to_edge_bg: false
+          media_bg: null
+          identifier: ''
+          vlsuite_slider:
+            scope: main
+        components:
+          a9a6ab10-41ab-4f1f-8c6d-0886db39881d:
+            uuid: a9a6ab10-41ab-4f1f-8c6d-0886db39881d
+            region: main
+            configuration:
+              id: 'vlsuite_block_field_block:block_content:vlsuite_collection_gallery:vlsuite_medias'
+              label: Medias
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: vlsuite_collection_gallery_main
+                third_party_settings: {  }
+              vlsuite_utility_class:
+                'block_content:vlsuite_collection_gallery:vlsuite_medias:item':
+                  ratio: 16-9
+              vlsuite_slider:
+                active: true
+                scope: default
+                slides_per_view: 1.3
+                navigation: true
+                pagination: true
+            weight: 5
+            additional: {  }
+        third_party_settings: {  }
+id: block_content.vlsuite_collection_gallery.vlsuite_collection_2
+targetEntityType: block_content
+bundle: vlsuite_collection_gallery
+mode: vlsuite_collection_2
+content: {  }
+hidden:
+  langcode: true
+  vlsuite_medias: true

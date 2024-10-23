@@ -1,0 +1,23 @@
+uuid: cac12eab-9cd1-40b7-b5af-18d1a8a59699
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_collection_hero
+  module:
+    - content_translation
+  enforced:
+    module:
+      - vlsuite_collection_hero
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: LhjrhMg9tp-th3jAm0YXvKvI3DgCHtxODYG6qrW3U8w
+id: block_content.vlsuite_collection_hero
+target_entity_type_id: block_content
+target_bundle: vlsuite_collection_hero
+default_langcode: current_interface
+language_alterable: false

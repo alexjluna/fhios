@@ -1,0 +1,21 @@
+uuid: 03754f40-a0d0-4435-a6c0-2dac789cbecb
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_media_remote_video
+_core:
+  default_config_hash: Qqhmu6m3krua9AN2PnJGS2_LJqqu9M4Lr_hsPtkt_eM
+id: vlsuite_remote_video
+label: 'Remote video (VLSuite)'
+description: ''
+source: 'oembed:video'
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_oembed_video
+  thumbnails_directory: 'public://oembed_thumbnails/[date:custom:Y-m]'
+  providers: {  }
+field_map:
+  title: name

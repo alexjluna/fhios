@@ -1,0 +1,34 @@
+uuid: 8e8b8ff2-8f48-440f-ac75-688e5de7dace
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.vlsuite_original_optimized
+    - image.style.vlsuite_original_optimized_medium
+  module:
+    - vlsuite_media
+  enforced:
+    module:
+      - vlsuite_media
+_core:
+  default_config_hash: DwI9T_E_xIvU6bfBuyEKACn8YoHb2IS8u_iVL3ap_tI
+id: vlsuite_original_optimized_medium
+label: 'Original optimized medium (VLSuite)'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: vlsuite_original_optimized_medium
+    breakpoint_id: vlsuite_media.large
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: vlsuite_original_optimized_medium
+    breakpoint_id: vlsuite_media.medium
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: vlsuite_original_optimized
+    breakpoint_id: vlsuite_media.small
+    multiplier: 1x
+breakpoint_group: vlsuite_media
+fallback_image_style: vlsuite_original_optimized_medium

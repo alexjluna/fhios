@@ -1,0 +1,4 @@
+services:
+  vlsuite_animations.helper:
+    class: Drupal\vlsuite_animations\VLSuiteAnimationsHelper
+    arguments: ['@config.factory', '@module_handler']

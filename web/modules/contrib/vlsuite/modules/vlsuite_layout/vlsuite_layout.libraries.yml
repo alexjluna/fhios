@@ -1,0 +1,4 @@
+layout:
+  css:
+    component:
+      css/vlsuite-layout.css: {}

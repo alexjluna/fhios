@@ -1,0 +1,28 @@
+name: VLSuite - Laning content editor
+type: module
+description: Visual Layout Suite (VLSuite) - Landing content editor
+package: Visual Layout Suite (VLSuite)
+core_version_requirement: ^9.5 || ^10
+
+dependencies:
+  - drupal:user
+  - drupal:block
+  - drupal:block_content
+  - drupal:content_translation
+  - drupal:contextual
+  - drupal:file
+  - drupal:filter
+  - drupal:media
+  - drupal:node
+  - drupal:path
+  - section_library:section_library
+  - drupal:system
+  - drupal:taxonomy
+  - drupal:toolbar
+  - vlsuite:vlsuite_landing
+  - vlsuite:vlsuite_format
+
+# Information added by Drupal.org packaging script on 2024-06-14
+version: '1.1.7'
+project: 'vlsuite'
+datestamp: 1718361880

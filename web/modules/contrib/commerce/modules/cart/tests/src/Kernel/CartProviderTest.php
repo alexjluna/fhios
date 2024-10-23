@@ -41,7 +41,7 @@ class CartProviderTest extends CartKernelTestBase {
     parent::setUp();
 
     $this->entityTypeManager = $this->container->get('entity_type.manager');
-    $this->anonymousUser = $this->createUser([
+    $this->anonymousUser = $this->createUser([], NULL, FALSE, [
       'uid' => 0,
       'name' => '',
       'status' => 0,
@@ -191,7 +191,7 @@ class CartProviderTest extends CartKernelTestBase {
 
     // Carts assigned to a different user should not be returned.
     $cart = $this->cartProvider->createCart('default', $this->store, $this->authenticatedUser);
-    $cart->uid = $this->anonymousUser->id();
+    $cart->setCustomerId($this->anonymousUser->id());
     $cart->save();
     $this->cartProvider->clearCaches();
     $cart = $this->cartProvider->getCart('default', $this->store, $this->authenticatedUser);

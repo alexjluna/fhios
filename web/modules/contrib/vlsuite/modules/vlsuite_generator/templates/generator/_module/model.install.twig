@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the {{ name }} module.
+ */
+
+use Drupal\Component\Serialization\Yaml;
+use Drupal\Component\Utility\NestedArray;
+
+/**
+ * Implements hook_install().
+ */
+function {{ machine_name }}_install() {
+  $module_name = '{{ machine_name }}';
+  // Auto-merge partial config; where utilities should be available to be used
+  // for any entity type or field. This enables possibility to use utilities.
+  $utilities_block_settings_partial_yml = \Drupal::service('extension.path.resolver')->getPath('module', $module_name) . '/config/partial/vlsuite_block.settings.utility_classes_apply_to_enabled.yml';
+  $utilities_block_settings_partial_raw = file_get_contents($utilities_block_settings_partial_yml);
+  if (!empty($utilities_block_settings_partial_raw)) {
+    $utilities_block_settings_partial_decoded = Yaml::decode($utilities_block_settings_partial_raw);
+    $vlsuite_block_settings_editable = \Drupal::configFactory()->getEditable('vlsuite_block.settings');
+    $current = $vlsuite_block_settings_editable->get('utility_classes_apply_to_enabled');
+    $vlsuite_block_settings_editable->set('utility_classes_apply_to_enabled', NestedArray::mergeDeepArray([$current, $utilities_block_settings_partial_decoded], TRUE));
+    $vlsuite_block_settings_editable->save(TRUE);
+  }
+
+  // Auto-merge partial config; utilities & where are active according to where
+  // are enabled. This enables each specific utility for defined apply to.
+  $utilities_settings_partial_yml = \Drupal::service('extension.path.resolver')->getPath('module', $module_name) . '/config/partial/vlsuite_utility_classes.settings.utilities.yml';
+  $utilities_settings_partial_raw = file_get_contents($utilities_settings_partial_yml);
+  if (!empty($utilities_settings_partial_raw)) {
+    $utilities_settings_partial_decoded = Yaml::decode($utilities_settings_partial_raw);
+    $vlsuite_settings_editable = \Drupal::configFactory()->getEditable('vlsuite_utility_classes.settings');
+    $current = $vlsuite_settings_editable->get('utilities');
+    $vlsuite_settings_editable->set('utilities', NestedArray::mergeDeepArray([$current, $utilities_settings_partial_decoded], TRUE));
+    $vlsuite_settings_editable->save(TRUE);
+  }
+}

@@ -1,0 +1,23 @@
+uuid: 0fd8ff1b-ce59-4355-a4dd-2b9cd91d5ced
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_collection_card
+  module:
+    - content_translation
+  enforced:
+    module:
+      - vlsuite_collection_card
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: tgvUE1kI26trRYJVmRGZ2kTlSZekK4dHHwRYsehY_D4
+id: block_content.vlsuite_collection_card
+target_entity_type_id: block_content
+target_bundle: vlsuite_collection_card
+default_langcode: current_interface
+language_alterable: false

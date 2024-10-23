@@ -1,0 +1,14 @@
+uuid: 49de66f1-424a-4432-800f-0f8a17779a58
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_block_text
+_core:
+  default_config_hash: QKSDZ_aG92L0vS0iEfKsuvfO7S9VW6N4uXlGxfEL_8Q
+id: vlsuite_text
+label: 'Text (VLSuite)'
+revision: 0
+description: ''
+vlsuite_block_icon: 9f13d320-e435-4eb6-bfd7-003a4c9c6b58

@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_text
+  enforced:
+    module:
+      - vlsuite_block_text
+id: block_content.vlsuite_text.default
+targetEntityType: block_content
+bundle: vlsuite_text
+mode: default
+content: {  }
+hidden:
+  langcode: true

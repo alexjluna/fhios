@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.vlsuite_landing
+  module:
+    - text
+  enforced:
+    module:
+      - vlsuite_landing
+id: node.vlsuite_landing.body
+field_name: body
+entity_type: node
+bundle: vlsuite_landing
+label: Body
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

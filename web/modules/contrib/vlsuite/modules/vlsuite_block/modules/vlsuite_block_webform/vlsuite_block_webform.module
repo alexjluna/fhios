@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Block - Webform main module file.
+ */
+
+use Drupal\vlsuite_block_webform\Entity\Bundle\VLSuiteBlockWebform;
+
+/**
+ * Implements hook_entity_bundle_info_alter().
+ */
+function vlsuite_block_webform_entity_bundle_info_alter(array &$bundles): void {
+  if (!empty($bundles['block_content'][VLSuiteBlockWebform::BUNDLE_KEY])) {
+    $bundles['block_content'][VLSuiteBlockWebform::BUNDLE_KEY]['class'] = VLSuiteBlockWebform::class;
+  }
+}

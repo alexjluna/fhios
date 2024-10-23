@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Collection - Card install module file.
+ */
+
+use Drupal\vlsuite_collection_card\Entity\Bundle\VLSuiteCollectionCard;
+
+/**
+ * Implements hook_install().
+ */
+function vlsuite_collection_card_install() {
+  \Drupal::service('vlsuite_bundle_field.helper')->installBlockContentBundleFields(VLSuiteCollectionCard::BUNDLE_KEY, VLSuiteCollectionCard::class);
+  \Drupal::service('vlsuite_collection.helper')->generateMedia('vlsuite_image', '19b2383d-7801-4e8a-a9ee-092afec708c4', 'vlsuite_collection_card', 'vlsuite-collection-placeholder-image.jpg', 'a1556bd3-5bd8-4fdc-a073-5c201984ad91');
+  \Drupal::service('vlsuite_collection.helper')->generateMedia('vlsuite_icon', '34550a40-f7c3-4b4f-85f9-23d9de43f3b4', 'vlsuite_collection_card', 'vlsuite-collection-placeholder-icon.png', '784b4112-2527-43ee-ad5b-a95d2a231d2c');
+  \Drupal::service('vlsuite_collection.helper')->sectionLibraryTemplateCreateFromYmlFile('21fb2fd1-b800-4173-b954-c699c618c330', 'vlsuite_collection_card', [
+    'vlsuite_media' => '19b2383d-7801-4e8a-a9ee-092afec708c4',
+    'vlsuite_background' => '19b2383d-7801-4e8a-a9ee-092afec708c4',
+    'vlsuite_icon' => '34550a40-f7c3-4b4f-85f9-23d9de43f3b4',
+  ]);
+}

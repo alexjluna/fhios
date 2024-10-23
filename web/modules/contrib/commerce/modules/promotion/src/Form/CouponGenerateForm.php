@@ -2,8 +2,8 @@
 
 namespace Drupal\commerce_promotion\Form;
 
-use Drupal\commerce_promotion\CouponCodePattern;
 use Drupal\commerce_promotion\CouponCodeGeneratorInterface;
+use Drupal\commerce_promotion\CouponCodePattern;
 use Drupal\Core\Batch\BatchBuilder;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;

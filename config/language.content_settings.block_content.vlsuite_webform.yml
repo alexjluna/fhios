@@ -1,0 +1,23 @@
+uuid: 3b7f828e-df76-4bfb-84c1-5c7f5d6f637b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_webform
+  module:
+    - content_translation
+  enforced:
+    module:
+      - vlsuite_block_webform
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: QxsTk6zFAqdC_4TdsBVNSaHsTsQvpGEBZYKkKoMhjtU
+id: block_content.vlsuite_webform
+target_entity_type_id: block_content
+target_bundle: vlsuite_webform
+default_langcode: current_interface
+language_alterable: false

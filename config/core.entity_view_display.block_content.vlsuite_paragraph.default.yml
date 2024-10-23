@@ -1,0 +1,29 @@
+uuid: f8b551d5-72e0-4ec4-ae13-e3751220dd84
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_paragraph
+  module:
+    - entity_reference_revisions
+  enforced:
+    module:
+      - vlsuite_block_paragraph
+_core:
+  default_config_hash: 5hk3S5g8dfcasNLb05cW42L9fwTBnwC2ULkB6ad6Sok
+id: block_content.vlsuite_paragraph.default
+targetEntityType: block_content
+bundle: vlsuite_paragraph
+mode: default
+content:
+  vlsuite_paragraph:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

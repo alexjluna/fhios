@@ -1,0 +1,4 @@
+services:
+  vlsuite_collection.helper:
+    class: Drupal\vlsuite_collection\VLSuiteCollectionHelper
+    arguments: ['@extension.path.resolver', '@entity_type.manager', '@file_system', '@file.repository']

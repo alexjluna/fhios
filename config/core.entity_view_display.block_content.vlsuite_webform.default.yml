@@ -1,0 +1,29 @@
+uuid: fd4688bc-9219-4f7c-a763-b6cc8652a5be
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_webform
+  module:
+    - webform
+  enforced:
+    module:
+      - vlsuite_block_webform
+_core:
+  default_config_hash: '-PJnwMhSoM9u2BN_wSNMR46H4v7Jzi4r7ZWrqaO299w'
+id: block_content.vlsuite_webform.default
+targetEntityType: block_content
+bundle: vlsuite_webform
+mode: default
+content:
+  vlsuite_webform:
+    type: webform_entity_reference_entity_view
+    label: hidden
+    settings:
+      source_entity: false
+      lazy: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

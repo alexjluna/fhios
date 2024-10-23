@@ -141,6 +141,14 @@ function commerce_promotion_entity_base_field_info(EntityTypeInterface $entity_t
       ->setSetting('handler', 'default')
       ->setTranslatable(FALSE)
       ->addConstraint('CouponValid')
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'entity_reference_label',
+        'settings' => [
+          'link' => TRUE,
+        ],
+      ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayOptions('form', [
         'type' => 'entity_reference_autocomplete',
@@ -154,4 +162,11 @@ function commerce_promotion_entity_base_field_info(EntityTypeInterface $entity_t
 
     return $fields;
   }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function commerce_promotion_cron() {
+  \Drupal::service('commerce_promotion.cron')->run();
 }

@@ -1,0 +1,12 @@
+layout_builder:
+  js:
+    js/vlsuite-layout-builder.js: {}
+  css:
+    theme:
+      css/vlsuite-layout-builder.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once
+    - editor/drupal.editor
+    - layout_builder/drupal.layout_builder

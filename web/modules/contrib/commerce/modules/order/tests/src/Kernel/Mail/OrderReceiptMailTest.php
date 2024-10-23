@@ -41,7 +41,7 @@ class OrderReceiptMailTest extends OrderKernelTestBase {
   protected function setUp(): void {
     parent::setUp();
 
-    $user = $this->createUser([
+    $user = $this->createUser([], NULL, FALSE, [
       'mail' => 'customer@example.com',
       'preferred_langcode' => 'en',
     ]);

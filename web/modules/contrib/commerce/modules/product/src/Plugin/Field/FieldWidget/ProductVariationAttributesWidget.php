@@ -77,6 +77,7 @@ class ProductVariationAttributesWidget extends ProductVariationWidgetBase implem
       // customer should still see the attribute widgets, to know what they're
       // buying (e.g a product only available in the Small size).
       if (empty($this->attributeFieldManager->getFieldDefinitions($selected_variation->bundle()))) {
+        $form_state->set('selected_variation', $selected_variation->id());
         $element['variation'] = [
           '#type' => 'value',
           '#value' => $selected_variation->id(),

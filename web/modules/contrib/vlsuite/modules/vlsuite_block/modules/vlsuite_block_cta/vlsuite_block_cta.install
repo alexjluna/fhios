@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Block - CTA install module file.
+ */
+
+use Drupal\vlsuite_block_cta\Entity\Bundle\VLSuiteBlockCta;
+
+/**
+ * Implements hook_install().
+ */
+function vlsuite_block_cta_install() {
+  \Drupal::service('vlsuite_bundle_field.helper')->installBlockContentBundleFields(VLSuiteBlockCta::BUNDLE_KEY, VLSuiteBlockCta::class);
+  _vlsuite_block_update_helper_save_default_icon_file('block_content.type.vlsuite_cta', 'star.svg', '0595039f-0b84-420b-b63e-bcce1569a750');
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function vlsuite_block_cta_update_10001() {
+  \Drupal::configFactory()->getEditable('block_content.type.vlsuite_cta')->set('vlsuite_block_icon', '0595039f-0b84-420b-b63e-bcce1569a750')->save();
+  _vlsuite_block_update_helper_save_default_icon_file('block_content.type.vlsuite_cta', 'star.svg', '0595039f-0b84-420b-b63e-bcce1569a750');
+}
+
+/**
+ * New icon font icon field.
+ */
+function vlsuite_block_cta_update_10002() {
+  if (!\Drupal::service('module_handler')->moduleExists('vlsuite_icon_font')) {
+    \Drupal::service('module_installer')->install(['vlsuite_icon_font']);
+  }
+  \Drupal::service('vlsuite_bundle_field.helper')->installBlockContentBundleFields(VLSuiteBlockCta::BUNDLE_KEY, VLSuiteBlockCta::class);
+}

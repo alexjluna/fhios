@@ -1,0 +1,27 @@
+uuid: 3f1ae529-1f92-44e4-8806-0a3532c013af
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_remote_video
+  enforced:
+    module:
+      - vlsuite_block_remote_video
+_core:
+  default_config_hash: LiB9gO_9Q1F-5QsqMUcoG2PfVTA3AEyyXE0wQYYq6IU
+id: block_content.vlsuite_remote_video.default
+targetEntityType: block_content
+bundle: vlsuite_remote_video
+mode: default
+content:
+  vlsuite_remote_video:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

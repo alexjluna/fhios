@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.vlsuite_document
+  module:
+    - content_translation
+  enforced:
+    module:
+      - vlsuite_media_document
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: media.vlsuite_document
+target_entity_type_id: media
+target_bundle: vlsuite_document
+default_langcode: current_interface
+language_alterable: false

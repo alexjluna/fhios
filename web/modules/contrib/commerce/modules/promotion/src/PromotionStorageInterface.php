@@ -2,8 +2,8 @@
 
 namespace Drupal\commerce_promotion;
 
-use Drupal\Core\Entity\ContentEntityStorageInterface;
 use Drupal\commerce_order\Entity\OrderInterface;
+use Drupal\Core\Entity\ContentEntityStorageInterface;
 
 /**
  * Defines the interface for promotion storage.

@@ -69,7 +69,9 @@ function commerce_promotion_schema() {
  * Install the `commerce_promotion_usage` table schema.
  */
 function commerce_promotion_update_8201() {
-  drupal_install_schema('commerce_promotion');
+  $schema = \Drupal::database()->schema();
+  $tables = commerce_promotion_schema();
+  $schema->createTable('commerce_promotion_usage', $tables['commerce_promotion_usage']);
 }
 
 /**

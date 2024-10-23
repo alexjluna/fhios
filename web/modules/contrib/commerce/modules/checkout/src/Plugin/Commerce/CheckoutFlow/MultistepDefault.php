@@ -21,7 +21,7 @@ class MultistepDefault extends CheckoutFlowWithPanesBase {
     // when going back to the step, or proceeding to the step.
     return [
       'login' => [
-        'label' => $this->t('Login'),
+        'label' => $this->t('Log in'),
         'previous_label' => $this->t('Go back'),
         'has_sidebar' => FALSE,
       ],

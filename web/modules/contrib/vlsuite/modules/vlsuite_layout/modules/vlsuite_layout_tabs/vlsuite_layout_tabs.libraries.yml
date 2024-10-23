@@ -1,0 +1,17 @@
+tabs-horizontal:
+  # Delegated into bs5 horizontal tabs, add just in case any customization or
+  # implementation alternative is needed.
+  js:
+    layouts/tabs-horizontal/js/vlsuite-layout-tabs-horizontal.js: {}
+  css:
+    component:
+      layouts/tabs-horizontal/css/vlsuite-layout-tabs-horizontal.css: {}
+
+tabs-accordion:
+  # Delegated into bs5 accordion tabs, add just in case any customization or
+  # implementation alternative is needed.
+  js:
+    layouts/tabs-accordion/js/vlsuite-layout-tabs-accordion.js: {}
+  css:
+    component:
+      layouts/tabs-accordion/css/vlsuite-layout-tabs-accordion.css: {}

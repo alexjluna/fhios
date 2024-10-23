@@ -2,14 +2,14 @@
 
 namespace Drupal\state_machine\Guard;
 
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\state_machine\Plugin\Workflow\WorkflowInterface;
 use Drupal\state_machine\Plugin\Workflow\WorkflowTransition;
-use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Defines the interface for guards.
  *
- * Allows for custom logic controling the availability of specific transitions.
+ * Allows for custom logic controlling the availability of specific transitions.
  * Transitions could be restricted based on the current user's permissions, a
  * parent entity field, etc.
  *

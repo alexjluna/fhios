@@ -1,0 +1,85 @@
+uuid: 72bfffcc-9722-4349-9e7d-76584db4acf9
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_collection_gallery
+    - core.entity_view_mode.block_content.vlsuite_collection_3
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - vlsuite_layout
+  enforced:
+    module:
+      - vlsuite_collection_gallery
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: vlsuite_layout_onecol
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          column_widths: '100'
+          optional_regions: false
+          edge_to_edge: false
+          vlsuite_utility_class:
+            'vlsuite_layout:section':
+              padding-y: spacer-5
+              padding-x: no-spacer
+          edge_to_edge_bg: false
+          media_bg: null
+          identifier: ''
+          vlsuite_slider:
+            scope: main
+          vlsuite_animations: {  }
+        components:
+          5254e1f1-380e-42aa-8960-59a1598fa76f:
+            uuid: 5254e1f1-380e-42aa-8960-59a1598fa76f
+            region: main
+            configuration:
+              id: 'vlsuite_block_field_block:block_content:vlsuite_collection_gallery:vlsuite_medias'
+              label: Medias
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: vlsuite_collection_gallery_main
+                third_party_settings: {  }
+              vlsuite_utility_class:
+                'block_content:vlsuite_collection_gallery:vlsuite_medias:item':
+                  ratio: 16-9
+              vlsuite_slider:
+                active: true
+                scope: default
+                slides_per_view: 2.0
+                rows: 2
+                navigation: true
+                pagination: true
+            weight: 7
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+_core:
+  default_config_hash: '-NqKx3fb9ddVtYVhpETJpX_mJELeR9cg2tBfh7IhS90'
+id: block_content.vlsuite_collection_gallery.vlsuite_collection_3
+targetEntityType: block_content
+bundle: vlsuite_collection_gallery
+mode: vlsuite_collection_3
+content: {  }
+hidden:
+  langcode: true
+  vlsuite_medias: true

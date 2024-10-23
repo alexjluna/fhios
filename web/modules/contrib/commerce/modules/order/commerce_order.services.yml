@@ -102,3 +102,8 @@ services:
   commerce_order.price_calculator:
     class: Drupal\commerce_order\PriceCalculator
     arguments: ['@commerce_order.adjustment_transformer', '@commerce_order.chain_order_type_resolver', '@commerce_price.chain_price_resolver', '@entity_type.manager', '@request_stack']
+
+  logger.channel.commerce_order:
+    class: Drupal\Core\Logger\LoggerChannel
+    factory: logger.factory:get
+    arguments: ['commerce_order']

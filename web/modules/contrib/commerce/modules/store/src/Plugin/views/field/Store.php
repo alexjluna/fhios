@@ -2,9 +2,9 @@
 
 namespace Drupal\commerce_store\Plugin\views\field;
 
-use Drupal\views\Plugin\views\field\EntityField;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\views\Plugin\views\field\EntityField;
 
 /**
  * Displays the store.

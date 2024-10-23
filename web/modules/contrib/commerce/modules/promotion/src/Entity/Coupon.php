@@ -7,8 +7,8 @@ use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
-use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 
 /**
@@ -170,6 +170,8 @@ class Coupon extends CommerceContentEntityBase implements CouponInterface {
     if (!$this->get('start_date')->isEmpty()) {
       return new DrupalDateTime($this->get('start_date')->value, $store_timezone);
     }
+
+    return NULL;
   }
 
   /**
@@ -187,6 +189,8 @@ class Coupon extends CommerceContentEntityBase implements CouponInterface {
     if (!$this->get('end_date')->isEmpty()) {
       return new DrupalDateTime($this->get('end_date')->value, $store_timezone);
     }
+
+    return NULL;
   }
 
   /**
@@ -197,6 +201,8 @@ class Coupon extends CommerceContentEntityBase implements CouponInterface {
     if ($end_date) {
       $this->get('end_date')->value = $end_date->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT);
     }
+
+    return $this;
   }
 
   /**
@@ -304,11 +310,12 @@ class Coupon extends CommerceContentEntityBase implements CouponInterface {
 
     $fields['code'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Coupon code'))
-      ->setDescription(t('The unique, machine-readable identifier for a coupon.'))
+      ->setDescription(t('The unique, machine-readable identifier for a coupon. Coupon code matching is case-insensitive.'))
       ->addConstraint('CouponCode')
       ->setSettings([
         'max_length' => 50,
         'text_processing' => 0,
+        'display_description' => TRUE,
       ])
       ->setDefaultValue('')
       ->setDisplayOptions('view', [

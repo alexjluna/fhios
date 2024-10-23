@@ -3,9 +3,9 @@
 namespace Drupal\Tests\commerce_order\Unit;
 
 use Drupal\commerce\AvailabilityCheckerInterface as LegacyAvailabilityCheckerInterface;
+use Drupal\commerce\Context;
 use Drupal\commerce_order\AvailabilityCheckerInterface;
 use Drupal\commerce_order\AvailabilityManager;
-use Drupal\commerce\Context;
 use Drupal\commerce_order\AvailabilityResult;
 use Drupal\commerce_order\Entity\OrderItemInterface;
 use Drupal\commerce_product\Entity\ProductVariationInterface;

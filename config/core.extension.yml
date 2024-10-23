@@ -50,9 +50,17 @@ module:
   image: 0
   inline_entity_form: 0
   key: 0
+  language: 0
   layout_builder: 0
+  layout_builder_at: 0
+  layout_builder_operation_link: 0
+  layout_builder_restrictions: 0
   layout_discovery: 0
   link: 0
+  media: 0
+  media_library: 0
+  media_library_form_element: 0
+  media_responsive_thumbnail: 0
   menu_link_content: 0
   menu_ui: 0
   mymodule: 0
@@ -66,8 +74,10 @@ module:
   products: 0
   profile: 0
   redsys_button: 0
+  responsive_image: 0
   rsvplist: 0
   search: 0
+  section_library: 0
   shortcut: 0
   shs: 0
   smart_content: 0
@@ -87,6 +97,41 @@ module:
   upgrade_status: 0
   user: 0
   views_ui: 0
+  vlsuite: 0
+  vlsuite_animations: 0
+  vlsuite_block: 0
+  vlsuite_block_attachments: 0
+  vlsuite_block_cta: 0
+  vlsuite_block_headings_menu: 0
+  vlsuite_block_icon: 0
+  vlsuite_block_image: 0
+  vlsuite_block_local_video: 0
+  vlsuite_block_paragraph: 0
+  vlsuite_block_remote_video: 0
+  vlsuite_block_text: 0
+  vlsuite_block_webform: 0
+  vlsuite_bundle_field: 0
+  vlsuite_collection: 0
+  vlsuite_collection_card: 0
+  vlsuite_collection_gallery: 0
+  vlsuite_collection_hero: 0
+  vlsuite_collection_stmt: 0
+  vlsuite_format: 0
+  vlsuite_icon_font: 0
+  vlsuite_landing: 0
+  vlsuite_landing_content_editor: 0
+  vlsuite_layout: 0
+  vlsuite_layout_builder: 0
+  vlsuite_layout_tabs: 0
+  vlsuite_media: 0
+  vlsuite_media_document: 0
+  vlsuite_media_icon: 0
+  vlsuite_media_image: 0
+  vlsuite_media_local_video: 0
+  vlsuite_media_remote_video: 0
+  vlsuite_modal: 0
+  vlsuite_slider: 0
+  vlsuite_utility_classes: 0
   webform: 0
   webform_access: 0
   webform_attachment: 0
@@ -104,6 +149,7 @@ module:
   webform_templates: 0
   webform_ui: 0
   webform_bootstrap: 1
+  content_translation: 10
   views: 10
   paragraphs: 11
   standard: 1000

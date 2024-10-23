@@ -1,0 +1,25 @@
+layout_plugin.settings.vlsuite_layout_tabs_horizontal:
+  type: vlsuite_layout_base
+  mapping:
+    tabs_default:
+      type: string
+    tabs:
+      type: sequence
+      sequence:
+        type: sequence
+        sequence:
+          type: string
+
+layout_plugin.settings.vlsuite_layout_tabs_accordion:
+  type: vlsuite_layout_base
+  mapping:
+    tabs_always_open:
+      type: boolean
+    tabs_default:
+      type: string
+    tabs:
+      type: sequence
+      sequence:
+        type: sequence
+        sequence:
+          type: string

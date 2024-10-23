@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Block install module file.
+ */
+
+/**
+ * Enable vlsuite slider to fit new dependency if not already enabled.
+ */
+function vlsuite_block_update_10001() {
+  if (!\Drupal::service('module_handler')->moduleExists('vlsuite_slider')) {
+    \Drupal::service('module_installer')->install(['vlsuite_slider']);
+  }
+}
+
+/**
+ * Enable vlsuite animations to fit new dependency if not already enabled.
+ */
+function vlsuite_block_update_10002() {
+  if (!\Drupal::service('module_handler')->moduleExists('vlsuite_animations')) {
+    \Drupal::service('module_installer')->install(['vlsuite_animations']);
+  }
+}

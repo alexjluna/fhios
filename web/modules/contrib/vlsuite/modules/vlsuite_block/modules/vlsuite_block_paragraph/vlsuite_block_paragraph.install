@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Block - Paragraph install module file.
+ */
+
+use Drupal\vlsuite_block_paragraph\Entity\Bundle\VLSuiteBlockParagraph;
+
+/**
+ * Implements hook_install().
+ */
+function vlsuite_block_paragraph_install() {
+  \Drupal::service('vlsuite_bundle_field.helper')->installBlockContentBundleFields(VLSuiteBlockParagraph::BUNDLE_KEY, VLSuiteBlockParagraph::class);
+  _vlsuite_block_update_helper_save_default_icon_file('block_content.type.vlsuite_paragraph', 'puzzlepiece.svg', 'd4a85813-1873-4444-a74c-55aa510c0f78');
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function vlsuite_block_paragraph_update_10001() {
+  \Drupal::configFactory()->getEditable('block_content.type.vlsuite_paragraph')->set('vlsuite_block_icon', 'd4a85813-1873-4444-a74c-55aa510c0f78')->save();
+  _vlsuite_block_update_helper_save_default_icon_file('block_content.type.vlsuite_paragraph', 'puzzlepiece.svg', 'd4a85813-1873-4444-a74c-55aa510c0f78');
+}

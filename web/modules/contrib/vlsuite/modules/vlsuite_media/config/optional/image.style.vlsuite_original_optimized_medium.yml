@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_media
+name: vlsuite_original_optimized_medium
+label: 'Original optimized medium (VLSuite)'
+effects:
+  77410071-7d65-4f38-9631-bd1ecad4aa55:
+    uuid: 77410071-7d65-4f38-9631-bd1ecad4aa55
+    id: image_scale
+    weight: 1
+    data:
+      width: 1199
+      height: null
+      upscale: false

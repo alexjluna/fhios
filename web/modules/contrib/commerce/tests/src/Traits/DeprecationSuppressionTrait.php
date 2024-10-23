@@ -21,15 +21,18 @@ trait DeprecationSuppressionTrait {
   protected function setErrorHandler() {
     $previous_error_handler = set_error_handler(function ($severity, $message, $file, $line, $context = NULL) use (&$previous_error_handler) {
 
-      $skipped_deprecations = [
-        // @see https://www.drupal.org/project/address/issues/3089266
-        'Theme functions are deprecated in drupal:8.0.0 and are removed from drupal:10.0.0. Use Twig templates instead of theme_inline_entity_form_entity_table(). See https://www.drupal.org/node/1831138',
-      ];
-
-      if (!in_array($message, $skipped_deprecations, TRUE)) {
-        return $previous_error_handler($severity, $message, $file, $line, $context);
+      if ($severity === E_USER_DEPRECATED) {
+        $skipped_deprecations = [
+          // @see https://www.drupal.org/project/address/issues/3089266
+          'Theme functions are deprecated in drupal:8.0.0 and are removed from drupal:10.0.0. Use Twig templates instead of theme_inline_entity_form_entity_table(). See https://www.drupal.org/node/1831138',
+        ];
+        if (in_array($message, $skipped_deprecations, TRUE)) {
+          // Do not report the deprecation.
+          return NULL;
+        }
       }
-    }, E_USER_DEPRECATED);
+      return $previous_error_handler($severity, $message, $file, $line, $context);
+    });
   }
 
   /**

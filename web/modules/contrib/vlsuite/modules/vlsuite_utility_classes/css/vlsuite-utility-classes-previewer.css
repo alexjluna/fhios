@@ -1,0 +1,5 @@
+.vlsuite-utility-classes .vlsuite-utility-classes__previewer {
+  overflow: hidden;
+  outline: 1px dashed;
+  padding: 1rem;
+}

@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a vlsuite icon font.
+ *
+ * Available variables:
+ * - icon: Font icon.
+ * - url: An optional URL the image can be linked to.
+ *
+ * @ingroup themeable
+ */
+#}
+{% if url %}
+  <a href="{{ url }}"><span {{ attributes }}>{{ icon }}</span></a>
+{% else %}
+  <span {{ attributes }}>{{ icon }}</span>
+{% endif %}

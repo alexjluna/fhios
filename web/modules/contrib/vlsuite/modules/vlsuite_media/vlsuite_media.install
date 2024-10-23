@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Media install module file.
+ */
+
+/**
+ * Ensure default media types.
+ */
+function vlsuite_media_update_10001() {
+  $media_config = \Drupal::configFactory()->getEditable('vlsuite_media.settings');
+  $media_types = $media_config->get('media_types') ?? [];
+  if (empty($media_types)) {
+    $media_types = [
+      'vlsuite_image' => TRUE,
+      'vlsuite_local_video' => TRUE,
+      'vlsuite_remote_video' => TRUE,
+    ];
+    $media_config->set('media_types', $media_types);
+    $media_config->save();
+  }
+}

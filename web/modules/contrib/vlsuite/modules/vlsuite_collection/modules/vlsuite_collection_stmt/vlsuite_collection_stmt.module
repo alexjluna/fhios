@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Collection - STMT main module file.
+ */
+
+use Drupal\vlsuite_collection_stmt\Entity\Bundle\VLSuiteCollectionStmt;
+
+/**
+ * Implements hook_entity_bundle_info_alter().
+ */
+function vlsuite_collection_stmt_entity_bundle_info_alter(array &$bundles): void {
+  if (!empty($bundles['block_content'][VLSuiteCollectionStmt::BUNDLE_KEY])) {
+    $bundles['block_content'][VLSuiteCollectionStmt::BUNDLE_KEY]['class'] = VLSuiteCollectionStmt::class;
+  }
+}

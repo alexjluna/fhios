@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Block - Text main module file.
+ */
+
+use Drupal\vlsuite_block_text\Entity\Bundle\VLSuiteBlockText;
+
+/**
+ * Implements hook_entity_bundle_info_alter().
+ */
+function vlsuite_block_text_entity_bundle_info_alter(array &$bundles): void {
+  if (!empty($bundles['block_content'][VLSuiteBlockText::BUNDLE_KEY])) {
+    $bundles['block_content'][VLSuiteBlockText::BUNDLE_KEY]['class'] = VLSuiteBlockText::class;
+  }
+}

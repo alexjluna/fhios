@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_block_text
+id: vlsuite_text
+label: 'Text (VLSuite)'
+revision: 0
+description: ''
+vlsuite_block_icon: 9f13d320-e435-4eb6-bfd7-003a4c9c6b58

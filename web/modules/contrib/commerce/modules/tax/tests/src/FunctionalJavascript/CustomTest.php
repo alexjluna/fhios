@@ -44,11 +44,8 @@ class CustomTest extends CommerceWebDriverTestBase {
     $this->drupalGet($tax_type->toUrl('edit-form'));
     $this->getSession()->getPage()->pressButton('remove_rate0');
     $this->assertSession()->assertWaitOnAjaxRequest();
-    $this->getSession()->getPage()->pressButton('remove_territory0');
-    $this->assertSession()->assertWaitOnAjaxRequest();
-    $this->submitForm([], $this->t('Save'));
+    $this->submitForm([], (string) $this->t('Save'));
     $this->assertSession()->pageTextContains('Please add at least one rate.');
-    $this->assertSession()->pageTextContains('Please add at least one territory.');
 
     $this->getSession()->getPage()->selectFieldOption('configuration[custom][display_label]', 'vat');
     $this->getSession()->getPage()->pressButton('Add rate');
@@ -68,7 +65,7 @@ class CustomTest extends CommerceWebDriverTestBase {
     $this->assertSession()->assertWaitOnAjaxRequest();
     $this->getSession()->getPage()->selectFieldOption('configuration[custom][territories][1][territory][country_code]', 'IT');
     $this->assertSession()->assertWaitOnAjaxRequest();
-    $this->submitForm([], $this->t('Save'));
+    $this->submitForm([], (string) $this->t('Save'));
     $this->container->get('entity_type.manager')->getStorage('commerce_tax_type')->resetCache([$tax_type->id()]);
     $tax_type = TaxType::load($tax_type->id());
     $plugin_configuration = $tax_type->getPlugin()->getConfiguration();

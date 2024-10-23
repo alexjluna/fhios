@@ -1,0 +1,5 @@
+modal_width: '1200'
+modal_height: 'auto'
+modal_autoresize: true
+layout_builder_enabled: true
+layout_builder_admin_inherited: true

@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.vlsuite_background
+    - field.field.media.vlsuite_image.field_media_image
+    - media.type.vlsuite_image
+    - responsive_image.styles.vlsuite_original_optimized
+  module:
+    - responsive_image
+  enforced:
+    module:
+      - vlsuite_media_image
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: media.vlsuite_image.vlsuite_background
+targetEntityType: media
+bundle: vlsuite_image
+mode: vlsuite_background
+content:
+  field_media_image:
+    type: responsive_image
+    label: visually_hidden
+    settings:
+      responsive_image_style: vlsuite_original_optimized
+      image_link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

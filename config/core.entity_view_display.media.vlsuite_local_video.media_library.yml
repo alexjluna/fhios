@@ -1,0 +1,38 @@
+uuid: 0e7a1c75-ce0b-406c-84a7-5d724e659f43
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.vlsuite_local_video.field_media_video_file
+    - image.style.medium
+    - media.type.vlsuite_local_video
+  module:
+    - image
+  enforced:
+    module:
+      - vlsuite_media_local_video
+_core:
+  default_config_hash: AN74bqbDzUpy7xGQS-oMyb5AhKV8nfgUdHEK51-xsF4
+id: media.vlsuite_local_video.media_library
+targetEntityType: media
+bundle: vlsuite_local_video
+mode: media_library
+content:
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_video_file: true
+  langcode: true
+  name: true
+  uid: true

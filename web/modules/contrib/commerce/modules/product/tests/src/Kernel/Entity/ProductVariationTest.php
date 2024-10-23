@@ -3,10 +3,10 @@
 namespace Drupal\Tests\commerce_product\Kernel\Entity;
 
 use Drupal\commerce_price\Price;
+use Drupal\commerce_product\Entity\Product;
 use Drupal\commerce_product\Entity\ProductAttribute;
 use Drupal\commerce_product\Entity\ProductAttributeValue;
 use Drupal\commerce_product\Entity\ProductVariation;
-use Drupal\commerce_product\Entity\Product;
 use Drupal\Tests\commerce\Kernel\CommerceKernelTestBase;
 use Drupal\user\UserInterface;
 

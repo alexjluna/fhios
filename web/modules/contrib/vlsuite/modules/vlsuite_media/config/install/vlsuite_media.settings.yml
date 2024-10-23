@@ -1,0 +1,7 @@
+bg_types:
+  vlsuite_image: true
+  vlsuite_local_video: true
+media_types:
+  vlsuite_image: true
+  vlsuite_local_video: true
+  vlsuite_remote_video: true

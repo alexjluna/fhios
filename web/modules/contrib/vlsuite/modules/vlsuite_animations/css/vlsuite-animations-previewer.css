@@ -1,0 +1,30 @@
+.vlsuite-animations {
+  position: relative;
+}
+
+.vlsuite-animations .vlsuite-animations__previewer {
+  font-size: 24px;
+  background: white;
+  overflow: hidden;
+  text-align: left;
+  text-align: center;
+  font-weight: bold;
+  background: #cf8a23;
+  color: #fff;
+  position: absolute;
+  left: 80%;
+  top: 50%;
+  width: 8em;
+  height: 3em;
+  margin-left: -4em;
+  margin-top: -1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.2;
+}
+
+.vlsuite-animations .vlsuite-animations__previewer:hover,
+.vlsuite-animations .vlsuite-animations__previewer.isPlaying {
+  opacity: 1;
+}

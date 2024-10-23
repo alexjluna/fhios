@@ -1,0 +1,50 @@
+{
+  "name": "drupal/vlsuite",
+  "type": "drupal-module",
+  "description": "Visual Layout Suite (VLSuite)",
+  "homepage": "https://www.drupal.org/project/vlsuite",
+  "authors": [
+    {
+      "name": "CRZDEV",
+      "homepage": "https://www.drupal.org/u/crzdev",
+      "role": "Maintainer"
+    },
+    {
+      "name": "Alberto Ortega (albeorte)",
+      "homepage": "https://www.drupal.org/u/albeorte",
+      "role": "Maintainer"
+    },
+    {
+      "name": "Alejandro Cabarcos",
+      "homepage": "https://www.drupal.org/u/alejandro-cabarcos",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/3354428",
+    "source": "https://git.drupalcode.org/project/vlsuite"
+  },
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev",
+  "require": {
+    "drupal/entity": "^1.4",
+    "drupal/layout_builder_at": "^2.13",
+    "drupal/layout_builder_operation_link": "^2.1",
+    "drupal/layout_builder_restrictions": "^2.17",
+    "drupal/media_library_form_element": "^2.0",
+    "drupal/media_responsive_thumbnail": "^1.5",
+    "drupal/section_library": "^1.1"
+  },
+  "extra": {
+    "patches": {
+      "drupal/core": {
+        "3207875 - \"Unsaved changes\" message incorrectly appears on layout builder": "https://www.drupal.org/files/issues/2021-08-13/3207875--20.patch",
+        "3030154 - layout_builder__layout_section column hitting database limit": "https://www.drupal.org/files/issues/2023-04-06/3030154-62_0.patch",
+        "3045509 - EntityFieldManager::getFieldMap() doesn't show bundle fields": "https://git.drupalcode.org/issue/drupal-3045509/-/commit/2d55b4ff75f2f7358ff765f3ec63591e45ca6f15.patch"
+      },
+      "drupal/section_library": {
+        "3217647: Adding stuff to library doesn't close dialog if dialog opens in popup": "https://www.drupal.org/files/issues/2021-06-07/section_library.3217647.close-dialog.2.patch"
+      }
+    }
+  }
+}

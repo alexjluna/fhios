@@ -161,6 +161,7 @@ class Conditions extends FormElement {
         $element[$category_id][$plugin_id]['enable'] = [
           '#type' => 'checkbox',
           '#title' => $definition['display_label'],
+          '#description' => $definition['description'] ?? '',
           '#default_value' => $enabled,
           '#attributes' => [
             'class' => ['enable'],

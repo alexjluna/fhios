@@ -1,0 +1,44 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_icon
+  module:
+    - media_library
+  enforced:
+    module:
+      - vlsuite_block_icon
+id: block_content.vlsuite_icon.default
+targetEntityType: block_content
+bundle: vlsuite_icon
+mode: default
+content:
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  vlsuite_icon:
+    type: media_library_widget
+    weight: 3
+    region: content
+    settings:
+      media_types:
+        - vlsuite_icon
+    third_party_settings: {  }
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

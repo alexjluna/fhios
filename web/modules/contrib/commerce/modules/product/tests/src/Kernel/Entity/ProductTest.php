@@ -2,8 +2,8 @@
 
 namespace Drupal\Tests\commerce_product\Kernel\Entity;
 
-use Drupal\commerce_product\Entity\ProductVariation;
 use Drupal\commerce_product\Entity\Product;
+use Drupal\commerce_product\Entity\ProductVariation;
 use Drupal\Tests\commerce\Kernel\CommerceKernelTestBase;
 use Drupal\user\UserInterface;
 
@@ -43,7 +43,7 @@ class ProductTest extends CommerceKernelTestBase {
     $this->installEntitySchema('commerce_product');
     $this->installConfig(['commerce_product']);
 
-    $user = $this->createUser([], ['administer commerce_product']);
+    $user = $this->createUser(['administer commerce_product']);
     $this->user = $this->reloadEntity($user);
     $this->container->get('current_user')->setAccount($user);
   }

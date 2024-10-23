@@ -465,6 +465,9 @@ class BuyXGetY extends OrderPromotionOfferBase {
         'source_id' => $promotion->id(),
         'included' => !empty($this->configuration['display_inclusive']),
       ]));
+
+      // Save reference to source order items tied to this offer #3443703.
+      $order_item->setData('buy_order_items', array_keys($buy_order_items));
     }
   }
 
@@ -861,7 +864,7 @@ class BuyXGetY extends OrderPromotionOfferBase {
         $adjustment_amount = $adjusted_total_price;
       }
       if (!empty($this->configuration['display_inclusive'])) {
-        $new_unit_price = $order_item->getTotalPrice()->subtract($adjustment_amount)->divide($order_item->getQuantity());
+        $new_unit_price = $adjusted_total_price->subtract($adjustment_amount)->divide($order_item->getQuantity());
         $new_unit_price = $this->rounder->round($new_unit_price);
         $order_item->setUnitPrice($new_unit_price);
       }
@@ -875,7 +878,8 @@ class BuyXGetY extends OrderPromotionOfferBase {
       }
       $adjustment_amount = $amount->multiply($quantity);
       if (!empty($this->configuration['display_inclusive'])) {
-        $new_unit_price = $order_item->getTotalPrice()->subtract($adjustment_amount)->divide($order_item->getQuantity());
+        $adjusted_total_price = $order_item->getAdjustedTotalPrice(['promotion']);
+        $new_unit_price = $adjusted_total_price->subtract($adjustment_amount)->divide($order_item->getQuantity());
         $new_unit_price = $this->rounder->round($new_unit_price);
         $order_item->setUnitPrice($new_unit_price);
       }

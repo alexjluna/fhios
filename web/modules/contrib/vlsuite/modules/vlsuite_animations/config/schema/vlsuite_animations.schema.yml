@@ -1,0 +1,48 @@
+vlsuite_animations_base:
+  type: mapping
+  mapping:
+    entrance_down:
+      type: string
+    entrance_up:
+      type: string
+    exit_down:
+      type: string
+    exit_up:
+      type: string
+    entrance:
+      type: string
+    infinite:
+      type: string
+
+vlsuite_animations_animation:
+  type: mapping
+  mapping:
+    apply_at:
+      type: sequence
+      sequence:
+        type: string
+    visual_name:
+      type: label
+      label: 'Visual name'
+    classes:
+      type: string
+
+vlsuite_animations.settings:
+  type: config_object
+  mapping:
+    is_playing_classes:
+      type: string
+    is_shown_classes:
+      type: string
+    infinite_classes:
+      type: string
+    main_classes:
+      type: string
+    root_margin:
+      type: string
+    threshold:
+      type: float
+    animations:
+      type: sequence
+      sequence:
+        type: vlsuite_animations_animation

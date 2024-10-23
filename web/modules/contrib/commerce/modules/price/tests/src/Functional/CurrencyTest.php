@@ -3,8 +3,8 @@
 namespace Drupal\Tests\commerce_price\Functional;
 
 use Drupal\commerce_price\Entity\Currency;
-use Drupal\Tests\commerce\Functional\CommerceBrowserTestBase;
 use Drupal\Core\Url;
+use Drupal\Tests\commerce\Functional\CommerceBrowserTestBase;
 
 /**
  * Tests the currency UI.

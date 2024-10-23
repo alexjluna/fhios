@@ -1,0 +1,43 @@
+uuid: a5b68370-aca5-4626-a917-ebae829820f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_image
+    - responsive_image.styles.vlsuite_original_optimized
+  module:
+    - link
+    - media_responsive_thumbnail
+  enforced:
+    module:
+      - vlsuite_block_image
+_core:
+  default_config_hash: hTlzH6CXQz52oyRnVrRKijnBQhWardlzr-PUuWlCL68
+id: block_content.vlsuite_image.default
+targetEntityType: block_content
+bundle: vlsuite_image
+mode: default
+content:
+  vlsuite_image:
+    type: media_responsive_thumbnail
+    label: hidden
+    settings:
+      responsive_image_style: vlsuite_original_optimized
+      image_link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  vlsuite_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 60
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true

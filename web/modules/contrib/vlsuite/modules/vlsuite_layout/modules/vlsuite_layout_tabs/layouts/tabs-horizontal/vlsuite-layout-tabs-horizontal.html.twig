@@ -1,0 +1,71 @@
+{#
+/**
+ * @file
+ * VLSuite layout tabs horizontal.
+ */
+#}
+{% set identifier_prefix = content['#identifier_prefix'] %}
+{% set nav_classes = nav_classes ? nav_classes : ['nav', 'nav-tabs', 'nav-fill'] %}
+{% set nav_item_classes = nav_item_classes ? nav_item_classes : ['nav-item'] %}
+{% set nav_link_classes = nav_link_classes ? nav_link_classes : ['nav-link'] %}
+{% set nav_link_active_classes = nav_link_active_classes ? nav_link_active_classes : ['active'] %}
+{% set tabs_classes = tabs_classes ? tabs_classes : ['tab-content'] %}
+{% set tab_classes = tab_classes ? tab_classes : ['tab-pane', 'fade'] %}
+{% set tab_active_classes = tab_active_classes ? tab_active_classes : ['show', 'active'] %}
+
+{% if content %}
+  {% if settings.edge_to_edge_bg %}{{ content.media_bg }}{% endif %}
+  <div{{ attributes }}>
+    {% if not settings.edge_to_edge_bg %}{{ content.media_bg }}{% endif %}
+    <div{{ content['#row_attributes'] }}>
+      {% set content_top_render = content.top|render %}
+      {% if settings.optional_regions and content_top_render|trim %}
+        <div {{ content['#top_col_attributes'] }}>
+          <div {{ region_attributes.top.addClass(content['#top_class']).addClass('vlsuite-layout__region', 'vlsuite-layout__region--top') }}>
+            {{ content_top_render }}
+          </div>
+        </div>
+      {% endif %}
+      <div class="{{ content['#grid_classes'] }}">
+        <ul class="{{ nav_classes|join(' ') }}" role="tablist">
+          {% for tab_index,tab in settings.tabs %}
+            {% set is_default = settings.tabs_default == tab_index %}
+            <li class="{{ nav_item_classes|join(' ') }}" role="presentation">
+              <button
+                class="{{ is_default ? nav_link_classes|merge(nav_link_active_classes)|join(' ') : nav_link_classes|join(' ') }}"
+                id="{{ identifier_prefix ~ '-' ~ tab_index|clean_class ~ '-tab'}}"
+                data-bs-toggle="tab"
+                data-bs-target="#{{ identifier_prefix ~ '-' ~ tab_index|clean_class ~ '-content'}}"
+                type="button"
+                role="tab"
+                aria-controls="{{ identifier_prefix ~ '-' ~ tab_index|clean_class ~ '-content'}}" 
+                aria-selected="{{ is_default ? 'true' : 'false'}}">{{ vlsuite_icon_font_icon(tab['icon']) }}{{ tab['title'] }}</button>
+            </li>
+          {% endfor %}
+        </ul>
+        <div class="{{ tabs_classes|join(' ') }}">
+          {% for tab_index,tab in settings.tabs %}
+            {% set is_default = settings.tabs_default == tab_index %}
+            <div
+              class="{{ is_default ? tab_classes|merge(tab_active_classes)|join(' ') : tab_classes|join(' ') }}"
+              id="{{ identifier_prefix ~ '-' ~ tab_index|clean_class ~ '-content'}}"
+              role="tabpanel"
+              aria-labelledby="{{ identifier_prefix ~ '-' ~ tab_index|clean_class ~ '-tab'}}">
+              <div {{ content['#' ~ tab_index ~ '_col_attributes'] }}>
+                <div {{ region_attributes[tab_index].addClass(content['#' ~ tab_index ~ '_class']).addClass('vlsuite-layout__region', 'vlsuite-layout__region--tab') }}>{{ content[tab_index] }}</div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% set content_bottom_render = content.bottom|render %}
+      {% if settings.optional_regions and content_bottom_render|trim %}
+        <div {{ content['#bottom_col_attributes'] }}>
+          <div {{ region_attributes.bottom.addClass(content['#bottom_class']).addClass('vlsuite-layout__region', 'vlsuite-layout__region--bottom') }}>
+            {{ content_bottom_render }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

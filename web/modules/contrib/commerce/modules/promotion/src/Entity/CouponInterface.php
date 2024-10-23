@@ -138,7 +138,7 @@ interface CouponInterface extends ContentEntityInterface, EntityChangedInterface
    * @param string $store_timezone
    *   The store timezone. E.g. "Europe/Berlin".
    *
-   * @return \Drupal\Core\Datetime\DrupalDateTime
+   * @return \Drupal\Core\Datetime\DrupalDateTime|null
    *   The coupon start date/time.
    */
   public function getStartDate($store_timezone = 'UTC');
@@ -167,7 +167,7 @@ interface CouponInterface extends ContentEntityInterface, EntityChangedInterface
    * @param string $store_timezone
    *   The store timezone. E.g. "Europe/Berlin".
    *
-   * @return \Drupal\Core\Datetime\DrupalDateTime
+   * @return \Drupal\Core\Datetime\DrupalDateTime|null
    *   The coupon end date/time.
    */
   public function getEndDate($store_timezone = 'UTC');

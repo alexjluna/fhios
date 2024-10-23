@@ -1,0 +1,4 @@
+block:
+  css:
+    component:
+      css/vlsuite-block.css: {}

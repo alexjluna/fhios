@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Landing install module file.
+ */
+
+/**
+ * New attachments block.
+ */
+function vlsuite_landing_update_10001() {
+  if (!\Drupal::service('module_handler')->moduleExists('vlsuite_block_attachments')) {
+    \Drupal::service('module_installer')->install(['vlsuite_block_attachments']);
+  }
+}

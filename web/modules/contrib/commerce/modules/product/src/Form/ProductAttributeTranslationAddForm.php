@@ -5,11 +5,11 @@ namespace Drupal\commerce_product\Form;
 use Drupal\commerce\InlineFormManager;
 use Drupal\config_translation\ConfigMapperManagerInterface;
 use Drupal\config_translation\Form\ConfigTranslationAddForm;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\language\ConfigurableLanguageManagerInterface;
 use Drupal\Core\Config\TypedConfigManagerInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\language\ConfigurableLanguageManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**

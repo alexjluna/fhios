@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Block - Attachments install module file.
+ */
+
+use Drupal\vlsuite_block_attachments\Entity\Bundle\VLSuiteBlockAttachments;
+
+/**
+ * Implements hook_install().
+ */
+function vlsuite_block_attachments_install() {
+  \Drupal::service('vlsuite_bundle_field.helper')->installBlockContentBundleFields(VLSuiteBlockAttachments::BUNDLE_KEY, VLSuiteBlockAttachments::class);
+  _vlsuite_block_update_helper_save_default_icon_file('block_content.type.vlsuite_attachments', 'file.svg', '977d04d0-3571-4be2-b899-7f29f6dc14fb');
+}

@@ -10,6 +10,7 @@ use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Lock\LockBackendInterface;
+use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Utility\Token;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -188,7 +189,7 @@ abstract class SequentialNumberPatternBase extends NumberPatternBase implements 
     $number = $this->token->replace($this->configuration['pattern'], [
       'pattern' => ['number' => $number],
       $entity->getEntityTypeId() => $entity,
-    ]);
+    ], ['clear' => TRUE], new BubbleableMetadata());
 
     return $number;
   }
@@ -208,8 +209,8 @@ abstract class SequentialNumberPatternBase extends NumberPatternBase implements 
    * {@inheritdoc}
    */
   public function getCurrentSequence(ContentEntityInterface $entity) {
-    $query = $this->connection->select('commerce_number_pattern_sequence', 'cnps');
-    $query->fields('cnps', ['store_id', 'number', 'generated']);
+    $query = $this->connection->select('commerce_number_pattern_sequence');
+    $query->fields('commerce_number_pattern_sequence', ['store_id', 'number', 'generated']);
     $query
       ->condition('entity_id', $this->parentEntity->id())
       ->condition('store_id', $this->getStoreId($entity))

@@ -18,6 +18,7 @@ abstract class CustomerAddressBase extends ConditionBase {
   public function defaultConfiguration() {
     return [
       'zone' => NULL,
+      'operator' => 'in',
     ] + parent::defaultConfiguration();
   }
 
@@ -26,6 +27,17 @@ abstract class CustomerAddressBase extends ConditionBase {
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
+
+    $form['operator'] = [
+      '#type' => 'select',
+      '#field_prefix' => $this->t('Address') . ' ',
+      '#field_suffix' => ' ' . $this->t('in one of the following territories:'),
+      '#options' => [
+        'in' => $this->t('must be'),
+        'not in' => $this->t('must NOT be'),
+      ],
+      '#default_value' => $this->configuration['operator'],
+    ];
 
     $form['zone'] = [
       '#type' => 'address_zone',
@@ -51,6 +63,7 @@ abstract class CustomerAddressBase extends ConditionBase {
     unset($values['zone']['label']);
 
     $this->configuration['zone'] = $values['zone'];
+    $this->configuration['operator'] = $values['operator'];
   }
 
   /**
@@ -73,6 +86,14 @@ abstract class CustomerAddressBase extends ConditionBase {
       'label' => 'N/A',
     ] + $this->configuration['zone']);
     $address = $profile->get('address')->first();
+    if (!$address) {
+      // The conditions can't be applied without address.
+      return FALSE;
+    }
+
+    if (!empty($this->configuration['operator']) && $this->configuration['operator'] == 'not in') {
+      return !$zone->match($address);
+    }
 
     return $zone->match($address);
   }

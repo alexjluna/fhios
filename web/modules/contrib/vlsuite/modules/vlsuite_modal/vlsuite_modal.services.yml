@@ -1,0 +1,28 @@
+services:
+  vlsuite_modal.helper:
+    class: Drupal\vlsuite_modal\VLSuiteModalHelper
+    arguments: ['@config.factory', '@theme.initialization', '@theme.manager', '@current_route_match']
+  vlsuite_modal.route_subscriber:
+    class: Drupal\vlsuite_modal\EventSubscriber\VLSuiteModalRouteSubscriber
+    tags:
+      - { name: event_subscriber }
+  vlsuite_modal.theme_negotiator:
+    class: Drupal\vlsuite_modal\Theme\VLSuiteModalThemeNegotiator
+    arguments: ['@csrf_token', '@config.factory', '@request_stack']
+    tags:
+      - { name: theme_negotiator, priority: 1004 }
+  vlsuite_modal.library.discovery.collector:
+    decorates: library.discovery.collector
+    class: \Drupal\vlsuite_modal\VLSuiteModalLibraryDiscoveryCollector
+    arguments: ['@cache.discovery', '@lock', '@library.discovery.parser', '@theme.manager']
+    tags:
+      - { name: needs_destruction }
+    calls:
+      - [setThemeInitialization, ['@theme.initialization']]
+      - [setCurrentRouteMatch, ['@current_route_match']]
+      - [setConfigFactory, ['@config.factory']]
+  vlsuite_modal.vlsuite_modal_config_override:
+    class: Drupal\vlsuite_modal\VLSuiteModalConfigOverride
+    arguments: ['@request_stack']
+    tags:
+      - { name: config.factory.override }

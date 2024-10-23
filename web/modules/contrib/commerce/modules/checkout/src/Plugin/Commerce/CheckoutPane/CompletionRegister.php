@@ -3,13 +3,14 @@
 namespace Drupal\commerce_checkout\Plugin\Commerce\CheckoutPane;
 
 use Drupal\commerce\CredentialsCheckFloodInterface;
-use Drupal\commerce_checkout\Plugin\Commerce\CheckoutFlow\CheckoutFlowInterface;
 use Drupal\commerce_checkout\Event\CheckoutCompletionRegisterEvent;
 use Drupal\commerce_checkout\Event\CheckoutEvents;
+use Drupal\commerce_checkout\Plugin\Commerce\CheckoutFlow\CheckoutFlowInterface;
 use Drupal\commerce_order\OrderAssignmentInterface;
 use Drupal\Core\Entity\Entity\EntityFormDisplay;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\user\UserAuthInterface;
@@ -80,6 +81,13 @@ class CompletionRegister extends CheckoutPaneBase implements CheckoutPaneInterfa
   protected $userStorage;
 
   /**
+   * The language manager.
+   *
+   * @var \Drupal\Core\Language\LanguageManagerInterface
+   */
+  protected $languageManager;
+
+  /**
    * Constructs a new CompletionRegister object.
    *
    * @param array $configuration
@@ -104,8 +112,10 @@ class CompletionRegister extends CheckoutPaneBase implements CheckoutPaneInterfa
    *   The request stack.
    * @param \Drupal\user\UserAuthInterface $user_auth
    *   The user authentication object.
+   * @param \Drupal\Core\Language\LanguageManagerInterface|null $language_manager
+   *   The language manager.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, CheckoutFlowInterface $checkout_flow, CredentialsCheckFloodInterface $credentials_check_flood, AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager, EventDispatcherInterface $event_dispatcher, OrderAssignmentInterface $order_assignment, RequestStack $request_stack, UserAuthInterface $user_auth) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, CheckoutFlowInterface $checkout_flow, CredentialsCheckFloodInterface $credentials_check_flood, AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager, EventDispatcherInterface $event_dispatcher, OrderAssignmentInterface $order_assignment, RequestStack $request_stack, UserAuthInterface $user_auth, LanguageManagerInterface $language_manager = NULL) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $checkout_flow, $entity_type_manager);
 
     $this->credentialsCheckFlood = $credentials_check_flood;
@@ -115,6 +125,11 @@ class CompletionRegister extends CheckoutPaneBase implements CheckoutPaneInterfa
     $this->orderAssignment = $order_assignment;
     $this->userAuth = $user_auth;
     $this->userStorage = $entity_type_manager->getStorage('user');
+    if (!$language_manager) {
+      @trigger_error('Calling ' . __METHOD__ . '() without the $language_manager argument is deprecated in commerce:8.x-2.37 and is removed from commerce:3.x.');
+      $language_manager = \Drupal::languageManager();
+    }
+    $this->languageManager = $language_manager;
   }
 
   /**
@@ -132,7 +147,8 @@ class CompletionRegister extends CheckoutPaneBase implements CheckoutPaneInterfa
       $container->get('event_dispatcher'),
       $container->get('commerce_order.order_assignment'),
       $container->get('request_stack'),
-      $container->get('user.auth')
+      $container->get('user.auth'),
+      $container->get('language_manager')
     );
   }
 
@@ -226,6 +242,9 @@ class CompletionRegister extends CheckoutPaneBase implements CheckoutPaneInterfa
       'name' => $values['name'],
       'pass' => $values['pass'],
       'status' => TRUE,
+      'langcode' => $this->languageManager->getCurrentLanguage()->getId(),
+      'preferred_langcode' => $this->languageManager->getCurrentLanguage()->getId(),
+      'preferred_admin_langcode' => $this->languageManager->getCurrentLanguage()->getId(),
     ]);
 
     /** @var \Drupal\user\UserInterface $account */
@@ -254,6 +273,9 @@ class CompletionRegister extends CheckoutPaneBase implements CheckoutPaneInterfa
       'mail' => $this->order->getEmail(),
       'name' => $values['name'],
       'status' => TRUE,
+      'langcode' => $this->languageManager->getCurrentLanguage()->getId(),
+      'preferred_langcode' => $this->languageManager->getCurrentLanguage()->getId(),
+      'preferred_admin_langcode' => $this->languageManager->getCurrentLanguage()->getId(),
     ]);
     /** @var \Drupal\user\UserInterface $account */
     $form_display = EntityFormDisplay::collectRenderDisplay($account, 'register');

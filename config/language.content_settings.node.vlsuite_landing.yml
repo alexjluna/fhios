@@ -1,0 +1,23 @@
+uuid: 47571069-1f5f-4376-ad21-42869d72b1af
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.vlsuite_landing
+  module:
+    - content_translation
+  enforced:
+    module:
+      - vlsuite_landing
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: Z-0enDxatU0BCVNVdgh-IDQpQLHsaXkEJ0Jcwz57Uvw
+id: node.vlsuite_landing
+target_entity_type_id: node
+target_bundle: vlsuite_landing
+default_langcode: current_interface
+language_alterable: false

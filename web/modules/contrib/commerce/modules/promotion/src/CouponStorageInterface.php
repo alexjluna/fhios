@@ -16,8 +16,8 @@ interface CouponStorageInterface extends ContentEntityStorageInterface {
    * @param string $code
    *   The coupon code.
    *
-   * @return \Drupal\commerce_promotion\Entity\CouponInterface
-   *   The coupon.
+   * @return \Drupal\commerce_promotion\Entity\CouponInterface|bool
+   *   The coupon, FALSE if it does not exist.
    */
   public function loadEnabledByCode($code);
 

@@ -1,0 +1,24 @@
+#vlsuite_media.always_active:
+#  label: 'Always acive'
+#  mediaQuery: ''
+#  weight: 0
+#  multipliers:
+#    - 1x
+vlsuite_media.small:
+  label: Small
+  mediaQuery: ''
+  weight: 0
+  multipliers:
+    - 1x
+vlsuite_media.medium:
+  label: Medium
+  mediaQuery: '(min-width: 767px) and (max-width: 1199px)'
+  weight: 1
+  multipliers:
+    - 1x
+vlsuite_media.large:
+  label: Large
+  mediaQuery: '(min-width: 1200px)'
+  weight: 2
+  multipliers:
+    - 1x

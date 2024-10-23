@@ -1,0 +1,19 @@
+vlsuite_modal.settings:
+  type: config_object
+  label: 'VLSuite - Modal settings'
+  mapping:
+    modal_width:
+      type: string
+      label: 'Modal width'
+    modal_height:
+      type: string
+      label: 'Modal height'
+    modal_autoresize:
+      type: boolean
+      label: 'Modal autoresize'
+    layout_builder_enabled:
+      type: boolean
+      label: 'Layout builder enabled'
+    layout_builder_admin_inherited:
+      type: boolean
+      label: 'Layout builder admin inherited appearance'

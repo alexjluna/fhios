@@ -1,0 +1,79 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Block - Headings menu main module file.
+ */
+
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_theme().
+ */
+function vlsuite_block_headings_menu_theme() {
+  return [
+    'vlsuite_block_headings_menu_nav' => [
+      'variables' => [
+        'anchors_tree' => [],
+        'attributes' => [],
+        'inner_attributes' => [],
+        'link_attributes' => [],
+        'title_start_icon' => '',
+        'title_end_icon' => '',
+        'title' => '',
+        'title_attributes' => [],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Helper function to convert raw anchors tree data into renderable array.
+ *
+ * @param array $anchors_tree
+ *   Anchors tree.
+ * @param array $nav_attributes
+ *   Nav attributes.
+ * @param array $link_attributes
+ *   Link attributes.
+ *
+ * @return array
+ *   Nav with links build from provided anchors tree ready to render.
+ */
+function _vlsuite_block_headings_menu_prepare_nav_tree(array $anchors_tree, array $nav_attributes, array $link_attributes) {
+  $build = [];
+  foreach ($anchors_tree as $anchor => $value) {
+    $is_anchor_tree = is_array($value) && !is_string($anchor);
+    if ($is_anchor_tree) {
+      $build[] = [
+        '#type' => 'html_tag',
+        '#tag' => 'nav',
+        '#attributes' => $nav_attributes,
+        'links' => _vlsuite_block_headings_menu_prepare_nav_tree($value, $nav_attributes, $link_attributes),
+      ];
+    }
+    else {
+      $link = Link::fromTextAndUrl($value, Url::fromUri('internal:#' . $anchor))->toRenderable();
+      $link['#attributes'] = $link_attributes;
+      $build[] = $link;
+    }
+  }
+  return $build;
+}
+
+/**
+ * Prepare block headings menu nav.
+ *
+ * @param array $variables
+ *   Variables.
+ */
+function template_preprocess_vlsuite_block_headings_menu_nav(array &$variables) {
+  $variables['tree_build'] = [
+    '#type' => 'html_tag',
+    '#tag' => 'nav',
+    '#attributes' => $variables['attributes'],
+    '#access' => !empty($variables['anchors_tree']),
+    'links' => _vlsuite_block_headings_menu_prepare_nav_tree($variables['anchors_tree'], $variables['inner_attributes'], $variables['link_attributes']),
+  ];
+}

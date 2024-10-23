@@ -1,0 +1,96 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.node.vlsuite_landing.full
+    - filter.format.vlsuite_basic_html
+    - media.type.vlsuite_icon
+    - media.type.vlsuite_image
+    - media.type.vlsuite_remote_video
+    - media.type.vlsuite_local_video
+    - node.type.vlsuite_landing
+  module:
+    - block
+    - block_content
+    - content_translation
+    - contextual
+    - file
+    - filter
+    - layout_builder
+    - media
+    - node
+    - path
+    - section_library
+    - system
+    - toolbar
+  enforced:
+    module:
+      - vlsuite_landing_content_editor
+id: vlsuite_landing_content_editor
+label: 'Landing content editor (VLSuite)'
+weight: -7
+is_admin: false
+permissions:
+  - 'access content overview'
+  - 'access contextual links'
+  - 'access files overview'
+  - 'access media overview'
+  - 'access toolbar'
+  - 'add section library templates'
+  - 'administer blocks'
+  - 'administer section library template entities'
+  - 'administer url aliases'
+  - 'configure editable vlsuite_landing node layout overrides'
+  - 'create and edit custom blocks'
+  - 'create content translations'
+  - 'create vlsuite_icon media'
+  - 'create vlsuite_image media'
+  - 'create vlsuite_landing content'
+  - 'create vlsuite_remote_video media'
+  - 'create vlsuite_local_video media'
+  - 'create url aliases'
+  - 'delete all revisions'
+  - 'delete any vlsuite_icon media'
+  - 'delete any vlsuite_image media'
+  - 'delete any vlsuite_landing content'
+  - 'delete any vlsuite_remote_video media'
+  - 'delete any vlsuite_local_video media'
+  - 'delete content translations'
+  - 'delete vlsuite_landing revisions'
+  - 'delete own vlsuite_icon media'
+  - 'delete own vlsuite_image media'
+  - 'delete own vlsuite_landing content'
+  - 'delete own vlsuite_remote_video media'
+  - 'delete own vlsuite_local_video media'
+  - 'delete section library templates'
+  - 'edit any vlsuite_icon media'
+  - 'edit any vlsuite_image media'
+  - 'edit any vlsuite_landing content'
+  - 'edit any vlsuite_remote_video media'
+  - 'edit any vlsuite_local_video media'
+  - 'edit own vlsuite_icon media'
+  - 'edit own vlsuite_image media'
+  - 'edit own vlsuite_landing content'
+  - 'edit own vlsuite_remote_video media'
+  - 'edit own vlsuite_local_video media'
+  - 'edit section library templates'
+  - 'import template from section library'
+  - 'revert all revisions'
+  - 'revert vlsuite_landing revisions'
+  - 'translate block_content'
+  - 'translate editable entities'
+  - 'translate vlsuite_icon media'
+  - 'translate vlsuite_image media'
+  - 'translate vlsuite_landing node'
+  - 'translate vlsuite_remote_video media'
+  - 'translate vlsuite_local_video media'
+  - 'update content translations'
+  - 'update media'
+  - 'use text format vlsuite_basic_html'
+  - 'view all media revisions'
+  - 'view all revisions'
+  - 'view vlsuite_landing revisions'
+  - 'view own unpublished content'
+  - 'view own unpublished media'
+  - 'view section library templates'
+  - 'view the administration theme'

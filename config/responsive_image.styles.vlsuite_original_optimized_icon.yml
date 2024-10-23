@@ -1,0 +1,23 @@
+uuid: 7ca45786-27e1-4600-b610-2663dc96245e
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.vlsuite_original_optimized_icon
+  module:
+    - vlsuite_media
+  enforced:
+    module:
+      - vlsuite_media_icon
+_core:
+  default_config_hash: SCNRFhet1lilQuQzCOABHFkTPHH6TYVgF6zNZ1smU0k
+id: vlsuite_original_optimized_icon
+label: 'Original optimized icon (VLSuite)'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: vlsuite_original_optimized_icon
+    breakpoint_id: vlsuite_media.small
+    multiplier: 1x
+breakpoint_group: vlsuite_media
+fallback_image_style: vlsuite_original_optimized_icon

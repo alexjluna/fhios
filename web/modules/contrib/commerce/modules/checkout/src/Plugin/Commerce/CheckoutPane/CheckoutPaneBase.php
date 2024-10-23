@@ -186,6 +186,7 @@ abstract class CheckoutPaneBase extends PluginBase implements CheckoutPaneInterf
    */
   public function setStepId($step_id) {
     $this->configuration['step'] = $step_id;
+    return $this;
   }
 
   /**
@@ -200,6 +201,7 @@ abstract class CheckoutPaneBase extends PluginBase implements CheckoutPaneInterf
    */
   public function setWeight($weight) {
     $this->configuration['weight'] = $weight;
+    return $this;
   }
 
   /**

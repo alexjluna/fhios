@@ -1,0 +1,146 @@
+uuid: 9f5e58b8-1d76-4c3e-8e3e-21ab2dd83421
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_collection_hero
+    - core.entity_view_mode.block_content.vlsuite_collection_2
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - vlsuite_layout
+  enforced:
+    module:
+      - vlsuite_collection_hero
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: vlsuite_layout_twocols
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          column_widths: 60-40
+          optional_regions: false
+          edge_to_edge: false
+          vlsuite_utility_class:
+            'vlsuite_layout:media_bg':
+              media-bg-opacity: '50'
+            'vlsuite_layout:section':
+              background-color: dark
+              padding: spacer-5
+            'vlsuite_layout:row':
+              gutter: gutter-5
+              align-items: center
+            'vlsuite_layout:main_regions':
+              color: white
+          edge_to_edge_bg: true
+          media_bg: null
+          identifier: ''
+          vlsuite_slider: {  }
+          vlsuite_animations: {  }
+        components:
+          1ba8520a-263a-477a-a038-b6c76cf1205f:
+            uuid: 1ba8520a-263a-477a-a038-b6c76cf1205f
+            region: second
+            configuration:
+              id: 'vlsuite_block_field_block:block_content:vlsuite_collection_hero:vlsuite_text'
+              label: Text
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+              vlsuite_utility_class: {  }
+            weight: 6
+            additional: {  }
+          e7e1525d-1a04-4a57-87a6-2141700d32f7:
+            uuid: e7e1525d-1a04-4a57-87a6-2141700d32f7
+            region: second
+            configuration:
+              id: 'vlsuite_block_field_block:block_content:vlsuite_collection_hero:vlsuite_link'
+              label: Link
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: link
+                label: hidden
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: '0'
+                  target: '0'
+                third_party_settings: {  }
+              vlsuite_utility_class:
+                'block_content:vlsuite_collection_hero:vlsuite_link:item':
+                  btn: light
+                  rounded: pill
+                'block_content:vlsuite_collection_hero:vlsuite_link':
+                  text-align: right
+            weight: 7
+            additional: {  }
+          40026fc5-514a-4a24-ba2c-9c3eca1a5ad4:
+            uuid: 40026fc5-514a-4a24-ba2c-9c3eca1a5ad4
+            region: first
+            configuration:
+              id: 'vlsuite_block_field_block:block_content:vlsuite_collection_hero:vlsuite_media'
+              label: Media
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
+              vlsuite_utility_class: {  }
+            weight: 9
+            additional: {  }
+          bd80277d-f753-47da-971f-c03138dc8b21:
+            uuid: bd80277d-f753-47da-971f-c03138dc8b21
+            region: second
+            configuration:
+              id: 'vlsuite_block_media_bg_block:block_content:vlsuite_collection_hero:vlsuite_background'
+              label: 'Media background'
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            weight: 8
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+_core:
+  default_config_hash: nm1nUN1ZZ0EuDuSOTuIqndOPB43ailxwa66vy2feLEY
+id: block_content.vlsuite_collection_hero.vlsuite_collection_2
+targetEntityType: block_content
+bundle: vlsuite_collection_hero
+mode: vlsuite_collection_2
+content: {  }
+hidden:
+  langcode: true
+  vlsuite_background: true
+  vlsuite_link: true
+  vlsuite_media: true
+  vlsuite_text: true

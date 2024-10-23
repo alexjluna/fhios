@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+  enforced:
+    module:
+      - vlsuite_media
+id: media.vlsuite_background
+label: 'Background (VLSuite)'
+targetEntityType: media
+cache: true

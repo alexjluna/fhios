@@ -5,20 +5,21 @@
  * Defines the Product entity and associated features.
  */
 
-use Drupal\Core\Access\AccessResult;
-use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\StringTranslation\TranslatableMarkup;
-use Drupal\commerce_product\Plugin\Block\VariationFieldBlock;
-use Drupal\Component\Plugin\PluginBase;
-use Drupal\entity\BundleFieldDefinition;
 use Drupal\commerce\EntityHelper;
 use Drupal\commerce_product\Entity\ProductTypeInterface;
+use Drupal\commerce_product\Plugin\Block\VariationFieldBlock;
+use Drupal\Component\Plugin\PluginBase;
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Cache\Cache;
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\Entity\BaseFieldOverride;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\entity\BundleFieldDefinition;
 
 /**
  * Implements hook_config_translation_info_alter().
@@ -175,7 +176,7 @@ function template_preprocess_commerce_product_variation(array &$variables) {
  *   - attributes: HTML attributes for the containing element.
  */
 function template_preprocess_commerce_product_attribute_value(array &$variables) {
-  /** @var Drupal\commerce_product\Entity\ProductAttributeValueInterface $product */
+  /** @var Drupal\commerce_product\Entity\ProductAttributeValueInterface $attribute_value */
   $attribute_value = $variables['elements']['#commerce_product_attribute_value'];
 
   $variables['product_attribute_value_entity'] = $attribute_value;
@@ -250,6 +251,12 @@ function commerce_product_add_variations_field(ProductTypeInterface $product_typ
 function commerce_product_field_widget_single_element_form_alter(&$element, FormStateInterface $form_state, $context) {
   /** @var \Drupal\Core\Field\FieldDefinitionInterface $field_definition */
   $field_definition = $context['items']->getFieldDefinition();
+  if ($field_definition instanceof BaseFieldOverride) {
+    // Reach into the original BaseFieldDefinition, which base fields are both
+    // a field definition and storage definition.
+    $storage_definition = $field_definition->getFieldStorageDefinition();
+    $field_definition = $storage_definition;
+  }
   $field_name = $field_definition->getName();
   $entity_type = $field_definition->getTargetEntityTypeId();
   $widget_name = $context['widget']->getPluginId();
@@ -399,4 +406,28 @@ function commerce_product_block_alter(array &$info) {
 function commerce_product_field_group_content_element_keys_alter(&$keys) {
   $keys['commerce_product'] = 'product';
   $keys['commerce_product_variation'] = 'product_variation';
+}
+
+/**
+ * Implements hook_entity_operation_alter().
+ */
+function commerce_product_entity_operation_alter(array &$operations, EntityInterface $entity): void {
+  // For the 'commerce_product_attribute' entity type when the 'translate'
+  // operation does not exist we need to check if the user has access to manage
+  // translations.
+  if ($entity->getEntityTypeId() !== 'commerce_product_attribute'
+    || !$entity->hasLinkTemplate('config-translation-overview')
+    || isset($operations['translate'])
+  ) {
+    return;
+  }
+
+  $url = $entity->toUrl('config-translation-overview');
+  if ($url->access()) {
+    $operations['translate'] = [
+      'title' => t('Translate'),
+      'weight' => 50,
+      'url' => $url,
+    ];
+  }
 }

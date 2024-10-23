@@ -1,0 +1,16 @@
+uuid: 47ecde42-59f9-4863-a3c4-8af8523c577b
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+  enforced:
+    module:
+      - vlsuite_collection_hero
+_core:
+  default_config_hash: FSzs0j10dVlCNXU-E2LAdbuEKHi1Cr0zOvzyPRbQEV8
+id: media.vlsuite_collection_gallery_main
+label: 'Gallery (VLSuite Collection) - Main'
+description: ''
+targetEntityType: media
+cache: true

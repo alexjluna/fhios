@@ -1,0 +1,15 @@
+vlsuite_icon_font.settings:
+  path: '/admin/config/vlsuite/icon-font'
+  defaults:
+    _title: 'VLSuite - Icon font'
+    _form: 'Drupal\vlsuite_icon_font\Form\VLSuiteIconFontSettingsForm'
+  requirements:
+    _permission: 'administer vlsuite settings'
+
+vlsuite_icon_font.autocomplete:
+  path: '/vlsuite/icon-font/autocomplete'
+  defaults:
+    _controller: '\Drupal\vlsuite_icon_font\Controller\VLSuiteIconFontAutocomplete::handleAutocomplete'
+    _format: json
+  requirements:
+    _permission: 'access content'

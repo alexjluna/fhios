@@ -3,13 +3,14 @@ services:
     class: Drupal\commerce_product\Access\ProductVariationCollectionAccessCheck
     arguments: ['@entity_type.manager']
     tags:
-    - { name: access_check, applies_to: _product_variation_collection_access }
+      - { name: access_check, applies_to: _product_variation_collection_access }
 
   access_check.product_variation_create:
     class: Drupal\commerce_product\Access\ProductVariationCreateAccessCheck
     arguments: ['@entity_type.manager']
     tags:
-    - { name: access_check, applies_to: _product_variation_create_access }
+      - { name: access_check, applies_to: _product_variation_create_access }
+
 
   commerce_product.attribute_field_manager:
     class: Drupal\commerce_product\ProductAttributeFieldManager
@@ -31,7 +32,7 @@ services:
 
   commerce_product.product_variation_route_context:
     class: Drupal\commerce_product\ContextProvider\ProductVariationContext
-    arguments: ['@current_route_match', '@entity_type.manager']
+    arguments: [ '@current_route_match', '@entity_type.manager', '@entity_type.bundle.info' ]
     calls:
       - [ setSampleEntityGenerator, [ '@?layout_builder.sample_entity_generator' ] ]
     tags:

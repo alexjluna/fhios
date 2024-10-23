@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_block_cta
+id: vlsuite_cta
+label: 'CTA Link (VLSuite)'
+revision: 0
+description: ''
+vlsuite_block_icon: 0595039f-0b84-420b-b63e-bcce1569a750

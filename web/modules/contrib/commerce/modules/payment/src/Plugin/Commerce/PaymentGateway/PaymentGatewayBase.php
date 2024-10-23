@@ -60,6 +60,7 @@ abstract class PaymentGatewayBase extends PluginBase implements PaymentGatewayIn
    *
    * @var string
    */
+  // phpcs:ignore Drupal.Classes.PropertyDeclaration
   protected $entityId;
 
   /**
@@ -305,10 +306,14 @@ abstract class PaymentGatewayBase extends PluginBase implements PaymentGatewayIn
    */
   public function setConfiguration(array $configuration) {
     $this->configuration = NestedArray::mergeDeep($this->defaultConfiguration(), $configuration);
-    // Providing a default for payment_metod_types in defaultConfiguration()
+    // Providing a default for payment_method_types in defaultConfiguration()
     // doesn't work because NestedArray::mergeDeep causes duplicates.
     if (empty($this->configuration['payment_method_types'])) {
       $this->configuration['payment_method_types'][] = 'credit_card';
+    }
+    else {
+      // Remove any duplicates caused by NestedArray::mergeDeep.
+      $this->configuration['payment_method_types'] = array_unique($this->configuration['payment_method_types']);
     }
   }
 
@@ -556,7 +561,7 @@ abstract class PaymentGatewayBase extends PluginBase implements PaymentGatewayIn
       throw new \InvalidArgumentException('The provided payment has no payment method referenced.');
     }
     if ($payment_method->isExpired()) {
-      throw new HardDeclineException('The provided payment method has expired');
+      throw HardDeclineException::createForPayment($payment_method, 'The provided payment method has expired');
     }
   }
 

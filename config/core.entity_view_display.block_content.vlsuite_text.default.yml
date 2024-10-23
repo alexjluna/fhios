@@ -1,0 +1,27 @@
+uuid: e14e49c7-60eb-4842-a23a-9f16bc8ea9a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_text
+  module:
+    - text
+  enforced:
+    module:
+      - vlsuite_block_text
+_core:
+  default_config_hash: Gz_B5FvWPKFKZ0CDS_iM_g3gX1Lg-2Mh-P2VpYEHEek
+id: block_content.vlsuite_text.default
+targetEntityType: block_content
+bundle: vlsuite_text
+mode: default
+content:
+  vlsuite_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

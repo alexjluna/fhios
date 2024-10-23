@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_block_webform
+id: vlsuite_webform
+label: 'Webform (VLSuite)'
+revision: 0
+description: ''
+vlsuite_block_icon: 82790caf-2d16-400a-9b0b-2eeaf472e54c

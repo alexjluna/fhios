@@ -121,7 +121,7 @@ class PriceCalculatedFormatterTest extends OrderKernelTestBase {
     $this->firstVariation = $this->reloadEntity($first_variation);
     $this->secondVariation = $this->reloadEntity($second_variation);
 
-    $user = $this->createUser(['mail' => 'user1@example.com']);
+    $user = $this->createUser();
     $this->container->get('current_user')->setAccount($user);
 
     $this->viewBuilder = $this->container->get('entity_type.manager')->getViewBuilder('commerce_product_variation');

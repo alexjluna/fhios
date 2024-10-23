@@ -2,9 +2,9 @@
 
 namespace Drupal\commerce_product\Element;
 
+use Drupal\Component\Utility\Html as HtmlUtility;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element\Radios;
-use Drupal\Component\Utility\Html as HtmlUtility;
 
 /**
  * Provides a form input element for rendering attributes as radio buttons.

@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Layout install module file.
+ */
+
+/**
+ * Add image & local video as default config (to keep previous options).
+ */
+function vlsuite_layout_update_10001() {
+  \Drupal::configFactory()->getEditable('vlsuite_media.settings')->set('bg_types', [
+    'vlsuite_image' => TRUE,
+    'vlsuite_local_video' => TRUE,
+  ])->save();
+}
+
+/**
+ * Enable vlsuite slider to fit new dependency if not already enabled.
+ */
+function vlsuite_layout_update_10002() {
+  if (!\Drupal::service('module_handler')->moduleExists('vlsuite_slider')) {
+    \Drupal::service('module_installer')->install(['vlsuite_slider']);
+  }
+}
+
+/**
+ * Enable vlsuite animations to fit new dependency if not already enabled.
+ */
+function vlsuite_layout_update_10003() {
+  if (!\Drupal::service('module_handler')->moduleExists('vlsuite_animations')) {
+    \Drupal::service('module_installer')->install(['vlsuite_animations']);
+  }
+}

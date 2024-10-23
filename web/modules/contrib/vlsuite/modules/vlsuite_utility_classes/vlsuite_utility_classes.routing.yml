@@ -1,0 +1,24 @@
+vlsuite_utility_classes.settings:
+  path: '/admin/config/vlsuite/utility-classes'
+  defaults:
+    _title: 'VLSuite - Utility classes'
+    _form: 'Drupal\vlsuite_utility_classes\Form\VLSuiteUtilityClassesSettingsForm'
+  requirements:
+    _permission: 'administer vlsuite settings'
+
+vlsuite_utility_classes.apply_to:
+  path: '/layout_builder/vlsuite_utility_classes/{section_storage_type}/{section_storage}/{delta}/{uuid}/{apply_to}/{identifier}/{value}'
+  defaults:
+    _controller: '\Drupal\vlsuite_utility_classes\Controller\VLSuiteUtilityClassesApplyTo::layoutBuilder'
+    delta: null
+    uuid: null
+    apply_to: null
+    identifier: null
+    value: null
+  requirements:
+    _layout_builder_access: 'view'
+  options:
+    _admin_route: TRUE
+    parameters:
+      section_storage:
+        layout_builder_tempstore: TRUE

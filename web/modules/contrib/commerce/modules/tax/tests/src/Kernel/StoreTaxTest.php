@@ -52,7 +52,7 @@ class StoreTaxTest extends OrderKernelTestBase {
     parent::setUp();
 
     $this->installConfig(['commerce_tax']);
-    $user = $this->createUser(['mail' => $this->randomString() . '@example.com']);
+    $user = $this->createUser();
 
     $this->store->set('address', [
       'country_code' => 'FR',

@@ -1,0 +1,214 @@
+uuid: 45785403-cfd2-4d6e-8e1a-e509091f28fa
+label: 'Gallery Collection Glossary (VLSuite)'
+type: template
+layout_section:
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: '100'
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 1
+      vlsuite_slider:
+        scope: main
+      vlsuite_utility_class:
+        'vlsuite_layout:region_top':
+          text-align: center
+        'vlsuite_layout:section':
+          padding-y: spacer-5
+          background-gradient: light
+      edge_to_edge: 0
+      media_bg: null
+      context_mapping: {  }
+    components:
+      9fd5c4f1-fb00-44ff-b473-79fb9cf879a7:
+        uuid: 9fd5c4f1-fb00-44ff-b473-79fb9cf879a7
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_gallery'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: default
+          block_revision_id: null
+          block_serialized: "O:72:\"Drupal\\vlsuite_collection_gallery\\Entity\\Bundle\\VLSuiteCollectionGallery\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:20:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"13e3ed96-0953-4058-b54b-c889f759a6ee\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:26:\"vlsuite_collection_gallery\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694529451;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694529451;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694529451;}}}s:14:\"vlsuite_medias\";a:1:{s:9:\"x-default\";a:2:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}i:1;a:1:{s:9:\"target_id\";s:1:\"1\";}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:2:{s:6:\"bundle\";s:26:\"vlsuite_collection_gallery\";s:8:\"revision\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 2
+        additional: {  }
+      a3ddfc1a-e240-440a-81ab-f397a91c3388:
+        uuid: a3ddfc1a-e240-440a-81ab-f397a91c3388
+        region: top
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_text'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: full
+          block_revision_id: null
+          block_serialized: "O:56:\"Drupal\\vlsuite_block_text\\Entity\\Bundle\\VLSuiteBlockText\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:20:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"f9290248-ca80-490a-ab53-981e43b1f783\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:12:\"vlsuite_text\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694597389;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694597389;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694597389;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:64:\"<h2><strong>Gallery (VLSuite Collection) - Default</strong></h2>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:2:{s:6:\"bundle\";s:12:\"vlsuite_text\";s:8:\"revision\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 2
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: '100'
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 1
+      vlsuite_slider:
+        scope: main
+      vlsuite_utility_class:
+        'vlsuite_layout:region_top':
+          text-align: center
+        'vlsuite_layout:section':
+          padding-y: spacer-5
+      edge_to_edge: 0
+      media_bg: null
+      context_mapping: {  }
+    components:
+      b9b40f1c-9e30-4913-89a4-584ad4e96038:
+        uuid: b9b40f1c-9e30-4913-89a4-584ad4e96038
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_gallery'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_1
+          block_revision_id: null
+          block_serialized: "O:72:\"Drupal\\vlsuite_collection_gallery\\Entity\\Bundle\\VLSuiteCollectionGallery\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:20:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"3cb3128c-b4c7-459e-ad0b-6e928bd5b146\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:26:\"vlsuite_collection_gallery\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694529451;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694529451;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694529451;}}}s:14:\"vlsuite_medias\";a:1:{s:9:\"x-default\";a:2:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}i:1;a:1:{s:9:\"target_id\";s:1:\"1\";}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:2:{s:6:\"bundle\";s:26:\"vlsuite_collection_gallery\";s:8:\"revision\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 2
+        additional: {  }
+      17e6535a-f8b9-4267-9470-d45fe184220f:
+        uuid: 17e6535a-f8b9-4267-9470-d45fe184220f
+        region: top
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_text'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: full
+          block_revision_id: null
+          block_serialized: "O:56:\"Drupal\\vlsuite_block_text\\Entity\\Bundle\\VLSuiteBlockText\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:20:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"d7c3422e-5a72-45d3-bf2e-8045d6a9be15\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:12:\"vlsuite_text\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694597434;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694597434;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694597434;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:59:\"<h2><strong>Gallery (VLSuite Collection) - #1</strong></h2>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:2:{s:6:\"bundle\";s:12:\"vlsuite_text\";s:8:\"revision\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 2
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: '100'
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 1
+      vlsuite_slider:
+        scope: main
+      vlsuite_utility_class:
+        'vlsuite_layout:section':
+          padding-y: spacer-5
+          background-gradient: light
+        'vlsuite_layout:region_top':
+          text-align: center
+      edge_to_edge: 0
+      media_bg: null
+      context_mapping: {  }
+    components:
+      a226cf3e-d680-45f2-be24-066ae50544ac:
+        uuid: a226cf3e-d680-45f2-be24-066ae50544ac
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_gallery'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_2
+          block_revision_id: null
+          block_serialized: "O:72:\"Drupal\\vlsuite_collection_gallery\\Entity\\Bundle\\VLSuiteCollectionGallery\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:20:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"95e59298-6181-45cb-9b08-cdb6a7e6a6e1\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:26:\"vlsuite_collection_gallery\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694529451;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694529451;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694529451;}}}s:14:\"vlsuite_medias\";a:1:{s:9:\"x-default\";a:2:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}i:1;a:1:{s:9:\"target_id\";s:1:\"1\";}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:2:{s:6:\"bundle\";s:26:\"vlsuite_collection_gallery\";s:8:\"revision\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 2
+        additional: {  }
+      4aa55079-d4b0-45ac-b1b8-ca06cab6dd01:
+        uuid: 4aa55079-d4b0-45ac-b1b8-ca06cab6dd01
+        region: top
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_text'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: full
+          block_revision_id: null
+          block_serialized: "O:56:\"Drupal\\vlsuite_block_text\\Entity\\Bundle\\VLSuiteBlockText\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:20:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"336eb648-3214-461c-890d-9bc5d1a10058\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:12:\"vlsuite_text\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694597471;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694597471;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694597471;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:58:\"<h2><strong>Gallery (VLSuite Collection) - 2</strong></h2>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:2:{s:6:\"bundle\";s:12:\"vlsuite_text\";s:8:\"revision\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 2
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: '100'
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 1
+      vlsuite_slider:
+        scope: main
+      vlsuite_utility_class:
+        'vlsuite_layout:section':
+          padding-y: spacer-5
+        'vlsuite_layout:region_top':
+          text-align: center
+      edge_to_edge: 0
+      media_bg: null
+      context_mapping: {  }
+    components:
+      214a846e-ce59-41f3-8f81-72fa05c3076c:
+        uuid: 214a846e-ce59-41f3-8f81-72fa05c3076c
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_gallery'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_3
+          block_revision_id: null
+          block_serialized: "O:72:\"Drupal\\vlsuite_collection_gallery\\Entity\\Bundle\\VLSuiteCollectionGallery\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:20:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"4d619543-eef4-46fd-b294-674cf32f17ce\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:26:\"vlsuite_collection_gallery\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694529451;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694529451;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694529451;}}}s:14:\"vlsuite_medias\";a:1:{s:9:\"x-default\";a:5:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}i:1;a:1:{s:9:\"target_id\";s:1:\"1\";}i:2;a:1:{s:9:\"target_id\";s:1:\"1\";}i:3;a:1:{s:9:\"target_id\";s:1:\"1\";}i:4;a:1:{s:9:\"target_id\";s:1:\"1\";}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:2:{s:6:\"bundle\";s:26:\"vlsuite_collection_gallery\";s:8:\"revision\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 2
+        additional: {  }
+      0fc4e313-1631-4b5a-8c5f-e2e084339037:
+        uuid: 0fc4e313-1631-4b5a-8c5f-e2e084339037
+        region: top
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_text'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: full
+          block_revision_id: null
+          block_serialized: "O:56:\"Drupal\\vlsuite_block_text\\Entity\\Bundle\\VLSuiteBlockText\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:20:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"682a320d-b904-44be-8979-2239a253d728\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:12:\"vlsuite_text\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694597511;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694597511;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694597511;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:58:\"<h2><strong>Gallery (VLSuite Collection) - 3</strong></h2>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:2:{s:6:\"bundle\";s:12:\"vlsuite_text\";s:8:\"revision\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 2
+        additional: {  }
+    third_party_settings: {  }

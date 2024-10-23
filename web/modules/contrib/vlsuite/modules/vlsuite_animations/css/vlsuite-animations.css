@@ -1,0 +1,10 @@
+
+[data-vlsuite-animations*="entrance_up"],
+[data-vlsuite-animations*="entrance_down"] {
+  opacity: 0;
+}
+
+[data-vlsuite-animations*="entrance_up"][class*="isShown"],
+[data-vlsuite-animations*="entrance_down"][class*="isShown"] {
+  opacity: 1;
+}

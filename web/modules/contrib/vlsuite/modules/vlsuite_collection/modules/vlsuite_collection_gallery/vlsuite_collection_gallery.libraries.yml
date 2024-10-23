@@ -1,0 +1,10 @@
+gallery:
+  css:
+    component:
+      css/vlsuite-collection-gallery.css: {}
+  js:
+    js/vlsuite-collection-gallery.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - vlsuite_slider/slider

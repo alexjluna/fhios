@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for VLSuite - Slider module.
+ */
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function vlsuite_slider_library_info_alter(&$libraries, $extension) {
+  if ($extension === 'vlsuite_utility_classes' && isset($libraries['live_previewer'])) {
+    // Add dependency to live previewer to execute after slider.
+    $libraries['live_previewer']['dependencies'][] = 'vlsuite_slider/slider';
+  }
+}

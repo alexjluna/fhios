@@ -1,0 +1,33 @@
+uuid: 2f3c1e69-64b9-4cb1-a666-d2815ea37773
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.vlsuite_document.field_media_file
+    - media.type.vlsuite_document
+  module:
+    - file
+  enforced:
+    module:
+      - vlsuite_media_document
+_core:
+  default_config_hash: cwxlLCmVlnRKGdvJU-HR3oKfQ3GhQBMGLTU3O0yRR9I
+id: media.vlsuite_document.default
+targetEntityType: media
+bundle: vlsuite_document
+mode: default
+content:
+  field_media_file:
+    type: file_default
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

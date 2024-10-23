@@ -2,14 +2,14 @@
 
 namespace Drupal\commerce_cart\EventSubscriber;
 
-use Drupal\Core\Messenger\MessengerInterface;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Drupal\commerce_cart\Event\CartEntityAddEvent;
 use Drupal\commerce_cart\Event\CartEvents;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslationInterface;
 use Drupal\Core\Url;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class CartEventSubscriber implements EventSubscriberInterface {
 

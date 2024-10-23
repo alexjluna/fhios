@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_cta
+  enforced:
+    module:
+      - vlsuite_block_cta
+id: block_content.vlsuite_cta.default
+targetEntityType: block_content
+bundle: vlsuite_cta
+mode: default
+content:
+  vlsuite_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 60
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

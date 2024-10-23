@@ -1,0 +1,23 @@
+uuid: f8c85558-e4cb-4fa8-8858-cd2ab9971879
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_remote_video
+  module:
+    - content_translation
+  enforced:
+    module:
+      - vlsuite_block_remote_video
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: QscuW5ri62YwO-s7I_xKvOf2oGogiG_-A6gX_gX35f0
+id: block_content.vlsuite_remote_video
+target_entity_type_id: block_content
+target_bundle: vlsuite_remote_video
+default_langcode: current_interface
+language_alterable: false

@@ -45,9 +45,6 @@ class Price extends FormElement {
       '#attached' => [
         'library' => ['commerce_price/admin'],
       ],
-      '#element_validate' => [
-        [$class, 'moveInlineErrors'],
-      ],
       '#process' => [
         [$class, 'processElement'],
         [$class, 'processAjaxForm'],
@@ -123,11 +120,13 @@ class Price extends FormElement {
       '#maxlength' => $element['#maxlength'],
       '#min_fraction_digits' => min($fraction_digits),
       '#min' => $element['#allow_negative'] ? NULL : 0,
-      '#error_no_message' => TRUE,
       '#description' => t('Format: @format', ['@format' => $number_formatter->format('9.99')]),
     ];
     if (isset($element['#ajax'])) {
       $element['number']['#ajax'] = $element['#ajax'];
+    }
+    if (isset($element['#states'])) {
+      $element['number']['#states'] = $element['#states'];
     }
 
     if (count($currency_codes) == 1) {
@@ -151,6 +150,9 @@ class Price extends FormElement {
       ];
       if (isset($element['#ajax'])) {
         $element['currency_code']['#ajax'] = $element['#ajax'];
+      }
+      if (isset($element['#states'])) {
+        $element['currency_code']['#states'] = $element['#states'];
       }
     }
     // Add the help text if specified.
@@ -183,26 +185,6 @@ class Price extends FormElement {
       return FALSE;
     }
     return TRUE;
-  }
-
-  /**
-   * Moves inline errors from the "number" element to the main element.
-   *
-   * This ensures that they are displayed in the right place
-   * (below both number and currency_code, instead of between them).
-   *
-   * Only performed when the inline_form_errors module is installed.
-   *
-   * @param array $element
-   *   The form element.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
-   *   The current state of the form.
-   */
-  public static function moveInlineErrors(array $element, FormStateInterface $form_state) {
-    $error = $form_state->getError($element['number']);
-    if (!empty($error) && !empty($element['#price_inline_errors'])) {
-      $form_state->setError($element, $error);
-    }
   }
 
 }

@@ -1,0 +1,27 @@
+uuid: a8cd0c0e-00c9-4d27-abd2-7f8fe4d475f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.vlsuite_landing
+  enforced:
+    module:
+      - vlsuite_landing
+_core:
+  default_config_hash: '-vEOPx-kwIjMLgYqGVaPMO6nhKIdlJA2Sybyo-kbD2M'
+id: node.vlsuite_landing.promote
+field_name: promote
+entity_type: node
+bundle: vlsuite_landing
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

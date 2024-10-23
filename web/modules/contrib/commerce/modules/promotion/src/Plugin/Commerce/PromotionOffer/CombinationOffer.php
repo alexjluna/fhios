@@ -269,4 +269,13 @@ class CombinationOffer extends OrderPromotionOfferBase implements CombinationOff
     return $offers;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function clear(EntityInterface $entity, PromotionInterface $promotion) {
+    foreach ($this->getOffers() as $offer) {
+      $offer->clear($entity, $promotion);
+    }
+  }
+
 }

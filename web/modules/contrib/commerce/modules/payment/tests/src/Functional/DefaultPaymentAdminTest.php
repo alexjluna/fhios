@@ -124,9 +124,15 @@ class DefaultPaymentAdminTest extends CommerceBrowserTestBase {
       'store_id' => $this->store,
     ]);
 
-    $this->paymentUri = Url::fromRoute('entity.commerce_payment.collection', [
-      'commerce_order' => $this->order->id(),
-    ])->toString();
+    $this->paymentUri = Url::fromRoute(
+      'entity.commerce_payment.collection',
+      [
+        'commerce_order' => $this->order->id(),
+      ],
+      [
+        'absolute' => TRUE,
+      ],
+    )->toString();
   }
 
   /**
@@ -136,7 +142,6 @@ class DefaultPaymentAdminTest extends CommerceBrowserTestBase {
     // Confirm that the tab is visible on the order page.
     $this->drupalGet($this->order->toUrl());
     $this->assertSession()->linkExists('Payments');
-    $this->assertSession()->linkByHrefExists($this->paymentUri);
 
     // Confirm that a payment is visible.
     $this->createEntity('commerce_payment', [

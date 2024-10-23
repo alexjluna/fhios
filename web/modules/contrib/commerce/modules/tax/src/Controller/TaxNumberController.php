@@ -7,9 +7,7 @@ use Drupal\commerce_tax\Plugin\Commerce\TaxNumberType\SupportsVerificationInterf
 use Drupal\commerce_tax\Plugin\Commerce\TaxNumberType\VerificationResult;
 use Drupal\commerce_tax\Plugin\Field\FieldType\TaxNumberItemInterface;
 use Drupal\Component\Plugin\Exception\PluginNotFoundException;
-use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
@@ -37,26 +35,13 @@ class TaxNumberController implements ContainerInjectionInterface {
   protected $dateFormatter;
 
   /**
-   * Constructs a new TaxNumberController object.
-   *
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-   *   The entity type manager.
-   * @param \Drupal\Core\Datetime\DateFormatterInterface $date_formatter
-   *   The date formatter.
-   */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, DateFormatterInterface $date_formatter) {
-    $this->entityTypeManager = $entity_type_manager;
-    $this->dateFormatter = $date_formatter;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('entity_type.manager'),
-      $container->get('date.formatter')
-    );
+    $instance = new static();
+    $instance->entityTypeManager = $container->get('entity_type.manager');
+    $instance->dateFormatter = $container->get('date.formatter');
+    return $instance;
   }
 
   /**

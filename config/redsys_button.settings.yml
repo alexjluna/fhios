@@ -1,11 +1,12 @@
 _core:
-  default_config_hash: F0IjLN-8qiAZBnaLuMms9zQffRep9m0izAZTQHQPrjc
+  default_config_hash: u8-R0NiJsXP1fET2XR8L0wYfMjqYhbjWIlmxyh2xTA0
 environment: test
 merchant_code: '999008881'
 merchant_key: sq7HjrUOBfKmC576ILgskD5srU870gJ7
 terminal: '001'
 currency: '978'
-transaction_type: '0'
+transaction_type_card: '0'
+transaction_type_bizum: z
 notification_email: alejolumend@gmail.com
 url_test: 'https://sis-t.redsys.es:25443/sis/realizarPago/utf-8'
 url_live: 'https://sis.redsys.es/sis/realizarPago/utf-8'

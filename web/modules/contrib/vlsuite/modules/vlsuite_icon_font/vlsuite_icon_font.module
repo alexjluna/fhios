@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for VLSuite - Icon module.
+ */
+
+/**
+ * Implements hook_library_library_info_alter().
+ */
+function vlsuite_icon_font_library_info_alter(&$libraries, $extension) {
+  if ($extension === 'vlsuite_icon_font' && isset($libraries['font'])) {
+    $config = \Drupal::configFactory()->get('vlsuite_icon_font.settings');
+    $font = $config->get('font');
+    $libraries['font']['css']['theme'][$font] = ['type' => 'external'];
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function vlsuite_icon_font_theme() {
+  return [
+    'vlsuite_icon_font' => [
+      'variables' => [
+        'url' => NULL,
+        'attributes' => [],
+        'icon' => NULL,
+      ],
+    ],
+  ];
+}

@@ -66,7 +66,7 @@ class StoreTypeTest extends CommerceBrowserTestBase {
       'label' => 'Online2',
       'id' => 'online2',
     ];
-    $this->submitForm($edit, $this->t('Save'));
+    $this->submitForm($edit, (string) $this->t('Save'));
     $this->assertSession()->pageTextContains('Saved the Online2 store type.');
 
     // Confirm that the original store type is unchanged.

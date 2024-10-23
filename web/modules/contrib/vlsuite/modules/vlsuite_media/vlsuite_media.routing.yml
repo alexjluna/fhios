@@ -1,0 +1,7 @@
+vlsuite_media.settings:
+  path: '/admin/config/vlsuite/media'
+  defaults:
+    _title: 'VLSuite - Media'
+    _form: 'Drupal\vlsuite_media\Form\VLSuiteMediaSettingsForm'
+  requirements:
+    _permission: 'administer vlsuite settings'

@@ -1,0 +1,316 @@
+uuid: d2ad3bd9-6acc-4860-83ec-54c6d57845eb
+label: 'Hero Collection Glossary (VLSuite)'
+type: template
+layout_section:
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: '100'
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 0
+      vlsuite_slider:
+        scope: main
+      vlsuite_utility_class: {  }
+      edge_to_edge: 1
+      media_bg: null
+      context_mapping: {  }
+    components:
+      ff2d1083-5aef-4411-9072-f4c158a17995:
+        uuid: ff2d1083-5aef-4411-9072-f4c158a17995
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_hero'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: default
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_hero\\Entity\\Bundle\\VLSuiteCollectionHero\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:23:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"30abfbeb-94c7-45ee-976e-3c15f0af7c26\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_hero\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:182:\"<h1><strong>Hero (VLSuite Collection) - Default</strong></h1><p>Outer section: It can be used with \"Edge to edge\" active or not.<br>Recommended disabling \"Show optional regions\".</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_media\";a:1:{s:9:\"x-default\";a:0:{}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_hero\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 1
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: '100'
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 0
+      vlsuite_slider:
+        scope: main
+      vlsuite_utility_class: {  }
+      edge_to_edge: 1
+      media_bg: null
+      context_mapping: {  }
+    components:
+      35ff996d-97aa-4d06-9da1-b7b6d5201e58:
+        uuid: 35ff996d-97aa-4d06-9da1-b7b6d5201e58
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_hero'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_1
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_hero\\Entity\\Bundle\\VLSuiteCollectionHero\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:23:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"2f002750-2931-446b-a126-0ea16fa46fef\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_hero\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:177:\"<h2><strong>Hero (VLSuite Collection) - #1</strong></h2><p>Outer section: It can be used with \"Edge to edge\" active or not.<br>Recommended disabling \"Show optional regions\".</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_media\";a:1:{s:9:\"x-default\";a:0:{}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_hero\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 3
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: '100'
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 0
+      vlsuite_slider:
+        scope: main
+      vlsuite_utility_class: {  }
+      edge_to_edge: 1
+      media_bg: null
+      context_mapping: {  }
+    components:
+      ad1d659f-e7d3-4781-992a-e8b2a0d4a864:
+        uuid: ad1d659f-e7d3-4781-992a-e8b2a0d4a864
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_hero'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_2
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_hero\\Entity\\Bundle\\VLSuiteCollectionHero\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:23:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"64d6562c-a4fc-4d01-9741-aec4dd36a5fa\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_hero\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:177:\"<h2><strong>Hero (VLSuite Collection) - #2</strong></h2><p>Outer section: It can be used with \"Edge to edge\" active or not.<br>Recommended disabling \"Show optional regions\".</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_media\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_hero\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 3
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: '100'
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 0
+      vlsuite_slider:
+        scope: main
+      vlsuite_utility_class: {  }
+      edge_to_edge: 1
+      media_bg: null
+      context_mapping: {  }
+    components:
+      fb533a6e-8c7e-4667-8ecd-f6df21387699:
+        uuid: fb533a6e-8c7e-4667-8ecd-f6df21387699
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_hero'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_3
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_hero\\Entity\\Bundle\\VLSuiteCollectionHero\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:23:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"c816b673-c1f2-4b14-b8da-e7cf6c51a400\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_hero\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:177:\"<h2><strong>Hero (VLSuite Collection) - #3</strong></h2><p>Outer section: It can be used with \"Edge to edge\" active or not.<br>Recommended disabling \"Show optional regions\".</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_media\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_hero\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 3
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: '100'
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 0
+      vlsuite_slider:
+        scope: main
+      vlsuite_utility_class: {  }
+      edge_to_edge: 1
+      media_bg: null
+      context_mapping: {  }
+    components:
+      ce8ec1f8-c1de-4bad-a337-73fc207fd976:
+        uuid: ce8ec1f8-c1de-4bad-a337-73fc207fd976
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_hero'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_4
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_hero\\Entity\\Bundle\\VLSuiteCollectionHero\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:23:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"b522578c-0cc1-411b-8c1e-f6f92228d712\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_hero\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:177:\"<h2><strong>Hero (VLSuite Collection) - #4</strong></h2><p>Outer section: It can be used with \"Edge to edge\" active or not.<br>Recommended disabling \"Show optional regions\".</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_media\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_hero\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 3
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: 60-auto
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 0
+      vlsuite_slider:
+        scope: main
+      vlsuite_utility_class: {  }
+      edge_to_edge: 0
+      media_bg: null
+      context_mapping: {  }
+    components:
+      6199b602-8fc9-4e0b-aa9d-0c309b0b840c:
+        uuid: 6199b602-8fc9-4e0b-aa9d-0c309b0b840c
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_hero'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_5
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_hero\\Entity\\Bundle\\VLSuiteCollectionHero\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:23:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"1c2be7c2-f49d-4383-8d18-41cc1caa6a5b\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_hero\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:177:\"<h2><strong>Hero (VLSuite Collection) - #5</strong></h2><p>Outer section: It should be used with \"Edge to edge\" not active.<br>Recommended disabling \"Show optional regions\".</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_media\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_hero\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 3
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: 60-auto
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 0
+      vlsuite_slider:
+        scope: main
+      vlsuite_utility_class:
+        'vlsuite_layout:main_regions':
+          background-color: dark
+          color: light
+      edge_to_edge: 0
+      media_bg: null
+      context_mapping: {  }
+    components:
+      c3d18bea-9fab-4858-8f88-a30941d0e7ea:
+        uuid: c3d18bea-9fab-4858-8f88-a30941d0e7ea
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_hero'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_customizable
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_hero\\Entity\\Bundle\\VLSuiteCollectionHero\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:23:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"f2005a5a-4c19-4553-a3fe-8a689eac2669\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_hero\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:187:\"<h2><strong>Hero (VLSuite Collection) - Customizable</strong></h2><p>Outer section: It should be used with \"Edge to edge\" not active.<br>Recommended disabling \"Show optional regions\".</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_media\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_hero\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class:
+            'block_content:vlsuite_collection_hero:vlsuite_link':
+              padding: spacer-4
+            'block_content:vlsuite_collection_hero:vlsuite_text':
+              padding: spacer-4
+            'block_content:vlsuite_collection_hero:vlsuite_link:item':
+              btn: light
+              rounded: pill
+              width: '100'
+            'block_content:vlsuite_collection_hero:vlsuite_media:item':
+              ratio: 21-9
+          context_mapping: {  }
+          block_uuid: null
+        weight: 3
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: '100'
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 1
+      vlsuite_slider:
+        active: 1
+        scope: main
+        slides_per_view: '1'
+        navigation: true
+        pagination: true
+      vlsuite_utility_class:
+        'vlsuite_layout:section':
+          padding-y: spacer-5
+          background-color: light
+        'vlsuite_layout:region_top':
+          text-align: center
+        'vlsuite_layout:row':
+          gutter: gutter-3
+      edge_to_edge: 0
+      media_bg: null
+      context_mapping: {  }
+    components:
+      9667917c-9fe4-4a92-a8c4-433d8c969815:
+        uuid: 9667917c-9fe4-4a92-a8c4-433d8c969815
+        region: top
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_text'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: full
+          block_revision_id: null
+          block_serialized: "O:56:\"Drupal\\vlsuite_block_text\\Entity\\Bundle\\VLSuiteBlockText\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:20:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"561748c6-a6e5-4ea8-ad6c-8a768f18291c\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:12:\"vlsuite_text\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170083;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170083;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170083;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:81:\"<h2><strong>Hero (VLSuite Collection) - section with Slider enabled</strong></h2>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:12:\"vlsuite_text\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 1
+        additional: {  }
+      0a64251a-23bc-4dd8-9742-b857ab9bf427:
+        uuid: 0a64251a-23bc-4dd8-9742-b857ab9bf427
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_hero'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: default
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_hero\\Entity\\Bundle\\VLSuiteCollectionHero\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:23:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"c742a1bd-bfea-4981-afef-46518275b44d\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_hero\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:132:\"<h3><strong>Hero (VLSuite Collection) - Default</strong></h3><p>Outer section: It can be used with \"Edge to edge\" active or not.</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_media\";a:1:{s:9:\"x-default\";a:0:{}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_hero\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 3
+        additional: {  }
+      0f742aff-d2da-4278-8693-b0c84ea62a2e:
+        uuid: 0f742aff-d2da-4278-8693-b0c84ea62a2e
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_hero'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: default
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_hero\\Entity\\Bundle\\VLSuiteCollectionHero\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:23:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"c2529754-0959-47a7-9a54-e7701df25798\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_hero\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694167734;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:132:\"<h3><strong>Hero (VLSuite Collection) - Default</strong></h3><p>Outer section: It can be used with \"Edge to edge\" active or not.</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_media\";a:1:{s:9:\"x-default\";a:0:{}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_hero\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 2
+        additional: {  }
+    third_party_settings: {  }

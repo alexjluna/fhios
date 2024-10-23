@@ -108,7 +108,7 @@ class StateItemTest extends FieldKernelTestBase {
    * @return array
    *   A list of testField function arguments.
    */
-  public function providerTestField() {
+  public static function providerTestField() {
     $data = [];
     $data['new->validation'] = ['new', ['create', 'cancel'], 'fulfillment', 'create', 'validation'];
     $data['new->canceled'] = ['new', ['create', 'cancel'], 'completed', 'cancel', 'canceled'];
@@ -142,7 +142,7 @@ class StateItemTest extends FieldKernelTestBase {
    * @return array
    *   A list of providerSettableOptions function arguments.
    */
-  public function providerSettableOptions() {
+  public static function providerSettableOptions() {
     $data = [];
     $data['new'] = ['new', ['canceled' => 'Canceled', 'validation' => 'Validation', 'new' => 'New']];
     $data['invalid'] = ['invalid', []];
@@ -157,6 +157,7 @@ class StateItemTest extends FieldKernelTestBase {
     $entity = EntityTestWithBundle::create([
       'name' => 'first',
       'type' => 'first',
+      'field_state' => NULL,
     ]);
     $entity->field_state->generateSampleItems();
     /** @var \Drupal\state_machine\Plugin\Field\FieldType\StateItemInterface $state_item */
@@ -169,6 +170,7 @@ class StateItemTest extends FieldKernelTestBase {
     $entity = EntityTestWithBundle::create([
       'name' => 'second',
       'type' => 'second',
+      'field_state' => NULL,
     ]);
     $entity->field_state->generateSampleItems();
     /** @var \Drupal\state_machine\Plugin\Field\FieldType\StateItemInterface $state_item */
@@ -180,6 +182,7 @@ class StateItemTest extends FieldKernelTestBase {
     $entity = EntityTestWithBundle::create([
       'name' => 'third',
       'type' => 'third',
+      'field_state' => NULL,
     ]);
     $entity->field_state->generateSampleItems();
     /** @var \Drupal\state_machine\Plugin\Field\FieldType\StateItemInterface $state_item */

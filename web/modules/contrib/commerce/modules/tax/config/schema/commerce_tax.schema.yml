@@ -88,7 +88,7 @@ field.field_settings.commerce_tax_number:
       type: sequence
       label: 'Collect tax numbers for the following countries'
       sequence:
-        - type: string
+        type: string
     verify:
       type: boolean
       label: 'Verify the tax number via external web services'

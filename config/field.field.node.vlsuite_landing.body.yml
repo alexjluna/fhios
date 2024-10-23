@@ -1,0 +1,29 @@
+uuid: c5b99d78-b9fb-4419-903d-7c20a6142fff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.vlsuite_landing
+  module:
+    - text
+  enforced:
+    module:
+      - vlsuite_landing
+_core:
+  default_config_hash: a7nPZf4dgqwygl94x3cplOtSqAr7l1cRUjysqsXNROM
+id: node.vlsuite_landing.body
+field_name: body
+entity_type: node
+bundle: vlsuite_landing
+label: Body
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

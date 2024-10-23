@@ -2,3 +2,6 @@
   title: 'Administer order types'
   description: 'Maintain the types of orders available and the fields that are associated with those types.'
   restrict access: true
+'reassign commerce_order':
+  title: 'Reassign orders'
+  description: 'Reassign orders from one customer to another.'

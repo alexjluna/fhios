@@ -75,8 +75,8 @@ class NumberPatternTest extends CommerceWebDriverTestBase {
     $this->assertSession()->fieldNotExists('configuration[yearly][per_store_sequence');
     $edit = [
       'label' => 'Foo!',
-      'configuration[yearly][initial_number]' => 2,
-      'configuration[yearly][padding]' => 5,
+      'configuration[yearly][initial_number]' => '2',
+      'configuration[yearly][padding]' => '5',
     ];
     $this->submitForm($edit, 'Save');
     $this->assertSession()->pageTextContains('Saved the Foo! number pattern.');

@@ -254,6 +254,10 @@ class PaymentInformation extends CheckoutPaneBase {
    *   The modified pane form.
    */
   protected function buildPaymentMethodForm(array $pane_form, FormStateInterface $form_state, PaymentOption $payment_option) {
+    if ($payment_option->getPaymentMethodId() && !$payment_option->getPaymentMethodTypeId()) {
+      // Editing payment methods at checkout is not supported.
+      return $pane_form;
+    }
     $payment_method_storage = $this->entityTypeManager->getStorage('commerce_payment_method');
     assert($payment_method_storage instanceof PaymentMethodStorageInterface);
     $payment_method = $payment_method_storage->createForCustomer(

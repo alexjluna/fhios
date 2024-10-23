@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+  enforced:
+    module:
+      - vlsuite_collection_hero
+id: media.vlsuite_collection_gallery_reduced
+label: 'Gallery (VLSuite Collection) - Reduced'
+targetEntityType: media
+cache: true

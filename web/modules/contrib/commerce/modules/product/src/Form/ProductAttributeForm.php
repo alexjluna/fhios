@@ -432,6 +432,8 @@ class ProductAttributeForm extends BundleEntityFormBase {
       $this->messenger()->addMessage($this->t('Updated the %label product attribute.', ['%label' => $this->entity->label()]));
       $form_state->setRedirectUrl($this->entity->toUrl('collection'));
     }
+
+    return $status;
   }
 
 }

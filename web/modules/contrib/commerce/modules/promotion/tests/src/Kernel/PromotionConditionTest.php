@@ -2,8 +2,8 @@
 
 namespace Drupal\Tests\commerce_promotion\Kernel;
 
-use Drupal\commerce_order\Entity\OrderItem;
 use Drupal\commerce_order\Entity\Order;
+use Drupal\commerce_order\Entity\OrderItem;
 use Drupal\commerce_product\Entity\Product;
 use Drupal\commerce_product\Entity\ProductType;
 use Drupal\commerce_product\Entity\ProductVariation;

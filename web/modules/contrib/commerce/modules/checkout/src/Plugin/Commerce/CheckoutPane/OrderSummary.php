@@ -35,6 +35,8 @@ class OrderSummary extends CheckoutPaneBase implements CheckoutPaneInterface {
       if ($view) {
         return $this->t('View: @view', ['@view' => $view->label()]);
       }
+
+      return '';
     }
     else {
       return $this->t('View: Not used');

@@ -1,0 +1,14 @@
+uuid: cbeba95c-bfac-4141-8bcf-d379a4c747cb
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_collection_gallery
+_core:
+  default_config_hash: NAULgLSQn1ygo30zBebLj3CgZjT5-KrEVSNGAA2p6uE
+id: vlsuite_collection_gallery
+label: 'Gallery (VLSuite Collection)'
+revision: 0
+description: ''
+vlsuite_block_icon: {  }

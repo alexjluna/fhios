@@ -118,7 +118,7 @@ class OffsiteOrderDataTest extends CommerceWebDriverTestBase {
    * @return array
    *   A list of testSave function arguments.
    */
-  public function saveDataProvider() {
+  public static function saveDataProvider() {
     return [
       ['before'],
       ['after'],

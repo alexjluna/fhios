@@ -1,0 +1,13 @@
+name: VLSuite - Slider
+type: module
+description: Visual Layout Suite (VLSuite) - Slider
+package: Visual Layout Suite (VLSuite)
+core_version_requirement: ^9.5 || ^10
+
+dependencies:
+  - vlsuite:vlsuite
+
+# Information added by Drupal.org packaging script on 2024-06-14
+version: '1.1.7'
+project: 'vlsuite'
+datestamp: 1718361880

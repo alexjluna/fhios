@@ -5,17 +5,18 @@ namespace Drupal\commerce_store\Command;
 // @codingStandardsIgnoreStart
 use CommerceGuys\Addressing\Country\CountryRepositoryInterface;
 use CommerceGuys\Intl\Currency\CurrencyRepository;
+use Drupal\commerce_price\CurrencyImporter;
+use Drupal\Component\Utility\EmailValidatorInterface;
 use Drupal\Console\Annotations\DrupalCommand;
 use Drupal\Console\Core\Command\Command;
 use Drupal\Console\Core\Style\DrupalStyle;
-use Drupal\commerce_price\CurrencyImporter;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Render\MetadataBubblingUrlGenerator;
-use Egulias\EmailValidator\EmailValidator;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
+
 // @codingStandardsIgnoreEnd
 
 /**
@@ -61,7 +62,7 @@ class CreateStoreCommand extends Command {
   /**
    * The email validator.
    *
-   * @var \Egulias\EmailValidator\EmailValidator
+   * @var \Drupal\Component\Utility\EmailValidatorInterface
    */
   protected $emailValidator;
 
@@ -76,10 +77,10 @@ class CreateStoreCommand extends Command {
    *   The country repository.
    * @param \Drupal\Core\Render\MetadataBubblingUrlGenerator $url_generator
    *   The URL generator.
-   * @param \Egulias\EmailValidator\EmailValidator $email_validator
+   * @param \Drupal\Component\Utility\EmailValidatorInterface $email_validator
    *   The email validator.
    */
-  public function __construct(CurrencyImporter $commerce_price_currency_importer, EntityTypeManagerInterface $entity_type_manager, CountryRepositoryInterface $country_repository, MetadataBubblingUrlGenerator $url_generator, EmailValidator $email_validator) {
+  public function __construct(CurrencyImporter $commerce_price_currency_importer, EntityTypeManagerInterface $entity_type_manager, CountryRepositoryInterface $country_repository, MetadataBubblingUrlGenerator $url_generator, EmailValidatorInterface $email_validator) {
     $this->currencyImporter = $commerce_price_currency_importer;
     $this->entityTypeManager = $entity_type_manager;
     $this->countryRepository = $country_repository;

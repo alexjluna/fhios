@@ -145,7 +145,7 @@ class CouponRedemptionPaneTest extends CommerceWebDriverTestBase {
       'card_number' => '1111',
       'billing_profile' => $profile,
       'reusable' => TRUE,
-      'expires' => strtotime('2028/03/24'),
+      'expires' => strtotime('+1 year'),
     ]);
     $payment_method1->setBillingProfile($profile);
     $payment_method1->save();
@@ -157,7 +157,7 @@ class CouponRedemptionPaneTest extends CommerceWebDriverTestBase {
       'card_number' => '9999',
       'billing_profile' => $profile,
       'reusable' => TRUE,
-      'expires' => strtotime('2028/03/24'),
+      'expires' => strtotime('+1 year'),
     ]);
     $payment_method2->setBillingProfile($profile);
     $payment_method2->save();
@@ -277,7 +277,6 @@ class CouponRedemptionPaneTest extends CommerceWebDriverTestBase {
     // Ensure that the payment method ajax works with the coupon ajax.
     $radio_button = $this->getSession()->getPage()->findField('Visa ending in 9999');
     $radio_button->click();
-    $this->assertSession()->assertWaitOnAjaxRequest();
 
     $this->submitForm([], 'Continue to review');
     $this->assertSession()->pageTextContains('Visa ending in 9999');

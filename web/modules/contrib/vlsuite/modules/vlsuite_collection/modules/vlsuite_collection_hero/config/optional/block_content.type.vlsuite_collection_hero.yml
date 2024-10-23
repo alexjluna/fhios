@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_collection_hero
+id: vlsuite_collection_hero
+label: 'Hero (VLSuite Collection)'
+revision: 0
+description: ''
+vlsuite_block_icon: ''

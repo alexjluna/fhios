@@ -1,0 +1,12 @@
+font:
+  css:
+    theme:
+      css/vlsuite-icon-font-icon.css: {}
+
+icon_form_element:
+  js:
+    js/vlsuite-icon-font-icon-form-element.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - vlsuite_icon_font/font

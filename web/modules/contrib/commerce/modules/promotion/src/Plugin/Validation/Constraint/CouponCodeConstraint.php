@@ -14,6 +14,6 @@ use Drupal\Core\Validation\Plugin\Validation\Constraint\UniqueFieldConstraint;
  */
 class CouponCodeConstraint extends UniqueFieldConstraint {
 
-  public $message = 'The coupon code %value is already in use and must be unique.';
+  public $message = 'Coupon code matching is case-insensitive, and codes must be unique. %value cannot be used because it matches an existing code.';
 
 }

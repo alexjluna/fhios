@@ -2,8 +2,8 @@
 
 namespace Drupal\Tests\commerce_checkout\Functional;
 
-use Drupal\Tests\commerce\Functional\CommerceBrowserTestBase;
 use Drupal\commerce_checkout\Entity\CheckoutFlow;
+use Drupal\Tests\commerce\Functional\CommerceBrowserTestBase;
 
 /**
  * Tests the checkout flow UI.

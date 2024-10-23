@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Block - Icon install module file.
+ */
+
+use Drupal\vlsuite_block_icon\Entity\Bundle\VLSuiteBlockIcon;
+
+/**
+ * Implements hook_install().
+ */
+function vlsuite_block_icon_install() {
+  \Drupal::service('vlsuite_bundle_field.helper')->installBlockContentBundleFields(VLSuiteBlockIcon::BUNDLE_KEY, VLSuiteBlockIcon::class);
+  _vlsuite_block_update_helper_save_default_icon_file('block_content.type.vlsuite_icon', 'linuxfoundation.svg', 'fefae60e-aee5-4b95-bfda-862f51fc8593');
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function vlsuite_block_icon_update_10001() {
+  \Drupal::configFactory()->getEditable('block_content.type.vlsuite_icon')->set('vlsuite_block_icon', 'fefae60e-aee5-4b95-bfda-862f51fc8593')->save();
+  _vlsuite_block_update_helper_save_default_icon_file('block_content.type.vlsuite_icon', 'linuxfoundation.svg', 'fefae60e-aee5-4b95-bfda-862f51fc8593');
+}
+
+/**
+ * New icon font icon field.
+ */
+function vlsuite_block_icon_update_10002() {
+  if (!\Drupal::service('module_handler')->moduleExists('vlsuite_icon_font')) {
+    \Drupal::service('module_installer')->install(['vlsuite_icon_font']);
+  }
+  \Drupal::service('vlsuite_bundle_field.helper')->installBlockContentBundleFields(VLSuiteBlockIcon::BUNDLE_KEY, VLSuiteBlockIcon::class);
+}
+
+/**
+ * New optional linked to field.
+ */
+function vlsuite_block_icon_update_10003() {
+  \Drupal::service('vlsuite_bundle_field.helper')->installBlockContentBundleFields(VLSuiteBlockIcon::BUNDLE_KEY, VLSuiteBlockIcon::class);
+}

@@ -1,0 +1,1091 @@
+column_widths_icon: view_column
+list_unstyled_classes: list-unstyled
+container_classes: container
+row_classes: row
+col_classes:
+  col_100: col-12
+  col_80: 'col-12 col-md-10'
+  col_75: 'col-12 col-md-9 flex-md-grow-1'
+  col_67: 'col-12 col-md-8 flex-md-grow-1'
+  col_60: 'col-12 col-md-7'
+  col_50: 'col-12 col-md-6'
+  col_40: 'col-12 col-md-5'
+  col_33: 'col-12 col-md-4'
+  col_25: 'col-12 col-md-6 col-xl-3 flex-md-grow-1'
+  col_auto: mx-auto
+utilities:
+  text-align:
+    icon: format_align_left
+    advanced: false
+    apply_to:
+      'block_content:vlsuite_cta:vlsuite_link': 'block_content:vlsuite_cta:vlsuite_link'
+      'block_content:vlsuite_text:vlsuite_text': 'block_content:vlsuite_text:vlsuite_text'
+      'node:vlsuite_landing:field_vlsuite_landing_cta_link': 'node:vlsuite_landing:field_vlsuite_landing_cta_link'
+      'vlsuite_layout:row': 'vlsuite_layout:row'
+      'vlsuite_layout:region_top': 'vlsuite_layout:region_top'
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+      'vlsuite_layout:region_bottom': 'vlsuite_layout:region_bottom'
+    visual_name: 'Text align'
+    class_prefix: text-
+    values:
+      left:
+        icon: format_align_left
+        visual_name: Left
+        class_suffix: start
+      right:
+        icon: format_align_right
+        visual_name: Right
+        class_suffix: end
+      center:
+        icon: format_align_center
+        visual_name: Center
+        class_suffix: center
+      left-md-medium-or-wider:
+        icon: format_align_left
+        visual_name: 'Left - MD (medium or wider)'
+        class_suffix: md-start
+      right-md-medium-or-wider:
+        icon: format_align_right
+        visual_name: 'Right - MD (medium or wider)'
+        class_suffix: md-end
+      center-md-medium-or-wider:
+        icon: format_align_center
+        visual_name: 'Center - MD (medium or wider)'
+        class_suffix: md-center
+  color:
+    icon: format_color_text
+    advanced: false
+    apply_to:
+      'block_content:vlsuite_text:vlsuite_text': 'block_content:vlsuite_text:vlsuite_text'
+      'node:vlsuite_landing:title:item': 'node:vlsuite_landing:title:item'
+      'vlsuite_layout:row': 'vlsuite_layout:row'
+      'vlsuite_layout:region_top': 'vlsuite_layout:region_top'
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+      'vlsuite_layout:region_bottom': 'vlsuite_layout:region_bottom'
+    visual_name: 'Text color'
+    class_prefix: text-
+    values:
+      primary:
+        icon: ''
+        visual_name: Primary
+        class_suffix: primary
+      secondary:
+        icon: ''
+        visual_name: Secondary
+        class_suffix: secondary
+      success:
+        icon: ''
+        visual_name: Success
+        class_suffix: success
+      info:
+        icon: ''
+        visual_name: Info
+        class_suffix: info
+      warning:
+        icon: ''
+        visual_name: Warning
+        class_suffix: warning
+      danger:
+        icon: ''
+        visual_name: Danger
+        class_suffix: danger
+      light:
+        icon: ''
+        visual_name: Light
+        class_suffix: light
+      dark:
+        icon: ''
+        visual_name: Dark
+        class_suffix: dark
+      white:
+        icon: ''
+        visual_name: White
+        class_suffix: white
+      body:
+        icon: ''
+        visual_name: Body
+        class_suffix: body
+      muted:
+        icon: ''
+        visual_name: Muted
+        class_suffix: muted
+      black-50:
+        icon: ''
+        visual_name: 'Black 50'
+        class_suffix: black-50
+      white-50:
+        icon: ''
+        visual_name: 'White 50'
+        class_suffix: white-50
+      reset:
+        icon: format_color_reset
+        visual_name: Reset
+        class_suffix: reset
+  background-color:
+    icon: palette
+    advanced: false
+    apply_to:
+      'block_content:vlsuite_text:vlsuite_text': 'block_content:vlsuite_text:vlsuite_text'
+      'vlsuite_layout:section': 'vlsuite_layout:section'
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+    visual_name: 'Background color'
+    class_prefix: bg-
+    values:
+      primary:
+        icon: ''
+        visual_name: Primary
+        class_suffix: primary
+      secondary:
+        icon: ''
+        visual_name: Secondary
+        class_suffix: secondary
+      success:
+        icon: ''
+        visual_name: Success
+        class_suffix: success
+      info:
+        icon: ''
+        visual_name: Info
+        class_suffix: info
+      warning:
+        icon: ''
+        visual_name: Warning
+        class_suffix: warning
+      danger:
+        icon: ''
+        visual_name: Danger
+        class_suffix: danger
+      light:
+        icon: ''
+        visual_name: Light
+        class_suffix: light
+      dark:
+        icon: ''
+        visual_name: Dark
+        class_suffix: dark
+      body:
+        icon: ''
+        visual_name: Body
+        class_suffix: body
+      white:
+        icon: ''
+        visual_name: White
+        class_suffix: white
+      transparent:
+        icon: ''
+        visual_name: Transparent
+        class_suffix: transparent
+  background-gradient:
+    icon: gradient
+    advanced: false
+    apply_to:
+      'block_content:vlsuite_text:vlsuite_text': 'block_content:vlsuite_text:vlsuite_text'
+      'vlsuite_layout:section': 'vlsuite_layout:section'
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+    visual_name: 'Background gradient'
+    class_prefix: 'bg-gradient bg-'
+    values:
+      primary:
+        icon: ''
+        visual_name: Primary
+        class_suffix: primary
+      secondary:
+        icon: ''
+        visual_name: Secondary
+        class_suffix: secondary
+      success:
+        icon: ''
+        visual_name: Success
+        class_suffix: success
+      info:
+        icon: ''
+        visual_name: Info
+        class_suffix: info
+      warning:
+        icon: ''
+        visual_name: Warning
+        class_suffix: warning
+      danger:
+        icon: ''
+        visual_name: Danger
+        class_suffix: danger
+      light:
+        icon: ''
+        visual_name: Light
+        class_suffix: light
+      dark:
+        icon: ''
+        visual_name: Dark
+        class_suffix: dark
+      body:
+        icon: ''
+        visual_name: Body
+        class_suffix: body
+      white:
+        icon: ''
+        visual_name: White
+        class_suffix: white
+      transparent:
+        icon: ''
+        visual_name: Transparent
+        class_suffix: transparent
+  background-opacity:
+    icon: opacity
+    advanced: false
+    apply_to:
+      'block_content:vlsuite_text:vlsuite_text': 'block_content:vlsuite_text:vlsuite_text'
+      'vlsuite_layout:section': 'vlsuite_layout:section'
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+    visual_name: 'Background opacity'
+    class_prefix: bg-opacity-
+    values:
+      75:
+        icon: ''
+        visual_name: 75%
+        class_suffix: '75'
+      50:
+        icon: ''
+        visual_name: 50%
+        class_suffix: '50'
+      25:
+        icon: ''
+        visual_name: 25%
+        class_suffix: '25'
+      10:
+        icon: ''
+        visual_name: 10%
+        class_suffix: '10'
+  inline:
+    icon: grid_view
+    advanced: true
+    apply_to:
+      'block_content:vlsuite_attachments:vlsuite_attachments': 'block_content:vlsuite_attachments:vlsuite_attachments'
+      'vlsuite_layout:region_top': 'vlsuite_layout:region_top'
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+      'vlsuite_layout:region_bottom': 'vlsuite_layout:region_bottom'
+    visual_name: Inline
+    class_prefix: 'row row-cols-'
+    values:
+      auto:
+        icon: fit_width
+        visual_name: Auto
+        class_suffix: auto
+      2:
+        icon: counter_2
+        visual_name: '2'
+        class_suffix: '2'
+      3:
+        icon: counter_3
+        visual_name: '3'
+        class_suffix: '3'
+      4:
+        icon: counter_4
+        visual_name: '4'
+        class_suffix: '4'
+      5:
+        icon: counter_5
+        visual_name: '5'
+        class_suffix: '5'
+      6:
+        icon: counter_6
+        visual_name: '6'
+        class_suffix: '6'
+      auto-md-medium-or-wider:
+        icon: fit_width
+        visual_name: 'Auto - MD (medium or wider)'
+        class_suffix: md-auto
+      2-md-medium-or-wider:
+        icon: counter_2
+        visual_name: '2 - MD (medium or wider)'
+        class_suffix: md-2
+      3-md-medium-or-wider:
+        icon: counter_3
+        visual_name: '3 - MD (medium or wider)'
+        class_suffix: md-3
+      4-md-medium-or-wider:
+        icon: counter_4
+        visual_name: '4 - MD (medium or wider)'
+        class_suffix: md-4
+      5-md-medium-or-wider:
+        icon: counter_5
+        visual_name: '5 - MD (medium or wider)'
+        class_suffix: md-5
+      6-md-medium-or-wider:
+        icon: counter_6
+        visual_name: '6 - MD (medium or wider)'
+        class_suffix: md-6
+  gutter:
+    icon: margin
+    advanced: true
+    apply_to:
+      'block_content:vlsuite_attachments:vlsuite_attachments': 'block_content:vlsuite_attachments:vlsuite_attachments'
+      'vlsuite_layout:row': 'vlsuite_layout:row'
+      'vlsuite_layout:region_top': 'vlsuite_layout:region_top'
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+      'vlsuite_layout:region_bottom': 'vlsuite_layout:region_bottom'
+    visual_name: Gutter
+    class_prefix: g-
+    values:
+      no-gutter:
+        icon: remove
+        visual_name: 'No gutter'
+        class_suffix: '0'
+      gutter-1:
+        icon: counter_1
+        visual_name: 'Gutter 1'
+        class_suffix: '1'
+      gutter-2:
+        icon: counter_2
+        visual_name: 'Gutter 2'
+        class_suffix: '2'
+      gutter-3:
+        icon: counter_3
+        visual_name: 'Gutter 3'
+        class_suffix: '3'
+      gutter-4:
+        icon: counter_4
+        visual_name: 'Gutter 4'
+        class_suffix: '4'
+      gutter-5:
+        icon: counter_5
+        visual_name: 'Gutter 5'
+        class_suffix: '5'
+      no-gutter-md-medium-or-wider:
+        icon: remove
+        visual_name: 'No gutter - MD (medium or wider)'
+        class_suffix: md-0
+      gutter-1-md-medium-or-wider:
+        icon: counter_1
+        visual_name: 'Gutter 1 - MD (medium or wider)'
+        class_suffix: md-1
+      gutter-2-md-medium-or-wider:
+        icon: counter_2
+        visual_name: 'Gutter 2 - MD (medium or wider)'
+        class_suffix: md-2
+      gutter-3-md-medium-or-wider:
+        icon: counter_3
+        visual_name: 'Gutter 3 - MD (medium or wider)'
+        class_suffix: md-3
+      gutter-4-md-medium-or-wider:
+        icon: counter_4
+        visual_name: 'Gutter 4 - MD (medium or wider)'
+        class_suffix: md-4
+      gutter-5-md-medium-or-wider:
+        icon: counter_5
+        visual_name: 'Gutter 5 - MD (medium or wider)'
+        class_suffix: md-5
+  gutter-y:
+    icon: margin
+    advanced: true
+    apply_to:
+      'vlsuite_layout:row': 'vlsuite_layout:row'
+      'vlsuite_layout:region_top': 'vlsuite_layout:region_top'
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+      'vlsuite_layout:region_bottom': 'vlsuite_layout:region_bottom'
+    visual_name: 'Vertical gutter'
+    class_prefix: gy-
+    values:
+      no-gutter:
+        icon: remove
+        visual_name: 'No gutter'
+        class_suffix: '0'
+      gutter-1:
+        icon: counter_1
+        visual_name: 'Gutter 1'
+        class_suffix: '1'
+      gutter-2:
+        icon: counter_2
+        visual_name: 'Gutter 2'
+        class_suffix: '2'
+      gutter-3:
+        icon: counter_3
+        visual_name: 'Gutter 3'
+        class_suffix: '3'
+      gutter-4:
+        icon: counter_4
+        visual_name: 'Gutter 4'
+        class_suffix: '4'
+      gutter-5:
+        icon: counter_5
+        visual_name: 'Gutter 5'
+        class_suffix: '5'
+      no-gutter-md-medium-or-wider:
+        icon: remove
+        visual_name: 'No gutter - MD (medium or wider)'
+        class_suffix: md-0
+      gutter-1-md-medium-or-wider:
+        icon: counter_1
+        visual_name: 'Gutter 1 - MD (medium or wider)'
+        class_suffix: md-1
+      gutter-2-md-medium-or-wider:
+        icon: counter_2
+        visual_name: 'Gutter 2 - MD (medium or wider)'
+        class_suffix: md-2
+      gutter-3-md-medium-or-wider:
+        icon: counter_3
+        visual_name: 'Gutter 3 - MD (medium or wider)'
+        class_suffix: md-3
+      gutter-4-md-medium-or-wider:
+        icon: counter_4
+        visual_name: 'Gutter 4 - MD (medium or wider)'
+        class_suffix: md-4
+      gutter-5-md-medium-or-wider:
+        icon: counter_5
+        visual_name: 'Gutter 5 - MD (medium or wider)'
+        class_suffix: md-5
+  gutter-x:
+    icon: margin
+    advanced: true
+    apply_to:
+      'vlsuite_layout:row': 'vlsuite_layout:row'
+      'vlsuite_layout:region_top': 'vlsuite_layout:region_top'
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+      'vlsuite_layout:region_bottom': 'vlsuite_layout:region_bottom'
+    visual_name: 'Horizontal gutter'
+    class_prefix: gx-
+    values:
+      no-gutter:
+        icon: remove
+        visual_name: 'No gutter'
+        class_suffix: '0'
+      gutter-1:
+        icon: counter_1
+        visual_name: 'Gutter 1'
+        class_suffix: '1'
+      gutter-2:
+        icon: counter_2
+        visual_name: 'Gutter 2'
+        class_suffix: '2'
+      gutter-3:
+        icon: counter_3
+        visual_name: 'Gutter 3'
+        class_suffix: '3'
+      gutter-4:
+        icon: counter_4
+        visual_name: 'Gutter 4'
+        class_suffix: '4'
+      gutter-5:
+        icon: counter_5
+        visual_name: 'Gutter 5'
+        class_suffix: '5'
+      no-gutter-md-medium-or-wider:
+        icon: remove
+        visual_name: 'No gutter - MD (medium or wider)'
+        class_suffix: md-0
+      gutter-1-md-medium-or-wider:
+        icon: counter_1
+        visual_name: 'Gutter 1 - MD (medium or wider)'
+        class_suffix: md-1
+      gutter-2-md-medium-or-wider:
+        icon: counter_2
+        visual_name: 'Gutter 2 - MD (medium or wider)'
+        class_suffix: md-2
+      gutter-3-md-medium-or-wider:
+        icon: counter_3
+        visual_name: 'Gutter 3 - MD (medium or wider)'
+        class_suffix: md-3
+      gutter-4-md-medium-or-wider:
+        icon: counter_4
+        visual_name: 'Gutter 4 - MD (medium or wider)'
+        class_suffix: md-4
+      gutter-5-md-medium-or-wider:
+        icon: counter_5
+        visual_name: 'Gutter 5 - MD (medium or wider)'
+        class_suffix: md-5
+  align-items:
+    icon: vertical_align_center
+    advanced: true
+    apply_to:
+      'vlsuite_layout:row': 'vlsuite_layout:row'
+      'vlsuite_layout:region_top': 'vlsuite_layout:region_top'
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+      'vlsuite_layout:region_bottom': 'vlsuite_layout:region_bottom'
+    visual_name: 'Align items (vertical)'
+    class_prefix: align-items-
+    values:
+      start:
+        icon: vertical_align_top
+        visual_name: Start
+        class_suffix: start
+      end:
+        icon: vertical_align_bottom
+        visual_name: End
+        class_suffix: end
+      center:
+        icon: vertical_align_center
+        visual_name: Center
+        class_suffix: center
+      baseline:
+        icon: text_fields
+        visual_name: Baseline
+        class_suffix: baseline
+  align-items-x:
+    icon: align_horizontal_center
+    advanced: true
+    apply_to:
+      'block_content:vlsuite_attachments:vlsuite_attachments': 'block_content:vlsuite_attachments:vlsuite_attachments'
+      'vlsuite_layout:region_top': 'vlsuite_layout:region_top'
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+      'vlsuite_layout:region_bottom': 'vlsuite_layout:region_bottom'
+    visual_name: 'Align items (horizontal)'
+    class_prefix: justify-content-
+    values:
+      start:
+        icon: align_horizontal_left
+        visual_name: Start
+        class_suffix: start
+      end:
+        icon: align_horizontal_right
+        visual_name: End
+        class_suffix: end
+      center:
+        icon: align_horizontal_center
+        visual_name: Center
+        class_suffix: center
+      around:
+        icon: align_justify_space_around
+        visual_name: Around
+        class_suffix: around
+      between:
+        icon: align_justify_space_between
+        visual_name: Between
+        class_suffix: between
+      evenly:
+        icon: align_justify_space_even
+        visual_name: Evenly
+        class_suffix: evenly
+  padding:
+    icon: padding
+    advanced: true
+    apply_to:
+      'block_content:vlsuite_text:vlsuite_text': 'block_content:vlsuite_text:vlsuite_text'
+      'vlsuite_layout:section': 'vlsuite_layout:section'
+      'vlsuite_layout:row': 'vlsuite_layout:row'
+      'vlsuite_layout:region_top': 'vlsuite_layout:region_top'
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+      'vlsuite_layout:region_bottom': 'vlsuite_layout:region_bottom'
+    visual_name: Spacing
+    class_prefix: p-
+    values:
+      no-spacer:
+        icon: remove
+        visual_name: 'No spacing'
+        class_suffix: '0'
+      spacer-1:
+        icon: counter_1
+        visual_name: 'Spacer 1'
+        class_suffix: '1'
+      spacer-2:
+        icon: counter_2
+        visual_name: 'Spacer 2'
+        class_suffix: '2'
+      spacer-3:
+        icon: counter_3
+        visual_name: 'Spacer 3'
+        class_suffix: '3'
+      spacer-4:
+        icon: counter_4
+        visual_name: 'Spacer 4'
+        class_suffix: '4'
+      spacer-5:
+        icon: counter_5
+        visual_name: 'Spacer 5'
+        class_suffix: '5'
+      spacer-1-md-medium-or-wider:
+        icon: counter_1
+        visual_name: 'Spacer 1 - MD (medium or wider)'
+        class_suffix: md-1
+      spacer-2-md-medium-or-wider:
+        icon: counter_2
+        visual_name: 'Spacer 2 - MD (medium or wider)'
+        class_suffix: md-2
+      spacer-3-md-medium-or-wider:
+        icon: counter_3
+        visual_name: 'Spacer 3 - MD (medium or wider)'
+        class_suffix: md-3
+      spacer-4-md-medium-or-wider:
+        icon: counter_4
+        visual_name: 'Spacer 4 - MD (medium or wider)'
+        class_suffix: md-4
+      spacer-5-md-medium-or-wider:
+        icon: counter_5
+        visual_name: 'Spacer 5 - MD (medium or wider)'
+        class_suffix: md-5
+  padding-y:
+    icon: padding
+    advanced: true
+    apply_to:
+      'block_content:vlsuite_text:vlsuite_text': 'block_content:vlsuite_text:vlsuite_text'
+      'vlsuite_layout:section': 'vlsuite_layout:section'
+      'vlsuite_layout:row': 'vlsuite_layout:row'
+      'vlsuite_layout:region_top': 'vlsuite_layout:region_top'
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+      'vlsuite_layout:region_bottom': 'vlsuite_layout:region_bottom'
+    visual_name: 'Vertical spacing'
+    class_prefix: py-
+    values:
+      no-spacer:
+        icon: remove
+        visual_name: 'No spacing'
+        class_suffix: '0'
+      spacer-1:
+        icon: counter_1
+        visual_name: 'Spacer 1'
+        class_suffix: '1'
+      spacer-2:
+        icon: counter_2
+        visual_name: 'Spacer 2'
+        class_suffix: '2'
+      spacer-3:
+        icon: counter_3
+        visual_name: 'Spacer 3'
+        class_suffix: '3'
+      spacer-4:
+        icon: counter_4
+        visual_name: 'Spacer 4'
+        class_suffix: '4'
+      spacer-5:
+        icon: counter_5
+        visual_name: 'Spacer 5'
+        class_suffix: '5'
+      spacer-1-md-medium-or-wider:
+        icon: counter_1
+        visual_name: 'Spacer 1 - MD (medium or wider)'
+        class_suffix: md-1
+      spacer-2-md-medium-or-wider:
+        icon: counter_2
+        visual_name: 'Spacer 2 - MD (medium or wider)'
+        class_suffix: md-2
+      spacer-3-md-medium-or-wider:
+        icon: counter_3
+        visual_name: 'Spacer 3 - MD (medium or wider)'
+        class_suffix: md-3
+      spacer-4-md-medium-or-wider:
+        icon: counter_4
+        visual_name: 'Spacer 4 - MD (medium or wider)'
+        class_suffix: md-4
+      spacer-5-md-medium-or-wider:
+        icon: counter_5
+        visual_name: 'Spacer 5 - MD (medium or wider)'
+        class_suffix: md-5
+  padding-x:
+    icon: padding
+    advanced: true
+    apply_to:
+      'block_content:vlsuite_text:vlsuite_text': 'block_content:vlsuite_text:vlsuite_text'
+      'vlsuite_layout:section': 'vlsuite_layout:section'
+      'vlsuite_layout:row': 'vlsuite_layout:row'
+      'vlsuite_layout:region_top': 'vlsuite_layout:region_top'
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+      'vlsuite_layout:region_bottom': 'vlsuite_layout:region_bottom'
+    visual_name: 'Horizontal spacing'
+    class_prefix: px-
+    values:
+      no-spacer:
+        icon: remove
+        visual_name: 'No spacing'
+        class_suffix: '0'
+      spacer-1:
+        icon: counter_1
+        visual_name: 'Spacer 1'
+        class_suffix: '1'
+      spacer-2:
+        icon: counter_2
+        visual_name: 'Spacer 2'
+        class_suffix: '2'
+      spacer-3:
+        icon: counter_3
+        visual_name: 'Spacer 3'
+        class_suffix: '3'
+      spacer-4:
+        icon: counter_4
+        visual_name: 'Spacer 4'
+        class_suffix: '4'
+      spacer-5:
+        icon: counter_5
+        visual_name: 'Spacer 5'
+        class_suffix: '5'
+      spacer-1-md-medium-or-wider:
+        icon: counter_1
+        visual_name: 'Spacer 1 - MD (medium or wider)'
+        class_suffix: md-1
+      spacer-2-md-medium-or-wider:
+        icon: counter_2
+        visual_name: 'Spacer 2 - MD (medium or wider)'
+        class_suffix: md-2
+      spacer-3-md-medium-or-wider:
+        icon: counter_3
+        visual_name: 'Spacer 3 - MD (medium or wider)'
+        class_suffix: md-3
+      spacer-4-md-medium-or-wider:
+        icon: counter_4
+        visual_name: 'Spacer 4 - MD (medium or wider)'
+        class_suffix: md-4
+      spacer-5-md-medium-or-wider:
+        icon: counter_5
+        visual_name: 'Spacer 5 - MD (medium or wider)'
+        class_suffix: md-5
+  media-bg-opacity:
+    icon: opacity
+    advanced: false
+    apply_to:
+      'vlsuite_layout:media_bg': 'vlsuite_layout:media_bg'
+    visual_name: 'Media background opacity'
+    class_prefix: opacity-
+    values:
+      0:
+        icon: ''
+        visual_name: 0%
+        class_suffix: '0'
+      25:
+        icon: ''
+        visual_name: 25%
+        class_suffix: '25'
+      50:
+        icon: ''
+        visual_name: 50%
+        class_suffix: '50'
+      75:
+        icon: ''
+        visual_name: 75%
+        class_suffix: '75'
+      100:
+        icon: counter_4
+        visual_name: 100%
+        class_suffix: '100'
+  media-bg-variant:
+    icon: style
+    advanced: false
+    apply_to:
+      'vlsuite_layout:media_bg': 'vlsuite_layout:media_bg'
+    visual_name: 'Media background variant'
+    class_prefix: media-bg-variant--
+    values:
+      half-width-left:
+        icon: chevron_left
+        visual_name: 'Half width left'
+        class_suffix: half-width-left
+      half-width-right:
+        icon: chevron_right
+        visual_name: 'Half width right'
+        class_suffix: half-width-right
+  btn:
+    icon: buttons_alt
+    advanced: false
+    apply_to:
+      'block_content:vlsuite_cta:vlsuite_link:item': 'block_content:vlsuite_cta:vlsuite_link:item'
+      'node:vlsuite_landing:field_vlsuite_landing_cta_link:item': 'node:vlsuite_landing:field_vlsuite_landing_cta_link:item'
+    visual_name: Button
+    class_prefix: 'btn btn-'
+    values:
+      primary:
+        icon: ''
+        visual_name: Primary
+        class_suffix: primary
+      secondary:
+        icon: ''
+        visual_name: Secondary
+        class_suffix: secondary
+      success:
+        icon: ''
+        visual_name: Success
+        class_suffix: success
+      info:
+        icon: ''
+        visual_name: Info
+        class_suffix: info
+      warning:
+        icon: ''
+        visual_name: Warning
+        class_suffix: warning
+      danger:
+        icon: ''
+        visual_name: Danger
+        class_suffix: danger
+      light:
+        icon: ''
+        visual_name: Light
+        class_suffix: light
+      dark:
+        icon: ''
+        visual_name: Dark
+        class_suffix: dark
+      outline-primary:
+        icon: ''
+        visual_name: 'Outline Primary'
+        class_suffix: outline-primary
+      outline-secondary:
+        icon: ''
+        visual_name: 'Outline Secondary'
+        class_suffix: outline-secondary
+      outline-success:
+        icon: ''
+        visual_name: 'Outline Success'
+        class_suffix: outline-success
+      outline-info:
+        icon: ''
+        visual_name: 'Outline Info'
+        class_suffix: outline-info
+      outline-warning:
+        icon: ''
+        visual_name: 'Outline Warning'
+        class_suffix: outline-warning
+      outline-danger:
+        icon: ''
+        visual_name: 'Outline Danger'
+        class_suffix: outline-danger
+      outline-light:
+        icon: ''
+        visual_name: 'Outline Light'
+        class_suffix: outline-light
+      outline-dark:
+        icon: ''
+        visual_name: 'Outline Dark'
+        class_suffix: outline-dark
+  btn-size:
+    icon: format_size
+    advanced: false
+    apply_to:
+      'block_content:vlsuite_cta:vlsuite_link:item': 'block_content:vlsuite_cta:vlsuite_link:item'
+      'node:vlsuite_landing:field_vlsuite_landing_cta_link:item': 'node:vlsuite_landing:field_vlsuite_landing_cta_link:item'
+    visual_name: 'Button size'
+    class_prefix: btn-
+    values:
+      large:
+        icon: zoom_in
+        visual_name: Large
+        class_suffix: lg
+      small:
+        icon: zoom_out
+        visual_name: Small
+        class_suffix: sm
+  rounded:
+    icon: rounded_corner
+    advanced: false
+    apply_to:
+      'block_content:vlsuite_cta:vlsuite_link:item': 'block_content:vlsuite_cta:vlsuite_link:item'
+      'block_content:vlsuite_image:vlsuite_image:item': 'block_content:vlsuite_image:vlsuite_image:item'
+      'block_content:vlsuite_local_video:vlsuite_local_video:item': 'block_content:vlsuite_local_video:vlsuite_local_video:item'
+      'block_content:vlsuite_remote_video:vlsuite_remote_video:item': 'block_content:vlsuite_remote_video:vlsuite_remote_video:item'
+      'block_content:vlsuite_text:vlsuite_text': 'block_content:vlsuite_text:vlsuite_text'
+      'node:vlsuite_landing:field_vlsuite_landing_cta_link:item': 'node:vlsuite_landing:field_vlsuite_landing_cta_link:item'
+      'vlsuite_layout:section': 'vlsuite_layout:section'
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+    visual_name: Rounded
+    class_prefix: 'overflow-hidden rounded '
+    values:
+      circle:
+        icon: circle
+        visual_name: Circle
+        class_suffix: rounded-circle
+      rounded:
+        icon: rounded_corner
+        visual_name: Rounded
+        class_suffix: defined-by-prefix
+      pill:
+        icon: pill
+        visual_name: Pill
+        class_suffix: rounded-pill
+  shadow:
+    icon: shadow
+    advanced: false
+    apply_to:
+      'block_content:vlsuite_text:vlsuite_text': 'block_content:vlsuite_text:vlsuite_text'
+      'vlsuite_layout:section': 'vlsuite_layout:section'
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+    visual_name: Shadow
+    class_prefix: shadow
+    values:
+      shadow:
+        icon: shadow
+        visual_name: Shadow
+        class_suffix: defined-by-prefix
+      small:
+        icon: zoom_out
+        visual_name: Small
+        class_suffix: shadow-sm
+      large:
+        icon: zoom_in
+        visual_name: Large
+        class_suffix: shadow-lg
+  position:
+    icon: position_top_right
+    advanced: true
+    apply_to:
+      'block_content:vlsuite_icon': 'block_content:vlsuite_icon'
+    visual_name: Position
+    class_prefix: position-
+    values:
+      top-left-translate-middle:
+        icon: ''
+        visual_name: 'Top left translate middle'
+        class_suffix: 'absolute top-0 start-0 translate-middle'
+      top-center-translate-middle:
+        icon: ''
+        visual_name: 'Top center translate middle'
+        class_suffix: 'absolute top-0 start-50 translate-middle'
+      top-left:
+        icon: ''
+        visual_name: 'Top left'
+        class_suffix: 'absolute top-0 start-0'
+      top-center:
+        icon: ''
+        visual_name: 'Top center'
+        class_suffix: 'absolute top-0 start-50 translate-middle-x'
+      bottom-left-translate-middle:
+        icon: ''
+        visual_name: 'Bottom left translate middle'
+        class_suffix: 'absolute bottom-0 start-0 translate-middle'
+  border:
+    icon: border_style
+    advanced: false
+    apply_to:
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+    visual_name: Border
+    class_prefix: 'border-start border-'
+    values:
+      border-left:
+        icon: border_left
+        visual_name: 'Border left'
+        class_suffix: '2'
+  margin-start:
+    icon: margin
+    advanced: false
+    apply_to:
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+    visual_name: 'Margin left'
+    class_prefix: ms-
+    values:
+      spacer-1:
+        icon: counter_1
+        visual_name: 'Spacer 1'
+        class_suffix: '1'
+      spacer-2:
+        icon: counter_2
+        visual_name: 'Spacer 2'
+        class_suffix: '2'
+      spacer-3:
+        icon: counter_3
+        visual_name: 'Spacer 3'
+        class_suffix: '3'
+      spacer-4:
+        icon: counter_4
+        visual_name: 'Spacer 4'
+        class_suffix: '4'
+      spacer-5:
+        icon: counter_5
+        visual_name: 'Spacer 5'
+        class_suffix: '5'
+  badge:
+    icon: badge
+    advanced: true
+    apply_to:
+      'block_content:vlsuite_text:vlsuite_text': 'block_content:vlsuite_text:vlsuite_text'
+    visual_name: Badge
+    class_prefix: 'badge '
+    values:
+      primary:
+        icon: ''
+        visual_name: Primary
+        class_suffix: 'rounded-pill bg-primary'
+      secondary:
+        icon: ''
+        visual_name: Secondary
+        class_suffix: 'rounded-pill bg-secondary'
+      success:
+        icon: ''
+        visual_name: Success
+        class_suffix: 'rounded-pill bg-success'
+      danger:
+        icon: ''
+        visual_name: Danger
+        class_suffix: 'rounded-pill bg-danger'
+      warning:
+        icon: ''
+        visual_name: Warning
+        class_suffix: 'rounded-pill bg-warning text-dark'
+      info:
+        icon: ''
+        visual_name: Info
+        class_suffix: 'rounded-pill bg-info text-dark'
+      light:
+        icon: ''
+        visual_name: Light
+        class_suffix: 'rounded-pill bg-light text-dark'
+      dark:
+        icon: ''
+        visual_name: Dark
+        class_suffix: 'rounded-pill bg-dark'
+      outline-warning:
+        icon: ''
+        visual_name: 'Outline warning'
+        class_suffix: 'rounded-pill text-warning border border-1 border-warning'
+  width:
+    icon: width
+    advanced: true
+    apply_to:
+      'block_content:vlsuite_cta:vlsuite_link:item': 'block_content:vlsuite_cta:vlsuite_link:item'
+      'node:vlsuite_landing:field_vlsuite_landing_cta_link:item': 'node:vlsuite_landing:field_vlsuite_landing_cta_link:item'
+    visual_name: Width
+    class_prefix: w-
+    values:
+      100:
+        icon: width_full
+        visual_name: 100%
+        class_suffix: '100'
+  ratio:
+    icon: aspect_ratio
+    advanced: true
+    apply_to:
+      'block_content:vlsuite_image:vlsuite_image:item': 'block_content:vlsuite_image:vlsuite_image:item'
+      'block_content:vlsuite_local_video:vlsuite_local_video:item': 'block_content:vlsuite_local_video:vlsuite_local_video:item'
+      'block_content:vlsuite_remote_video:vlsuite_remote_video:item': 'block_content:vlsuite_remote_video:vlsuite_remote_video:item'
+      'node:vlsuite_landing:field_vlsuite_landing_main_image:item': 'node:vlsuite_landing:field_vlsuite_landing_main_image:item'
+      'vlsuite_layout:row': 'vlsuite_layout:row'
+    visual_name: Ratio
+    class_prefix: 'vlsuite-ratio vlsuite-ratio-'
+    values:
+      1-1:
+        icon: image_aspect_ratio
+        visual_name: 1/1
+        class_suffix: 1-1
+      3-2:
+        icon: image_aspect_ratio
+        visual_name: 3/2
+        class_suffix: 3-2
+      4-3:
+        icon: image_aspect_ratio
+        visual_name: 4/3
+        class_suffix: 4-3
+      16-9:
+        icon: image_aspect_ratio
+        visual_name: 16/9
+        class_suffix: 16-9
+      21-9:
+        icon: image_aspect_ratio
+        visual_name: 21/9
+        class_suffix: 21-9
+  translate:
+    icon: move_selection_right
+    advanced: true
+    apply_to:
+      'vlsuite_layout:main_regions': 'vlsuite_layout:main_regions'
+    visual_name: Translate
+    class_prefix: translate-
+    values:
+      vertically:
+        icon: move_selection_up
+        visual_name: Vertically
+        class_suffix: middle-y
+  story-telling:
+    icon: ''
+    advanced: true
+    apply_to:
+      'vlsuite_layout:section': 'vlsuite_layout:section'
+    visual_name: 'Story telling'
+    class_prefix: vlsuite-story-telling-
+    values:
+      100:
+        icon: ''
+        visual_name: 100%
+        class_suffix: '100'

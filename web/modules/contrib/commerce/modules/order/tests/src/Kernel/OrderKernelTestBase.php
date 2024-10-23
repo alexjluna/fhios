@@ -39,7 +39,7 @@ abstract class OrderKernelTestBase extends CommerceKernelTestBase {
     $this->installEntitySchema('commerce_order_item');
     $this->installEntitySchema('commerce_product');
     $this->installEntitySchema('commerce_product_variation');
-    $this->installConfig(['commerce_product', 'commerce_order']);
+    $this->installConfig(['commerce_product', 'commerce_order', 'system']);
     $this->installSchema('commerce_number_pattern', ['commerce_number_pattern_sequence']);
 
     // An order item type that doesn't need a purchasable entity.

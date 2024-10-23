@@ -73,7 +73,7 @@ class PaymentIntegrationTest extends OrderKernelTestBase {
     ]);
     $payment_gateway->save();
 
-    $user = $this->createUser(['mail' => $this->randomString() . '@example.com']);
+    $user = $this->createUser();
 
     $profile = Profile::create([
       'type' => 'customer',

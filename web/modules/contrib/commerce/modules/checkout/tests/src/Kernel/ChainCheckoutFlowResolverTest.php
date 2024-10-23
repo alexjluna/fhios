@@ -34,7 +34,7 @@ class ChainCheckoutFlowResolverTest extends OrderKernelTestBase {
    * Tests resolving the checkout flow.
    */
   public function testCheckoutFlowResolution() {
-    $user = $this->createUser(['mail' => $this->randomString() . '@example.com']);
+    $user = $this->createUser();
     $order = Order::create([
       'type' => 'default',
       'mail' => $user->getEmail(),

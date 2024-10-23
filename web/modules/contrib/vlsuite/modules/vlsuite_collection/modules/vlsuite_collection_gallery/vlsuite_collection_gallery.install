@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Collection - Gallery install module file.
+ */
+
+use Drupal\vlsuite_collection_gallery\Entity\Bundle\VLSuiteCollectionGallery;
+
+/**
+ * Implements hook_install().
+ */
+function vlsuite_collection_gallery_install() {
+  \Drupal::service('vlsuite_bundle_field.helper')->installBlockContentBundleFields(VLSuiteCollectionGallery::BUNDLE_KEY, VLSuiteCollectionGallery::class);
+  \Drupal::service('vlsuite_collection.helper')->generateMedia('vlsuite_image', '19b2383d-7801-4e8a-a9ee-092afec708c4', 'vlsuite_collection_gallery', 'vlsuite-collection-placeholder-image.jpg', 'a1556bd3-5bd8-4fdc-a073-5c201984ad91');
+  \Drupal::service('vlsuite_collection.helper')->sectionLibraryTemplateCreateFromYmlFile('45785403-cfd2-4d6e-8e1a-e509091f28fa', 'vlsuite_collection_gallery', [
+    'vlsuite_medias' => '19b2383d-7801-4e8a-a9ee-092afec708c4',
+  ]);
+}

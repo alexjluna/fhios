@@ -1,0 +1,6 @@
+services:
+  vlsuite_collection_stmt.uninstall_validator:
+    class: Drupal\vlsuite_collection_stmt\VLSuiteCollectionStmtUninstallValidator
+    tags:
+      - { name: module_install.uninstall_validator }
+    arguments: ['@entity_type.manager']

@@ -1,0 +1,4 @@
+services:
+  vlsuite_utility_classes.helper:
+    class: Drupal\vlsuite_utility_classes\VLSuiteUtilityClassesHelper
+    arguments: ['@config.factory', '@module_handler', '@current_user']

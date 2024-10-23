@@ -1,0 +1,145 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_collection_hero
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - vlsuite_block
+    - vlsuite_layout
+  enforced:
+    module:
+      - vlsuite_collection_hero
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: vlsuite_layout_onecol
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          column_widths: '100'
+          optional_regions: false
+          edge_to_edge: false
+          vlsuite_utility_class:
+            'vlsuite_layout:media_bg':
+              media-bg-opacity: '50'
+            'vlsuite_layout:section':
+              background-color: dark
+            'vlsuite_layout:row':
+              align-items: center
+              ratio: 21-9
+            'vlsuite_layout:main_regions':
+              text-align: right
+              color: white
+              padding-y: spacer-5
+              padding-x: spacer-5
+          edge_to_edge_bg: true
+          media_bg: null
+          identifier: ''
+          vlsuite_slider: {  }
+        components:
+          f8099f52-6479-4798-bc1f-b17c0c996428:
+            uuid: f8099f52-6479-4798-bc1f-b17c0c996428
+            region: main
+            configuration:
+              id: 'vlsuite_block_field_block:block_content:vlsuite_collection_hero:vlsuite_link'
+              label: Link
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: link
+                label: hidden
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: '0'
+                  target: '0'
+                third_party_settings: {  }
+              vlsuite_utility_class:
+                'block_content:vlsuite_collection_hero:vlsuite_link:item':
+                  btn: light
+                  btn-size: large
+                  rounded: pill
+                'block_content:vlsuite_collection_hero:vlsuite_link':
+                  text-align: right
+            weight: 8
+            additional: {  }
+          d3dfa461-a9e7-4a42-93ef-5267e3083aac:
+            uuid: d3dfa461-a9e7-4a42-93ef-5267e3083aac
+            region: main
+            configuration:
+              id: 'vlsuite_block_field_block:block_content:vlsuite_collection_hero:vlsuite_text'
+              label: Text
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+              vlsuite_utility_class: {  }
+            weight: 7
+            additional: {  }
+          4903fee0-c459-4674-b9e1-886184e2a0d1:
+            uuid: 4903fee0-c459-4674-b9e1-886184e2a0d1
+            region: main
+            configuration:
+              id: 'vlsuite_block_media_bg_block:block_content:vlsuite_collection_hero:vlsuite_background'
+              label: 'Media background'
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            weight: 5
+            additional: {  }
+          64b8db3f-d2b4-4586-af30-5c603bbf9dea:
+            uuid: 64b8db3f-d2b4-4586-af30-5c603bbf9dea
+            region: main
+            configuration:
+              id: 'vlsuite_block_field_block:block_content:vlsuite_collection_hero:vlsuite_media'
+              label: Media
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
+              vlsuite_utility_class: {  }
+            weight: 6
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+id: block_content.vlsuite_collection_hero.default
+targetEntityType: block_content
+bundle: vlsuite_collection_hero
+mode: default
+content: {  }
+hidden:
+  langcode: true
+  vlsuite_background: true
+  vlsuite_media: true
+  vlsuite_link: true
+  vlsuite_text: true

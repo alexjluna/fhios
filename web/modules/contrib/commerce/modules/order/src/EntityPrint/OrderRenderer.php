@@ -91,11 +91,9 @@ class OrderRenderer extends ContentEntityRenderer {
    * {@inheritdoc}
    */
   public function getFilename(array $entities) {
-    $entities_label = $this->filenameGenerator->generateFilename($entities, static function (OrderInterface $order) {
-      return $order->id();
-    });
-    return $this->t('Order @id @receipt', [
-      '@id' => $entities_label,
+    $entities_label = $this->filenameGenerator->generateFilename($entities);
+    return $this->t('@label @receipt', [
+      '@label' => $entities_label,
       '@receipt' => $this->formatPlural(count($entities), 'receipt', 'receipts'),
     ]);
   }

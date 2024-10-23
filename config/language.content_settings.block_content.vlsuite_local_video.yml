@@ -1,0 +1,23 @@
+uuid: e27c6d06-e6cc-47d1-8a13-bce1ee7b3d02
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_local_video
+  module:
+    - content_translation
+  enforced:
+    module:
+      - vlsuite_block_local_video
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: SDFPKdeGufxQU9Rv6LiQRMZ-T-xlVMgULbivWucjCPM
+id: block_content.vlsuite_local_video
+target_entity_type_id: block_content
+target_bundle: vlsuite_local_video
+default_langcode: current_interface
+language_alterable: false

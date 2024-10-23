@@ -35,3 +35,7 @@ services:
     class: Drupal\commerce_promotion\EventSubscriber\RouteSubscriber
     tags:
       - { name: event_subscriber }
+
+  commerce_promotion.cron:
+    class: Drupal\commerce_promotion\Cron
+    arguments: ['@entity_type.manager', '@commerce_promotion.usage']

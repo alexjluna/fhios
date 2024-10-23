@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\commerce_product\FunctionalJavascript;
 
+use Drupal\commerce_product\Entity\ProductType;
 use Drupal\commerce_product\Entity\ProductVariationType;
 use Drupal\Core\Entity\Entity\EntityFormDisplay;
 use Drupal\Core\Url;
@@ -22,6 +23,8 @@ class ProductLayoutBuilderIntegrationTest extends ProductWebDriverTestBase {
     'layout_builder',
     'commerce_cart',
     'image',
+    'views',
+    'views_ui',
   ];
 
   /**
@@ -37,6 +40,9 @@ class ProductLayoutBuilderIntegrationTest extends ProductWebDriverTestBase {
       'access contextual links',
       'configure any layout',
       'administer commerce_product display',
+      'administer commerce_product_attribute',
+      'administer site configuration',
+      'administer views',
     ], parent::getAdministratorPermissions());
   }
 
@@ -142,26 +148,93 @@ class ProductLayoutBuilderIntegrationTest extends ProductWebDriverTestBase {
    * Make sure products without a variation do not crash.
    */
   public function testProductWithoutVariationsDoesNotCrash() {
+    // Generate product information.
+    $products_data = [
+      [
+        'title' => $this->randomMachineName(),
+      ],
+      [
+        'title' => $this->randomMachineName(),
+      ],
+      [
+        'title' => $this->randomMachineName(),
+        'variation' => [
+          'type' => 'default',
+          'sku' => $this->randomString(),
+          'price' => [
+            'number' => mt_rand(1, 15),
+            'currency_code' => 'USD',
+          ],
+        ],
+      ],
+      [
+        'title' => $this->randomMachineName(),
+        'variation' => [
+          'type' => 'default',
+          'sku' => $this->randomString(),
+          'price' => [
+            'number' => mt_rand(1, 15),
+            'currency_code' => 'USD',
+          ],
+        ],
+      ],
+    ];
+
+    // Generate products.
+    foreach ($products_data as $product_data) {
+      $variations = [];
+      if (isset($product_data['variation'])) {
+        $variations[] = $this->createEntity('commerce_product_variation', $product_data['variation']);
+      }
+      $this->createEntity('commerce_product', [
+        'type' => 'default',
+        'title' => $product_data['title'],
+        'stores' => $this->stores,
+        'variations' => $variations,
+      ]);
+    }
+
     $this->enableLayoutsForBundle('default', TRUE);
+    $this->addBlockToLayout('SKU');
     $this->configureDefaultLayout();
 
-    $product = $this->createEntity('commerce_product', [
-      'type' => 'default',
-      'title' => $this->randomMachineName(),
-      'stores' => $this->stores,
-      'body' => ['value' => 'Testing product does not crash!'],
-    ]);
-    $this->drupalGet($product->toUrl());
-    $this->assertSession()->pageTextContains('Testing product does not crash!');
+    $this->drupalGet('admin/structure/views/add');
+    $page = $this->getSession()->getPage();
+
+    $name = 'Product list';
+    $name_input = $page->findField('label');
+    $name_input->setValue($name);
+
+    $this->getSession()->getPage()->selectFieldOption('show[wizard_key]', 'standard:commerce_product_field_data');
+    $this->assertSession()->assertWaitOnAjaxRequest();
+
+    $page->findField('page[create]')->click();
+    $this->assertEquals($name, $page->findField('page[title]')->getValue());
+    $this->assertEquals(strtolower(str_replace(' ', '-', $name)), $page->findField('page[path]')->getValue());
+    $this->getSession()->getPage()->selectFieldOption('page[style][row_plugin]', 'entity:commerce_product');
+    $this->assertSession()->assertWaitOnAjaxRequest();
+
+    $this->submitForm([], 'Save and edit');
+    $this->assertSession()->addressEquals('admin/structure/views/view/product_list');
+
+    $this->drupalGet('product-list');
+    $this->assertSession()->pageTextContains('Product list');
+
+    foreach ($products_data as $product_data) {
+      $this->assertSession()->pageTextContains($product_data['title']);
+      if (isset($product_data['variation'])) {
+        $this->assertSession()
+          ->pageTextContains('SKU ' . $product_data['variation']['sku']);
+        $this->assertSession()
+          ->pageTextContains('Price $' . $product_data['variation']['price']['number']);
+      }
+    }
   }
 
   /**
    * Tests configuring a layout override for a product.
    */
   public function testConfiguringOverrideLayout() {
-    $this->enableLayoutsForBundle('default', TRUE);
-    $this->configureDefaultLayout();
-
     $product = $this->createEntity('commerce_product', [
       'type' => 'default',
       'title' => $this->randomMachineName(),
@@ -178,6 +251,8 @@ class ProductLayoutBuilderIntegrationTest extends ProductWebDriverTestBase {
         ]),
       ],
     ]);
+    $this->enableLayoutsForBundle('default', TRUE);
+    $this->configureDefaultLayout();
     $this->drupalGet($product->toUrl());
     $this->assertSession()->pageTextNotContains('INJECTION-DEFAULT');
     $this->clickLink('Layout');
@@ -257,6 +332,19 @@ class ProductLayoutBuilderIntegrationTest extends ProductWebDriverTestBase {
   }
 
   /**
+   * Make sure attribute without an options do not crash.
+   */
+  public function testProductWithoutAttributesOptionsDoesNotCrash() {
+    $this->drupalGet('admin/commerce/product-attributes/add');
+    $this->getSession()->getPage()->fillField('edit-label', 'Default');
+    $this->getSession()->getPage()->checkField('variation_types[default]');
+    $this->getSession()->getPage()->pressButton('Save');
+
+    $this->enableLayoutsForBundle('default');
+    $this->configureDefaultLayout();
+  }
+
+  /**
    * Configures a default layout for a product type.
    */
   protected function configureDefaultLayout() {
@@ -288,14 +376,27 @@ class ProductLayoutBuilderIntegrationTest extends ProductWebDriverTestBase {
    *   Whether to allow custom layouts.
    */
   protected function enableLayoutsForBundle($bundle, $allow_custom = FALSE) {
-    $this->drupalGet(Url::fromRoute('entity.entity_view_display.commerce_product.default', [
-      'commerce_product_type' => $bundle,
-    ]));
-    $this->getSession()->getPage()->checkField('layout[enabled]');
-    if ($allow_custom) {
-      $this->getSession()->getPage()->checkField('layout[allow_custom]');
+    $product_type = ProductType::load($bundle);
+    $urls = [];
+    // In order for the variation fields to be exposed, layout builder also has
+    // to be enabled at the variation bundle level.
+    foreach ($product_type->getVariationTypeIds() as $variation_type_id) {
+      $urls[] = Url::fromRoute('entity.entity_view_display.commerce_product_variation.default', [
+        'commerce_product_variation_type' => $variation_type_id,
+      ]);
     }
-    $this->getSession()->getPage()->pressButton('Save');
+    $urls[] = Url::fromRoute('entity.entity_view_display.commerce_product.default', [
+      'commerce_product_type' => $bundle,
+    ]);
+    foreach ($urls as $url) {
+      $this->drupalGet($url);
+      $this->getSession()->getPage()->checkField('layout[enabled]');
+      if ($allow_custom) {
+        $this->getSession()->getPage()->checkField('layout[allow_custom]');
+      }
+      $this->getSession()->getPage()->pressButton('Save');
+    }
+
     $this->assertNotEmpty($this->assertSession()->waitForElementVisible('css', '#edit-manage-layout'));
     $this->assertSession()->linkExists('Manage layout');
     $this->getSession()->getPage()->clickLink('Manage layout');

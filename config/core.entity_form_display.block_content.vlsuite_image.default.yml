@@ -1,0 +1,56 @@
+uuid: 3ed39d42-345a-425b-9f0d-8440e55100b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_image
+  module:
+    - link
+    - media_library
+  enforced:
+    module:
+      - vlsuite_block_image
+_core:
+  default_config_hash: xmkLK4HUyHh2go2nutvXQwXdpld_GhIwsxrETsOKyiU
+id: block_content.vlsuite_image.default
+targetEntityType: block_content
+bundle: vlsuite_image
+mode: default
+content:
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  vlsuite_image:
+    type: media_library_widget
+    weight: 3
+    region: content
+    settings:
+      media_types:
+        - vlsuite_image
+    third_party_settings: {  }
+  vlsuite_link:
+    type: link_default
+    weight: 26
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+hidden: {  }

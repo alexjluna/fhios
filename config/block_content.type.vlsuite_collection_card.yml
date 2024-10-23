@@ -1,0 +1,14 @@
+uuid: 961b8973-12dc-4c27-8e69-f7dda7b686dc
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_collection_card
+_core:
+  default_config_hash: 5VWqUlkEU8FmfX6grGYpB_QV1et0lrfVtkMlOzddW-Q
+id: vlsuite_collection_card
+label: 'Card (VLSuite Collection)'
+revision: 0
+description: ''
+vlsuite_block_icon: {  }

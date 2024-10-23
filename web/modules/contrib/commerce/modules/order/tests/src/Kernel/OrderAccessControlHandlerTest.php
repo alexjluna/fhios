@@ -27,9 +27,9 @@ class OrderAccessControlHandlerTest extends OrderKernelTestBase {
    * Tests the access checking.
    */
   public function testOrderAccess() {
-    $admin_user = $this->createUser(['mail' => $this->randomString() . '@example.com'], ['administer commerce_order']);
-    $user = $this->createUser(['mail' => $this->randomString() . '@example.com'], ['view own commerce_order']);
-    $different_user = $this->createUser(['mail' => $this->randomString() . '@example.com'], ['view own commerce_order']);
+    $admin_user = $this->createUser(['administer commerce_order']);
+    $user = $this->createUser(['view own commerce_order']);
+    $different_user = $this->createUser(['view own commerce_order']);
     $anon_user = new AnonymousUserSession();
 
     $order_item = OrderItem::create([

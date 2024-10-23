@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.vlsuite_collection_gallery_main
+    - field.field.media.vlsuite_image.field_media_image
+    - media.type.vlsuite_image
+    - responsive_image.styles.vlsuite_original_optimized_medium
+  module:
+    - layout_builder
+    - responsive_image
+  enforced:
+    module:
+      - vlsuite_media_image
+      - vlsuite_collection_gallery
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: media.vlsuite_image.vlsuite_collection_gallery_main
+targetEntityType: media
+bundle: vlsuite_image
+mode: vlsuite_collection_gallery_main
+content:
+  field_media_image:
+    type: responsive_image
+    label: visually_hidden
+    settings:
+      responsive_image_style: vlsuite_original_optimized_medium
+      image_link: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

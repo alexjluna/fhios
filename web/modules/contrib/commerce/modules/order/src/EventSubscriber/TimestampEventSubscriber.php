@@ -2,8 +2,8 @@
 
 namespace Drupal\commerce_order\EventSubscriber;
 
-use Drupal\state_machine\Event\WorkflowTransitionEvent;
 use Drupal\Component\Datetime\TimeInterface;
+use Drupal\state_machine\Event\WorkflowTransitionEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class TimestampEventSubscriber implements EventSubscriberInterface {

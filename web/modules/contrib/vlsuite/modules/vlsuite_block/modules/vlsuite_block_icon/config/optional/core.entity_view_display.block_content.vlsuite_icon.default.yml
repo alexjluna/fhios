@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_icon
+    - responsive_image.styles.vlsuite_original_optimized_icon
+  module:
+    - media_responsive_thumbnail
+  enforced:
+    module:
+      - vlsuite_block_icon
+id: block_content.vlsuite_icon.default
+targetEntityType: block_content
+bundle: vlsuite_icon
+mode: default
+content:
+  vlsuite_icon:
+    type: media_responsive_thumbnail
+    label: hidden
+    settings:
+      responsive_image_style: vlsuite_original_optimized_icon
+      image_link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - vlsuite
+id: node.vlsuite_full_content_top
+label: 'Full content top (VLSuite)'
+targetEntityType: node
+cache: true

@@ -1,0 +1,3 @@
+div[data-vlsuite-slider] .swiper .vlsuite-block.swiper-slide + .vlsuite-block.swiper-slide {
+  margin-top: 0;
+}

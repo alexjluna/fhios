@@ -183,7 +183,7 @@ function commerce_product_update_8208() {
   $configuration_to_delete[] = 'field.storage.commerce_product.stores';
   $configuration_to_delete[] = 'field.storage.commerce_product.variations';
 
-  $dependents = $config_manager->findConfigEntityDependents('config', $configuration_to_delete);
+  $dependents = $config_manager->findConfigEntityDependencies('config', $configuration_to_delete);
   /** @var \Drupal\Core\Config\Entity\ConfigEntityInterface $config_entity */
   foreach ($dependents as $config_name => $config_entity) {
     $config_entity = $config_factory->getEditable($config_name);

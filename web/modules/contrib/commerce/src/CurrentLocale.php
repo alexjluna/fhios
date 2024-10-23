@@ -58,8 +58,12 @@ class CurrentLocale implements CurrentLocaleInterface {
    */
   public function getLocale() {
     $request = $this->requestStack->getCurrentRequest();
-    if (!$this->locales->contains($request)) {
-      $this->locales[$request] = $this->chainResolver->resolve();
+    if (!$request || !$this->locales->contains($request)) {
+      $locale = $this->chainResolver->resolve();
+      if (!$request) {
+        return $locale;
+      }
+      $this->locales[$request] = $locale;
     }
 
     return $this->locales[$request];

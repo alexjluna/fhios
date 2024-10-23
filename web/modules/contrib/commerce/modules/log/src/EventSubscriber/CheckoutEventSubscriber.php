@@ -44,6 +44,11 @@ class CheckoutEventSubscriber implements EventSubscriberInterface {
   public function onCheckoutCompletion(OrderEvent $event) {
     $order = $event->getOrder();
     $this->logStorage->generate($order, 'checkout_complete')->save();
+    if ($comments = $order->getCustomerComments()) {
+      $this->logStorage->generate($order, 'commerce_order_from_customer_comment', [
+        'comment' => $comments,
+      ])->save();
+    }
   }
 
 }

@@ -1,0 +1,5 @@
+vlsuite_animations.settings:
+  title: 'VLSuite - Animations'
+  description: 'Visual Layout Suite (VLSuite) - Animations settings.'
+  parent: vlsuite.admin_index
+  route_name: vlsuite_animations.settings

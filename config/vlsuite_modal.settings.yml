@@ -1,0 +1,7 @@
+_core:
+  default_config_hash: 6KYsN0EqcC4maUcy-7qBiEQ1j1MgA9IVsZFuTeME--I
+modal_width: '1200'
+modal_height: auto
+modal_autoresize: true
+layout_builder_enabled: true
+layout_builder_admin_inherited: true

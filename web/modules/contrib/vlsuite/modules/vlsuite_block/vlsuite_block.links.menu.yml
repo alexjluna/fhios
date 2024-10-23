@@ -1,0 +1,5 @@
+vlsuite_block.settings:
+  title: 'VLSuite - Block'
+  description: 'Visual Layout Suite (VLSuite) - Block settings.'
+  parent: vlsuite.admin_index
+  route_name: vlsuite_block.settings

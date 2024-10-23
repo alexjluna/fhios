@@ -3,8 +3,8 @@
 namespace Drupal\commerce_product\Controller;
 
 use Drupal\commerce_product\Entity\ProductInterface;
-use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Link;

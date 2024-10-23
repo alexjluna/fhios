@@ -244,9 +244,11 @@ class PaymentGateway extends ConfigEntityBase implements PaymentGatewayInterface
     // Invoke the setters to clear related properties.
     if ($property_name == 'plugin') {
       $this->setPluginId($value);
+      return $this;
     }
     elseif ($property_name == 'configuration') {
       $this->setPluginConfiguration($value);
+      return $this;
     }
     else {
       return parent::set($property_name, $value);

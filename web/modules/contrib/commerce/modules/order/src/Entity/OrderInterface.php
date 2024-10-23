@@ -468,4 +468,22 @@ interface OrderInterface extends ContentEntityInterface, EntityAdjustableInterfa
    */
   public function getCalculationDate();
 
+  /**
+   * Gets the customer comments.
+   *
+   * @return string|null
+   *   The customer comments.
+   */
+  public function getCustomerComments(): ?string;
+
+  /**
+   * Sets the customer comments.
+   *
+   * @param string $comments
+   *   The customer comments.
+   *
+   * @return $this
+   */
+  public function setCustomerComments(string $comments): static;
+
 }

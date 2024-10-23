@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.vlsuite_remote_video.field_media_oembed_video
+    - media.type.vlsuite_remote_video
+  module:
+    - media
+  enforced:
+    module:
+      - vlsuite_media_remote_video
+id: media.vlsuite_remote_video.default
+targetEntityType: media
+bundle: vlsuite_remote_video
+mode: default
+content:
+  field_media_oembed_video:
+    type: oembed
+    label: visually_hidden
+    settings:
+      max_width: 0
+      max_height: 0
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

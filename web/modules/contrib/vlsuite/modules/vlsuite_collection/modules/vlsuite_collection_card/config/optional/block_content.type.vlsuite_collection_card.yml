@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_collection_card
+id: vlsuite_collection_card
+label: 'Card (VLSuite Collection)'
+revision: 0
+description: ''
+vlsuite_block_icon: {  }

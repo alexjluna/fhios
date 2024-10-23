@@ -1,0 +1,14 @@
+uuid: 43fade84-eac7-4ac6-b79a-219f9377380f
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_block_local_video
+_core:
+  default_config_hash: ZnSgHEXPnEgggiED1ZX9hD_q4OrrW23mhEAzZR4f4vI
+id: vlsuite_local_video
+label: 'Local video (VLSuite)'
+revision: 0
+description: ''
+vlsuite_block_icon: a5462dc4-afa3-43c0-9079-936d56f57ba0

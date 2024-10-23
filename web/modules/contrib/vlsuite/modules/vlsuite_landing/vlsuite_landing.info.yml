@@ -1,0 +1,29 @@
+name: VLSuite - Landing
+type: module
+description: Visual Layout Suite (VLSuite) - Landing
+package: Visual Layout Suite (VLSuite)
+core_version_requirement: ^9.5 || ^10
+
+dependencies:
+  - drupal:media_library
+  - drupal:link
+  - drupal:views
+  - drupal:content_translation
+  - drupal:menu_ui
+  - layout_builder_restrictions:layout_builder_restrictions
+  - layout_builder_at:layout_builder_at
+  - vlsuite:vlsuite_layout
+  - vlsuite:vlsuite_layout_builder
+  - vlsuite:vlsuite_block_cta
+  - vlsuite:vlsuite_block_image
+  - vlsuite:vlsuite_block_icon
+  - vlsuite:vlsuite_block_local_video
+  - vlsuite:vlsuite_block_remote_video
+  - vlsuite:vlsuite_block_text
+  - vlsuite:vlsuite_block_headings_menu
+  - vlsuite:vlsuite_block_attachments
+
+# Information added by Drupal.org packaging script on 2024-06-14
+version: '1.1.7'
+project: 'vlsuite'
+datestamp: 1718361880

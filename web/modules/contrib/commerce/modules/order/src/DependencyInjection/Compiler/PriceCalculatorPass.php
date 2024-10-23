@@ -3,8 +3,8 @@
 namespace Drupal\commerce_order\DependencyInjection\Compiler;
 
 use Drupal\commerce_order\OrderProcessorInterface;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Exception\LogicException;
 use Symfony\Component\DependencyInjection\Reference;
 

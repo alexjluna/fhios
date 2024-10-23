@@ -1,0 +1,6 @@
+services:
+  vlsuite_media_remote_video.uninstall_validator:
+    class: Drupal\vlsuite_media_remote_video\VLSuiteMediaRemoteVideoUninstallValidator
+    tags:
+      - { name: module_install.uninstall_validator }
+    arguments: ['@entity_type.manager']

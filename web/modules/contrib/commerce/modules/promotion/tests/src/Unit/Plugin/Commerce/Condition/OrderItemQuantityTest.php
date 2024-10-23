@@ -66,7 +66,7 @@ class OrderItemQuantityTest extends UnitTestCase {
    * @return array
    *   A list of testEvaluate function arguments.
    */
-  public function quantityProvider() {
+  public static function quantityProvider() {
     return [
       ['>', 10, 5, FALSE],
       ['>', 10, 10, FALSE],

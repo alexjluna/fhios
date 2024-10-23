@@ -1,0 +1,54 @@
+uuid: 262d1047-4457-4e8c-b475-439ef5db9f84
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_cta
+  module:
+    - link
+    - vlsuite_icon_font
+  enforced:
+    module:
+      - vlsuite_block_cta
+_core:
+  default_config_hash: GLHiLVofR2vIpI8Kby6WPvWyChArsDzUxJZDkkB78Fc
+id: block_content.vlsuite_cta.default
+targetEntityType: block_content
+bundle: vlsuite_cta
+mode: default
+content:
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  vlsuite_icon_font_icon:
+    type: vlsuite_icon_font_icon
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  vlsuite_link:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+hidden: {  }

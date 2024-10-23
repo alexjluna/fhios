@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_block_image
+id: vlsuite_image
+label: 'Image (VLSuite)'
+revision: 0
+description: ''
+vlsuite_block_icon: fefae60e-aee5-4b95-bfda-862f51fc8593

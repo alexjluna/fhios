@@ -1,0 +1,185 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.vlsuite_landing.body
+    - field.field.node.vlsuite_landing.field_vlsuite_landing_cta_link
+    - field.field.node.vlsuite_landing.field_vlsuite_landing_main_image
+    - field.field.node.vlsuite_landing.layout_builder__layout
+    - node.type.vlsuite_landing
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - user
+    - vlsuite_block
+    - vlsuite_layout
+  enforced:
+    module:
+      - vlsuite_landing
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: vlsuite_layout_onecol
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          column_widths: '100'
+          optional_regions: true
+          edge_to_edge: true
+          vlsuite_utility_class:
+            'vlsuite_layout:section':
+              background-color: dark
+              rounded: rounded
+            'vlsuite_layout:row':
+              text-align: center
+              color: body
+              gutter-y: gutter-1
+            'vlsuite_layout:main_regions':
+              padding-y: spacer-2
+              padding-x: spacer-3
+              color: white
+            'vlsuite_layout:region_bottom':
+              padding-y: spacer-3
+              padding-x: spacer-3
+          edge_to_edge_bg: true
+          media_bg: null
+          identifier: ''
+          vlsuite_slider:
+            scope: main
+        components:
+          64d35744-2a24-4473-af2b-4f504af17d53:
+            uuid: 64d35744-2a24-4473-af2b-4f504af17d53
+            region: top
+            configuration:
+              id: 'vlsuite_block_field_block:node:vlsuite_landing:field_vlsuite_landing_main_image'
+              label: Image
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: media_responsive_thumbnail
+                label: hidden
+                settings:
+                  responsive_image_style: vlsuite_original_optimized_small
+                  image_link: content
+                third_party_settings: {  }
+              vlsuite_utility_class:
+                'node:vlsuite_landing:field_vlsuite_landing_main_image:item':
+                  ratio: 21-9
+            weight: 0
+            additional: {  }
+          25fb5704-ff97-4fa2-9b43-c908f71ff7d9:
+            uuid: 25fb5704-ff97-4fa2-9b43-c908f71ff7d9
+            region: main
+            configuration:
+              id: 'vlsuite_block_field_block:node:vlsuite_landing:title'
+              label: Title
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: true
+                third_party_settings: {  }
+              vlsuite_utility_class:
+                'node:vlsuite_landing:title:item':
+                  color: white
+            weight: 0
+            additional: {  }
+          f5fbbb84-bfa4-41cd-9067-edad1da8f5fa:
+            uuid: f5fbbb84-bfa4-41cd-9067-edad1da8f5fa
+            region: main
+            configuration:
+              id: 'vlsuite_block_field_block:node:vlsuite_landing:body'
+              label: Body
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_trimmed
+                label: hidden
+                settings:
+                  trim_length: 90
+                third_party_settings: {  }
+              vlsuite_utility_class: {  }
+            weight: 1
+            additional: {  }
+          3ba21ab4-abcb-4501-811b-19116373db3a:
+            uuid: 3ba21ab4-abcb-4501-811b-19116373db3a
+            region: bottom
+            configuration:
+              id: 'vlsuite_block_field_block:node:vlsuite_landing:field_vlsuite_landing_cta_link'
+              label: 'CTA Link'
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: link
+                label: hidden
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: '0'
+                  target: '0'
+                third_party_settings: {  }
+              vlsuite_utility_class:
+                'node:vlsuite_landing:field_vlsuite_landing_cta_link:item':
+                  btn: light
+                  btn-size: large
+                  width: '100'
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories:
+      - 'VLSuite: Field blocks'
+      - 'VLSuite: Inline blocks'
+      - 'VLSuite: List block (views)'
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - vlsuite_layout_onecol
+        - vlsuite_layout_twocols
+        - vlsuite_layout_threecols
+        - vlsuite_layout_fourcols
+      denylisted_blocks: {  }
+      allowlisted_blocks:
+        'VLSuite: Field blocks':
+          - 'vlsuite_block_field_block:node:vlsuite_landing:body'
+          - 'vlsuite_block_field_block:node:vlsuite_landing:field_vlsuite_landing_cta_link'
+          - 'vlsuite_block_field_block:node:vlsuite_landing:field_vlsuite_landing_main_image'
+          - 'vlsuite_block_field_block:node:vlsuite_landing:title'
+        'VLSuite: Inline blocks':
+          - 'vlsuite_block_inline_block:vlsuite_cta'
+          - 'vlsuite_block_inline_block:vlsuite_icon'
+          - 'vlsuite_block_inline_block:vlsuite_image'
+          - 'vlsuite_block_inline_block:vlsuite_local_video'
+          - 'vlsuite_block_inline_block:vlsuite_remote_video'
+          - 'vlsuite_block_inline_block:vlsuite_text'
+      restricted_categories: {  }
+id: node.vlsuite_landing.teaser
+targetEntityType: node
+bundle: vlsuite_landing
+mode: teaser
+content: {  }
+hidden:
+  body: true
+  field_vlsuite_landing_cta_link: true
+  field_vlsuite_landing_main_image: true
+  langcode: true
+  layout_builder__layout: true
+  links: true

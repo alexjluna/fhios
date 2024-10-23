@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_webform
+  enforced:
+    module:
+      - vlsuite_block_webform
+id: block_content.vlsuite_webform.default
+targetEntityType: block_content
+bundle: vlsuite_webform
+mode: default
+content: {  }
+hidden:
+  langcode: true

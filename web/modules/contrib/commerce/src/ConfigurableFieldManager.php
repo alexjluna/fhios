@@ -3,9 +3,9 @@
 namespace Drupal\commerce;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\entity\BundleFieldDefinition as EntityBundleFieldDefinition;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
-use Drupal\entity\BundleFieldDefinition as EntityBundleFieldDefinition;
 
 class ConfigurableFieldManager implements ConfigurableFieldManagerInterface {
 
@@ -136,8 +136,8 @@ class ConfigurableFieldManager implements ConfigurableFieldManagerInterface {
     $storage = $this->entityTypeManager->getStorage($entity_type_id);
     $bundle_key = $storage->getEntityType()->getKey('bundle');
     $query = $storage->getQuery();
+    $query->accessCheck(FALSE);
     $query
-      ->accessCheck(FALSE)
       ->condition($bundle_key, $bundle)
       ->exists($field_name . '.' . $property)
       ->range(0, 1);

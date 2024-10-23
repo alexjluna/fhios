@@ -127,6 +127,8 @@ class CheckoutFlowForm extends EntityForm {
         'commerce_checkout_flow' => $this->entity->id(),
       ]);
     }
+
+    return $status;
   }
 
 }

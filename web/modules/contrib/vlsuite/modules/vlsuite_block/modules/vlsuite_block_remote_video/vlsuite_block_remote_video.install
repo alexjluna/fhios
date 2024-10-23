@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Block - Remote video install module file.
+ */
+
+use Drupal\vlsuite_block_remote_video\Entity\Bundle\VLSuiteBlockRemoteVideo;
+
+/**
+ * Implements hook_install().
+ */
+function vlsuite_block_remote_video_install() {
+  \Drupal::service('vlsuite_bundle_field.helper')->installBlockContentBundleFields(VLSuiteBlockRemoteVideo::BUNDLE_KEY, VLSuiteBlockRemoteVideo::class);
+  _vlsuite_block_update_helper_save_default_icon_file('block_content.type.vlsuite_remote_video', 'youtube.svg', 'a5462dc4-afa3-43c0-9079-936d56f57ba0');
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function vlsuite_block_remote_video_update_10001() {
+  \Drupal::configFactory()->getEditable('block_content.type.vlsuite_remote_video')->set('vlsuite_block_icon', 'a5462dc4-afa3-43c0-9079-936d56f57ba0')->save();
+  _vlsuite_block_update_helper_save_default_icon_file('block_content.type.vlsuite_remote_video', 'youtube.svg', 'a5462dc4-afa3-43c0-9079-936d56f57ba0');
+}

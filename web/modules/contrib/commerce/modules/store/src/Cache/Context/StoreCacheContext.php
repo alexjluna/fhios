@@ -3,8 +3,8 @@
 namespace Drupal\commerce_store\Cache\Context;
 
 use Drupal\commerce_store\CurrentStoreInterface;
-use Drupal\Core\Cache\Context\CacheContextInterface;
 use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Cache\Context\CacheContextInterface;
 
 /**
  * Defines the StoreCacheContext service, for "per store" caching.

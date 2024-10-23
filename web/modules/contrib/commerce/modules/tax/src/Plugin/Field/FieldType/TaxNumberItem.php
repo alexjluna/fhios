@@ -19,7 +19,8 @@ use Drupal\Core\TypedData\MapDataDefinition;
  * @FieldType(
  *   id = "commerce_tax_number",
  *   label = @Translation("Tax number"),
- *   category = @Translation("Commerce"),
+ *   description = @Translation("Stores a tax number"),
+ *   category = "commerce",
  *   default_formatter = "commerce_tax_number_default",
  *   default_widget = "commerce_tax_number_default",
  *   cardinality = 1,
@@ -169,7 +170,7 @@ class TaxNumberItem extends FieldItemBase implements TaxNumberItemInterface {
             VerificationResult::STATE_FAILURE,
             VerificationResult::STATE_UNKNOWN,
           ],
-          'message' => $this->t('Invalid verification_state specified.'),
+          'message' => $this->t('Invalid verification state specified.'),
         ],
       ],
     ]);
@@ -319,6 +320,8 @@ class TaxNumberItem extends FieldItemBase implements TaxNumberItemInterface {
       $tax_number_type_manager = $this->getTaxNumberTypeManager();
       return $tax_number_type_manager->createInstance($this->type);
     }
+
+    return NULL;
   }
 
   /**

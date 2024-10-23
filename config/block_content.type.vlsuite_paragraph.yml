@@ -1,0 +1,14 @@
+uuid: 97d8d13c-b72e-471a-b6f5-cae98e98fa46
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_block_paragraph
+_core:
+  default_config_hash: Pztgp61WI4PAisK2gQqVvRLaS8NK5dGe4rG2moLQoLc
+id: vlsuite_paragraph
+label: 'Paragraph (VLSuite)'
+revision: 0
+description: ''
+vlsuite_block_icon: d4a85813-1873-4444-a74c-55aa510c0f78

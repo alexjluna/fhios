@@ -131,6 +131,7 @@ class CheckoutFlow extends ConfigEntityBase implements CheckoutFlowInterface {
     // Invoke the setter to clear related properties.
     if ($property_name == 'plugin') {
       $this->setPluginId($value);
+      return $this;
     }
     else {
       return parent::set($property_name, $value);

@@ -3,8 +3,8 @@
 namespace Drupal\commerce_promotion\Entity;
 
 use Drupal\commerce\ConditionGroup;
-use Drupal\commerce\EntityOwnerTrait;
 use Drupal\commerce\Entity\CommerceContentEntityBase;
+use Drupal\commerce\EntityOwnerTrait;
 use Drupal\commerce\Plugin\Commerce\Condition\ConditionInterface;
 use Drupal\commerce\Plugin\Commerce\Condition\ParentEntityAwareInterface;
 use Drupal\commerce_order\Entity\OrderInterface;
@@ -440,6 +440,8 @@ class Promotion extends CommerceContentEntityBase implements PromotionInterface 
     if (!$this->get('end_date')->isEmpty()) {
       return new DrupalDateTime($this->get('end_date')->value, $store_timezone);
     }
+
+    return NULL;
   }
 
   /**
@@ -450,6 +452,8 @@ class Promotion extends CommerceContentEntityBase implements PromotionInterface 
     if ($end_date) {
       $this->get('end_date')->value = $end_date->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT);
     }
+
+    return $this;
   }
 
   /**
@@ -571,7 +575,8 @@ class Promotion extends CommerceContentEntityBase implements PromotionInterface 
       case self::COMPATIBLE_NONE:
         // If there are any existing promotions, then this cannot apply.
         foreach ($order->collectAdjustments() as $adjustment) {
-          if ($adjustment->getType() == 'promotion') {
+          if (($adjustment->getType() == 'promotion') &&
+            ($adjustment->getSourceId() != $this->id())) {
             return FALSE;
           }
         }

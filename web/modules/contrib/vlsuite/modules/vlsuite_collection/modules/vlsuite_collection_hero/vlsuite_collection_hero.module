@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Collection - Hero main module file.
+ */
+
+use Drupal\vlsuite_collection_hero\Entity\Bundle\VLSuiteCollectionHero;
+
+/**
+ * Implements hook_entity_bundle_info_alter().
+ */
+function vlsuite_collection_hero_entity_bundle_info_alter(array &$bundles): void {
+  if (!empty($bundles['block_content'][VLSuiteCollectionHero::BUNDLE_KEY])) {
+    $bundles['block_content'][VLSuiteCollectionHero::BUNDLE_KEY]['class'] = VLSuiteCollectionHero::class;
+  }
+}

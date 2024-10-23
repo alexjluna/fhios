@@ -1,0 +1,19 @@
+uuid: 7c486f6f-6ecb-4bd1-9168-91f903d36a9e
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.vlsuite_landing_content_editor
+  module:
+    - user
+  enforced:
+    module:
+      - vlsuite_landing_content_editor
+_core:
+  default_config_hash: p_V6IIqhl4okvg_hITIub2Y8LqoZdxga8vnhtMPLtx8
+id: user_add_role_action.vlsuite_landing_content_editor
+label: 'Add the Landing content editor (VLSuite) role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: vlsuite_landing_content_editor

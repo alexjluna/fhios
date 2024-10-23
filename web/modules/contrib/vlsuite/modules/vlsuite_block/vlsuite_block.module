@@ -1,0 +1,199 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Block main module file.
+ */
+
+use Drupal\Core\File\FileSystemInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\file\FileInterface;
+
+/**
+ * Implements hook_plugin_filter_TYPE_alter().
+ */
+function vlsuite_block_plugin_filter_block_alter(array &$definitions, array $extra, $consumer) {
+  // @see https://www.drupal.org/node/2979142.
+  if ($consumer !== 'layout_builder') {
+    foreach ($definitions as $id => $definition) {
+      if ($definition['id'] === 'vlsuite_block_inline_block' || $definition['id'] === 'vlsuite_block_views_block') {
+        unset($definitions[$id]);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_vlsuite_utility_classes_utility_apply_to_options_alter().
+ */
+function vlsuite_block_vlsuite_utility_classes_utility_apply_to_options_alter(&$apply_to_options) {
+  $apply_to_options += _vlsuite_block_utility_classes_apply_to_enabled_definitions();
+}
+
+/**
+ * Utilit classes apply to enabled definitions helper function.
+ *
+ * @param string $just_for_entity_type_key
+ *   Entity type key.
+ * @param string $just_for_bundle
+ *   Bundle key.
+ * @param string $just_for_field_key
+ *   Field key.
+ *
+ * @return array
+ *   Definitions as enabled into configuration & optionally filtered.
+ */
+function _vlsuite_block_utility_classes_apply_to_enabled_definitions($just_for_entity_type_key = NULL, $just_for_bundle = NULL, $just_for_field_key = NULL) {
+  $apply_to_enabled = \Drupal::configFactory()->get('vlsuite_block.settings')->get('utility_classes_apply_to_enabled') ?? [];
+  $apply_to_options = [];
+  foreach ($apply_to_enabled as $entity_type_key => $bundles) {
+    if (!empty($just_for_entity_type_key) && $just_for_entity_type_key !== $entity_type_key) {
+      continue;
+    }
+    foreach ($bundles as $bundle => $stored) {
+      if (!empty($just_for_bundle) && $just_for_bundle !== $bundle) {
+        continue;
+      }
+      if (!empty($stored['inline_block']) && empty($just_for_field_key)) {
+        $apply_to_options[$entity_type_key . ':' . $bundle] = [
+          'admin_title' => t('Inline block (@bundle)', ['@bundle' => $bundle]),
+          'form_element_title' => t('Block'),
+        ];
+      }
+      if (!empty($stored['fields'])) {
+        foreach (array_keys($stored['fields']) as $field_key) {
+          if (!empty($just_for_field_key) && $just_for_field_key !== $field_key) {
+            continue;
+          }
+          $apply_to_options[$entity_type_key . ':' . $bundle . ':' . $field_key] = [
+            'admin_title' => t('Field block / inline block field (@entity_type:@bundle:@field)', [
+              '@entity_type' => $entity_type_key,
+              '@bundle' => $bundle,
+              '@field' => $field_key,
+            ]),
+            'form_element_title' => t('Field block field (@field)', [
+              '@field' => $field_key,
+            ]),
+          ];
+        }
+        foreach (array_keys($stored['fields']) as $field_key) {
+          if (!empty($just_for_field_key) && $just_for_field_key !== $field_key) {
+            continue;
+          }
+          $apply_to_options[$entity_type_key . ':' . $bundle . ':' . $field_key . ':item'] = [
+            'admin_title' => t('Field block / inline block field item (@entity_type:@bundle:@field:item)', [
+              '@entity_type' => $entity_type_key,
+              '@bundle' => $bundle,
+              '@field' => $field_key,
+            ]),
+            'form_element_title' => t('Field block field item (@field)', [
+              '@field' => $field_key,
+            ]),
+          ];
+        }
+      }
+    }
+  }
+  return $apply_to_options;
+}
+
+/**
+ * Implements hook_config_schema_info_alter().
+ */
+function vlsuite_block_config_schema_info_alter(&$definitions) {
+  $definitions['block_content.type.*']['mapping']['vlsuite_block_icon'] = [
+    'type' => 'uuid',
+    'label' => 'Icon uuid associated to VLSuite Block',
+  ];
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function vlsuite_block_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'block_content_type_edit_form' || $form_id == 'block_content_type_add_form') {
+    $icon_uuid = $form_state->getFormObject()->getEntity()->get('vlsuite_block_icon') ?? NULL;
+    $files = !empty($icon_uuid) && !is_array($icon_uuid) ? \Drupal::entityTypeManager()->getStorage('file')->loadByProperties(['uuid' => $icon_uuid]) : [];
+    if (!empty($files) && reset($files) instanceof FileInterface) {
+      $default_icon = reset($files)->id();
+    }
+    else {
+      $default_icon = NULL;
+    }
+
+    $form['vlsuite_block_icon'] = [
+      '#title' => t('VLSuite block type icon'),
+      '#description' => t('Icon that will be displayed associated with this VLSuite Block'),
+      '#type' => 'managed_file',
+      '#upload_location' => 'public://vlsuite_block_icon/',
+      '#upload_validators' => [
+        'file_validate_extensions' => ['png svg'],
+      ],
+      '#default_value' => !empty($default_icon) ? [$default_icon] : [],
+      '#weight' => -1,
+    ];
+    // Add submit handler to save contact configuration.
+    array_unshift($form['actions']['submit']['#submit'], '_vlsuite_block_form_block_content_type_submit');
+  }
+}
+
+/**
+ * VLSuite block form block content type submit.
+ *
+ * This will set vlsuite block icon into content type entity as uuid.
+ *
+ *   @see vlsuite_block_config_schema_info_alter()
+ *   @see vlsuite_block_form_alter()
+ *
+ * @param array $form
+ *   The form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state.
+ */
+function _vlsuite_block_form_block_content_type_submit(array $form, FormStateInterface $form_state) {
+  if (!$form_state->isRebuilding()) {
+    $icon_id = $form_state->getValue(['vlsuite_block_icon', 0], NULL);
+    $file = !empty($icon_id) ? \Drupal::entityTypeManager()->getStorage('file')->load($icon_id) : NULL;
+    if ($file instanceof FileInterface) {
+      if (!$file->isPermanent()) {
+        $file->setPermanent();
+        $file->save();
+      }
+      $file_uuid = $file->uuid();
+      $form_state->getFormObject()->getEntity()->set('vlsuite_block_icon', $file_uuid);
+      $form_state->unsetValue('vlsuite_block_icon');
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function vlsuite_block_entity_type_alter(array &$entity_types) {
+  // Change definition of Block content type by adding a new config_export key.
+  $config_export = $entity_types['block_content_type']->get('config_export');
+  $config_export[] = 'vlsuite_block_icon';
+  $entity_types['block_content_type']->set('config_export', $config_export);
+}
+
+/**
+ * Helper function to save default icon file.
+ *
+ * @param string $vlsuite_block_config
+ *   VLSuite block config.
+ * @param string $default_icon
+ *   Default icon.
+ * @param string $fallback_uuid
+ *   Fallback uuid.
+ */
+function _vlsuite_block_update_helper_save_default_icon_file($vlsuite_block_config, $default_icon, $fallback_uuid = '') {
+  $uuid = \Drupal::configFactory()->get($vlsuite_block_config)->get('vlsuite_block_icon') ?? $fallback_uuid;
+  if (!empty($uuid) && !\Drupal::service('entity.repository')->loadEntityByUuid('file', $uuid)) {
+    $vlsuite_block_icon_file_path = \Drupal::service('extension.path.resolver')->getPath('module', 'vlsuite_block') . '/assets/' . $default_icon;
+    $destination = 'public://vlsuite_block_icon/';
+    \Drupal::service('file_system')->prepareDirectory($destination, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS);
+    $file = \Drupal::service('file.repository')->writeData(file_get_contents($vlsuite_block_icon_file_path), $destination . $default_icon, FileSystemInterface::EXISTS_REPLACE);
+    $file->set('uuid', $uuid);
+    $file->save();
+  }
+}

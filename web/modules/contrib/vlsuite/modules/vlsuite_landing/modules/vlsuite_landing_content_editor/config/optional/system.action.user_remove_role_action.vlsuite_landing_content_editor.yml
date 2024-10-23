@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.vlsuite_landing_content_editor
+  module:
+    - user
+  enforced:
+    module:
+      - vlsuite_landing_content_editor
+id: user_remove_role_action.vlsuite_landing_content_editor
+label: 'Remove the Landing content editor (VLSuite) role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: vlsuite_landing_content_editor

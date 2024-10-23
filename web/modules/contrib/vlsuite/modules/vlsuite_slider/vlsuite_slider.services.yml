@@ -1,0 +1,3 @@
+services:
+  vlsuite_slider.helper:
+    class: Drupal\vlsuite_slider\VLSuiteSliderHelper

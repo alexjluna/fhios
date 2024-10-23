@@ -51,7 +51,7 @@ use Symfony\Component\Routing\Exception\RouteNotFoundException;
  *       "default" = "Drupal\commerce_product\ProductVariationRouteProvider",
  *     },
  *     "inline_form" = "Drupal\commerce_product\Form\ProductVariationInlineForm",
- *     "translation" = "Drupal\content_translation\ContentTranslationHandler"
+ *     "translation" = "Drupal\commerce_product\ProductTranslationHandler"
  *   },
  *   admin_permission = "administer commerce_product",
  *   fieldable = TRUE,

@@ -1,0 +1,57 @@
+_core:
+  default_config_hash: TZ0l4XoSboXtt1QU2OyPGODbbIrQi-KC1anOKxq14PA
+utility_classes_apply_to_enabled:
+  block_content:
+    vlsuite_attachments:
+      inline_block: true
+      fields:
+        vlsuite_attachments: true
+    vlsuite_cta:
+      inline_block: true
+      fields:
+        vlsuite_link: true
+    vlsuite_icon:
+      inline_block: true
+      fields:
+        vlsuite_icon: true
+    vlsuite_image:
+      inline_block: true
+      fields:
+        vlsuite_image: true
+    vlsuite_local_video:
+      fields:
+        vlsuite_local_video: true
+    vlsuite_remote_video:
+      fields:
+        vlsuite_remote_video: true
+    vlsuite_text:
+      inline_block: true
+      fields:
+        vlsuite_text: true
+    vlsuite_collection_hero:
+      fields:
+        vlsuite_link: true
+        vlsuite_text: true
+        vlsuite_media: true
+    vlsuite_collection_stmt:
+      fields:
+        vlsuite_text: true
+        vlsuite_image: true
+        vlsuite_link: true
+    vlsuite_collection_card:
+      fields:
+        vlsuite_text: true
+        vlsuite_media: true
+        vlsuite_icon: true
+        vlsuite_background: true
+        vlsuite_link: true
+    vlsuite_collection_gallery:
+      fields:
+        vlsuite_medias: true
+  node:
+    vlsuite_landing:
+      fields:
+        title: true
+        body: true
+        field_vlsuite_landing_cta_link: true
+        field_vlsuite_landing_main_image: true

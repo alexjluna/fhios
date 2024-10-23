@@ -2,8 +2,8 @@
 
 namespace Drupal\commerce_payment\Plugin\Commerce\PaymentMethodType;
 
-use Drupal\entity\BundleFieldDefinition;
 use Drupal\commerce_payment\Entity\PaymentMethodInterface;
+use Drupal\entity\BundleFieldDefinition;
 
 /**
  * Provides the PayPal payment method type.

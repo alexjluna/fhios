@@ -1,0 +1,47 @@
+uuid: 26159db9-f2b5-4629-9351-03a5e460e32b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_attachments
+  module:
+    - media_library
+  enforced:
+    module:
+      - vlsuite_block_attachments
+_core:
+  default_config_hash: GvHDYnYOynh3oOc4S1TJLJYk8ORNSz32qcHhKLzlI50
+id: block_content.vlsuite_attachments.default
+targetEntityType: block_content
+bundle: vlsuite_attachments
+mode: default
+content:
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  vlsuite_attachments:
+    type: media_library_widget
+    weight: 26
+    region: content
+    settings:
+      media_types:
+        - vlsuite_document
+    third_party_settings: {  }
+hidden: {  }

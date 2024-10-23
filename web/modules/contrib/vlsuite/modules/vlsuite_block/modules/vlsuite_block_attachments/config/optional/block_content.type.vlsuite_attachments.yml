@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_block_attachments
+id: vlsuite_attachments
+label: 'Attachments (VLSuite)'
+revision: 0
+description: ''
+vlsuite_block_icon: 977d04d0-3571-4be2-b899-7f29f6dc14fb

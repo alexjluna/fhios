@@ -1,0 +1,412 @@
+uuid: 2e87f510-a938-4e30-bbe7-04ccd0df2695
+label: 'Statement / Quote Collection Glossary (VLSuite)'
+type: template
+layout_section:
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: '100'
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 0
+      vlsuite_slider:
+        scope: main
+      vlsuite_utility_class: {  }
+      edge_to_edge: 1
+      media_bg: null
+      context_mapping: {  }
+    components:
+      0a0320df-b138-414c-ab1f-85c89b09d040:
+        uuid: 0a0320df-b138-414c-ab1f-85c89b09d040
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_stmt'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: default
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_stmt\\Entity\\Bundle\\VLSuiteCollectionStmt\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:24:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"b549ca84-6d0d-42ab-a77a-bcc36376c894\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_stmt\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:74:\"<h2><strong>Statement / Quote (VLSuite Collection) - Default</strong></h2>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:18:\"vlsuite_text_extra\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:121:\"<p>Outer section: It can be used with \"Edge to edge\" active or not.<br>Recommended disabling \"Show optional regions\".</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_image\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_stmt\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 2
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: '100'
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 0
+      vlsuite_slider:
+        scope: main
+      vlsuite_utility_class: {  }
+      edge_to_edge: 1
+      media_bg: null
+      context_mapping: {  }
+    components:
+      dd627bb2-cf12-47b9-b33f-47a8db6b5ea1:
+        uuid: dd627bb2-cf12-47b9-b33f-47a8db6b5ea1
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_stmt'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_1
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_stmt\\Entity\\Bundle\\VLSuiteCollectionStmt\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:24:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"ba4bc9a2-c186-445a-bb54-f419aeda6380\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_stmt\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:69:\"<h2><strong>Statement / Quote (VLSuite Collection) - #1</strong></h2>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:18:\"vlsuite_text_extra\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:121:\"<p>Outer section: It can be used with \"Edge to edge\" active or not.<br>Recommended disabling \"Show optional regions\".</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_image\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_stmt\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 2
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: '100'
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 0
+      vlsuite_slider:
+        scope: main
+      vlsuite_utility_class: {  }
+      edge_to_edge: 1
+      media_bg: null
+      context_mapping: {  }
+    components:
+      ef6aff0c-5de3-45a3-af05-930c541c3c8d:
+        uuid: ef6aff0c-5de3-45a3-af05-930c541c3c8d
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_stmt'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_2
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_stmt\\Entity\\Bundle\\VLSuiteCollectionStmt\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:24:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"b7b92402-363c-4396-99a6-0050bab9d4fa\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_stmt\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:69:\"<h2><strong>Statement / Quote (VLSuite Collection) - #2</strong></h2>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:18:\"vlsuite_text_extra\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:121:\"<p>Outer section: It can be used with \"Edge to edge\" active or not.<br>Recommended disabling \"Show optional regions\".</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_image\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_stmt\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 1
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: '100'
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 0
+      vlsuite_slider:
+        scope: main
+      vlsuite_utility_class:
+        'vlsuite_layout:section':
+          padding-y: spacer-5
+      edge_to_edge: 1
+      media_bg: null
+      context_mapping: {  }
+    components:
+      d373b4fb-e6ae-4443-977b-2ad22c81e56b:
+        uuid: d373b4fb-e6ae-4443-977b-2ad22c81e56b
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_stmt'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_3
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_stmt\\Entity\\Bundle\\VLSuiteCollectionStmt\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:24:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"e4c51f8b-301f-40fb-967f-4a63d604f19f\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_stmt\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:69:\"<h2><strong>Statement / Quote (VLSuite Collection) - #3</strong></h2>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:18:\"vlsuite_text_extra\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:113:\"<p>Outer section: recommended to use \"Edge to edge\" active.<br>Recommended disabling \"Show optional regions\".</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_image\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_stmt\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 5
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_twocols
+    layout_settings:
+      label: ''
+      column_widths: 50-50
+      identifier: ''
+      edge_to_edge_bg: 0
+      optional_regions: 0
+      vlsuite_slider:
+        scope: first
+      vlsuite_utility_class:
+        'vlsuite_layout:section':
+          padding-x: no-spacer
+          padding-y: spacer-5
+        'vlsuite_layout:row':
+          gutter: gutter-3
+      edge_to_edge: 0
+      media_bg: null
+      context_mapping: {  }
+    components:
+      36859d8d-eada-4860-aff2-da9135e228f0:
+        uuid: 36859d8d-eada-4860-aff2-da9135e228f0
+        region: first
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_stmt'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_3
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_stmt\\Entity\\Bundle\\VLSuiteCollectionStmt\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:24:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"635a702c-905e-4c6f-96aa-1a8f3521dd32\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_stmt\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:48:\"<h3><strong>Statement / Quote - #3</strong></h3>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:18:\"vlsuite_text_extra\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:43:\"<p>VLSuite Collection - Inside two cols</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_image\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_stmt\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 1
+        additional: {  }
+      f2c67c27-b177-475a-bd0d-77ce5fade1ee:
+        uuid: f2c67c27-b177-475a-bd0d-77ce5fade1ee
+        region: second
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_stmt'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_3
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_stmt\\Entity\\Bundle\\VLSuiteCollectionStmt\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:24:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"309a1f2d-a103-4c62-8166-b04abf269fb5\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_stmt\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:48:\"<h3><strong>Statement / Quote - #3</strong></h3>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:18:\"vlsuite_text_extra\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:43:\"<p>VLSuite Collection - Inside two cols</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_image\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_stmt\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 1
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: 60-auto
+      identifier: ''
+      edge_to_edge_bg: 0
+      optional_regions: 0
+      vlsuite_slider:
+        scope: main
+      vlsuite_utility_class:
+        'vlsuite_layout:section':
+          padding-y: spacer-5
+          padding-x: no-spacer
+      edge_to_edge: 0
+      media_bg: null
+      context_mapping: {  }
+    components:
+      955fc0dd-fdec-4978-8ec8-894381753cc1:
+        uuid: 955fc0dd-fdec-4978-8ec8-894381753cc1
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_stmt'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_4
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_stmt\\Entity\\Bundle\\VLSuiteCollectionStmt\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:24:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"6f0d84eb-4acb-465d-a6e9-f1a763c26851\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_stmt\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:69:\"<h2><strong>Statement / Quote (VLSuite Collection) - #4</strong></h2>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:18:\"vlsuite_text_extra\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:113:\"<p>Outer section: recommended to use \"Edge to edge\" active.<br>Recommended disabling \"Show optional regions\".</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_image\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_stmt\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 7
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_twocols
+    layout_settings:
+      label: ''
+      column_widths: 50-50
+      identifier: ''
+      edge_to_edge_bg: 0
+      optional_regions: 0
+      vlsuite_slider:
+        scope: first
+      vlsuite_utility_class:
+        'vlsuite_layout:section':
+          padding-x: no-spacer
+          padding-y: spacer-5
+        'vlsuite_layout:row':
+          gutter: gutter-3
+      edge_to_edge: 0
+      media_bg: null
+      context_mapping: {  }
+    components:
+      313c24da-7718-41c4-b67a-56b2b5459d72:
+        uuid: 313c24da-7718-41c4-b67a-56b2b5459d72
+        region: first
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_stmt'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_4
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_stmt\\Entity\\Bundle\\VLSuiteCollectionStmt\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:24:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"d34671bb-567b-4fc2-8e9c-28ce69e3a2b8\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_stmt\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:48:\"<h3><strong>Statement / Quote - #4</strong></h3>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:18:\"vlsuite_text_extra\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:43:\"<p>VLSuite Collection - Inside two cols</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_image\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_stmt\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 3
+        additional: {  }
+      d41f81e1-6d31-4384-8b12-47d6e3c93339:
+        uuid: d41f81e1-6d31-4384-8b12-47d6e3c93339
+        region: second
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_stmt'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_4
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_stmt\\Entity\\Bundle\\VLSuiteCollectionStmt\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:24:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"d384aa6e-9d51-4b80-8548-1e1932aa79f8\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_stmt\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:48:\"<h3><strong>Statement / Quote - #4</strong></h3>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:18:\"vlsuite_text_extra\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:43:\"<p>VLSuite Collection - Inside two cols</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_image\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_stmt\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 3
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: 60-auto
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 0
+      vlsuite_slider:
+        scope: main
+      vlsuite_utility_class:
+        'vlsuite_layout:main_regions':
+          background-color: dark
+          color: white
+          padding: spacer-5
+      edge_to_edge: 0
+      media_bg: null
+      context_mapping: {  }
+    components:
+      341f1630-7822-45da-955c-fa4d512fbe89:
+        uuid: 341f1630-7822-45da-955c-fa4d512fbe89
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_stmt'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_customizable
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_stmt\\Entity\\Bundle\\VLSuiteCollectionStmt\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:24:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"ec1e7ad2-7fc3-4bbd-92ed-10aef9c99331\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_stmt\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:81:\"<h2><strong>\"Statement / Quote (VLSuite Collection) - Customizable\"</strong></h2>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:18:\"vlsuite_text_extra\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:121:\"<p>Outer section: It can be used with \"Edge to edge\" active or not.<br>Recommended disabling \"Show optional regions\".</p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_image\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:1:{i:0;a:4:{s:10:\"attributes\";a:0:{}s:3:\"uri\";s:38:\"https://www.drupal.org/project/vlsuite\";s:5:\"title\";s:7:\"VLSuite\";s:7:\"options\";a:0:{}}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_stmt\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class:
+            'block_content:vlsuite_collection_stmt:vlsuite_text':
+              padding-y: spacer-3
+            'block_content:vlsuite_collection_stmt:vlsuite_link':
+              text-align: right
+              padding-y: spacer-3
+            'block_content:vlsuite_collection_stmt:vlsuite_image:item':
+              ratio: 21-9
+            'block_content:vlsuite_collection_stmt:vlsuite_link:item':
+              btn: light
+              rounded: pill
+          context_mapping: {  }
+          block_uuid: null
+        weight: 2
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: vlsuite_layout_onecol
+    layout_settings:
+      label: ''
+      column_widths: '100'
+      identifier: ''
+      edge_to_edge_bg: 1
+      optional_regions: 1
+      vlsuite_slider:
+        active: 1
+        scope: main
+        slides_per_view: '2'
+        navigation: true
+        pagination: true
+      vlsuite_utility_class:
+        'vlsuite_layout:section':
+          background-gradient: light
+          padding-y: spacer-5
+        'vlsuite_layout:row':
+          gutter: gutter-3
+        'vlsuite_layout:region_top':
+          text-align: center
+      edge_to_edge: 0
+      media_bg: null
+      context_mapping: {  }
+    components:
+      63afe641-eb34-4c06-9c5f-da1b88088f69:
+        uuid: 63afe641-eb34-4c06-9c5f-da1b88088f69
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_stmt'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_3
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_stmt\\Entity\\Bundle\\VLSuiteCollectionStmt\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:24:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"ffdc5932-b61d-4829-9510-e97865b60eac\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_stmt\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:44:\"<h3><strong>Inside slider - #3</strong></h3>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:18:\"vlsuite_text_extra\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:23:\"<p><em>VLSuite</em></p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_image\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:0:{}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_stmt\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 3
+        additional: {  }
+      045d2edf-c39d-4ba5-8b14-2c1892c3c0b3:
+        uuid: 045d2edf-c39d-4ba5-8b14-2c1892c3c0b3
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_stmt'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_3
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_stmt\\Entity\\Bundle\\VLSuiteCollectionStmt\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:24:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"eb09e3c1-b68a-4a9c-8823-a12d1b2fc2aa\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_stmt\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:44:\"<h3><strong>Inside slider - #3</strong></h3>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:18:\"vlsuite_text_extra\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:23:\"<p><em>VLSuite</em></p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_image\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:0:{}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_stmt\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 5
+        additional: {  }
+      41fbf307-951a-4ab5-900b-cfc107898cb4:
+        uuid: 41fbf307-951a-4ab5-900b-cfc107898cb4
+        region: main
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_collection_stmt'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: vlsuite_collection_4
+          block_revision_id: null
+          block_serialized: "O:66:\"Drupal\\vlsuite_collection_stmt\\Entity\\Bundle\\VLSuiteCollectionStmt\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:24:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"ff7410ca-db80-4cd7-b73e-426684d13ca1\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:23:\"vlsuite_collection_stmt\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694170490;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:44:\"<h2><strong>Inside slider - #4</strong></h2>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:18:\"vlsuite_text_extra\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:23:\"<p><em>VLSuite</em></p>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}s:13:\"vlsuite_image\";a:1:{s:9:\"x-default\";a:0:{}}s:18:\"vlsuite_background\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:12:\"vlsuite_link\";a:1:{s:9:\"x-default\";a:0:{}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:3:{s:6:\"bundle\";s:23:\"vlsuite_collection_stmt\";s:8:\"revision\";N;s:2:\"id\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 7
+        additional: {  }
+      6593e594-3405-4677-8c23-47c2f149087d:
+        uuid: 6593e594-3405-4677-8c23-47c2f149087d
+        region: top
+        configuration:
+          id: 'vlsuite_block_inline_block:vlsuite_text'
+          label: 'VLSuite Inline Block'
+          label_display: ''
+          provider: vlsuite_block
+          view_mode: full
+          block_revision_id: null
+          block_serialized: "O:56:\"Drupal\\vlsuite_block_text\\Entity\\Bundle\\VLSuiteBlockText\":30:{s:15:\"\0*\0entityTypeId\";s:13:\"block_content\";s:15:\"\0*\0enforceIsNew\";b:1;s:12:\"\0*\0typedData\";N;s:16:\"\0*\0cacheContexts\";a:0:{}s:12:\"\0*\0cacheTags\";a:0:{}s:14:\"\0*\0cacheMaxAge\";i:-1;s:14:\"\0*\0_serviceIds\";a:0:{}s:18:\"\0*\0_entityStorages\";a:0:{}s:9:\"\0*\0values\";a:20:{s:8:\"langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:2:\"en\";}}}s:11:\"revision_id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:2:\"id\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";N;}}}s:4:\"uuid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:36:\"b0d88eb5-726f-412d-a774-0150b18694b0\";}}}s:4:\"type\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:12:\"vlsuite_text\";}}}s:16:\"revision_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694171425;}}}s:13:\"revision_user\";a:1:{s:9:\"x-default\";a:0:{}}s:12:\"revision_log\";a:1:{s:9:\"x-default\";a:0:{}}s:6:\"status\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:4:\"info\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:20:\"VLSuite Inline Block\";}}}s:7:\"changed\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694171425;}}}s:8:\"reusable\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:16:\"default_langcode\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:1;}}}s:16:\"revision_default\";a:1:{s:9:\"x-default\";a:0:{}}s:29:\"revision_translation_affected\";a:1:{s:9:\"x-default\";a:0:{}}s:26:\"content_translation_source\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";s:3:\"und\";}}}s:28:\"content_translation_outdated\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";b:0;}}}s:23:\"content_translation_uid\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:9:\"target_id\";s:1:\"1\";}}}s:27:\"content_translation_created\";a:1:{s:9:\"x-default\";a:1:{i:0;a:1:{s:5:\"value\";i:1694171425;}}}s:12:\"vlsuite_text\";a:1:{s:9:\"x-default\";a:1:{i:0;a:2:{s:5:\"value\";s:94:\"<h2><strong>Statement / Quote (VLSuite Collection) - section with Slider enabled</strong></h2>\";s:6:\"format\";s:18:\"vlsuite_basic_html\";}}}}s:9:\"\0*\0fields\";a:0:{}s:19:\"\0*\0fieldDefinitions\";N;s:12:\"\0*\0languages\";N;s:14:\"\0*\0langcodeKey\";s:8:\"langcode\";s:21:\"\0*\0defaultLangcodeKey\";s:16:\"default_langcode\";s:17:\"\0*\0activeLangcode\";s:9:\"x-default\";s:18:\"\0*\0defaultLangcode\";s:2:\"en\";s:15:\"\0*\0translations\";a:1:{s:9:\"x-default\";a:1:{s:6:\"status\";i:2;}}s:24:\"\0*\0translationInitialize\";b:0;s:14:\"\0*\0newRevision\";b:1;s:20:\"\0*\0isDefaultRevision\";b:1;s:13:\"\0*\0entityKeys\";a:2:{s:6:\"bundle\";s:12:\"vlsuite_text\";s:8:\"revision\";N;}s:25:\"\0*\0translatableEntityKeys\";a:1:{s:8:\"langcode\";a:1:{s:9:\"x-default\";s:2:\"en\";}}s:12:\"\0*\0validated\";b:1;s:21:\"\0*\0validationRequired\";b:0;s:19:\"\0*\0loadedRevisionId\";N;s:33:\"\0*\0revisionTranslationAffectedKey\";s:29:\"revision_translation_affected\";s:37:\"\0*\0enforceRevisionTranslationAffected\";a:0:{}s:12:\"\0*\0isSyncing\";b:0;s:8:\"\0*\0theme\";N;s:19:\"\0*\0accessDependency\";N;}"
+          vlsuite_utility_class: {  }
+          context_mapping: {  }
+          block_uuid: null
+        weight: 2
+        additional: {  }
+    third_party_settings: {  }

@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_paragraph
+  module:
+    - entity_reference_revisions
+  enforced:
+    module:
+      - vlsuite_block_paragraph
+id: block_content.vlsuite_paragraph.default
+targetEntityType: block_content
+bundle: vlsuite_paragraph
+mode: default
+content:
+  vlsuite_paragraph:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

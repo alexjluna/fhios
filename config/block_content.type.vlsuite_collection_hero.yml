@@ -1,0 +1,14 @@
+uuid: fc19a847-9b0a-423f-b9e5-014774c984d5
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_collection_hero
+_core:
+  default_config_hash: XaO2sj5OsJ6c_rfnTKMCGFRyzrKzyulGMTWijXWwyAw
+id: vlsuite_collection_hero
+label: 'Hero (VLSuite Collection)'
+revision: 0
+description: ''
+vlsuite_block_icon: ''

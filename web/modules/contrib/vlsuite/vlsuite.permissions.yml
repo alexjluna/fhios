@@ -1,0 +1,3 @@
+administer vlsuite settings:
+  title: 'Administer Visual Layout Suite (VLSuite) settings'
+  restrict access: true

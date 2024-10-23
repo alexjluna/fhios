@@ -1,0 +1,5 @@
+vlsuite.admin_index:
+  title: 'VLSuite'
+  route_name: vlsuite.admin_index
+  parent: system.admin_config
+  weight: 10

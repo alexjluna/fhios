@@ -1,0 +1,9 @@
+headings-menu:
+  css:
+    component:
+      css/vlsuite-block-headings-menu.css: {}
+  js:
+    js/vlsuite-block-headings-menu.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

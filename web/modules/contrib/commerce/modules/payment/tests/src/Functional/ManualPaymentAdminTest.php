@@ -97,7 +97,15 @@ class ManualPaymentAdminTest extends CommerceBrowserTestBase {
       'store_id' => $this->store,
     ]);
 
-    $this->paymentUri = Url::fromRoute('entity.commerce_payment.collection', ['commerce_order' => $this->order->id()])->toString();
+    $this->paymentUri = Url::fromRoute(
+      'entity.commerce_payment.collection',
+      [
+        'commerce_order' => $this->order->id(),
+      ],
+      [
+        'absolute' => TRUE,
+      ],
+    )->toString();
   }
 
   /**

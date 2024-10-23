@@ -1,0 +1,41 @@
+previewer:
+  css:
+    component:
+      css/vlsuite-utility-classes-previewer.css: {}
+  js:
+    js/vlsuite-utility-classes-previewer.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once
+
+live_previewer:
+  js:
+    js/vlsuite-utility-classes-live-previewer.js: {}
+  css:
+    component:
+      css/vlsuite-utility-classes-live-previewer.css: {}
+  dependencies:
+    - core/drupal
+    - core/drupal.ajax
+    - core/once
+    - layout_builder/drupal.layout_builder
+    - core/drupalSettings
+    - vlsuite_utility_classes/floating-ui
+    - vlsuite_icon_font/font
+
+floating-ui:
+  version: "1.4.0"
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/floating-ui/floating-ui/698c2fa7dc9e9a9356f9ba2974dea86f42410c7e/LICENSE
+  js:
+    '//cdn.jsdelivr.net/npm/@floating-ui/core@1.4.0': { minified: true, external: true }
+    '//cdn.jsdelivr.net/npm/@floating-ui/dom@1.5.0': { minified: true, external: true }
+
+settings_form:
+  js:
+    js/vlsuite-utility-classes-settings-form.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

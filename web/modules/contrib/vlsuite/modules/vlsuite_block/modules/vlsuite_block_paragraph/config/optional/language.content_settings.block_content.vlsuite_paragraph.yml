@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_paragraph
+  module:
+    - content_translation
+  enforced:
+    module:
+      - vlsuite_block_paragraph
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: block_content.vlsuite_paragraph
+target_entity_type_id: block_content
+target_bundle: vlsuite_paragraph
+default_langcode: current_interface
+language_alterable: false

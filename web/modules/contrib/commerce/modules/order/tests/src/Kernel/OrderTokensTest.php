@@ -60,7 +60,7 @@ class OrderTokensTest extends OrderKernelTestBase {
    * @return \Generator
    *   The test data.
    */
-  public function tokensTestData(): \Generator {
+  public static function tokensTestData(): \Generator {
     yield [
       '[commerce_order:order_id]',
       '123',

@@ -1,0 +1,29 @@
+uuid: c7c85bf5-62ce-43b5-83f4-523c27145e19
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.vlsuite_landing.body
+    - field.field.node.vlsuite_landing.field_vlsuite_landing_cta_link
+    - field.field.node.vlsuite_landing.field_vlsuite_landing_main_image
+    - field.field.node.vlsuite_landing.layout_builder__layout
+    - node.type.vlsuite_landing
+  module:
+    - user
+  enforced:
+    module:
+      - vlsuite_landing
+_core:
+  default_config_hash: WB3t9z0UeC_lROfCRbteikq6l60Qucj6WIZe9TEbJAk
+id: node.vlsuite_landing.default
+targetEntityType: node
+bundle: vlsuite_landing
+mode: default
+content: {  }
+hidden:
+  body: true
+  field_vlsuite_landing_cta_link: true
+  field_vlsuite_landing_main_image: true
+  langcode: true
+  layout_builder__layout: true
+  links: true

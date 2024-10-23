@@ -31,6 +31,7 @@
         "drupal/taxonomy_revisions_ui": "^2.1",
         "drupal/tfa": "^2.0@alpha",
         "drupal/upgrade_status": "^4.3",
+        "drupal/vlsuite": "^1.1",
         "drupal/webform": "^6.2",
         "drupal/webform_shs": "^2.0@beta",
         "drush/drush": "12.4.3"

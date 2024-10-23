@@ -1,0 +1,5 @@
+vlsuite_utility_classes.settings:
+  title: 'VLSuite - Utility classes'
+  description: 'Visual Layout Suite (VLSuite) - Utility classes settings.'
+  parent: vlsuite.admin_index
+  route_name: vlsuite_utility_classes.settings

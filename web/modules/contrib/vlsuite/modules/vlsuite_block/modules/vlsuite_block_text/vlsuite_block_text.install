@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Block - Text install module file.
+ */
+
+use Drupal\vlsuite_block_text\Entity\Bundle\VLSuiteBlockText;
+
+/**
+ * Implements hook_install().
+ */
+function vlsuite_block_text_install() {
+  \Drupal::service('vlsuite_bundle_field.helper')->installBlockContentBundleFields(VLSuiteBlockText::BUNDLE_KEY, VLSuiteBlockText::class);
+  _vlsuite_block_update_helper_save_default_icon_file('block_content.type.vlsuite_text', 'pencil.svg', '9f13d320-e435-4eb6-bfd7-003a4c9c6b58');
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function vlsuite_block_text_update_10001() {
+  \Drupal::configFactory()->getEditable('block_content.type.vlsuite_text')->set('vlsuite_block_icon', '9f13d320-e435-4eb6-bfd7-003a4c9c6b58')->save();
+  _vlsuite_block_update_helper_save_default_icon_file('block_content.type.vlsuite_text', 'pencil.svg', '9f13d320-e435-4eb6-bfd7-003a4c9c6b58');
+}

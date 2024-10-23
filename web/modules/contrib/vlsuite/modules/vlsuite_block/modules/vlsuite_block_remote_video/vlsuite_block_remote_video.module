@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Block - Remote video main module file.
+ */
+
+use Drupal\vlsuite_block_remote_video\Entity\Bundle\VLSuiteBlockRemoteVideo;
+
+/**
+ * Implements hook_entity_bundle_info_alter().
+ */
+function vlsuite_block_remote_video_entity_bundle_info_alter(array &$bundles): void {
+  if (!empty($bundles['block_content'][VLSuiteBlockRemoteVideo::BUNDLE_KEY])) {
+    $bundles['block_content'][VLSuiteBlockRemoteVideo::BUNDLE_KEY]['class'] = VLSuiteBlockRemoteVideo::class;
+  }
+}

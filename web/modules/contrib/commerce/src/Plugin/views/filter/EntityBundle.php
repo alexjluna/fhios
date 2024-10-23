@@ -3,8 +3,8 @@
 namespace Drupal\commerce\Plugin\views\filter;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\views\Plugin\views\filter\Bundle;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\views\Plugin\views\filter\Bundle;
 
 /**
  * Filters by entity bundle.

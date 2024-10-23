@@ -963,6 +963,7 @@ class BuyXGetYTest extends OrderKernelTestBase {
         ],
       ],
     ];
+    $offer->setConfiguration($offer_configuration);
     $another_promotion->setOffer($offer);
     $another_promotion->save();
 

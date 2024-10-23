@@ -47,7 +47,7 @@ class OrderIntegrationTest extends OrderKernelTestBase {
     parent::setUp();
 
     $this->installConfig(['commerce_tax']);
-    $user = $this->createUser(['mail' => $this->randomString() . '@example.com']);
+    $user = $this->createUser();
 
     $this->store->set('prices_include_tax', TRUE);
     $this->store->set('tax_registrations', ['US']);

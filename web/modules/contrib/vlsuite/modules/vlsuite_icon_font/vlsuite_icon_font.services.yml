@@ -1,0 +1,10 @@
+services:
+  vlsuite_icon_font.helper:
+    class: Drupal\vlsuite_icon_font\VLSuiteIconFontHelper
+    arguments: ['@config.factory']
+  vlsuite_icon_font.twig_extension:
+    class: Drupal\vlsuite_icon_font\TwigExtension\VLSuiteIconFontTwigExtension
+    tags:
+      - { name: twig.extension }
+    arguments:
+      - '@vlsuite_icon_font.helper'

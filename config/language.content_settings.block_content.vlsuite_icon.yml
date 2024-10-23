@@ -1,0 +1,23 @@
+uuid: d77a3ab5-626b-47ee-b583-a3b4c7aeb253
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_icon
+  module:
+    - content_translation
+  enforced:
+    module:
+      - vlsuite_block_icon
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: wC955_Cpf0yWo0xG_P_D-3r2tq2b1DtQoZGhTWGCFw8
+id: block_content.vlsuite_icon
+target_entity_type_id: block_content
+target_bundle: vlsuite_icon
+default_langcode: current_interface
+language_alterable: false

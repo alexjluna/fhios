@@ -1,0 +1,5 @@
+services:
+  vlsuite_block.route_subscriber:
+    class: Drupal\vlsuite_block\Routing\VLSuiteBlockRouteSubscriber
+    tags:
+      - { name: event_subscriber }

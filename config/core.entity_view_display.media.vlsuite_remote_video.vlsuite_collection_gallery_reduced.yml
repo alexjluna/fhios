@@ -1,0 +1,44 @@
+uuid: 5bcbc756-c9da-4d28-8564-8c90e6761b7d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.vlsuite_collection_gallery_reduced
+    - field.field.media.vlsuite_remote_video.field_media_oembed_video
+    - media.type.vlsuite_remote_video
+    - responsive_image.styles.vlsuite_original_optimized_small
+  module:
+    - layout_builder
+    - responsive_image
+  enforced:
+    module:
+      - vlsuite_media_remote_video
+      - vlsuite_collection_gallery
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+_core:
+  default_config_hash: _LBDucmpEX15YdMhaFjn-PgvgBHNzpqE1ppx_r2lt1k
+id: media.vlsuite_remote_video.vlsuite_collection_gallery_reduced
+targetEntityType: media
+bundle: vlsuite_remote_video
+mode: vlsuite_collection_gallery_reduced
+content:
+  thumbnail:
+    type: responsive_image
+    label: hidden
+    settings:
+      responsive_image_style: vlsuite_original_optimized_small
+      image_link: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_oembed_video: true
+  langcode: true
+  name: true
+  uid: true

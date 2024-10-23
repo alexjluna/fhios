@@ -1,0 +1,7 @@
+vlsuite_modal.settings:
+  path: '/admin/config/vlsuite/modal'
+  defaults:
+    _title: 'VLSuite - Modal'
+    _form: 'Drupal\vlsuite_modal\Form\VLSuiteModalSettingsForm'
+  requirements:
+    _permission: 'administer vlsuite settings'

@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_collection_gallery
+id: vlsuite_collection_gallery
+label: 'Gallery (VLSuite Collection)'
+revision: 0
+description: ''
+vlsuite_block_icon: {  }

@@ -1,0 +1,75 @@
+vlsuite_block_inline_block:
+  type: block_settings
+  label: 'Inline block'
+  mapping:
+    view_mode:
+      type: string
+      label: 'View mode'
+    block_revision_id:
+      type: integer
+      label: 'Block revision ID'
+    block_serialized:
+      type: string
+      label: 'Serialized block'
+    vlsuite_utility_class:
+      type: sequence
+      sequence:
+        type: sequence
+        sequence:
+          type: string
+    vlsuite_animations:
+      type: vlsuite_animations_base
+
+block.settings.vlsuite_block_inline_block:*:
+  type: vlsuite_block_inline_block
+
+block.settings.vlsuite_block_field_block:*:*:*:
+  type: block_settings
+  mapping:
+    formatter:
+      type: field_formatter
+    vlsuite_utility_class:
+      type: sequence
+      sequence:
+        type: sequence
+        sequence:
+          type: string
+    vlsuite_slider:
+      type: vlsuite_slider_base
+    vlsuite_animations:
+      type: vlsuite_animations_base
+
+vlsuite_block_views_block:
+  type: block_settings
+  label: 'View block'
+  mapping:
+    views_label:
+      type: label
+      label: 'Title'
+    items_per_page:
+      type: string
+      label: 'Items per block'
+    grid_cols_widths:
+      type: string
+    vlsuite_slider:
+      type: vlsuite_slider_base
+
+block.settings.vlsuite_block_views_block:*:
+  type: vlsuite_block_views_block
+
+vlsuite_block.settings:
+  type: config_object
+  mapping:
+    utility_classes_apply_to_enabled:
+      type: sequence
+      sequence:
+        type: sequence
+        sequence:
+          type: mapping
+          mapping:
+            inline_block:
+              type: boolean
+            fields:
+              type: sequence
+              sequence:
+                type: boolean

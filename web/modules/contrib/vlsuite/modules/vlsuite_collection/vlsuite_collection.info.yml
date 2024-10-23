@@ -1,0 +1,15 @@
+name: VLSuite - Collection
+type: module
+description: 'VLSuite - Collection: The purpose of this set of collection modules is to show the potential and provide an adjustable base after initial installation. Any components provided will maintain any customization or status and any future updates to them will not apply changes to the site (at configuration or content level).'
+package: Visual Layout Suite (VLSuite)
+core_version_requirement: ^9.5 || ^10
+
+dependencies:
+  - vlsuite:vlsuite_block
+  - vlsuite:vlsuite_layout
+  - section_library:section_library
+
+# Information added by Drupal.org packaging script on 2024-06-14
+version: '1.1.7'
+project: 'vlsuite'
+datestamp: 1718361880

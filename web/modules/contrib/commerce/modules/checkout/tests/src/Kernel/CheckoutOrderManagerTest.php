@@ -8,6 +8,8 @@ use Drupal\Core\Routing\RouteObjectInterface;
 use Drupal\Core\Url;
 use Drupal\Tests\commerce_order\Kernel\OrderKernelTestBase;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 
 /**
  * Tests the checkout order manager.
@@ -48,7 +50,7 @@ class CheckoutOrderManagerTest extends OrderKernelTestBase {
 
     $this->installConfig('commerce_checkout');
 
-    $user = $this->createUser(['mail' => $this->randomString() . '@example.com']);
+    $user = $this->createUser();
     $order = Order::create([
       'type' => 'default',
       'mail' => $user->getEmail(),
@@ -68,6 +70,7 @@ class CheckoutOrderManagerTest extends OrderKernelTestBase {
     $route_provider = $this->container->get('router.route_provider');
     $route = $route_provider->getRouteByName($url->getRouteName());
     $request = Request::create($url->toString());
+    $request->setSession(new Session(new MockArraySessionStorage()));
     $request->attributes->add([
       RouteObjectInterface::ROUTE_OBJECT => $route,
       'commerce_order' => $order,

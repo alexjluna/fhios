@@ -1,0 +1,5 @@
+vlsuite_modal.settings:
+  title: 'VLSuite - Modal'
+  description: 'Visual Layout Suite (VLSuite) - Modal settings.'
+  parent: vlsuite.admin_index
+  route_name: vlsuite_modal.settings

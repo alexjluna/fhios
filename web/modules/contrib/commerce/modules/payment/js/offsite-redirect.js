@@ -2,10 +2,7 @@
  * @file
  * Defines behaviors for the payment redirect form.
  */
-(function ($, Drupal, drupalSettings) {
-
-  'use strict';
-
+(($, Drupal) => {
   /**
    * Attaches the commercePaymentRedirect behavior.
    *
@@ -15,9 +12,11 @@
    *   Attaches the commercePaymentRedirect behavior.
    */
   Drupal.behaviors.commercePaymentRedirect = {
-    attach: function (context) {
-      $('.payment-redirect-form', context).submit();
-    }
+    attach: (context) => {
+      const form = context.querySelector('.payment-redirect-form');
+      if (form) {
+        form.submit();
+      }
+    },
   };
-
-})(jQuery, Drupal, drupalSettings);
+})(jQuery, Drupal);

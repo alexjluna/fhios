@@ -102,7 +102,7 @@ class CreditCardTypeTest extends UnitTestCase {
    * @return array
    *   A list of testInvalidDefinition function arguments.
    */
-  public function definitionProvider() {
+  public static function definitionProvider() {
     return [
       [[], 'Missing required property id.'],
       [['id' => 'llama'], 'Missing required property label.'],

@@ -6,6 +6,20 @@ commerce_order.settings:
       type: boolean
       label: 'Log order version mismatch'
 
+commerce.commerce_condition.plugin.current_user_role:
+  type: commerce_condition_configuration
+  mapping:
+    matching_strategy:
+      type: string
+      label: 'Matching strategy'
+    roles:
+      type: sequence
+      label: 'Roles'
+      orderby: value
+      sequence:
+        type: string
+        label: 'Role'
+
 commerce.commerce_condition.plugin.order_billing_address:
   type: commerce_condition_configuration
   mapping:
@@ -116,7 +130,7 @@ commerce_order.commerce_order_type.*:
       type: string
       label: 'The receipt BCC email'
     receiptSubject:
-      type: string
+      type: label
       label: 'The receipt subject'
 
 commerce_order.commerce_order_item_type.*:

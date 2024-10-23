@@ -1,0 +1,5 @@
+vlsuite_icon_font.settings:
+  title: 'VLSuite - Icon font'
+  description: 'Visual Layout Suite (VLSuite) - Icon font settings.'
+  parent: vlsuite.admin_index
+  route_name: vlsuite_icon_font.settings

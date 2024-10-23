@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * VLSuite Layout Builder - install module file.
+ */
+
+/**
+ * Ensure new depenencies are enabled.
+ */
+function vlsuite_layout_builder_update_10001() {
+  if (!\Drupal::service('module_handler')->moduleExists('vlsuite_utility_classes')) {
+    \Drupal::service('module_installer')->install(['vlsuite_utility_classes']);
+  }
+  if (!\Drupal::service('module_handler')->moduleExists('vlsuite_block')) {
+    \Drupal::service('module_installer')->install(['vlsuite_block']);
+  }
+  if (!\Drupal::service('module_handler')->moduleExists('vlsuite_layout')) {
+    \Drupal::service('module_installer')->install(['vlsuite_layout']);
+  }
+}

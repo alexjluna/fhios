@@ -1,0 +1,43 @@
+vlsuite_layout_base:
+  type: layout_plugin.settings
+  mapping:
+    column_widths:
+      type: string
+      label: 'Column widths'
+    optional_regions:
+      type: boolean
+    edge_to_edge:
+      type: boolean
+    sticky:
+      type: boolean
+    vlsuite_utility_class:
+      type: sequence
+      sequence:
+        type: sequence
+        sequence:
+          type: string
+    edge_to_edge_bg:
+      type: boolean
+      label: 'Ege to edge background'
+    media_bg:
+      type: uuid
+      label: 'Background media'
+    identifier:
+      type: uuid
+      label: 'Section id'
+    vlsuite_slider:
+      type: vlsuite_slider_base
+    vlsuite_animations:
+      type: vlsuite_animations_base
+
+layout_plugin.settings.vlsuite_layout_onecol:
+  type: vlsuite_layout_base
+
+layout_plugin.settings.vlsuite_layout_twocols:
+  type: vlsuite_layout_base
+
+layout_plugin.settings.vlsuite_layout_threecols:
+  type: vlsuite_layout_base
+
+layout_plugin.settings.vlsuite_layout_fourcols:
+  type: vlsuite_layout_base

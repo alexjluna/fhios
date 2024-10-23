@@ -1,0 +1,20 @@
+uuid: 13310235-7b1b-4950-a806-15c78df07f97
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_media_icon
+_core:
+  default_config_hash: 7W946p5Z1gf8PZH_ydlLnjx93tDkTdVKE8p8S8YwCLQ
+name: vlsuite_original_optimized_icon
+label: 'Original optimized icon (VLSuite)'
+effects:
+  e0a4b054-16b5-4d4e-bd92-2a3ec005d8d4:
+    uuid: e0a4b054-16b5-4d4e-bd92-2a3ec005d8d4
+    id: image_scale
+    weight: 1
+    data:
+      width: 65
+      height: null
+      upscale: false

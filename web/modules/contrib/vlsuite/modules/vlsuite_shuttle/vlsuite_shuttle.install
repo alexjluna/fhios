@@ -1,0 +1,132 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Collection - Shuttle install module file.
+ */
+
+use Drupal\Component\Utility\NestedArray;
+use Drupal\Core\Serialization\Yaml;
+
+/**
+ * Implements hook_install().
+ */
+function vlsuite_shuttle_install() {
+  _vlsuite_shuttle_collection_block_utilities_enable();
+  _vlsuite_shuttle_collection_block_utilities_set();
+  _vlsuite_shuttle_layout_builder_display_config_section_block_set_media_uuid('core.entity_view_display.block_content.vlsuite_collection_stmt.default', 0, '8ddfe66a-4d50-45bb-b060-9a29110e89a5', 'vlsuite_icon', 'e10286ba-8893-44ba-8e19-04d5c42cabcc');
+  _vlsuite_shuttle_layout_builder_display_config_section_block_set_media_uuid('core.entity_view_display.block_content.vlsuite_collection_stmt.vlsuite_collection_1', 0, 'c6890d29-90f2-4d83-8245-8d5f61729cae', 'vlsuite_icon', 'e10286ba-8893-44ba-8e19-04d5c42cabcc');
+  _vlsuite_shuttle_layout_builder_display_config_section_block_set_media_uuid('core.entity_view_display.block_content.vlsuite_collection_stmt.vlsuite_collection_2', 0, 'ff7bb24f-e26d-461b-aa39-735bdcfb0482', 'vlsuite_icon', 'e10286ba-8893-44ba-8e19-04d5c42cabcc');
+  _vlsuite_shuttle_layout_builder_display_config_section_block_set_media_uuid('core.entity_view_display.block_content.vlsuite_collection_stmt.vlsuite_collection_3', 0, '379f5683-bee7-46cd-93b6-2ef47c3eb091', 'vlsuite_icon', 'e10286ba-8893-44ba-8e19-04d5c42cabcc');
+  _vlsuite_shuttle_layout_builder_display_config_section_block_set_media_uuid('core.entity_view_display.block_content.vlsuite_collection_stmt.vlsuite_collection_4', 0, 'c354dd7d-b40d-47a3-8b57-894f987fadbf', 'vlsuite_icon', 'e10286ba-8893-44ba-8e19-04d5c42cabcc');
+  _vlsuite_shuttle_layout_builder_display_config_add_allowed_inline_blocks('core.entity_view_display.node.vlsuite_landing.full');
+  // My job here is done.
+  \Drupal::service('module_installer')->uninstall(['vlsuite_shuttle']);
+}
+
+/**
+ * Shuttle install layout builder display config add allowed blocks.
+ *
+ * @param string $display_config
+ *   Display config name.
+ */
+function _vlsuite_shuttle_layout_builder_display_config_add_allowed_inline_blocks(string $display_config) {
+  $editable_config = \Drupal::configFactory()->getEditable($display_config);
+  $allowed_blocks = !empty($editable_config) ? $editable_config->get('third_party_settings.layout_builder_restrictions.entity_view_mode_restriction.allowlisted_blocks') : NULL;
+  if (empty($allowed_blocks) || empty($allowed_blocks['VLSuite: Inline blocks'])) {
+    return;
+  }
+  $allowed_blocks['VLSuite: Inline blocks'][] = 'vlsuite_block_inline_block:vlsuite_collection_hero';
+  $allowed_blocks['VLSuite: Inline blocks'][] = 'vlsuite_block_inline_block:vlsuite_collection_stmt';
+  $allowed_blocks['VLSuite: Inline blocks'][] = 'vlsuite_block_inline_block:vlsuite_collection_card';
+  $allowed_blocks['VLSuite: Inline blocks'][] = 'vlsuite_block_inline_block:vlsuite_collection_gallery';
+  $editable_config->set('third_party_settings.layout_builder_restrictions.entity_view_mode_restriction.allowlisted_blocks', $allowed_blocks);
+  $editable_config->save();
+}
+
+/**
+ * Shuttle install layout builder display config block set media.
+ *
+ * @param string $config_name
+ *   Config name.
+ * @param int $section_delta
+ *   Section delta.
+ * @param string $block_uuid
+ *   Block uuid.
+ * @param string $media_field_name
+ *   Field name.
+ * @param string $media_uuid
+ *   Media uuid.
+ */
+function _vlsuite_shuttle_layout_builder_display_config_section_block_set_media_uuid(string $config_name, int $section_delta, string $block_uuid, string $media_field_name, string $media_uuid) {
+  $editable_config = \Drupal::configFactory()->getEditable($config_name);
+  if (empty($editable_config)) {
+    return;
+  }
+  $third_party_settings = $editable_config->get('third_party_settings');
+  // phpcs:ignore DrupalPractice.FunctionCalls.InsecureUnserialize.InsecureUnserialize
+  $block = unserialize($third_party_settings['layout_builder']['sections'][$section_delta]['components'][$block_uuid]['configuration']['block_serialized'] ?? '');
+  $medias = \Drupal::entityTypeManager()->getStorage('media')->loadByProperties(['uuid' => $media_uuid]);
+  if (empty($medias) || empty($block) || !$block->hasField($media_field_name)) {
+    return;
+  }
+  $media_image_id = reset($medias)->id();
+  $block->set($media_field_name, ['target_id' => $media_image_id]);
+  $third_party_settings['layout_builder']['sections'][$section_delta]['components'][$block_uuid]['configuration']['block_serialized'] = serialize($block);
+  $editable_config->set('third_party_settings', $third_party_settings);
+  $editable_config->save();
+}
+
+/**
+ * Shuttle collection block utilitties enable.
+ */
+function _vlsuite_shuttle_collection_block_utilities_enable() {
+  $editable_config = \Drupal::configFactory()->getEditable('vlsuite_block.settings');
+  $block_content = $editable_config->get('utility_classes_apply_to_enabled.block_content');
+  $block_content['vlsuite_collection_hero'] = [
+    'fields' => [
+      'vlsuite_link' => TRUE,
+      'vlsuite_text' => TRUE,
+      'vlsuite_media' => TRUE,
+    ],
+  ];
+  $block_content['vlsuite_collection_stmt'] = [
+    'fields' => [
+      'vlsuite_text' => TRUE,
+      'vlsuite_image' => TRUE,
+      'vlsuite_link' => TRUE,
+    ],
+  ];
+  $block_content['vlsuite_collection_card'] = [
+    'fields' => [
+      'vlsuite_text' => TRUE,
+      'vlsuite_media' => TRUE,
+      'vlsuite_icon' => TRUE,
+      'vlsuite_background' => TRUE,
+      'vlsuite_link' => TRUE,
+    ],
+  ];
+  $block_content['vlsuite_collection_gallery'] = [
+    'fields' => [
+      'vlsuite_medias' => TRUE,
+    ],
+  ];
+  $editable_config->set('utility_classes_apply_to_enabled.block_content', $block_content);
+  $editable_config->save();
+}
+
+/**
+ * Shuttle collection block utilitties set from assets.
+ */
+function _vlsuite_shuttle_collection_block_utilities_set() {
+  $module_name = 'vlsuite_shuttle';
+  $yml_path = \Drupal::service('extension.path.resolver')->getPath('module', $module_name) . '/assets/vlsuite_utility_classes.settings.yml';
+  $yml_content = file_get_contents($yml_path);
+  $editable_config = \Drupal::configFactory()->getEditable('vlsuite_utility_classes.settings');
+  $utilities = $editable_config->get('utilities');
+  $source = Yaml::decode($yml_content);
+  $source_utilities = $source['utilities'];
+  $merged_utilitites = NestedArray::mergeDeep($utilities, $source_utilities);
+  $editable_config->set('utilities', $merged_utilitites);
+  $editable_config->save();
+}

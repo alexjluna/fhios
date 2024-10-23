@@ -1,0 +1,20 @@
+uuid: 528c368c-3ae8-427e-98c5-c6663183aab2
+langcode: en
+status: true
+dependencies:
+  module:
+    - redsys_button
+  theme:
+    - olivero
+id: olivero_redsysbuttonblock
+theme: olivero
+region: content
+weight: 0
+provider: null
+plugin: redsys_button_block
+settings:
+  id: redsys_button_block
+  label: 'Redsys Button Block'
+  label_display: '0'
+  provider: redsys_button
+visibility: {  }

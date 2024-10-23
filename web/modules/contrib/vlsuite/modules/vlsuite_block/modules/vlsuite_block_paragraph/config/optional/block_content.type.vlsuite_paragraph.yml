@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_block_paragraph
+id: vlsuite_paragraph
+label: 'Paragraph (VLSuite)'
+revision: 0
+description: ''
+vlsuite_block_icon: d4a85813-1873-4444-a74c-55aa510c0f78

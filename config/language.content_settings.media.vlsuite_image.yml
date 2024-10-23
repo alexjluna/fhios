@@ -1,0 +1,23 @@
+uuid: 7733063a-bccb-430e-bcbe-7429ca2be6cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.vlsuite_image
+  module:
+    - content_translation
+  enforced:
+    module:
+      - vlsuite_media_image
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: WYR2Co9nppdN_nEI7Fae9M47CwlWq59OFFB4jbMzvfM
+id: media.vlsuite_image
+target_entity_type_id: media
+target_bundle: vlsuite_image
+default_langcode: current_interface
+language_alterable: false

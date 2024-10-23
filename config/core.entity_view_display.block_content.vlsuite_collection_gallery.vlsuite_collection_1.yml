@@ -1,0 +1,106 @@
+uuid: 58895e03-4dbc-49b9-bb6e-ad257bc60182
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_collection_gallery
+    - core.entity_view_mode.block_content.vlsuite_collection_1
+  module:
+    - layout_builder
+    - vlsuite_layout
+  enforced:
+    module:
+      - vlsuite_collection_gallery
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: vlsuite_layout_onecol
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          column_widths: 60-auto
+          optional_regions: true
+          edge_to_edge: false
+          vlsuite_utility_class:
+            'vlsuite_layout:section':
+              padding-y: spacer-5
+              padding-x: no-spacer
+            'vlsuite_layout:row':
+              gutter-y: gutter-3
+          edge_to_edge_bg: false
+          media_bg: null
+          identifier: ''
+          vlsuite_slider:
+            scope: main
+          vlsuite_animations: {  }
+        components:
+          497a0ad6-de5e-464c-befe-ea879cafef47:
+            uuid: 497a0ad6-de5e-464c-befe-ea879cafef47
+            region: bottom
+            configuration:
+              id: 'vlsuite_block_field_block:block_content:vlsuite_collection_gallery:vlsuite_medias'
+              label: Medias
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: vlsuite_collection_gallery_reduced
+                third_party_settings: {  }
+              vlsuite_utility_class:
+                'block_content:vlsuite_collection_gallery:vlsuite_medias:item':
+                  ratio: 16-9
+              vlsuite_slider:
+                active: true
+                scope: default
+                slides_per_view: 6.0
+                slides_per_view_small: 3.0
+                rows: 2
+            weight: 6
+            additional: {  }
+          31fc318b-028f-4550-a429-404ee1df71b0:
+            uuid: 31fc318b-028f-4550-a429-404ee1df71b0
+            region: main
+            configuration:
+              id: 'vlsuite_block_field_block:block_content:vlsuite_collection_gallery:vlsuite_medias'
+              label: Medias
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: vlsuite_collection_gallery_main
+                third_party_settings: {  }
+              vlsuite_utility_class:
+                'block_content:vlsuite_collection_gallery:vlsuite_medias:item':
+                  ratio: 16-9
+              vlsuite_slider:
+                active: true
+                scope: default
+                slides_per_view: 1.0
+                navigation: true
+                pagination: true
+            weight: 3
+            additional: {  }
+        third_party_settings: {  }
+_core:
+  default_config_hash: MXaxlDFwJjAR93vK1gdbhd80iG_zBHR1qpeyGiVs_yI
+id: block_content.vlsuite_collection_gallery.vlsuite_collection_1
+targetEntityType: block_content
+bundle: vlsuite_collection_gallery
+mode: vlsuite_collection_1
+content: {  }
+hidden:
+  langcode: true
+  vlsuite_medias: true

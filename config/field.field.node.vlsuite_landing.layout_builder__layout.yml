@@ -1,0 +1,26 @@
+uuid: 21c172a3-0cc2-467f-aa44-6976182b6005
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.layout_builder__layout
+    - node.type.vlsuite_landing
+  module:
+    - layout_builder
+  enforced:
+    module:
+      - vlsuite_landing
+_core:
+  default_config_hash: yK86U3qif8PfTU6A-2GvIioSaSf7Y7SkzsrYTYuGXxY
+id: node.vlsuite_landing.layout_builder__layout
+field_name: layout_builder__layout
+entity_type: node
+bundle: vlsuite_landing
+label: Layout
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: layout_section

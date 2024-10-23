@@ -1,0 +1,79 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_collection_stmt
+    - core.entity_view_mode.block_content.vlsuite_customizable
+    - responsive_image.styles.vlsuite_original_optimized
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - link
+    - media_responsive_thumbnail
+    - text
+  enforced:
+    module:
+      - vlsuite_collection_stmt
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+id: block_content.vlsuite_collection_stmt.vlsuite_customizable
+targetEntityType: block_content
+bundle: vlsuite_collection_stmt
+mode: vlsuite_customizable
+content:
+  vlsuite_icon:
+    type: media_responsive_thumbnail
+    label: hidden
+    settings:
+      responsive_image_style: vlsuite_original_optimized_icon
+      image_link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  vlsuite_image:
+    type: media_responsive_thumbnail
+    label: hidden
+    settings:
+      responsive_image_style: vlsuite_original_optimized
+      image_link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  vlsuite_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 60
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  vlsuite_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  vlsuite_text_extra:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  langcode: true
+  vlsuite_background: true

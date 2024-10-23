@@ -63,8 +63,8 @@ interface TaxNumberItemInterface extends FieldItemInterface {
   /**
    * Gets the tax number type plugin.
    *
-   * @return \Drupal\commerce_tax\Plugin\Commerce\TaxNumberType\TaxNumberTypeInterface
-   *   The tax number type plugin.
+   * @return \Drupal\commerce_tax\Plugin\Commerce\TaxNumberType\TaxNumberTypeInterface|null
+   *   The tax number type plugin, NULL if it cannot be determined.
    */
   public function getTypePlugin();
 

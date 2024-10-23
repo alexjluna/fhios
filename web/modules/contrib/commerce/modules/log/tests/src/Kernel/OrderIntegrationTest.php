@@ -61,7 +61,7 @@ class OrderIntegrationTest extends OrderKernelTestBase implements ServiceModifie
     parent::setUp();
 
     $this->installEntitySchema('commerce_log');
-    $user = $this->createUser(['mail' => $this->randomString() . '@example.com']);
+    $user = $this->createUser();
     $this->logStorage = $this->container->get('entity_type.manager')->getStorage('commerce_log');
     $this->logViewBuilder = $this->container->get('entity_type.manager')->getViewBuilder('commerce_log');
 

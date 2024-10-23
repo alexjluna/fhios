@@ -2,12 +2,12 @@
 
 namespace Drupal\commerce_cart\Plugin\QueueWorker;
 
+use Drupal\commerce\Interval;
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Queue\QueueWorkerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Datetime\DrupalDateTime;
-use Drupal\commerce\Interval;
 
 /**
  * Deletes expired carts.

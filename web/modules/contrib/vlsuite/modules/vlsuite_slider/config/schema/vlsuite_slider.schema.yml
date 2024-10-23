@@ -1,0 +1,25 @@
+vlsuite_slider_base:
+  type: mapping
+  mapping:
+    active:
+      type: boolean
+    scope:
+      type: string
+    optional_regions:
+      type: boolean
+    slides_per_view:
+      type: float
+    slides_per_view_medium:
+      type: float
+    slides_per_view_small:
+      type: float
+    rows:
+      type: integer
+    space_between:
+      type: integer
+    autoplay:
+      type: integer
+    navigation:
+      type: boolean
+    pagination:
+      type: boolean

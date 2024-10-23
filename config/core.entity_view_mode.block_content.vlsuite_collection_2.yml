@@ -1,0 +1,16 @@
+uuid: 741a449a-5c60-4bc3-9a85-b96730e088ba
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+  enforced:
+    module:
+      - vlsuite_collection
+_core:
+  default_config_hash: rkLtIYuj1yPQ-zB68ijIHuRTgc139NEbr8VwB1qPw7Q
+id: block_content.vlsuite_collection_2
+label: 'Collection #2 (VLSuite)'
+description: ''
+targetEntityType: block_content
+cache: true

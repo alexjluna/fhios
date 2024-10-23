@@ -46,12 +46,20 @@ class OrderStorage extends CommerceContentEntityStorage implements OrderStorageI
   protected $lockBackend;
 
   /**
+   * The logger.
+   *
+   * @var \Psr\Log\LoggerInterface
+   */
+  protected $logger;
+
+  /**
    * {@inheritdoc}
    */
   public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type) {
     $instance = parent::createInstance($container, $entity_type);
     $instance->orderRefresh = $container->get('commerce_order.order_refresh');
     $instance->lockBackend = $container->get('lock');
+    $instance->logger = $container->get('logger.channel.commerce_order');
     return $instance;
   }
 
@@ -96,9 +104,11 @@ class OrderStorage extends CommerceContentEntityStorage implements OrderStorageI
     if (!$order->isNew() && !isset($this->updateLocks[$order->id()]) && !$this->lockBackend->lockMayBeAvailable($this->getLockId($order->id()))) {
       // This is updating an order that someone else has locked.
       $mismatch_exception = new OrderLockedSaveException('Attempted to save order ' . $order->id() . ' that is locked for updating. Use OrderStorage::loadForUpdate().');
-      $log_only = $this->getEntityType()->get('log_version_mismatch');
+      $log_only = $order->getEntityType()->get('log_version_mismatch');
       if ($log_only) {
-        watchdog_exception('commerce_order', $mismatch_exception);
+        $this->logger->error('<pre>%exception</pre>', [
+          '%exception' => $mismatch_exception->__toString(),
+        ]);
       }
       else {
         throw $mismatch_exception;
@@ -160,10 +170,7 @@ class OrderStorage extends CommerceContentEntityStorage implements OrderStorageI
     }
     finally {
       // Release the update lock if it was acquired for this entity.
-      if (isset($this->updateLocks[$entity->id()])) {
-        $this->lockBackend->release($this->getLockId($entity->id()));
-        unset($this->updateLocks[$entity->id()]);
-      }
+      $this->releaseLock($entity->id());
     }
   }
 
@@ -197,6 +204,16 @@ class OrderStorage extends CommerceContentEntityStorage implements OrderStorageI
    */
   protected function getLockId(int $order_id): string {
     return 'commerce_order_update:' . $order_id;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public function releaseLock(int $order_id): void {
+    if (isset($this->updateLocks[$order_id])) {
+      $this->lockBackend->release($this->getLockId($order_id));
+      unset($this->updateLocks[$order_id]);
+    }
   }
 
 }

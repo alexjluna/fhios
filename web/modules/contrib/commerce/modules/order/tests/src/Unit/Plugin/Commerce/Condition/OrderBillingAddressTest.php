@@ -62,11 +62,31 @@ class OrderBillingAddressTest extends UnitTestCase {
     $condition = new OrderBillingAddress([
       'zone' => [
         'territories' => [
+          ['country_code' => 'US', 'administrative_area' => 'CA'],
+        ],
+      ],
+      'operator' => 'not in',
+    ], 'order_billing_address', ['entity_type' => 'commerce_order', 'profile_scope' => 'billing']);
+    $this->assertTrue($condition->evaluate($order));
+
+    $condition = new OrderBillingAddress([
+      'zone' => [
+        'territories' => [
           ['country_code' => 'US', 'administrative_area' => 'SC'],
         ],
       ],
     ], 'order_billing_address', ['entity_type' => 'commerce_order', 'profile_scope' => 'billing']);
     $this->assertTrue($condition->evaluate($order));
+
+    $condition = new OrderBillingAddress([
+      'zone' => [
+        'territories' => [
+          ['country_code' => 'US', 'administrative_area' => 'SC'],
+        ],
+      ],
+      'operator' => 'not in',
+    ], 'order_billing_address', ['entity_type' => 'commerce_order', 'profile_scope' => 'billing']);
+    $this->assertFalse($condition->evaluate($order));
   }
 
 }

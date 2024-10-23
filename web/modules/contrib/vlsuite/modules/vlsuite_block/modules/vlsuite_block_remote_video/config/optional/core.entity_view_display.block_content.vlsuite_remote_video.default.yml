@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_remote_video
+  enforced:
+    module:
+      - vlsuite_block_remote_video
+id: block_content.vlsuite_remote_video.default
+targetEntityType: block_content
+bundle: vlsuite_remote_video
+mode: default
+content: {  }
+hidden:
+  langcode: true

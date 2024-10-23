@@ -1,0 +1,435 @@
+_core:
+  default_config_hash: KQVipTmHJeBE-bHN-e_B9kqkd5dDrqNtWUh3Bs0gd_k
+is_playing_classes: isPlaying
+is_shown_classes: isShown
+infinite_classes: animate__infinite
+main_classes: animate__animated
+root_margin: 0px
+threshold: 0.25
+animations:
+  fade-in:
+    apply_at:
+      entrance_down: entrance_down
+      entrance_up: entrance_up
+    visual_name: 'Fade In'
+    classes: animate__fadeIn
+  fade-in-down:
+    apply_at:
+      entrance_up: entrance_up
+    visual_name: 'Fade in down'
+    classes: animate__fadeInDown
+  fade-in-down-big:
+    apply_at:
+      entrance_up: entrance_up
+    visual_name: 'Fade in down big'
+    classes: animate__fadeInDownBig
+  fade-in-left:
+    apply_at:
+      entrance_down: entrance_down
+      entrance_up: entrance_up
+    visual_name: 'Fade in left'
+    classes: animate__fadeInLeft
+  fade-in-left-big:
+    apply_at:
+      entrance_down: entrance_down
+      entrance_up: entrance_up
+    visual_name: 'Fade in left big'
+    classes: animate__fadeInLeftBig
+  fade-in-right:
+    apply_at:
+      entrance_down: entrance_down
+      entrance_up: entrance_up
+    visual_name: 'Fade in right'
+    classes: animate__fadeInRight
+  fade-in-right-big:
+    apply_at:
+      entrance_down: entrance_down
+      entrance_up: entrance_up
+    visual_name: 'Fade in right big'
+    classes: animate__fadeInRightBig
+  fade-in-up:
+    apply_at:
+      entrance_down: entrance_down
+    visual_name: 'Fade in up'
+    classes: animate__fadeInUp
+  fade-in-up-big:
+    apply_at:
+      entrance_down: entrance_down
+    visual_name: 'Fade in up big'
+    classes: animate__fadeInUpBig
+  fade-in-top-left:
+    apply_at:
+      entrance_up: entrance_up
+    visual_name: 'Fade in top left'
+    classes: animate__fadeInTopLeft
+  fade-in-top-right:
+    apply_at:
+      entrance_up: entrance_up
+    visual_name: 'Fade in top right'
+    classes: animate__fadeInTopRight
+  fade-in-bottom-left:
+    apply_at:
+      entrance_down: entrance_down
+    visual_name: 'Fade in bottom left'
+    classes: animate__fadeInBottomLeft
+  fade-in-bottom-right:
+    apply_at:
+      entrance_down: entrance_down
+    visual_name: 'Fade in bottom right'
+    classes: animate__fadeInBottomRight
+  fade-out:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Fade out'
+    classes: animate__fadeOut
+  fade-out-down:
+    apply_at:
+      exit_down: exit_down
+    visual_name: 'Fade out down'
+    classes: animate__fadeOutDown
+  fade-out-down-big:
+    apply_at:
+      exit_down: exit_down
+    visual_name: 'Fade out down big'
+    classes: animate__fadeOutDownBig
+  fade-out-left:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Fade out left'
+    classes: animate__fadeOutLeft
+  fade-out-left-big:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Fade out left big'
+    classes: animate__fadeOutLeftBig
+  fade-out-right:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Fade out right'
+    classes: animate__fadeOutRight
+  fade-out-right-big:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Fade out right big'
+    classes: animate__fadeOutRightBig
+  fade-out-up:
+    apply_at:
+      exit_up: exit_up
+    visual_name: 'Fade out up'
+    classes: animate__fadeOutUp
+  fade-out-up-big:
+    apply_at:
+      exit_up: exit_up
+    visual_name: 'Fade out up big'
+    classes: animate__fadeOutUpBig
+  fade-out-top-left:
+    apply_at:
+      exit_up: exit_up
+    visual_name: 'Fade out top left'
+    classes: animate__fadeOutTopLeft
+  fade-out-top-right:
+    apply_at:
+      exit_up: exit_up
+    visual_name: 'Fade out top right'
+    classes: animate__fadeOutTopRight
+  fade-out-bottom-left:
+    apply_at:
+      exit_down: exit_down
+    visual_name: 'Fade out bottom left'
+    classes: animate__fadeOutBottomLeft
+  fade-out-bottom-right:
+    apply_at:
+      exit_down: exit_down
+    visual_name: 'Fade out bottom right'
+    classes: animate__fadeOutBottomRight
+  back-in-down:
+    apply_at:
+      entrance_up: entrance_up
+    visual_name: 'Back in down'
+    classes: animate__backInDown
+  back-in-left:
+    apply_at:
+      entrance_down: entrance_down
+      entrance_up: entrance_up
+    visual_name: 'Back in left'
+    classes: animate__backInLeft
+  back-in-right:
+    apply_at:
+      entrance_down: entrance_down
+      entrance_up: entrance_up
+    visual_name: 'Back in right'
+    classes: animate__backInRight
+  back-in-up:
+    apply_at:
+      entrance_down: entrance_down
+    visual_name: 'Back in up'
+    classes: animate__backInUp
+  back-out-down:
+    apply_at:
+      exit_down: exit_down
+    visual_name: 'Back out down'
+    classes: animate__backOutDown
+  back-out-left:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Back out left'
+    classes: animate__backOutLeft
+  back-out-right:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Back out right'
+    classes: animate__backOutRight
+  back-out-up:
+    apply_at:
+      exit_up: exit_up
+    visual_name: 'Back out up'
+    classes: animate__backOutUp
+  bounce-in:
+    apply_at:
+      entrance_down: entrance_down
+      entrance_up: entrance_up
+    visual_name: 'Bounce in'
+    classes: animate__bounceIn
+  bounce-in-down:
+    apply_at:
+      entrance_up: entrance_up
+    visual_name: 'Bounce in down'
+    classes: animate__bounceInDown
+  bounce-in-left:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Bounce in left'
+    classes: animate__bounceInLeft
+  bounce-in-right:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Bounce in right'
+    classes: animate__bounceInRight
+  bounce-in-up:
+    apply_at:
+      entrance_down: entrance_down
+    visual_name: 'Bounce in up'
+    classes: animate__bounceInUp
+  bounce-out:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Bounce out'
+    classes: animate__bounceOut
+  bounce-out-down:
+    apply_at:
+      exit_down: exit_down
+    visual_name: 'Bounce out down'
+    classes: animate__bounceOutDown
+  bounce-out-left:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Bounce out left'
+    classes: animate__bounceOutLeft
+  bounce-out-right:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Bounce out right'
+    classes: animate__bounceOutRight
+  bounce-out-up:
+    apply_at:
+      exit_up: exit_up
+    visual_name: 'Bounce out up'
+    classes: animate__bounceOutUp
+  bounce:
+    apply_at:
+      entrance: entrance
+    visual_name: Bounce
+    classes: animate__bounce
+  flash:
+    apply_at:
+      entrance: entrance
+      infinite: infinite
+    visual_name: Flash
+    classes: animate__flash
+  pulse:
+    apply_at:
+      entrance: entrance
+      infinite: infinite
+    visual_name: Pulse
+    classes: animate__pulse
+  rubber-band:
+    apply_at:
+      entrance: entrance
+    visual_name: 'Rubber band'
+    classes: animate__rubberBand
+  shake-x:
+    apply_at:
+      entrance: entrance
+    visual_name: 'Shake horizontal'
+    classes: animate__shakeX
+  shake-y:
+    apply_at:
+      entrance: entrance
+    visual_name: 'Shake vertical'
+    classes: animate__shakeY
+  hand-shake:
+    apply_at:
+      entrance: entrance
+      infinite: infinite
+    visual_name: 'Hand shake'
+    classes: animate__headShake
+  swing:
+    apply_at:
+      entrance: entrance
+    visual_name: Swing
+    classes: animate__swing
+  tada:
+    apply_at:
+      entrance: entrance
+      infinite: infinite
+    visual_name: Tada
+    classes: animate__tada
+  wobble:
+    apply_at:
+      entrance: entrance
+      infinite: infinite
+    visual_name: Wobble
+    classes: animate__wobble
+  jello:
+    apply_at:
+      entrance: entrance
+    visual_name: Jello
+    classes: animate__jello
+  heartbeat:
+    apply_at:
+      entrance: entrance
+    visual_name: Heartbeat
+    classes: animate__heartBeat
+  flip:
+    apply_at:
+      entrance: entrance
+    visual_name: Flip
+    classes: animate__flip
+  flip-in-x:
+    apply_at:
+      entrance_down: entrance_down
+      entrance_up: entrance_up
+    visual_name: 'Flip in horizontal'
+    classes: animate__flipInX
+  flip-in-y:
+    apply_at:
+      entrance_down: entrance_down
+      entrance_up: entrance_up
+    visual_name: 'Flip in vertical'
+    classes: animate__flipInY
+  flip-out-x:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Flip out horizontal'
+    classes: animate__flipOutX
+  flip-out-y:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Flip out vertical'
+    classes: animate__flipOutY
+  light-speed-in-right:
+    apply_at:
+      entrance_down: entrance_down
+      entrance_up: entrance_up
+    visual_name: 'Light speed in right'
+    classes: animate__lightSpeedInRight
+  light-speed-in-left:
+    apply_at:
+      entrance_down: entrance_down
+      entrance_up: entrance_up
+    visual_name: 'Light speed in left'
+    classes: animate__lightSpeedInLeft
+  light-speed-out-right:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Light speed out right'
+    classes: animate__lightSpeedOutRight
+  light-speed-out-left:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Light speed out left'
+    classes: animate__lightSpeedOutLeft
+  rotate-in:
+    apply_at:
+      entrance_down: entrance_down
+      entrance_up: entrance_up
+    visual_name: 'Rotate in'
+    classes: animate__rotateIn
+  rotate-out:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Rotate out'
+    classes: animate__rotateOut
+  zoom-in:
+    apply_at:
+      entrance_down: entrance_down
+      entrance_up: entrance_up
+    visual_name: 'Zoom in'
+    classes: animate__zoomIn
+  zoom-in-down:
+    apply_at:
+      entrance_up: entrance_up
+    visual_name: 'Zoom in down'
+    classes: animate__zoomInDown
+  zoom-in-left:
+    apply_at:
+      entrance_down: entrance_down
+      entrance_up: entrance_up
+    visual_name: 'Zoom in left'
+    classes: animate__zoomInLeft
+  zoom-in-right:
+    apply_at:
+      entrance_down: entrance_down
+      entrance_up: entrance_up
+    visual_name: 'Zoom in right'
+    classes: animate__zoomInRight
+  zoom-in-up:
+    apply_at:
+      entrance_down: entrance_down
+    visual_name: 'Zoom in up'
+    classes: animate__zoomInUp
+  zoom-out:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Zoom out'
+    classes: animate__zoomOut
+  zoom-out-down:
+    apply_at:
+      exit_down: exit_down
+    visual_name: 'Zoom out down'
+    classes: animate__zoomOutDown
+  zoom-out-left:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Zoom out left'
+    classes: animate__zoomOutLeft
+  zoom-out-right:
+    apply_at:
+      exit_down: exit_down
+      exit_up: exit_up
+    visual_name: 'Zoom out right'
+    classes: animate__zoomOutRight
+  zoom-out-up:
+    apply_at:
+      exit_up: exit_up
+    visual_name: 'Zoom out up'
+    classes: animate__zoomOutUp

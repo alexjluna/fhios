@@ -1,0 +1,12 @@
+
+.swiper-sync-active .swiper-slide {
+  opacity: .4;
+  cursor: pointer;
+  transition: opacity .25s ease-in-out;
+}
+
+
+.swiper-sync-active .swiper-slide-thumb-active {
+  cursor: default;;
+  opacity: 1;
+}

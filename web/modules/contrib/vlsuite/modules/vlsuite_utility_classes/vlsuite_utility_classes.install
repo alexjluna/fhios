@@ -1,0 +1,367 @@
+<?php
+
+/**
+ * @file
+ * VLSuite Utility Classes - install module file.
+ */
+
+use Drupal\Component\Utility\Html;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\layout_builder\Entity\LayoutBuilderEntityViewDisplay;
+use Drupal\layout_builder\Plugin\SectionStorage\OverridesSectionStorage;
+use Drupal\layout_builder\Section;
+use Drupal\layout_builder\SectionComponent;
+use Drupal\layout_builder\SectionStorageInterface;
+
+/**
+ * Enable vlsuite icon to fit new dependency if not already enabled.
+ */
+function vlsuite_utility_classes_update_10005() {
+  if (!\Drupal::service('module_handler')->moduleExists('vlsuite_icon_font')) {
+    \Drupal::service('module_installer')->install(['vlsuite_icon_font']);
+  }
+}
+
+/**
+ * Dynamize the utilities that apply to the background image/video.
+ */
+function vlsuite_utility_classes_update_10004() {
+  $displays = LayoutBuilderEntityViewDisplay::loadMultiple();
+  $need_save = FALSE;
+  $overridable_displays = [];
+  foreach ($displays as $display_id => $display) {
+    /** @var \Drupal\layout_builder\Entity\LayoutEntityDisplayInterface $display */
+    if ($display->isLayoutBuilderEnabled()) {
+      if ($display->isOverridable()) {
+        $overridable_displays[$display_id] = $display;
+      }
+      $sections = $display->getSections();
+      _vlsuite_utility_classes_update_helper_media_bg($sections, $need_save);
+      if ($need_save) {
+        $display->setThirdPartySetting('layout_builder', 'sections', $sections);
+        $display->save();
+        _vlsuite_utility_classes_update_helper_clean_section_storage('defaults', $display_id);
+      }
+    }
+  }
+  foreach ($overridable_displays as $display_id => $display) {
+    [$entity_type_id, $bundle, $view_mode] = explode('.', $display_id);
+    $content_entity_storage = \Drupal::entityTypeManager()->getStorage($entity_type_id);
+    $ids = $content_entity_storage->getQuery()->accessCheck(FALSE)->condition(Drupal::entityTypeManager()->getDefinition($entity_type_id)->getKey('bundle'), $bundle)->execute();
+    foreach ($ids as $content_entity_id) {
+      $content_entity = $content_entity_storage->load($content_entity_id);
+      $field_is_translatable = FieldConfig::loadByName($entity_type_id, $bundle, OverridesSectionStorage::FIELD_NAME)->isTranslatable();
+      if ($content_entity->isTranslatable() && $field_is_translatable) {
+        foreach ($content_entity->getTranslationLanguages() as $translation_language) {
+          if ($content_entity->hasTranslation($translation_language->getId())) {
+            $content_translation = $content_entity->getTranslation($translation_language->getId());
+            $sections = !$content_translation->get(OverridesSectionStorage::FIELD_NAME)->isEmpty() ? $content_translation->get(OverridesSectionStorage::FIELD_NAME)->getValue() : [];
+            if (!empty($sections)) {
+              _vlsuite_utility_classes_update_helper_media_bg($sections, $need_save);
+              if ($need_save) {
+                $content_translation->set(OverridesSectionStorage::FIELD_NAME, $sections);
+                $content_translation->save();
+                _vlsuite_utility_classes_update_helper_clean_section_storage('overrides', "{$entity_type_id}.{$content_translation->id()}.{$view_mode}.{$translation_language->getId()}");
+              }
+            }
+          }
+        }
+      }
+      else {
+        $sections = !$content_entity->get(OverridesSectionStorage::FIELD_NAME)->isEmpty() ? $content_entity->get(OverridesSectionStorage::FIELD_NAME)->getValue() : [];
+        if (!empty($sections)) {
+          _vlsuite_utility_classes_update_helper_media_bg($sections, $need_save);
+          if ($need_save) {
+            $content_entity->set(OverridesSectionStorage::FIELD_NAME, $sections);
+            $content_entity->save();
+            _vlsuite_utility_classes_update_helper_clean_section_storage('overrides', "{$entity_type_id}.{$content_entity->id()}.{$view_mode}.{$content_entity->language()->getId()}");
+          }
+        }
+      }
+    }
+  }
+  if (\Drupal::service('module_handler')->moduleExists('section_library')) {
+    $section_library_storage = \Drupal::entityTypeManager()->getStorage('section_library_template');
+    $ids = $section_library_storage->getQuery()->accessCheck(FALSE)->execute();
+    foreach ($ids as $section_library_id) {
+      $section_library = $section_library_storage->load($section_library_id);
+      $sections = $section_library->get('layout_section')->getValue();
+      _vlsuite_utility_classes_update_helper_media_bg($sections, $need_save);
+      if ($need_save) {
+        $section_library->save();
+      }
+    }
+  }
+}
+
+/**
+ * Update helper media-bg-xxx configurations structure.
+ *
+ * @param array $sections
+ *   Sections.
+ * @param bool $need_save
+ *   Need save.
+ */
+function _vlsuite_utility_classes_update_helper_media_bg(array $sections, bool &$need_save) {
+  $need_save = FALSE;
+  foreach ($sections as $key => $section_item) {
+    $section = is_array($section_item) && !empty($section_item['section']) && $section_item['section'] instanceof Section ? $section_item['section'] : $section_item;
+    if (!($section instanceof Section)) {
+      continue;
+    }
+    $layout_settings = $section->getLayoutSettings();
+    $section_utilities = $layout_settings['vlsuite_utility_class'] ?? [];
+    if (empty($section_utilities)) {
+      continue;
+    }
+    if (!empty($section_utilities['vlsuite_layout:section']['media-bg-opacity'])) {
+      $section_utilities['vlsuite_layout:media_bg']['media-bg-opacity'] = $section_utilities['vlsuite_layout:section']['media-bg-opacity'];
+      unset($section_utilities['vlsuite_layout:section']['media-bg-opacity']);
+      if (empty($section_utilities['vlsuite_layout:section'])) {
+        unset($section_utilities['vlsuite_layout:section']);
+      }
+      $need_save = TRUE;
+    }
+    if (!empty($section_utilities['vlsuite_layout:section']['media-bg-variant'])) {
+      $section_utilities['vlsuite_layout:media_bg']['media-bg-variant'] = $section_utilities['vlsuite_layout:section']['media-bg-variant'];
+      unset($section_utilities['vlsuite_layout:section']['media-bg-variant']);
+      if (empty($section_utilities['vlsuite_layout:section'])) {
+        unset($section_utilities['vlsuite_layout:section']);
+      }
+      $need_save = TRUE;
+    }
+    $layout_settings['vlsuite_utility_class'] = $section_utilities;
+    if (is_array($section_item) && !empty($section_item['section']) && $section_item['section'] instanceof Section) {
+      $sections[$key]['section']->setLayoutSettings($layout_settings);
+    }
+    else {
+      $sections[$key]->setLayoutSettings($layout_settings);
+    }
+  }
+}
+
+/**
+ * Dynamize the utilities that apply to the background image/video.
+ */
+function vlsuite_utility_classes_update_10003() {
+  if (!\Drupal::service('module_handler')->moduleExists('vlsuite_icon_font')) {
+    \Drupal::service('module_installer')->install(['vlsuite_icon_font']);
+  }
+  $main_utility_classes_settings = \Drupal::configFactory()->getEditable('vlsuite_utility_classes.settings');
+  $utilities = $main_utility_classes_settings->get('utilities') ?? [];
+
+  if (!empty($utilities['media-bg-opacity']['apply_to']['vlsuite_layout:section'])) {
+    $utilities['media-bg-opacity']['apply_to']['vlsuite_layout:media_bg'] = 'vlsuite_layout:media_bg';
+    unset($utilities['media-bg-opacity']['apply_to']['vlsuite_layout:section']);
+  }
+  if (!empty($utilities['media-bg-variant']['apply_to']['vlsuite_layout:section'])) {
+    $utilities['media-bg-variant']['apply_to']['vlsuite_layout:media_bg'] = 'vlsuite_layout:media_bg';
+    unset($utilities['media-bg-variant']['apply_to']['vlsuite_layout:section']);
+  }
+
+  $main_utility_classes_settings->set('utilities', $utilities);
+  $main_utility_classes_settings->save();
+  if (\Drupal::service('module_handler')->moduleExists('vlsuite_block') && !\Drupal::service('module_handler')->moduleExists('vlsuite_animations')) {
+    \Drupal::service('module_installer')->install(['vlsuite_animations']);
+  }
+}
+
+/**
+ * Replace utility values config & content with identifiers.
+ */
+function vlsuite_utility_classes_update_10002() {
+  $utilities = \Drupal::configFactory()->get('vlsuite_utility_classes.settings')->get('utilities') ?? [];
+  $remap = [];
+  foreach ($utilities as $utility_identifier => $utility) {
+    foreach ($utility['values'] as $utility_value_identifier => $utility_value) {
+      $remap[$utility_identifier][$utility_value_identifier] = $utility_value['class_suffix'];
+    }
+  }
+  $displays = LayoutBuilderEntityViewDisplay::loadMultiple();
+  $overridable_displays = [];
+  foreach ($displays as $display_id => $display) {
+    /** @var \Drupal\layout_builder\Entity\LayoutEntityDisplayInterface $display */
+    if ($display->isLayoutBuilderEnabled()) {
+      if ($display->isOverridable()) {
+        $overridable_displays[$display_id] = $display;
+      }
+      $sections = $display->getSections();
+      _vlsuite_utility_classes_update_helper_sections_suffix_to_identifier($sections, $remap);
+      $display->setThirdPartySetting('layout_builder', 'sections', $sections);
+      $display->save();
+      _vlsuite_utility_classes_update_helper_clean_section_storage('defaults', $display_id);
+    }
+  }
+  foreach ($overridable_displays as $display_id => $display) {
+    [$entity_type_id, $bundle, $view_mode] = explode('.', $display_id);
+    $content_entity_storage = \Drupal::entityTypeManager()->getStorage($entity_type_id);
+    $ids = $content_entity_storage->getQuery()->accessCheck(FALSE)->condition(Drupal::entityTypeManager()->getDefinition($entity_type_id)->getKey('bundle'), $bundle)->execute();
+    foreach ($ids as $content_entity_id) {
+      $content_entity = $content_entity_storage->load($content_entity_id);
+      $field_is_translatable = FieldConfig::loadByName($entity_type_id, $bundle, OverridesSectionStorage::FIELD_NAME)->isTranslatable();
+      if ($content_entity->isTranslatable() && $field_is_translatable) {
+        foreach ($content_entity->getTranslationLanguages() as $translation_language) {
+          if ($content_entity->hasTranslation($translation_language->getId())) {
+            $content_translation = $content_entity->getTranslation($translation_language->getId());
+            $sections = !$content_translation->get(OverridesSectionStorage::FIELD_NAME)->isEmpty() ? $content_translation->get(OverridesSectionStorage::FIELD_NAME)->getValue() : [];
+            if (!empty($sections)) {
+              _vlsuite_utility_classes_update_helper_sections_suffix_to_identifier($sections, $remap);
+              $content_translation->set(OverridesSectionStorage::FIELD_NAME, $sections);
+              $content_translation->save();
+              _vlsuite_utility_classes_update_helper_clean_section_storage('overrides', "{$entity_type_id}.{$content_translation->id()}.{$view_mode}.{$translation_language->getId()}");
+            }
+          }
+        }
+      }
+      else {
+        $sections = !$content_entity->get(OverridesSectionStorage::FIELD_NAME)->isEmpty() ? $content_entity->get(OverridesSectionStorage::FIELD_NAME)->getValue() : [];
+        if (!empty($sections)) {
+          _vlsuite_utility_classes_update_helper_sections_suffix_to_identifier($sections, $remap);
+          $content_entity->set(OverridesSectionStorage::FIELD_NAME, $sections);
+          $content_entity->save();
+          _vlsuite_utility_classes_update_helper_clean_section_storage('overrides', "{$entity_type_id}.{$content_entity->id()}.{$view_mode}.{$content_entity->language()->getId()}");
+        }
+      }
+    }
+  }
+  if (\Drupal::service('module_handler')->moduleExists('section_library')) {
+    $section_library_storage = \Drupal::entityTypeManager()->getStorage('section_library_template');
+    $ids = $section_library_storage->getQuery()->accessCheck(FALSE)->execute();
+    foreach ($ids as $section_library_id) {
+      $section_library = $section_library_storage->load($section_library_id);
+      $sections = $section_library->get('layout_section')->getValue();
+      _vlsuite_utility_classes_update_helper_sections_suffix_to_identifier($sections, $remap);
+      $section_library->save();
+    }
+  }
+}
+
+/**
+ * Update helper section storage type.
+ *
+ * @param string $section_storage_type
+ *   Section storage type.
+ * @param string $key_value_key
+ *   Key value key.
+ */
+function _vlsuite_utility_classes_update_helper_clean_section_storage(string $section_storage_type, string $key_value_key) {
+  /** @var \Drupal\Core\KeyValueStore\KeyValueExpirableFactoryInterface $key_value_factory */
+  $key_value_factory = \Drupal::service('keyvalue.expirable');
+  /** @var \Drupal\layout_builder\SectionStorage\SectionStorageManagerInterface $section_storage_manager */
+  // @code $section_storage_manager = \Drupal::service('plugin.manager.layout_builder.section_storage'); @endcode
+  $key_value = $key_value_factory->get("tempstore.shared.layout_builder.section_storage.{$section_storage_type}");
+  if ($key_value->has($key_value_key)) {
+    $section_storage = $key_value->get($key_value_key)->data['section_storage'] ?? NULL;
+    if ($section_storage instanceof SectionStorageInterface) {
+      \Drupal::service('layout_builder.tempstore_repository')->delete($section_storage);
+    }
+  }
+}
+
+/**
+ * Update helper sections & components suffix to identifier.
+ *
+ * @param array $sections
+ *   Sections.
+ * @param array $remap
+ *   Remap.
+ */
+function _vlsuite_utility_classes_update_helper_sections_suffix_to_identifier(array $sections, array $remap) {
+  foreach ($sections as $key => $section_item) {
+    $section = is_array($section_item) && !empty($section_item['section']) && $section_item['section'] instanceof Section ? $section_item['section'] : $section_item;
+    if (!($section instanceof Section)) {
+      continue;
+    }
+    $layout_settings = $section->getLayoutSettings();
+    $section_utilities = $layout_settings['vlsuite_utility_class'] ?? [];
+    if (empty($section_utilities)) {
+      continue;
+    }
+    foreach ($section_utilities as $apply_to => $apply_to_utilities) {
+      foreach ($apply_to_utilities as $utility_id => $class_suffix) {
+        $new_value = array_search($class_suffix, $remap[$utility_id]);
+        if (empty($new_value)) {
+          continue;
+        }
+        $section_utilities[$apply_to][$utility_id] = $new_value;
+        foreach ($section->getComponents() as $component) {
+          if (!($component instanceof SectionComponent)) {
+            continue;
+          }
+          $component_config = $component->get('configuration');
+          $utility_component_config = $component_config['vlsuite_utility_class'] ?? [];
+          if (empty($utility_component_config)) {
+            continue;
+          }
+          foreach ($utility_component_config as $component_utility_apply_to => $component_utilities) {
+            foreach ($component_utilities as $component_utility_id => $component_class_suffix) {
+              $new_component_value = !empty($component_class_suffix) ? array_search($component_class_suffix, $remap[$component_utility_id]) : NULL;
+              if (empty($new_component_value)) {
+                continue;
+              }
+              $utility_component_config[$component_utility_apply_to][$component_utility_id] = $new_component_value;
+            }
+          }
+          $component_config['vlsuite_utility_class'] = $utility_component_config;
+          $component->setConfiguration($component_config);
+        }
+      }
+    }
+    $layout_settings['vlsuite_utility_class'] = $section_utilities;
+    if (is_array($section_item) && !empty($section_item['section']) && $section_item['section'] instanceof Section) {
+      $sections[$key]['section']->setLayoutSettings($layout_settings);
+    }
+    else {
+      $sections[$key]->setLayoutSettings($layout_settings);
+    }
+  }
+}
+
+/**
+ * Replace utility values configurations with identifiers.
+ */
+function vlsuite_utility_classes_update_10001() {
+  $language_manager = \Drupal::languageManager();
+  $main_utility_classes_settings = \Drupal::configFactory()->getEditable('vlsuite_utility_classes.settings');
+  $default_language = $main_utility_classes_settings->get('langcode') ?? $language_manager->getDefaultLanguage()->getId();
+  $utilities = $main_utility_classes_settings->get('utilities') ?? [];
+  $remap = [];
+
+  // Adapt configuration utility values to the new schema with identifiers.
+  foreach ($utilities as $utility_identifier => $utility_def) {
+    $values = [];
+    foreach ($utility_def['values'] as $suffix => $visual_name) {
+      $value_identifier = Html::getId(\Drupal::service('transliteration')->transliterate($visual_name));
+      $values[$value_identifier] = [
+        'visual_name' => $visual_name,
+        'class_suffix' => $suffix,
+      ];
+      $remap[$utility_identifier][$suffix] = $value_identifier;
+    }
+    $utilities[$utility_identifier]['values'] = $values;
+  }
+  $main_utility_classes_settings->set('utilities', $utilities);
+
+  // Configuration translations.
+  $languages = array_keys($language_manager->getLanguages());
+  foreach ($languages as $language) {
+    if ($language != $default_language) {
+      $translation_config = $language_manager->getLanguageConfigOverride($language, 'vlsuite_utility_classes.settings');
+      $utilities = $translation_config->get('utilities') ?? [];
+      foreach ($utilities as $utility_identifier => $utility_def) {
+        $values = [];
+        if (empty($utility_def['values'])) {
+          continue;
+        }
+        foreach ($utility_def['values'] as $suffix => $visual_name) {
+          $values[$remap[$utility_identifier][$suffix]] = [
+            'visual_name' => $visual_name,
+          ];
+        }
+        $utilities[$utility_identifier]['values'] = $values;
+      }
+      $translation_config->set('utilities', $utilities)->save(TRUE);
+    }
+  }
+  $main_utility_classes_settings->save(TRUE);
+}

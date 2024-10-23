@@ -1,0 +1,12 @@
+vlsuite_media.settings:
+  type: config_object
+  mapping:
+    bg_types:
+      type: sequence
+      sequence:
+        type: boolean
+    media_types:
+      type: sequence
+      sequence:
+        type: boolean
+

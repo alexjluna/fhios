@@ -1,0 +1,79 @@
+uuid: 7dd6778b-4d90-4240-bab0-86332b95e6b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.vlsuite_icon.field_media_image
+    - image.style.thumbnail
+    - media.type.vlsuite_icon
+  module:
+    - image
+    - path
+  enforced:
+    module:
+      - vlsuite_media_icon
+_core:
+  default_config_hash: tbV2pHlaBaSvKT2NMAXDLntR66gP6iVfzD8Hbh2T0GM
+id: media.vlsuite_icon.default
+targetEntityType: media
+bundle: vlsuite_icon
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_media_image:
+    type: image_image
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 100
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

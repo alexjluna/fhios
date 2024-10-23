@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Block - Attachments main module file.
+ */
+
+use Drupal\vlsuite_block_attachments\Entity\Bundle\VLSuiteBlockAttachments;
+
+/**
+ * Implements hook_entity_bundle_info_alter().
+ */
+function vlsuite_block_attachments_entity_bundle_info_alter(array &$bundles): void {
+  if (!empty($bundles['block_content'][VLSuiteBlockAttachments::BUNDLE_KEY])) {
+    $bundles['block_content'][VLSuiteBlockAttachments::BUNDLE_KEY]['class'] = VLSuiteBlockAttachments::class;
+  }
+}

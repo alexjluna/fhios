@@ -16,7 +16,7 @@ use Drupal\Core\TypedData\DataDefinition;
  *   id = "commerce_price",
  *   label = @Translation("Price"),
  *   description = @Translation("Stores a decimal number and a three letter currency code."),
- *   category = @Translation("Commerce"),
+ *   category = "commerce",
  *   default_widget = "commerce_price_default",
  *   default_formatter = "commerce_price_default",
  * )
@@ -37,6 +37,8 @@ class PriceItem extends FieldItemBase {
 
     $properties['formatted'] = DataDefinition::create('formatted_price')
       ->setLabel(t('Formatted price'))
+      ->setComputed(TRUE)
+      ->setInternal(FALSE)
       ->setRequired(FALSE);
 
     return $properties;

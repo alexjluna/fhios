@@ -1,0 +1,27 @@
+uuid: b68cc8e0-3304-4c8e-a1b1-bbb8da1c480e
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_local_video
+  enforced:
+    module:
+      - vlsuite_block_local_video
+_core:
+  default_config_hash: CxCohU86AeszSvH6_4LbMUp1j7ng6_teTvn6s0X4KNg
+id: block_content.vlsuite_local_video.default
+targetEntityType: block_content
+bundle: vlsuite_local_video
+mode: default
+content:
+  vlsuite_local_video:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

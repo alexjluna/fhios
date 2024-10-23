@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_media_icon
+name: vlsuite_original_optimized_icon
+label: 'Original optimized icon (VLSuite)'
+effects:
+  e0a4b054-16b5-4d4e-bd92-2a3ec005d8d4:
+    uuid: e0a4b054-16b5-4d4e-bd92-2a3ec005d8d4
+    id: image_scale
+    weight: 1
+    data:
+      width: 65
+      height: null
+      upscale: false

@@ -55,22 +55,22 @@ class ProductAttributeValueAccessTest extends CommerceKernelTestBase {
     ]);
     $attribute_value->save();
 
-    $account = $this->createUser([], ['access administration pages']);
+    $account = $this->createUser(['access administration pages']);
     $this->assertFalse($attribute_value->access('view', $account));
     $this->assertFalse($attribute_value->access('update', $account));
     $this->assertFalse($attribute_value->access('delete', $account));
 
-    $account = $this->createUser([], ['access content']);
+    $account = $this->createUser(['access content']);
     $this->assertTrue($attribute_value->access('view', $account));
     $this->assertFalse($attribute_value->access('update', $account));
     $this->assertFalse($attribute_value->access('delete', $account));
 
-    $account = $this->createUser([], ['update commerce_product_attribute']);
+    $account = $this->createUser(['update commerce_product_attribute']);
     $this->assertFalse($attribute_value->access('view', $account));
     $this->assertTrue($attribute_value->access('update', $account));
     $this->assertTrue($attribute_value->access('delete', $account));
 
-    $account = $this->createUser([], ['administer commerce_product_attribute']);
+    $account = $this->createUser(['administer commerce_product_attribute']);
     $this->assertTrue($attribute_value->access('view', $account));
     $this->assertTrue($attribute_value->access('update', $account));
     $this->assertTrue($attribute_value->access('delete', $account));
@@ -88,13 +88,13 @@ class ProductAttributeValueAccessTest extends CommerceKernelTestBase {
     ]);
     $attribute->save();
 
-    $account = $this->createUser([], ['access content']);
+    $account = $this->createUser(['access content']);
     $this->assertFalse($access_control_handler->createAccess('color', $account));
 
-    $account = $this->createUser([], ['administer commerce_product_attribute']);
+    $account = $this->createUser(['administer commerce_product_attribute']);
     $this->assertTrue($access_control_handler->createAccess('color', $account));
 
-    $account = $this->createUser([], ['update commerce_product_attribute']);
+    $account = $this->createUser(['update commerce_product_attribute']);
     $this->assertTrue($access_control_handler->createAccess('color', $account));
   }
 

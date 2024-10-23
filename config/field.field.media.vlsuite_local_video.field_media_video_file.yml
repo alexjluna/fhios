@@ -1,0 +1,32 @@
+uuid: 9cb0bb4c-c189-4018-a74a-eb8da91be256
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_video_file
+    - media.type.vlsuite_local_video
+  module:
+    - file
+  enforced:
+    module:
+      - vlsuite_media_local_video
+_core:
+  default_config_hash: LfjwtaEDO-8KEamKLoLcJ7IScWwetZQ2fcHwYYE9pJ0
+id: media.vlsuite_local_video.field_media_video_file
+field_name: field_media_video_file
+entity_type: media
+bundle: vlsuite_local_video
+label: 'Archivo de vídeo'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: mp4
+  max_filesize: ''
+  description_field: false
+field_type: file

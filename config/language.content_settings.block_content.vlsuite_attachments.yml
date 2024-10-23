@@ -1,0 +1,23 @@
+uuid: 7ca8092d-66ef-4525-8d03-3345f1b71038
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.vlsuite_attachments
+  module:
+    - content_translation
+  enforced:
+    module:
+      - vlsuite_block_attachments
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: 5Q7Bc7IAQ5v1iI4QWkGsg07R-CkP_7bomwKKQ4ehpFI
+id: block_content.vlsuite_attachments
+target_entity_type_id: block_content
+target_bundle: vlsuite_attachments
+default_langcode: current_interface
+language_alterable: false

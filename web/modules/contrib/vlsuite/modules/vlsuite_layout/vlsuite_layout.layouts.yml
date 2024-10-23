@@ -1,0 +1,87 @@
+vlsuite_layout_onecol:
+  label: 'One column with optional top & bottom (VLSuite)'
+  path: layouts/onecol
+  template: vlsuite-layout-onecol
+  class: '\Drupal\vlsuite_layout\Plugin\Layout\VLSuiteLayoutOneCol'
+  category: 'VLSuite'
+  default_region: main
+  icon_map:
+    - [top]
+    - [main]
+    - [bottom]
+  regions:
+    top:
+      label: Top
+    main:
+      label: Main
+    bottom:
+      label: Bottom
+
+vlsuite_layout_twocols:
+  label: 'Two columns with optional top & bottom (VLSuite)'
+  path: layouts/twocols
+  template: vlsuite-layout-twocols
+  class: '\Drupal\vlsuite_layout\Plugin\Layout\VLSuiteLayoutTwoCols'
+  category: 'VLSuite'
+  default_region: first
+  icon_map:
+    - [top]
+    - [first, second]
+    - [bottom]
+  regions:
+    top:
+      label: Top
+    first:
+      label: First
+    second:
+      label: Second
+    bottom:
+      label: Bottom
+
+vlsuite_layout_threecols:
+  label: 'Three columns with optional top & bottom (VLSuite)'
+  path: layouts/threecols
+  template: vlsuite-layout-threecols
+  class: '\Drupal\vlsuite_layout\Plugin\Layout\VLSuiteLayoutThreeCols'
+  category: 'VLSuite'
+  default_region: second
+  icon_map:
+    - [top]
+    - [first, second, third]
+    - [bottom]
+  regions:
+    top:
+      label: Top
+    first:
+      label: First
+    second:
+      label: Second
+    third:
+      label: Third
+    bottom:
+      label: Bottom
+
+vlsuite_layout_fourcols:
+  label: 'Four columns with optional top & bottom (VLSuite)'
+  path: layouts/fourcols
+  template: vlsuite-layout-fourcols
+  class: '\Drupal\vlsuite_layout\Plugin\Layout\VLSuiteLayoutFourCols'
+  category: 'VLSuite'
+  default_region: first
+  icon_map:
+    - [top]
+    - [first, second, third, fourth]
+    - [bottom]
+  regions:
+    top:
+      label: Top
+    first:
+      label: First
+    second:
+      label: Second
+    third:
+      label: Third
+    fourth:
+      label: Fourth
+    bottom:
+      label: Bottom

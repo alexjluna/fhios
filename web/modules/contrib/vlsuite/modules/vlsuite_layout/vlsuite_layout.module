@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Layout.
+ */
+
+use Drupal\vlsuite_layout\Plugin\Layout\VLSuiteLayoutBase;
+
+/**
+ * Implements hook_vlsuite_utility_classes_utility_apply_to_options_alter().
+ */
+function vlsuite_layout_vlsuite_utility_classes_utility_apply_to_options_alter(&$apply_to_options) {
+  $apply_to_options += VLSuiteLayoutBase::getUtilityClassesDefinitions();
+}

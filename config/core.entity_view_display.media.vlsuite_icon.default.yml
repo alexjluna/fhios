@@ -1,0 +1,37 @@
+uuid: 695ecfd9-c0ce-46c5-89a1-d33a8a2f3b0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.vlsuite_icon.field_media_image
+    - media.type.vlsuite_icon
+    - responsive_image.styles.vlsuite_original_optimized_icon
+  module:
+    - responsive_image
+  enforced:
+    module:
+      - vlsuite_media_icon
+_core:
+  default_config_hash: Cl0jmH_bPVLCFkoebmaDvv_f2WgyCqdWiOXfZiVV1dI
+id: media.vlsuite_icon.default
+targetEntityType: media
+bundle: vlsuite_icon
+mode: default
+content:
+  field_media_image:
+    type: responsive_image
+    label: visually_hidden
+    settings:
+      responsive_image_style: vlsuite_original_optimized_icon
+      image_link: ''
+      image_loading:
+        attribute: eager
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

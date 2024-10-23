@@ -1,0 +1,19 @@
+uuid: bac108e4-93f7-47dc-9840-55b6d35c5719
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_media_image
+_core:
+  default_config_hash: AAVOXwxYr3USJMc3oyeSWEwlErfzLuvud14un_A6T8A
+id: vlsuite_image
+label: 'Image (VLSuite)'
+description: ''
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map:
+  name: name

@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_media
+name: vlsuite_original_optimized_large
+label: 'Original optimized large (VLSuite)'
+effects:
+  7652c01c-b85d-4dbd-85e5-930651c5db77:
+    uuid: 7652c01c-b85d-4dbd-85e5-930651c5db77
+    id: image_scale
+    weight: 1
+    data:
+      width: 1920
+      height: null
+      upscale: false

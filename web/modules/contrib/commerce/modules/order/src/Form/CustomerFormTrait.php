@@ -78,6 +78,7 @@ trait CustomerFormTrait {
         '#placeholder' => t('Search by username or email address'),
         '#target_type' => 'user',
         '#required' => TRUE,
+        '#selection_handler' => 'commerce:user',
         '#selection_settings' => [
           'match_operator' => 'CONTAINS',
           'include_anonymous' => FALSE,

@@ -1,0 +1,19 @@
+uuid: 2ce74b61-7044-42e8-9c75-909cb0269b15
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.vlsuite_landing_content_editor
+  module:
+    - user
+  enforced:
+    module:
+      - vlsuite_landing_content_editor
+_core:
+  default_config_hash: 8k5VF2LMfbziwqPt3bQB6M57KUulUvU6UAh9heWqqC8
+id: user_remove_role_action.vlsuite_landing_content_editor
+label: 'Remove the Landing content editor (VLSuite) role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: vlsuite_landing_content_editor

@@ -1,0 +1,19 @@
+uuid: 97b78adc-8263-4c52-8da4-c66baa0c5369
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_media_local_video
+_core:
+  default_config_hash: _L9ibwVYQkGSLPC2_wj_1gBxm8SbDEBnqERWCHe1PE8
+id: vlsuite_local_video
+label: 'Local video (VLSuite)'
+description: ''
+source: video_file
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_video_file
+field_map:
+  name: name

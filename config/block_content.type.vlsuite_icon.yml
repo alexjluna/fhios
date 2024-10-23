@@ -1,0 +1,14 @@
+uuid: 59a253d8-40bf-4f78-9aa2-8f7d0de7c152
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - vlsuite_block_icon
+_core:
+  default_config_hash: IBdhMhzzmGxCZbXCNd2ZYUIkOq0Vlwkpg6jtuX8UyqM
+id: vlsuite_icon
+label: 'Icon (VLSuite)'
+revision: 0
+description: ''
+vlsuite_block_icon: fefae60e-aee5-4b95-bfda-862f51fc8593

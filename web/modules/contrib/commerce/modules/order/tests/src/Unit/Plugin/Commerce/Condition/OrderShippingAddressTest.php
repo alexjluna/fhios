@@ -61,11 +61,31 @@ class OrderShippingAddressTest extends UnitTestCase {
     $condition = new OrderShippingAddress([
       'zone' => [
         'territories' => [
+          ['country_code' => 'US', 'administrative_area' => 'CA'],
+        ],
+      ],
+      'operator' => 'not in',
+    ], 'order_shipping_address', ['entity_type' => 'commerce_order', 'profile_scope' => 'shipping']);
+    $this->assertTrue($condition->evaluate($order));
+
+    $condition = new OrderShippingAddress([
+      'zone' => [
+        'territories' => [
           ['country_code' => 'US', 'administrative_area' => 'SC'],
         ],
       ],
     ], 'order_shipping_address', ['entity_type' => 'commerce_order', 'profile_scope' => 'shipping']);
     $this->assertTrue($condition->evaluate($order));
+
+    $condition = new OrderShippingAddress([
+      'zone' => [
+        'territories' => [
+          ['country_code' => 'US', 'administrative_area' => 'SC'],
+        ],
+      ],
+      'operator' => 'not in',
+    ], 'order_shipping_address', ['entity_type' => 'commerce_order', 'profile_scope' => 'shipping']);
+    $this->assertFalse($condition->evaluate($order));
   }
 
 }

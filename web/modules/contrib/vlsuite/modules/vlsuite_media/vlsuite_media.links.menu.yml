@@ -1,0 +1,5 @@
+vlsuite_media.settings:
+  title: 'VLSuite - Media'
+  description: 'Visual Layout Suite (VLSuite) - Media settings.'
+  parent: vlsuite.admin_index
+  route_name: vlsuite_media.settings

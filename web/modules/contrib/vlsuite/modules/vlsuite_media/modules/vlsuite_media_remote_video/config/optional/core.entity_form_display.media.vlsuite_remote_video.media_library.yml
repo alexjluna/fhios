@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.vlsuite_remote_video.field_media_oembed_video
+    - media.type.vlsuite_remote_video
+  enforced:
+    module:
+      - vlsuite_media_remote_video
+id: media.vlsuite_remote_video.media_library
+targetEntityType: media
+bundle: vlsuite_remote_video
+mode: media_library
+content: {  }
+hidden:
+  created: true
+  field_media_oembed_video: true
+  langcode: true
+  name: true
+  path: true
+  status: true
+  uid: true

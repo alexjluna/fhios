@@ -155,7 +155,8 @@ class CustomerProfile extends EntityInlineFormBase {
   public function buildInlineForm(array $inline_form, FormStateInterface $form_state) {
     $inline_form = parent::buildInlineForm($inline_form, $form_state);
     // Allows a widget to vary when used for billing versus shipping purposes.
-    // Available in hook_field_widget_form_alter() via $context['form'].
+    // Available in hook_field_widget_single_element_form_alter()
+    // via $context['form'].
     $inline_form['#profile_scope'] = $this->configuration['profile_scope'];
 
     assert($this->entity instanceof ProfileInterface);

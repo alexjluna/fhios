@@ -1,0 +1,135 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.vlsuite_full_content_bottom
+    - field.field.node.vlsuite_landing.body
+    - field.field.node.vlsuite_landing.field_vlsuite_landing_cta_link
+    - field.field.node.vlsuite_landing.field_vlsuite_landing_main_image
+    - field.field.node.vlsuite_landing.layout_builder__layout
+    - node.type.vlsuite_landing
+    - views.view.vlsuite_landing_recent_content
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - user
+    - vlsuite_block
+    - vlsuite_layout
+  enforced:
+    module:
+      - vlsuite_landing
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: vlsuite_layout_onecol
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          column_widths: '100'
+          optional_regions: true
+          edge_to_edge: false
+          vlsuite_utility_class:
+            'vlsuite_layout:section':
+              padding-y: spacer-5
+            'vlsuite_layout:row':
+              gutter: 'gutter-5'
+              text-align: center
+            'vlsuite_layout:main_regions':
+              padding-y: spacer-3
+          edge_to_edge_bg: true
+          media_bg: null
+          identifier: ''
+        components:
+          23230aa1-4273-418e-8025-4029c9e81a21:
+            uuid: 23230aa1-4273-418e-8025-4029c9e81a21
+            region: main
+            configuration:
+              id: 'vlsuite_block_views_block:vlsuite_landing_recent_content-block'
+              label: 'VLSuite List Block'
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                nid: layout_builder.entity
+              views_label: ''
+              items_per_page: none
+              grid_cols_widths: '33'
+            weight: 0
+            additional: {  }
+          9d347370-9012-4b65-bd9b-848d1ee3d56d:
+            uuid: 9d347370-9012-4b65-bd9b-848d1ee3d56d
+            region: bottom
+            configuration:
+              id: 'vlsuite_block_field_block:node:vlsuite_landing:field_vlsuite_landing_cta_link'
+              label: 'CTA Link'
+              label_display: ''
+              provider: vlsuite_block
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: link
+                label: hidden
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: '0'
+                  target: '0'
+                third_party_settings: {  }
+              vlsuite_utility_class:
+                'node:vlsuite_landing:field_vlsuite_landing_cta_link:item':
+                  btn: outline-secondary
+                  btn-size: large
+                  rounded: pill
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories:
+      - VLSuite
+      - 'VLSuite: Field blocks'
+      - 'VLSuite: Inline blocks'
+      - 'VLSuite: List block (views)'
+      - 'VLSuite: Media background field block'
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - vlsuite_layout_onecol
+        - vlsuite_layout_twocols
+        - vlsuite_layout_threecols
+        - vlsuite_layout_fourcols
+      denylisted_blocks: {  }
+      allowlisted_blocks:
+        VLSuite:
+          - vlsuite_block_headings_menu
+        'VLSuite: Field blocks':
+          - 'vlsuite_block_field_block:node:vlsuite_landing:body'
+          - 'vlsuite_block_field_block:node:vlsuite_landing:field_vlsuite_landing_cta_link'
+          - 'vlsuite_block_field_block:node:vlsuite_landing:field_vlsuite_landing_main_image'
+          - 'vlsuite_block_field_block:node:vlsuite_landing:title'
+        'VLSuite: Inline blocks':
+          - 'vlsuite_block_inline_block:vlsuite_cta'
+          - 'vlsuite_block_inline_block:vlsuite_icon'
+          - 'vlsuite_block_inline_block:vlsuite_image'
+          - 'vlsuite_block_inline_block:vlsuite_local_video'
+          - 'vlsuite_block_inline_block:vlsuite_remote_video'
+          - 'vlsuite_block_inline_block:vlsuite_text'
+        'VLSuite: List block (views)':
+          - 'vlsuite_block_views_block:vlsuite_landing_recent_content-block'
+        'VLSuite: Media background field block':
+          - 'vlsuite_block_media_bg_block:node:vlsuite_landing:field_vlsuite_landing_main_image'
+      restricted_categories: {  }
+id: node.vlsuite_landing.vlsuite_full_content_bottom
+targetEntityType: node
+bundle: vlsuite_landing
+mode: vlsuite_full_content_bottom
+content: {  }
+hidden:
+  body: true
+  field_vlsuite_landing_cta_link: true
+  field_vlsuite_landing_main_image: true
+  langcode: true
+  layout_builder__layout: true
+  links: true

@@ -1,0 +1,62 @@
+{#
+/**
+ * @file
+ * VLSuite fourcols layout.
+ */
+#}
+{% if content %}
+  {% if settings.edge_to_edge_bg %}{{ content.media_bg }}{% endif %}
+  <div{{ attributes }}>
+    {% if not settings.edge_to_edge_bg %}{{ content.media_bg }}{% endif %}
+    <div{{ content['#row_attributes'] }}>
+      {% set content_top_render = content.top|render %}
+      {% if settings.optional_regions and content_top_render|trim %}
+        <div {{ content['#top_col_attributes'] }}>
+          <div {{ region_attributes.top.addClass(content['#top_class']).addClass('vlsuite-layout__region', 'vlsuite-layout__region--top') }}>
+            {{ content_top_render }}
+          </div>
+        </div>
+      {% endif %}
+      <div {{ content['#first_col_attributes'] }}>
+        {% set content_first_render = content.first|render %}
+        {% if content_first_render|trim %}
+          <div {{ region_attributes.first.addClass(content['#first_class']).addClass('vlsuite-layout__region', 'vlsuite-layout__region--first') }}>
+            {{ content_first_render }}
+          </div>
+        {% endif %}
+      </div>
+      <div {{ content['#second_col_attributes'] }}>
+        {% set content_second_render = content.second|render %}
+        {% if content_second_render|trim %}
+          <div {{ region_attributes.second.addClass(content['#second_class']).addClass('vlsuite-layout__region', 'vlsuite-layout__region--second') }}>
+            {{ content_second_render }}
+          </div>
+        {% endif %}
+      </div>
+      <div {{ content['#third_col_attributes'] }}>
+        {% set content_third_render = content.third|render %}
+        {% if content_third_render|trim %}
+          <div {{ region_attributes.third.addClass(content['#third_class']).addClass('vlsuite-layout__region', 'vlsuite-layout__region--third') }}>
+            {{ content_third_render }}
+          </div>
+        {% endif %}
+      </div>
+      <div {{ content['#fourth_col_attributes'] }}>
+        {% set content_fourth_render = content.fourth|render %}
+        {% if content_fourth_render|trim %}
+          <div {{ region_attributes.fourth.addClass(content['#fourth_class']).addClass('vlsuite-layout__region', 'vlsuite-layout__region--fourth') }}>
+            {{ content_fourth_render }}
+          </div>
+        {% endif %}
+      </div>
+      {% set content_bottom_render = content.bottom|render %}
+      {% if settings.optional_regions and content_bottom_render|trim %}
+        <div {{ content['#bottom_col_attributes'] }}>
+          <div {{ region_attributes.bottom.addClass(content['#bottom_class']).addClass('vlsuite-layout__region', 'vlsuite-layout__region--bottom') }}>
+            {{ content_bottom_render }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

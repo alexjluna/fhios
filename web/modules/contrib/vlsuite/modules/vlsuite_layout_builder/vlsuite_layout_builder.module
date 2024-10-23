@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Layout builder.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\layout_builder\Form\DefaultsEntityForm;
+use Drupal\layout_builder\Form\OverridesEntityForm;
+use Drupal\vlsuite_layout_builder\VLSuiteLayoutBuilderPreRender;
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function vlsuite_layout_builder_element_info_alter(array &$types) {
+  if (isset($types['layout_builder'])) {
+    $types['layout_builder']['#pre_render'][] = [
+      VLSuiteLayoutBuilderPreRender::class,
+      'preRender',
+    ];
+  }
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function vlsuite_layout_builder_module_implements_alter(&$implementations, $hook) {
+  switch ($hook) {
+    case 'element_info_alter':
+      $group = $implementations['vlsuite_layout_builder'];
+      unset($implementations['vlsuite_layout_builder']);
+      $implementations['vlsuite_layout_builder'] = $group;
+      break;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function vlsuite_layout_builder_form_alter(&$form, FormStateInterface $form_state) {
+  if ($form_state->getFormObject() instanceof OverridesEntityForm || $form_state->getFormObject() instanceof DefaultsEntityForm) {
+    $form['#theme_wrappers']['container'] = [
+      '#attributes' => [
+        'class' => ['container'],
+        'id' => 'layout-builder-form-wrapper',
+      ],
+    ];
+  }
+}

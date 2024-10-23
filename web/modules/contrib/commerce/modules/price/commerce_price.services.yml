@@ -39,9 +39,9 @@ services:
       - { name: commerce_price.price_resolver, priority: -100 }
 
   commerce_price.twig_extension:
-      class: Drupal\commerce_price\TwigExtension\PriceTwigExtension
-      tags:
-        - { name: twig.extension }
+    class: Drupal\commerce_price\TwigExtension\PriceTwigExtension
+    tags:
+      - { name: twig.extension }
 
   commerce_price.rounder:
     class: Drupal\commerce_price\Rounder

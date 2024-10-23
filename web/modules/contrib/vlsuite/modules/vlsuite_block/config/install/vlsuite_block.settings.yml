@@ -1,0 +1,35 @@
+utility_classes_apply_to_enabled:
+  block_content:
+    vlsuite_attachments:
+      inline_block: true
+      fields:
+        vlsuite_attachments: true
+    vlsuite_cta:
+      inline_block: true
+      fields:
+        vlsuite_link: true
+    vlsuite_icon:
+      inline_block: true
+      fields:
+        vlsuite_icon: true
+    vlsuite_image:
+      inline_block: true
+      fields:
+        vlsuite_image: true
+    vlsuite_local_video:
+      fields:
+        vlsuite_local_video: true
+    vlsuite_remote_video:
+      fields:
+        vlsuite_remote_video: true
+    vlsuite_text:
+      inline_block: true
+      fields:
+        vlsuite_text: true
+  node:
+    vlsuite_landing:
+      fields:
+        title: true
+        body: true
+        field_vlsuite_landing_cta_link: true
+        field_vlsuite_landing_main_image: true

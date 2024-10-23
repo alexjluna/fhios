@@ -197,9 +197,16 @@ class CouponRedemption extends InlineFormBase {
     $order_storage = $this->entityTypeManager->getStorage('commerce_order');
     /** @var \Drupal\commerce_order\Entity\OrderInterface $order */
     $order = $order_storage->load($this->configuration['order_id']);
-    foreach ($order->get('coupons') as $item) {
-      if ($item->target_id == $coupon->id()) {
+    /** @var \Drupal\commerce_promotion\Entity\CouponInterface $referenced_coupon */
+    foreach ($order->get('coupons')->referencedEntities() as $referenced_coupon) {
+      if ($referenced_coupon->id() == $coupon->id()) {
         // Coupon already applied. Error message not set for UX reasons.
+        return;
+      }
+      // The promotion might already be applied, make sure we don't apply the
+      // same promotion more than once.
+      if ($referenced_coupon->getPromotionId() == $coupon->getPromotionId()) {
+        $form_state->setErrorByName($coupon_code_path, $this->t('The provided coupon code cannot be applied to your order.'));
         return;
       }
     }

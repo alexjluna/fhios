@@ -20,3 +20,12 @@ composer create-project drupalcommerce/project-base mysite --stability dev --no-
 ```
 
 See the [install documentation](https://docs.drupalcommerce.org/commerce2/developer-guide/install-update/installation) for more details.
+
+## Disabling Partner banners
+
+Drupal Commerce modules occasionally link to offers from technology partners in
+contextually relevant portions of the administrative interface. To simplify
+disabling these, the project has established a pattern of all such banners
+respecting a setting you can set in your site's settings.php:
+
+`$settings['commerce_show_partner_banners'] = FALSE;`

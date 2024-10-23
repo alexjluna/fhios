@@ -4,8 +4,8 @@ namespace Drupal\commerce_tax\Plugin\Commerce\TaxType;
 
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\commerce_order\Entity\OrderItemInterface;
-use Drupal\commerce_tax\Event\TaxEvents;
 use Drupal\commerce_tax\Event\CustomerProfileEvent;
+use Drupal\commerce_tax\Event\TaxEvents;
 use Drupal\commerce_tax\TaxableType;
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -59,6 +59,7 @@ abstract class TaxTypeBase extends PluginBase implements TaxTypeInterface, Conta
    *
    * @var string
    */
+  // phpcs:ignore Drupal.Classes.PropertyDeclaration
   protected $entityId;
 
   /**

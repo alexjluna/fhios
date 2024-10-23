@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * VLSuite - Block - Webform install module file.
+ */
+
+use Drupal\vlsuite_block_webform\Entity\Bundle\VLSuiteBlockWebform;
+
+/**
+ * Implements hook_install().
+ */
+function vlsuite_block_webform_install() {
+  \Drupal::service('vlsuite_bundle_field.helper')->installBlockContentBundleFields(VLSuiteBlockWebform::BUNDLE_KEY, VLSuiteBlockWebform::class);
+  _vlsuite_block_update_helper_save_default_icon_file('block_content.type.vlsuite_webform', 'table.svg', '82790caf-2d16-400a-9b0b-2eeaf472e54c');
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function vlsuite_block_webform_update_10001() {
+  \Drupal::configFactory()->getEditable('block_content.type.vlsuite_webform')->set('vlsuite_block_icon', '82790caf-2d16-400a-9b0b-2eeaf472e54c')->save();
+  _vlsuite_block_update_helper_save_default_icon_file('block_content.type.vlsuite_webform', 'table.svg', '82790caf-2d16-400a-9b0b-2eeaf472e54c');
+}

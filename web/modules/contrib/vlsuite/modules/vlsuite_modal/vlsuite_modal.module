@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for VLSuite - Modal module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\vlsuite_modal\VLSuiteModalLayoutBuilderPreRender;
+
+/**
+ * Implements hook_library_info_build().
+ */
+function vlsuite_modal_library_info_build() {
+  return \Drupal::service('vlsuite_modal.helper')->getAdminInheritedLibraries();
+}
+
+/**
+ * Implements hook_link_alter().
+ */
+function vlsuite_modal_link_alter(&$variables) {
+  \Drupal::service('vlsuite_modal.helper')->layoutBuilderLinkAlter($variables);
+}
+
+/**
+ * Implements hook_contextual_links_alter().
+ */
+function vlsuite_modal_contextual_links_alter(array &$links) {
+  \Drupal::service('vlsuite_modal.helper')->layoutBuilderContextualLinksAlter($links);
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function vlsuite_modal_element_info_alter(array &$types) {
+  if (isset($types['layout_builder'])) {
+    $types['layout_builder']['#pre_render'][] = [
+      VLSuiteModalLayoutBuilderPreRender::class,
+      'preRender',
+    ];
+  }
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function vlsuite_modal_module_implements_alter(&$implementations, $hook) {
+  switch ($hook) {
+    case 'element_info_alter':
+      $group = $implementations['vlsuite_modal'];
+      unset($implementations['vlsuite_modal']);
+      $implementations['vlsuite_modal'] = $group;
+      break;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function vlsuite_modal_form_alter(&$form, FormStateInterface $form_state) {
+  \Drupal::service('vlsuite_modal.helper')->alterLayoutBuilderMainForm($form, $form_state);
+  \Drupal::service('vlsuite_modal.helper')->alterLayoutBuilderModalForm($form, $form_state);
+}

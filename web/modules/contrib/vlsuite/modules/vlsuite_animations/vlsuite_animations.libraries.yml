@@ -1,0 +1,31 @@
+animations:
+  css:
+    component:
+      css/vlsuite-animations.css: {}
+  js:
+    js/vlsuite-animations.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+    - vlsuite_animations/animatecss
+
+animatecss:
+  version: "4.1.1"
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/animate-css/animate.css/v4.1.1/LICENSE
+  css:
+    component:
+      '//cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css': { minified: true, external: true }
+
+previewer:
+  css:
+    component:
+      css/vlsuite-animations-previewer.css: {}
+  js:
+    js/vlsuite-animations-previewer.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once

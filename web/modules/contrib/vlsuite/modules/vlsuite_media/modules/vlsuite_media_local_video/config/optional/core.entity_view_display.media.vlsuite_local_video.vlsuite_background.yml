@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.vlsuite_background
+    - field.field.media.vlsuite_local_video.field_media_video_file
+    - media.type.vlsuite_local_video
+  module:
+    - file
+  enforced:
+    module:
+      - vlsuite_media_local_video
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: media.vlsuite_local_video.vlsuite_background
+targetEntityType: media
+bundle: vlsuite_local_video
+mode: vlsuite_background
+content:
+  field_media_video_file:
+    type: file_video
+    label: visually_hidden
+    settings:
+      controls: false
+      autoplay: true
+      loop: true
+      multiple_file_display_type: sources
+      muted: true
+      width: 1920
+      height: 1080
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true
