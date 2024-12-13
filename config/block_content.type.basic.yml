@@ -8,3 +8,4 @@ id: basic
 label: 'Basic block'
 revision: 0
 description: 'A basic block contains a title and a body.'
+vlsuite_block_icon: null

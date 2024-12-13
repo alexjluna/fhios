@@ -11,3 +11,4 @@ id: reusable_block
 label: 'Reusable block'
 revision: 0
 description: 'Build your block on Gutenberg editor and re-use it everywhere!'
+vlsuite_block_icon: null

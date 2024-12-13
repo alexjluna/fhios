@@ -59,6 +59,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  customer_comments: true
   ip_address: true
   mail: true
   order_number: true
