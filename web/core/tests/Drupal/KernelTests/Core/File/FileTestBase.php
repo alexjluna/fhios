@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\KernelTests\Core\File;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;
@@ -11,9 +13,7 @@ use Drupal\KernelTests\KernelTestBase;
 abstract class FileTestBase extends KernelTestBase {
 
   /**
-   * Modules to enable.
-   *
-   * @var array
+   * {@inheritdoc}
    */
   protected static $modules = ['system'];
 
@@ -106,7 +106,7 @@ abstract class FileTestBase extends KernelTestBase {
     }
 
     if (!isset($message)) {
-      $message = t('Expected file permission to be %expected, actually were %actual.', ['%actual' => decoct($actual_mode), '%expected' => decoct($expected_mode)]);
+      $message = sprintf('Expected file permission to be %s, actually were %s.', decoct($actual_mode), decoct($expected_mode));
     }
     $this->assertEquals($expected_mode, $actual_mode, $message);
   }
@@ -142,7 +142,7 @@ abstract class FileTestBase extends KernelTestBase {
     }
 
     if (!isset($message)) {
-      $message = t('Expected directory permission to be %expected, actually were %actual.', ['%actual' => decoct($actual_mode), '%expected' => decoct($expected_mode)]);
+      $message = sprintf('Expected directory permission to be %s, actually were %s.', decoct($expected_mode), decoct($actual_mode));
     }
     $this->assertEquals($expected_mode, $actual_mode, $message);
   }

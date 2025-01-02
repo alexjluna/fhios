@@ -9,6 +9,6 @@ _core:
   default_config_hash: 5VWqUlkEU8FmfX6grGYpB_QV1et0lrfVtkMlOzddW-Q
 id: vlsuite_collection_card
 label: 'Card (VLSuite Collection)'
-revision: 0
+revision: false
 description: ''
 vlsuite_block_icon: {  }

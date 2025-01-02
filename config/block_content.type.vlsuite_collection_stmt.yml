@@ -9,6 +9,6 @@ _core:
   default_config_hash: BzdpqqM2JJSSFUaq2aCLo7hwjxuTZ99h0bPO4H_AVAM
 id: vlsuite_collection_stmt
 label: 'Statement / Quote (VLSuite Collection)'
-revision: 0
+revision: false
 description: ''
 vlsuite_block_icon: ''

@@ -16,8 +16,8 @@ _core:
   default_config_hash: BsIph6R70U76CRNPGKUSTvNyCJDlfmT42nVZJ3H-34s
 name: 'Landing (VLSuite)'
 type: vlsuite_landing
-description: ''
-help: ''
+description: null
+help: null
 new_revision: false
 preview_mode: 0
 display_submitted: false

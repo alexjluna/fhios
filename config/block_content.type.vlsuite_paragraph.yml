@@ -9,6 +9,6 @@ _core:
   default_config_hash: Pztgp61WI4PAisK2gQqVvRLaS8NK5dGe4rG2moLQoLc
 id: vlsuite_paragraph
 label: 'Paragraph (VLSuite)'
-revision: 0
+revision: false
 description: ''
 vlsuite_block_icon: d4a85813-1873-4444-a74c-55aa510c0f78

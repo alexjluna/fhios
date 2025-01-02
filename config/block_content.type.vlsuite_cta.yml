@@ -9,6 +9,6 @@ _core:
   default_config_hash: 0mH1dFwAWVXknDaOO59KVQF3iSbkc93v3vOd2Al19HM
 id: vlsuite_cta
 label: 'CTA Link (VLSuite)'
-revision: 0
+revision: false
 description: ''
 vlsuite_block_icon: 0595039f-0b84-420b-b63e-bcce1569a750

@@ -9,6 +9,6 @@ _core:
   default_config_hash: NAULgLSQn1ygo30zBebLj3CgZjT5-KrEVSNGAA2p6uE
 id: vlsuite_collection_gallery
 label: 'Gallery (VLSuite Collection)'
-revision: 0
+revision: false
 description: ''
 vlsuite_block_icon: {  }

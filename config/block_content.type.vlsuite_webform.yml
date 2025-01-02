@@ -9,6 +9,6 @@ _core:
   default_config_hash: '-cB8kfPVG6FEmL8ZjyPSayn4Y6pgaQQKhjSPu4zsTOg'
 id: vlsuite_webform
 label: 'Webform (VLSuite)'
-revision: 0
+revision: false
 description: ''
 vlsuite_block_icon: 82790caf-2d16-400a-9b0b-2eeaf472e54c

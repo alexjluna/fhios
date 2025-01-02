@@ -13,6 +13,7 @@ use Drupal\Core\Url;
 use Drupal\field\FieldConfigInterface;
 use Drupal\field\FieldStorageConfigInterface;
 use Drupal\file\FileInterface;
+use Drupal\image\Controller\ImageStyleDownloadController;
 use Drupal\image\Entity\ImageStyle;
 
 /**
@@ -76,8 +77,8 @@ function image_theme() {
       // Usually, neither omission nor an empty string satisfies accessibility
       // requirements, so it is strongly encouraged for code using '#theme' =>
       // 'image_style' to pass a meaningful value for the alt variable.
-      // - http://www.w3.org/TR/REC-html40/struct/objects.html#h-13.8
-      // - http://www.w3.org/TR/xhtml1/dtds.html
+      // - https://www.w3.org/TR/REC-html40/struct/objects.html#h-13.8
+      // - https://www.w3.org/TR/xhtml1/dtds.html
       // - http://dev.w3.org/html5/spec/Overview.html#alt
       // The title attribute is optional in all cases, so it is omitted by
       // default.
@@ -151,6 +152,18 @@ function image_file_download($uri) {
     // Check that the file exists and is an image.
     $image = \Drupal::service('image.factory')->get($uri);
     if ($image->isValid()) {
+      // If the image style converted the extension, it has been added to the
+      // original file, resulting in filenames like image.png.jpeg. So to find
+      // the actual source image, we remove the extension and check if that
+      // image exists.
+      if (!file_exists($original_uri)) {
+        $converted_original_uri = ImageStyleDownloadController::getUriWithoutConvertedExtension($original_uri);
+        if ($converted_original_uri !== $original_uri && file_exists($converted_original_uri)) {
+          // The converted file does exist, use it as the source.
+          $original_uri = $converted_original_uri;
+        }
+      }
+
       // Check the permissions of the original to grant access to this image.
       $headers = \Drupal::moduleHandler()->invokeAll('file_download', [$original_uri]);
       // Confirm there's at least one module granting access and none denying access.
@@ -255,8 +268,8 @@ function image_style_options($include_empty = TRUE) {
  *     omitted. Usually, neither omission nor an empty string satisfies
  *     accessibility requirements, so it is strongly encouraged for code using
  *     '#theme' => 'image_style' to pass a meaningful value for this variable.
- *     - http://www.w3.org/TR/REC-html40/struct/objects.html#h-13.8
- *     - http://www.w3.org/TR/xhtml1/dtds.html
+ *     - https://www.w3.org/TR/REC-html40/struct/objects.html#h-13.8
+ *     - https://www.w3.org/TR/xhtml1/dtds.html
  *     - http://dev.w3.org/html5/spec/Overview.html#alt
  *   - title: The title text is displayed when the image is hovered in some
  *     popular browsers.

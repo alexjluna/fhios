@@ -9,6 +9,6 @@ _core:
   default_config_hash: 1DQYbbYxxy_xeRvN52ukLlxkkQbG_Kq-YxeQcSXdxh0
 id: vlsuite_image
 label: 'Image (VLSuite)'
-revision: 0
+revision: false
 description: ''
 vlsuite_block_icon: fefae60e-aee5-4b95-bfda-862f51fc8593

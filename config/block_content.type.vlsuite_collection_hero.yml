@@ -9,6 +9,6 @@ _core:
   default_config_hash: XaO2sj5OsJ6c_rfnTKMCGFRyzrKzyulGMTWijXWwyAw
 id: vlsuite_collection_hero
 label: 'Hero (VLSuite Collection)'
-revision: 0
+revision: false
 description: ''
 vlsuite_block_icon: ''

@@ -9,6 +9,6 @@ _core:
   default_config_hash: elzSsagpgkLiBdnkkYc46_VM8jlEZ--7zEzOYxPRKbg
 id: vlsuite_remote_video
 label: 'Remote video (VLSuite)'
-revision: 0
+revision: false
 description: ''
 vlsuite_block_icon: a5462dc4-afa3-43c0-9079-936d56f57ba0

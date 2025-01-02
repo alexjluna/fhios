@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 id: prueba
 label: Prueba
-revision: 0
+revision: false
 description: ''
 vlsuite_block_icon: null

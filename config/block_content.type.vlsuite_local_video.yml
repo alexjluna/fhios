@@ -9,6 +9,6 @@ _core:
   default_config_hash: ZnSgHEXPnEgggiED1ZX9hD_q4OrrW23mhEAzZR4f4vI
 id: vlsuite_local_video
 label: 'Local video (VLSuite)'
-revision: 0
+revision: false
 description: ''
 vlsuite_block_icon: a5462dc4-afa3-43c0-9079-936d56f57ba0
