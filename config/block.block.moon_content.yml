@@ -1,0 +1,22 @@
+uuid: 3f3dfcff-33f4-420b-93bf-cc2c01768a9b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - moon
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: moon_content
+theme: moon
+region: content
+weight: -6
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

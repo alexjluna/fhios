@@ -1,0 +1,23 @@
+uuid: ea3c4473-4c74-43e8-9630-bab8d3ff4edb
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - moon
+_core:
+  default_config_hash: yEBET0cqDbk8dkWzaJw-8CKft0961VBflsISoSR6Lj8
+id: moon_search_form_narrow
+theme: moon
+region: primary_menu
+weight: -4
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (narrow)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

@@ -1,0 +1,20 @@
+uuid: cdd52610-aea1-4fb3-b948-79dc1e9f03eb
+langcode: en
+status: true
+dependencies:
+  module:
+    - rsvplist
+  theme:
+    - moon
+id: moon_thersvpblock
+theme: moon
+region: sidebar_first
+weight: 0
+provider: null
+plugin: rsvp_block
+settings:
+  id: rsvp_block
+  label: 'The RSVP Block'
+  label_display: visible
+  provider: rsvplist
+visibility: {  }

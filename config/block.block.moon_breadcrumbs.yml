@@ -1,0 +1,22 @@
+uuid: 80deadab-8110-453a-a1ae-c9d218470909
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - moon
+_core:
+  default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
+id: moon_breadcrumbs
+theme: moon
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,23 @@
+uuid: 2dadbafc-d8bd-472f-ae41-fb8be937d4a5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  theme:
+    - moon
+_core:
+  default_config_hash: 0gq3VPg-_UM69FCCWurLFIrrnIjC2HLKhwo9iQNtcUo
+id: moon_syndicate
+theme: moon
+region: sidebar_first
+weight: 0
+provider: null
+plugin: node_syndicate_block
+settings:
+  id: node_syndicate_block
+  label: 'RSS feed'
+  label_display: '0'
+  provider: node
+  block_count: 10
+visibility: {  }

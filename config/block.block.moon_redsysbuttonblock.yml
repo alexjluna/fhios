@@ -1,0 +1,20 @@
+uuid: e3a8e71d-3042-42fe-98e4-5c27d5b0e495
+langcode: en
+status: true
+dependencies:
+  module:
+    - redsys_button
+  theme:
+    - moon
+id: moon_redsysbuttonblock
+theme: moon
+region: content
+weight: 0
+provider: null
+plugin: redsys_button_block
+settings:
+  id: redsys_button_block
+  label: 'Redsys Button Block'
+  label_display: '0'
+  provider: redsys_button
+visibility: {  }

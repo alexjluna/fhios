@@ -1,0 +1,25 @@
+uuid: cc467730-4f6d-4778-8668-0b91f05ebe7e
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - moon
+_core:
+  default_config_hash: n_nlgjggHVfQt2H__zvLOKB2YtjPDbQ5tHijF9LE1aM
+id: moon_site_branding
+theme: moon
+region: header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: false
+visibility: {  }

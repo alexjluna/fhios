@@ -1,0 +1,22 @@
+uuid: aa620bf1-b1a5-4331-b4f1-6d909998f336
+langcode: en
+status: true
+dependencies:
+  theme:
+    - moon
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: moon_primary_local_tasks
+theme: moon
+region: highlighted
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }
