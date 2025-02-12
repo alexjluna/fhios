@@ -1,0 +1,24 @@
+b24_user.settings_form:
+  title: 'Users synchronization'
+  route_name: b24_user.settings_form
+  description: 'Configure parameters for synchronizing of Drupal users and Bitrix24 contacts.'
+  parent: b24.root_config_page
+  weight: 99
+
+b24_user.mapping:
+  title: Fields mapping
+  route_name: b24_user.mapping_form
+  parent: b24_user.settings_form
+  description: 'Configure drupal user and B24 contact fields mapping.'
+
+b24_user.user_export_batch_form:
+  title: Users export
+  route_name: b24_user.user_export_batch_form
+  parent: b24_user.settings_form
+  description: 'Batch export of drupal users.'
+
+b24_user.user_import_batch_form:
+  title: Users import
+  route_name: b24_user.user_import_batch_form
+  parent: b24_user.settings_form
+  description: 'Batch import of drupal users.'

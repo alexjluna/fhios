@@ -1,0 +1,31 @@
+b24.root_config_page:
+  path: '/admin/config/b24'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Bitrix24'
+  requirements:
+    _permission: 'administer b24 configuration'
+
+b24.credentials:
+  path: '/admin/config/b24/credentials'
+  defaults:
+    _title: 'Bitrix24 credentials'
+    _form: 'Drupal\b24\Form\CredentialsForm'
+  requirements:
+    _permission: 'administer b24 configuration'
+
+b24.settings:
+  path: '/admin/config/b24/settings'
+  defaults:
+    _title: 'Bitrix24 settings'
+    _form: 'Drupal\b24\Form\DefaultSettingsForm'
+  requirements:
+    _permission: 'administer b24 configuration'
+
+b24.auth:
+  path: '/b24/oauth'
+  defaults:
+    _title: 'Oauth'
+    _controller: '\Drupal\b24\Controller\Auth::build'
+  requirements:
+    _permission: 'administer b24 configuration'

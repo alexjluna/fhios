@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for b24_contact module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function b24_contact_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the b24_contact module.
+    case 'help.page.b24_contact':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Exports contact forms submissions to Bitrix 24 leads') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_mail_alter().
+ */
+function b24_contact_mail_alter(&$message) {
+
+  $config = \Drupal::config('b24_contact.settings');
+  if ($message['module'] !== 'contact') {
+    return;
+  }
+
+  /** @var \Drupal\contact\Entity\Message $submission */
+  $submission = $message['params']['contact_message'];
+
+  if ($config->get("{$submission->getContactForm()->id()}.status") && ($config_mapping = $config->get("{$submission->getContactForm()->id()}.mapping"))) {
+    $mapping = array_filter($config_mapping);
+
+    $fields = [];
+    $field_definitions = \Drupal::service('b24.rest_manager')->getFields('lead');
+
+    foreach ($mapping as $ext_field => $int_field) {
+      if (strstr($ext_field, '_custom')) {
+        continue;
+      }
+      if ($int_field !== 'custom') {
+        $value = $submission->get($int_field)->getString();
+      }
+      else {
+        $override = $mapping["{$ext_field}_custom"] ?? '';
+        $value = \Drupal::service('token')->replace($override);
+      }
+
+      if ($field_definitions[$ext_field]['type'] == 'crm_multifield') {
+        $value = [['VALUE' => $value, 'VALUE_TYPE' => 'HOME']];
+        if (!empty($existing_entity[$ext_field])) {
+          // @todo Support multiple drupal fields.
+          $value[0]['ID'] = reset($existing_entity[$ext_field])['ID'];
+        }
+      }
+      $fields[$ext_field] = $value;
+    }
+
+    \Drupal::service('b24.rest_manager')->addLead($fields);
+  }
+}

@@ -1,0 +1,9 @@
+services:
+  b24_user.event_subscriber:
+    class: Drupal\b24_user\EventSubscriber\B24UserEventSubscriber
+    arguments: ['@database']
+    tags:
+      - { name: event_subscriber }
+  b24_user.manager:
+    class: Drupal\b24_user\Service\UserManager
+    arguments: ['@b24.rest_manager', '@entity_type.manager', '@config.factory', '@token', '@database']

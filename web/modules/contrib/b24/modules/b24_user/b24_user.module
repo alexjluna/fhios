@@ -1,0 +1,94 @@
+<?php
+
+/**
+ * @file
+ * Contains b24_user.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_help().
+ */
+function b24_user_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the b24_user module.
+    case 'help.page.b24_user':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The module provides synchronization of Drupal users and Bitrix24 contacts') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function b24_user_user_insert(User $user) {
+  if (b24_user_is_exported($user)) {
+    $fields = \Drupal::service('b24_user.manager')->getValues($user);
+    $ext_id = \Drupal::service('b24.rest_manager')->addContact($fields);
+    if ($ext_id) {
+      $hash = \Drupal::service('b24.rest_manager')->getHash($fields);
+      \Drupal::database()->insert('b24_reference')
+        ->fields([
+          'entity_id' => $user->id(),
+          'bundle' => 'user',
+          'ext_id' => $ext_id,
+          'ext_type' => 'contact',
+          'hash' => $hash,
+        ])->execute();
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function b24_user_user_update(User $user) {
+  if (b24_user_is_exported($user)) {
+    $reference = \Drupal::service('b24.rest_manager')->getReference($user, 'contact');
+    if (!empty($reference['ext_id'])) {
+      $fields = \Drupal::service('b24_user.manager')->getValues($user, $reference['ext_id']);
+      $hash = \Drupal::service('b24.rest_manager')->getHash($fields);
+      if ($hash !== $reference['hash']) {
+        $update = \Drupal::service('b24.rest_manager')->updateContact($reference['ext_id'], $fields);
+        \Drupal::service('b24.rest_manager')->updateHash($user, 'contact', $hash);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ */
+function b24_user_user_delete(User $user) {
+  if (b24_user_is_exported($user)) {
+    $reference = \Drupal::service('b24.rest_manager')->getReference($user, 'contact');
+    if (!empty($reference['ext_id'])) {
+      \Drupal::service('b24.rest_manager')->deleteContact($reference['ext_id']);
+    }
+  }
+}
+
+/**
+ * Checks if a user should be exported to Bitrix24.
+ *
+ * @param \Drupal\user\Entity\User $user
+ *   The Drupal user entity.
+ *
+ * @return array
+ *   An array of user's roles that are set as exportable.
+ */
+function b24_user_is_exported(User $user) {
+  if (!\Drupal::config('b24_user.settings')->get('enabled')) {
+    return [];
+  }
+  $roles = $user->getRoles();
+  // @todo Error on absent config.
+  $enabled_roles = \Drupal::config('b24_user.settings')->get('exported_roles');
+  return array_intersect($roles, $enabled_roles);
+}

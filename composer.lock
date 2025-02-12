@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6824862b1cd6f36954d639dfbd127bd3",
+    "content-hash": "27ba5f7912faebf2c2bc71263b7ed52d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1963,6 +1963,58 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/admin_toolbar",
                 "issues": "https://www.drupal.org/project/issues/admin_toolbar"
+            }
+        },
+        {
+            "name": "drupal/b24",
+            "version": "2.0.13",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/b24.git",
+                "reference": "2.0.13"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/b24-2.0.13.zip",
+                "reference": "2.0.13",
+                "shasum": "ff5a42fb2aa9bb95dd78b89c133181345e89195d"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10 || ^11",
+                "drupal/token": "*"
+            },
+            "require-dev": {
+                "drupal/commerce": "*",
+                "drupal/commerce_order": "*",
+                "drupal/profile": "*",
+                "drupal/token": "*",
+                "drupal/webform": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.13",
+                    "datestamp": "1737980564",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "alezu",
+                    "homepage": "https://www.drupal.org/user/1797134"
+                }
+            ],
+            "description": "Provides tools for interactions with Bitrix24 CRM",
+            "homepage": "https://www.drupal.org/project/b24",
+            "support": {
+                "source": "https://git.drupalcode.org/project/b24"
             }
         },
         {

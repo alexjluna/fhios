@@ -1,0 +1,103 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for b24_commerce module.
+ */
+
+use Drupal\commerce_order\Entity\OrderItemInterface;
+use Drupal\commerce_product\Entity\Product;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\taxonomy\Entity\Term;
+
+// @todo Follow thread https://www.drupal.org/project/drupal/issues/2221347 for possibility of changing insert/update hooks to only postsave one.
+
+/**
+ * Implements hook_entity_insert().
+ */
+function b24_commerce_commerce_order_item_insert(OrderItemInterface $item) {
+  return _b24_commerce_update_products($item);
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function b24_commerce_commerce_order_item_update(OrderItemInterface $item) {
+  return _b24_commerce_update_products($item);
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function b24_commerce_commerce_order_item_delete(OrderItemInterface $item) {
+  return _b24_commerce_update_products($item);
+}
+
+/**
+ * We have to react on exported order items list changing.
+ *
+ * @param \Drupal\commerce_order\Entity\OrderItemInterface $item
+ *   The order item object.
+ *
+ * @return mixed
+ *   Result of the operation.
+ */
+function _b24_commerce_update_products(OrderItemInterface $item) {
+  $order = $item->getOrder();
+  return $order ? \Drupal::service('b24_commerce.event_subscriber')->updateProducts($order) : FALSE;
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function b24_commerce_commerce_product_variation_insert(EntityInterface $entity) {
+  \Drupal::service('b24_commerce.catalog_manager')->processItem($entity->id(), 'commerce_product_variation');
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function b24_commerce_commerce_product_variation_update(EntityInterface $entity) {
+  \Drupal::service('b24_commerce.catalog_manager')->processItem($entity->id(), 'commerce_product_variation', TRUE);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function b24_commerce_commerce_product_variation_delete(EntityInterface $entity) {
+  \Drupal::service('b24.rest_manager')->deleteProduct($entity->id(), TRUE);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ */
+function b24_commerce_commerce_product_delete(Product $entity) {
+  $variations = $entity->get('variations')->getValue();
+  foreach ($variations as $variation) {
+    \Drupal::service('b24.rest_manager')->deleteProduct($variation['target_id'], TRUE);
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function b24_commerce_taxonomy_term_insert(Term $term) {
+  \Drupal::service('b24_commerce.catalog_manager')->processItem($term->id(), 'taxonomy_term');
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function b24_commerce_taxonomy_term_update(Term $term) {
+  $exportable_vocabularies = \Drupal::service('b24_commerce.catalog_manager')->getExportableVocabularies();
+  if (array_key_exists($term->bundle(), $exportable_vocabularies)) {
+    \Drupal::service('b24_commerce.catalog_manager')->processItem($term->id(), 'taxonomy_term', TRUE);
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ */
+function b24_commerce_taxonomy_term_delete(Term $term) {
+  \Drupal::service('b24.rest_manager')->deleteEntity($term->id(), 'productsection', TRUE);
+}

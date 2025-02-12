@@ -1,0 +1,7 @@
+b24_contact.settings_form:
+  title: 'Contact forms settings'
+  route_name: b24_contact.settings_form
+  description: 'Settings for export of contact forms submissions to Bitrix24'
+  parent: b24.root_config_page
+  weight: 99
+

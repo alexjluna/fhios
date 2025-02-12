@@ -1,0 +1,10 @@
+b24_webform.settings:
+  path: '/admin/config/b24/webform'
+  defaults:
+    _form: '\Drupal\b24_webform\Form\SettingsForm'
+    _title: 'Settings for Webform Export to Bitrix24'
+  requirements:
+    _permission: 'administer b24 configuration'
+  options:
+    _admin_route: TRUE
+

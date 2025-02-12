@@ -1,0 +1,18 @@
+b24_commerce.settings_form:
+  title: Commerce integration
+  route_name: b24_commerce.settings_form
+  parent: b24.root_config_page
+  description: 'Configure exporting data from Commerce tu Bitrix24.'
+  weight: -20
+
+b24_commerce.mapping:
+  title: Fields mapping
+  route_name: b24_commerce.mapping
+  parent: b24_commerce.settings_form
+  description: 'Configure commerce order and B24 leads fields mapping.'
+
+b24_commerce.product_export_batch_form:
+  title: Products export
+  route_name: b24_commerce.product_export_batch_form
+  parent: b24_commerce.settings_form
+  description: 'Batch export of commerce stores and products.'

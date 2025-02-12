@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for b24 module.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function b24_cron() {
+  \Drupal::service('b24.rest_manager')->refreshAccessToken();
+}

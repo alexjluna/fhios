@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains b24_webform.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\webform\Entity\WebformSubmission;
+
+/**
+ * Implements hook_help().
+ */
+function b24_webform_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the b24_webform module.
+    case 'help.page.b24_webform':
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Exports webform submissions to Bitrix 24 leads') . '</p>';
+      return $output;
+
+    default:
+  }
+}

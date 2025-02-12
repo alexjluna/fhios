@@ -1,0 +1,4 @@
+services:
+  b24.rest_manager:
+    class: Drupal\b24\Service\RestManager
+    arguments: ['@config.factory', '@request_stack', '@state', '@logger.factory', '@http_client', '@module_handler', '@event_dispatcher', '@database', '@entity_type.manager', '@current_user', '@link_generator', '@datetime.time']

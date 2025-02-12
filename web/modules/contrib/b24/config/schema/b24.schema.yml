@@ -1,0 +1,24 @@
+b24.settings:
+  type: config_object
+  label: 'B24 credentials settings'
+  mapping:
+    site:
+      type: string
+      label: 'Bitrix24 domain name'
+    client_id:
+      type: string
+      label: 'Bitrix24 application client_id'
+    client_secret:
+      type: string
+      label: 'Bitrix24 application client_secret'
+
+b24.default_settings:
+  type: config_object
+  label: 'B24 default settings'
+  mapping:
+    assignee:
+      type: string
+      label: 'Assignee user'
+    user_id:
+      type: integer
+      label: 'Manually set assignee user id'

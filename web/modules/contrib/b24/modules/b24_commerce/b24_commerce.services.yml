@@ -1,0 +1,10 @@
+services:
+  b24_commerce.event_subscriber:
+    class: Drupal\b24_commerce\EventSubscriber\B24CommerceSubscriber
+    arguments: ['@messenger', '@b24.rest_manager', '@config.factory', '@token', '@database', '@current_user', '@event_dispatcher', '@module_handler']
+    tags:
+      - { name: event_subscriber }
+
+  b24_commerce.catalog_manager:
+    class: Drupal\b24_commerce\Service\CatalogManager
+    arguments: ['@b24.rest_manager', '@config.factory', '@entity_type.manager']

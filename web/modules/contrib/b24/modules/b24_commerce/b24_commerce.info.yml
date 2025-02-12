@@ -1,0 +1,19 @@
+name: b24_commerce
+type: module
+description: Provides oportuity to save new commerce contacts and orders to Bitrix24 entities.
+package: bitrix24
+core_version_requirement: ^9 || ^10 || ^11
+configure: b24_commerce.settings_form
+dependencies:
+  - system (>=8.6)
+  - b24
+  - commerce
+  - commerce_order
+  - profile
+  - token
+
+
+# Information added by Drupal.org packaging script on 2025-01-27
+version: '2.0.13'
+project: 'b24'
+datestamp: 1737980566

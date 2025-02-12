@@ -1,0 +1,4 @@
+vertical-tabs:
+  version: VERSION
+  js:
+    js/vertical_tabs.js: {}

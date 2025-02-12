@@ -1,0 +1,15 @@
+name: b24_webform
+type: module
+description: 'Exports webform submissions to Bitrix 24 leads'
+core_version_requirement: ^9 || ^10 || ^11
+package: bitrix24
+dependencies:
+  - b24
+  - webform
+
+configure: b24_webform.settings
+
+# Information added by Drupal.org packaging script on 2025-01-27
+version: '2.0.13'
+project: 'b24'
+datestamp: 1737980566

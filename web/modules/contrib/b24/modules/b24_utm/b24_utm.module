@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for b24_utm module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function b24_utm_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the b24_utm module.
+    case 'help.page.b24_utm':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The module includes existing UTM marks to exported leads. Following marks are taken into account: utm_source, utm_campaign, utm_medium, utm_term and utm_content') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function b24_utm_preprocess_page(&$variables) {
+  $query = \Drupal::request()->query->all();
+  $utms = array_filter($query, function ($item) {
+    return in_array($item, [
+      'utm_source',
+      'utm_medium',
+      'utm_campaign',
+      'utm_content',
+      'utm_term',
+    ]);
+  }, ARRAY_FILTER_USE_KEY);
+  if ($utms) {
+    user_cookie_save($utms);
+  }
+}
+
+/**
+ * Implements hook_b24_push_alter().
+ */
+function b24_utm_b24_push_alter(array &$fields, array $context) {
+  if ($context['op'] == 'insert' && $context['entity_name'] == 'lead') {
+    $cookies = \Drupal::request()->cookies->all();
+    foreach (
+      [
+        'utm_source',
+        'utm_medium',
+        'utm_campaign',
+        'utm_content',
+        'utm_term',
+      ] as $utm) {
+      if (isset($cookies["Drupal_visitor_{$utm}"])) {
+        $fields[strtoupper($utm)] = $cookies["Drupal_visitor_{$utm}"];
+      }
+    }
+  }
+}

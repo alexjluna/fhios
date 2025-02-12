@@ -1,0 +1,3 @@
+b24_commerce.mapping:
+  deriver: 'Drupal\b24_commerce\Plugin\Derivative\DynamicMappingTasks'
+  weight: 100

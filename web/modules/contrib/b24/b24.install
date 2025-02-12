@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the b24 module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function b24_schema() {
+  $schema['b24_reference'] = [
+    'description' => 'Stores references between drupal entities exported to Bitrix24 entities.',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary key: unique reference ID',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'entity_id' => [
+        'description' => 'Drupal entity ID',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'bundle' => [
+        'description' => 'Drupal bundle',
+        'type' => 'varchar_ascii',
+        'length' => DRUPAL_EXTENSION_NAME_MAX_LENGTH,
+        'not null' => TRUE,
+      ],
+      'ext_id' => [
+        'description' => 'Bitrix24 entity ID',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'ext_type' => [
+        'description' => 'Bitrix24 entity type',
+        'type' => 'varchar_ascii',
+        'length' => DRUPAL_EXTENSION_NAME_MAX_LENGTH,
+        'not null' => TRUE,
+      ],
+      'hash' => [
+        'description' => 'Values hash to control changes',
+        'type' => 'varchar',
+        'length' => DRUPAL_EXTENSION_NAME_MAX_LENGTH,
+        'default' => '',
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'bundle' => ['bundle'],
+      'ext_type' => ['ext_type'],
+    ],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Add ".bitrix24.ru" to current "site" config setting.
+ */
+function b24_update_20001() {
+  $current_site = Drupal::config('b24.settings')->get('site');
+  if ($current_site && strstr($current_site, '.bitrix24.ru') == FALSE) {
+    Drupal::configFactory()->getEditable('b24.settings')->set('site', "$current_site.bitrix24.ru")->save();
+  }
+}

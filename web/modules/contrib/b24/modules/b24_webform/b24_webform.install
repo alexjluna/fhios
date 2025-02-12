@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * Move settings of webforms export to native webform handler plugins.
+ */
+function b24_webform_update_9201(&$sandbox) {
+  $handler_manager = \Drupal::service('plugin.manager.webform.handler');
+  $b24_webforms_settings = Drupal::config('b24_webform.settings')->get();
+  foreach ($b24_webforms_settings as $webform_id => $b24_webform_settings) {
+    /** @var \Drupal\webform\Entity\Webform $webform */
+    $webform = Drupal::entityTypeManager()->getStorage('webform')->load($webform_id);
+    $handler_configuration = [
+      'id' => 'b24_webform_handler',
+      'label' => 'Export to Bitrix24 leads',
+      'handler_id' => 'b24_webform_handler',
+      'status' => 1,
+      'weight' => 0,
+      'settings' => $b24_webform_settings,
+    ];
+    $handler = $handler_manager->createInstance('b24_webform_handler', $handler_configuration);
+    $webform->addWebformHandler($handler);
+    $webform->save();
+  }
+
+  Drupal::configFactory()->getEditable('b24_webform.settings')->delete();
+}

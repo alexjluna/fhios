@@ -1,0 +1,13 @@
+name: 'b24_user'
+type: module
+description: 'The module provides synchronization of Drupal users and Bitrix24 contacts'
+core_version_requirement: ^9 || ^10 || ^11
+package: 'bitrix24'
+configure: b24_user.settings_form
+dependencies:
+  - b24
+
+# Information added by Drupal.org packaging script on 2025-01-27
+version: '2.0.13'
+project: 'b24'
+datestamp: 1737980566

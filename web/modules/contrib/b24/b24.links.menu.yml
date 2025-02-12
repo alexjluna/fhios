@@ -1,0 +1,20 @@
+b24.root_config_page:
+  title: Bitrix24
+  route_name: b24.root_config_page
+  parent: system.admin_config
+  description: 'Configure Bitrix24 integration modules.'
+  weight: 10
+
+b24.credentials:
+  title: Credentials
+  route_name: b24.credentials
+  parent: b24.root_config_page
+  description: 'Configure Bitrix24 credentials.'
+  weight: -20
+
+b24.settings:
+  title: Settings
+  route_name: b24.settings
+  parent: b24.root_config_page
+  description: 'Configure default Bitrix24 integration settings.'
+  weight: -20

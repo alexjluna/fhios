@@ -1,0 +1,4 @@
+administer b24 configuration:
+  title: 'Administer b24 configuration'
+  description: 'Administer b24 configuration'
+  restrict access: true

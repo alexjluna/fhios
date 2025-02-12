@@ -1,0 +1,7 @@
+b24_contact.settings_form:
+  path: '/admin/config/b24/contact'
+  defaults:
+    _title: 'Settings for Contact Forms Export to Bitrix24'
+    _form: 'Drupal\b24_contact\Form\SettingsForm'
+  requirements:
+    _permission: 'administer b24 configuration'
