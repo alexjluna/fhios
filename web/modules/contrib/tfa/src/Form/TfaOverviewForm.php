@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * TFA account setup overview page.
  */
-class TfaOverviewForm extends FormBase {
+final class TfaOverviewForm extends FormBase {
   use TfaUserDataTrait;
 
   /**
@@ -23,14 +23,14 @@ class TfaOverviewForm extends FormBase {
    *
    * @var \Drupal\tfa\TfaPluginManager
    */
-  protected $tfaPluginManager;
+  protected TfaPluginManager $tfaPluginManager;
 
   /**
    * The date formatter service.
    *
    * @var \Drupal\Core\Datetime\DateFormatterInterface
    */
-  protected $dateFormatter;
+  protected DateFormatterInterface $dateFormatter;
 
   /**
    * TFA Overview form constructor.
@@ -51,7 +51,7 @@ class TfaOverviewForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container) {
+  public static function create(ContainerInterface $container): static {
     return new static(
       $container->get('user.data'),
       $container->get('date.formatter'),
@@ -62,14 +62,14 @@ class TfaOverviewForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function getFormId() {
+  public function getFormId(): string {
     return 'tfa_overview';
   }
 
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, UserInterface $user = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, UserInterface $user = NULL): array {
     $output['info'] = [
       '#type' => 'markup',
       '#markup' => '<p>' . $this->t('Two-factor authentication (TFA) provides
@@ -138,10 +138,8 @@ class TfaOverviewForm extends FormBase {
           ];
 
           foreach ($login_plugins as $plugin_id => $plugin) {
-            if (!empty($config->get('login_plugins')[$plugin_id])) {
-              $output['login'][$plugin_id] = $this->tfaPluginSetupFormOverview($plugin, $user, TRUE);
-              $output['login']['#access'] = TRUE;
-            }
+            $output['login'][$plugin_id] = $this->tfaPluginSetupFormOverview($plugin, $user, TRUE);
+            $output['login']['#access'] = TRUE;
           }
         }
 
@@ -197,7 +195,7 @@ class TfaOverviewForm extends FormBase {
    *
    * @param array $plugin
    *   Plugin definition.
-   * @param object $account
+   * @param \Drupal\user\UserInterface $account
    *   Current user account.
    * @param bool $enabled
    *   Tfa data for current user.
@@ -205,7 +203,7 @@ class TfaOverviewForm extends FormBase {
    * @return array
    *   Render array
    */
-  protected function tfaPluginSetupFormOverview(array $plugin, $account, $enabled) {
+  protected function tfaPluginSetupFormOverview(array $plugin, UserInterface $account, bool $enabled): array {
     $params = [
       'enabled' => $enabled,
       'account' => $account,
@@ -225,7 +223,7 @@ class TfaOverviewForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
   }
 
   /**
@@ -236,7 +234,7 @@ class TfaOverviewForm extends FormBase {
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The form state.
    */
-  public function resetSkipValidationAttempts(array $form, FormStateInterface $form_state) {
+  public function resetSkipValidationAttempts(array $form, FormStateInterface $form_state): void {
     $account = $form_state->getValue('account');
     $tfa_data = $this->tfaGetTfaData($account->id());
     $tfa_data['validation_skipped'] = 0;
@@ -259,7 +257,7 @@ class TfaOverviewForm extends FormBase {
    * @return bool
    *   Whether the user can perform a TFA reset.
    */
-  protected function canPerformReset(UserInterface $account) {
+  protected function canPerformReset(UserInterface $account): bool {
     $current_user = $this->currentUser();
     return $current_user->hasPermission('administer tfa for other users')
       // Disallow users from resetting their own.

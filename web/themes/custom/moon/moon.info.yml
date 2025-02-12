@@ -1,0 +1,22 @@
+name: moon
+type: theme
+'base theme': stable9
+version: 1.0.0
+libraries:
+  - moon/base
+  - moon/messages
+  - core/normalize
+libraries-extend:
+  user/drupal.user:
+    - moon/user
+  core/drupal.dropbutton:
+    - moon/dropbutton
+  core/drupal.dialog:
+    - moon/dialog
+  file/drupal.file:
+    - moon/file
+  core/drupal.progress:
+    - moon/progress
+description: ''
+core_version_requirement: ^10
+generator: 'starterkit_theme:10.4.0'

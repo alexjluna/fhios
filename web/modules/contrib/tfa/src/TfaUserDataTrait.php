@@ -2,8 +2,12 @@
 
 namespace Drupal\tfa;
 
+use Drupal\user\UserDataInterface;
+
 /**
  * Provides methods to save tfa user settings.
+ *
+ * @api
  */
 trait TfaUserDataTrait {
 
@@ -12,7 +16,7 @@ trait TfaUserDataTrait {
    *
    * @var \Drupal\user\UserDataInterface
    */
-  protected $userData;
+  protected UserDataInterface $userData;
 
   /**
    * Store user specific information.
@@ -24,7 +28,7 @@ trait TfaUserDataTrait {
    * @param int $uid
    *   The user id.
    */
-  protected function setUserData($module, array $data, $uid) {
+  protected function setUserData(string $module, array $data, int $uid): void {
     $this->userData->set(
       $module,
       $uid,
@@ -46,7 +50,7 @@ trait TfaUserDataTrait {
    * @return mixed|array
    *   The stored value is returned, or NULL if no value was found.
    */
-  protected function getUserData($module, $key, $uid) {
+  protected function getUserData(string $module, string $key, int $uid): mixed {
     return $this->userData->get($module, $uid, $key);
   }
 
@@ -55,12 +59,12 @@ trait TfaUserDataTrait {
    *
    * @param string $module
    *   The name of the module the data is associated with.
-   * @param string $key
+   * @param string|null $key
    *   The name of the data key.
    * @param int $uid
    *   The user id.
    */
-  protected function deleteUserData($module, $key, $uid) {
+  protected function deleteUserData(string $module, ?string $key, int $uid): void {
     $this->userData->delete($module, $uid, $key);
   }
 
@@ -75,7 +79,7 @@ trait TfaUserDataTrait {
    * @param array $data
    *   Data to be saved.
    */
-  public function tfaSaveTfaData($uid, array $data = []) {
+  public function tfaSaveTfaData(int $uid, array $data = []): void {
     // Check if existing data and update.
     $existing = $this->tfaGetTfaData($uid);
 
@@ -92,14 +96,10 @@ trait TfaUserDataTrait {
     else {
       $tfa_data = [
         'plugins' => [],
-        'sms' => FALSE,
       ];
     }
     if (isset($data['plugins'])) {
       $tfa_data['plugins'][$data['plugins']] = $data['plugins'];
-    }
-    if (isset($data['sms'])) {
-      $tfa_data['sms'] = $data['sms'];
     }
 
     $status = 1;
@@ -127,7 +127,7 @@ trait TfaUserDataTrait {
    * @return array
    *   TFA data.
    */
-  protected function tfaGetTfaData($uid) {
+  protected function tfaGetTfaData(int $uid): array {
     $result = $this->userData->get('tfa', $uid, 'tfa_user_settings');
 
     if (!empty($result)) {

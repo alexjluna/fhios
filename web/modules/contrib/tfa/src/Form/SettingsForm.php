@@ -3,40 +3,53 @@
 namespace Drupal\tfa\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Config\TypedConfigManagerInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
 use Drupal\encrypt\EncryptionProfileManagerInterface;
 use Drupal\tfa\TfaPluginManager;
+use Drupal\user\RoleInterface;
 use Drupal\user\UserDataInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * The admin configuration page.
+ *
+ * @phpcs:disable DrupalPractice.Objects.GlobalDrupal.GlobalDrupal
+ *    PHPStan protects against this sniff.
  */
-class SettingsForm extends ConfigFormBase {
+final class SettingsForm extends ConfigFormBase {
 
   /**
    * The TFA plugin manager to fetch plugin information.
    *
    * @var \Drupal\tfa\TfaPluginManager
    */
-  protected $pluginManager;
+  protected TfaPluginManager $pluginManager;
 
   /**
    * Provides the user data service object.
    *
    * @var \Drupal\user\UserDataInterface
    */
-  protected $userData;
+  protected UserDataInterface $userData;
 
   /**
    * Encryption profile manager to fetch the existing encryption profiles.
    *
    * @var \Drupal\encrypt\EncryptionProfileManagerInterface
    */
-  protected $encryptionProfileManager;
+  protected EncryptionProfileManagerInterface $encryptionProfileManager;
+
+  /**
+   * Entity Type Manager service.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
 
   /**
    * The admin configuration form constructor.
@@ -49,50 +62,57 @@ class SettingsForm extends ConfigFormBase {
    *   The user data service.
    * @param \Drupal\encrypt\EncryptionProfileManagerInterface $encryption_profile_manager
    *   Encrypt profile manager.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The Entity Type Manager service.
+   * @param \Drupal\Core\Config\TypedConfigManagerInterface $typed_config_manager
+   *   The typed config manager.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, TfaPluginManager $plugin_manager, UserDataInterface $user_data, EncryptionProfileManagerInterface $encryption_profile_manager) {
-    parent::__construct($config_factory);
+  public function __construct(ConfigFactoryInterface $config_factory, TfaPluginManager $plugin_manager, UserDataInterface $user_data, EncryptionProfileManagerInterface $encryption_profile_manager, EntityTypeManagerInterface $entity_type_manager, TypedConfigManagerInterface $typed_config_manager) {
+    parent::__construct($config_factory, $typed_config_manager);
     $this->pluginManager = $plugin_manager;
     $this->encryptionProfileManager = $encryption_profile_manager;
     // User Data service to store user-based data in key value pairs.
     $this->userData = $user_data;
+    $this->entityTypeManager = $entity_type_manager;
   }
 
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container) {
+  public static function create(ContainerInterface $container): static {
     return new static(
       $container->get('config.factory'),
       $container->get('plugin.manager.tfa'),
       $container->get('user.data'),
-      $container->get('encrypt.encryption_profile.manager')
+      $container->get('encrypt.encryption_profile.manager'),
+      $container->get('entity_type.manager'),
+      $container->get('config.typed')
     );
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getFormId() {
+  public function getFormId(): string {
     return 'tfa_settings_form';
   }
 
   /**
    * {@inheritdoc}
    */
-  protected function getEditableConfigNames() {
+  protected function getEditableConfigNames(): array {
     return ['tfa.settings'];
   }
 
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state): array {
     $config = $this->config('tfa.settings');
     $form = [];
 
     // Get Login Plugins.
-    $login_plugins = $this->pluginManager->getLoginDefinitions();
+    $login_plugins = $this->pluginManager->getLoginDefinitions(FALSE);
 
     // Get Send Plugins.
     $send_plugins = $this->pluginManager->getSendDefinitions();
@@ -133,12 +153,37 @@ class SettingsForm extends ConfigFormBase {
       'visible' => [':input[name="tfa_enabled"]' => ['checked' => TRUE]],
     ];
 
+    /** @var \Drupal\user\RoleStorageInterface $role_storage */
+    $role_storage = $this->entityTypeManager->getStorage('user_role');
+    /** @var \Drupal\user\RoleInterface|null $roles */
+    $roles = $role_storage->loadMultiple();
+    $roles_available = [];
+
+    foreach ($roles as $role) {
+      if ($role->id() == RoleInterface::ANONYMOUS_ID) {
+        continue;
+      }
+
+      if ($role->hasPermission('setup own tfa')) {
+        $roles_available[$role->id()] = $role->label();
+      }
+      else {
+        $roles_available[$role->id()] = $this->t(
+          '@role_name - Role does not have access to configure own tokens, verify <a href=":permissions_link">permissions</a>',
+          [
+            '@role_name' => $role->label(),
+            ':permissions_link' => Url::fromRoute('user.admin_permissions', [], ['fragment' => 'module-tfa'])->toString(),
+          ]
+        );
+      }
+    }
+
     $form['tfa_required_roles'] = [
       '#type' => 'checkboxes',
       '#title' => $this->t('Roles required to set up TFA'),
-      '#options' => array_map('\Drupal\Component\Utility\Html::escape', user_role_names(TRUE)),
+      '#options' => $roles_available,
       '#default_value' => $config->get('required_roles') ?: [],
-      '#description' => $this->t('Require users with these roles to set up TFA'),
+      '#description' => $this->t('Require users with these roles to set up TFA. Note: If a role does not have the "setup own tfa" permission users will be unable to configure a TFA token without administrator assistance. The account will be locked out once the skip limit is reached unless a token is configured through other methods.'),
       '#states' => $enabled_state,
       '#required' => FALSE,
     ];
@@ -222,8 +267,15 @@ class SettingsForm extends ConfigFormBase {
       '#required' => TRUE,
     ];
 
+    $form['users_without_tfa'] = [
+      '#type' => 'fieldset',
+      '#title' => $this->t('Settings for users who have not set up TFA.'),
+      '#tree' => TRUE,
+      '#states' => $enabled_state,
+    ];
+
     $skip_value = $config->get('validation_skip');
-    $form['validation_skip'] = [
+    $form['users_without_tfa']['validation_skip'] = [
       '#type' => 'number',
       '#title' => $this->t('Skip Validation'),
       '#default_value' => $skip_value ?? 3,
@@ -231,8 +283,15 @@ class SettingsForm extends ConfigFormBase {
       '#min' => 0,
       '#max' => 99,
       '#size' => 2,
-      '#states' => $enabled_state,
       '#required' => TRUE,
+    ];
+
+    // Redirect users on login to TFA Setup Page.
+    $form['users_without_tfa']['redirect'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Redirect users on login to TFA Setup Page'),
+      '#default_value' => $config->get('users_without_tfa_redirect') ?? FALSE,
+      '#description' => $this->t('If the user has the "setup own tfa" permission and has not yet configured TFA they will be redirected to the TFA overview page after login.'),
     ];
 
     // Enable login plugins.
@@ -415,7 +474,7 @@ class SettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     $default_validation_plugin = $form_state->getValue('tfa_default_validation_plugin');
     $allowed_validation_plugins = $form_state->getValue('tfa_allowed_validation_plugins');
     // Default validation plugin must always be allowed.
@@ -437,7 +496,8 @@ class SettingsForm extends ConfigFormBase {
       ->set('allowed_validation_plugins', array_filter($allowed_validation_plugins))
       ->set('default_validation_plugin', $default_validation_plugin)
       ->set('validation_plugin_settings', $form_state->getValue('validation_plugin_settings'))
-      ->set('validation_skip', $form_state->getValue('validation_skip'))
+      ->set('validation_skip', $form_state->getValue(['users_without_tfa', 'validation_skip']))
+      ->set('users_without_tfa_redirect', $form_state->getValue(['users_without_tfa', 'redirect']))
       ->set('encryption', $form_state->getValue('encryption_profile'))
       ->set('tfa_flood_uid_only', $form_state->getValue('tfa_flood_uid_only'))
       ->set('tfa_flood_window', $form_state->getValue('tfa_flood_window'))

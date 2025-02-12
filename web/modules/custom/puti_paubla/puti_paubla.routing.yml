@@ -1,0 +1,7 @@
+puti_paubla:
+  path: '/formulario-puti'
+  defaults:
+    _title: 'Puti Form'
+    _form: '\Drupal\puti_paubla\Form\PutiForm'
+  requirements:
+    _permission: 'access content'

@@ -3,20 +3,21 @@
 namespace Drupal\tfa\Annotation;
 
 use Drupal\Component\Annotation\Plugin;
+use Drupal\Core\Annotation\Translation;
 
 /**
  * Defines a TFA annotation object.
  *
  * @Annotation
  */
-class Tfa extends Plugin {
+final class Tfa extends Plugin {
 
   /**
    * The plugin ID.
    *
    * @var string
    */
-  public $id;
+  public string $id;
 
   /**
    * The human-readable name of the plugin.
@@ -25,7 +26,7 @@ class Tfa extends Plugin {
    *
    * @ingroup plugin_translatable
    */
-  public $title;
+  public Translation $title;
 
   /**
    * The description of the plugin.
@@ -34,20 +35,20 @@ class Tfa extends Plugin {
    *
    * @ingroup plugin_translatable
    */
-  public $description;
+  public Translation $description;
 
   /**
    * The helper metadata for setup plugin.
    *
    * @var string[]
    */
-  public $helpLinks;
+  public array $helpLinks;
 
   /**
    * The messages to be displayed during setup steps.
    *
    * @var string[]
    */
-  public $setupMessages;
+  public array $setupMessages;
 
 }

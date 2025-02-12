@@ -23,33 +23,33 @@ abstract class TfaBasePlugin extends PluginBase implements TfaPluginInterface, C
    *
    * @var string[]
    */
-  protected $errorMessages;
+  protected array $errorMessages = [];
 
   /**
    * The allowed code length.
    *
    * @var int
    */
-  protected $codeLength;
+  protected int $codeLength;
 
   /**
    * The user id.
    *
    * @var int
    */
-  protected $uid;
+  protected int $uid;
 
   /**
    * Whether the code has been used before.
    *
-   * @var string
+   * @var bool
    */
-  protected $alreadyAccepted;
+  protected bool $alreadyAccepted;
 
   /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition) {
+  public function __construct(array $configuration, string $plugin_id, $plugin_definition) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     // Default code length is 6.
@@ -62,7 +62,7 @@ abstract class TfaBasePlugin extends PluginBase implements TfaPluginInterface, C
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): static {
     return new static(
       $configuration,
       $plugin_id,
@@ -73,7 +73,7 @@ abstract class TfaBasePlugin extends PluginBase implements TfaPluginInterface, C
   /**
    * {@inheritdoc}
    */
-  public function getLabel() {
+  public function getLabel(): string {
     // Cast the label to a string since it is a TranslatableMarkup object.
     return (string) $this->pluginDefinition['label'];
   }
@@ -81,14 +81,14 @@ abstract class TfaBasePlugin extends PluginBase implements TfaPluginInterface, C
   /**
    * {@inheritdoc}
    */
-  public function getHelpLinks() {
+  public function getHelpLinks(): array {
     return $this->pluginDefinition['helpLinks'];
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getSetupMessages() {
+  public function getSetupMessages(): array {
     return ($this->pluginDefinition['setupMessages']) ?: '';
   }
 
@@ -98,7 +98,7 @@ abstract class TfaBasePlugin extends PluginBase implements TfaPluginInterface, C
    * @return array
    *   An array of error strings.
    */
-  public function getErrorMessages() {
+  public function getErrorMessages(): array {
     return $this->errorMessages;
   }
 
@@ -108,7 +108,7 @@ abstract class TfaBasePlugin extends PluginBase implements TfaPluginInterface, C
    * @return bool
    *   True is code already used otherwise false.
    */
-  public function isAlreadyAccepted() {
+  public function isAlreadyAccepted(): bool {
     return $this->alreadyAccepted;
   }
 
@@ -118,9 +118,9 @@ abstract class TfaBasePlugin extends PluginBase implements TfaPluginInterface, C
    * @param string $code
    *   The validated code.
    */
-  protected function storeAcceptedCode($code) {
+  protected function storeAcceptedCode(string $code): void {
     $code = preg_replace('/\s+/', '', $code);
-    $hash = Crypt::hashBase64(Settings::getHashSalt() . $code);
+    $hash = Crypt::hashBase64($code);
 
     // Store the hash made using the code in users_data.
     $store_data = ['tfa_accepted_code_' . $hash => \Drupal::time()->getRequestTime()];
@@ -136,16 +136,41 @@ abstract class TfaBasePlugin extends PluginBase implements TfaPluginInterface, C
    * @return bool
    *   TRUE if already used otherwise FALSE
    */
-  protected function alreadyAcceptedCode($code) {
-    $hash = Crypt::hashBase64(Settings::getHashSalt() . $code);
+  protected function alreadyAcceptedCode(string $code): bool {
+    $hash = Crypt::hashBase64($code);
     // Check if the code has already been used or not.
-    $key    = 'tfa_accepted_code_' . $hash;
+    $key = 'tfa_accepted_code_' . $hash;
     $result = $this->getUserData('tfa', $key, $this->uid);
     if (!empty($result)) {
       $this->alreadyAccepted = TRUE;
       return TRUE;
     }
+
+    // Check historical hash keys.
+    $hash_keys[] = Settings::getHashSalt();
+    $older_hashes = Settings::get('tfa.previous_hash_salts');
+    if (is_array($older_hashes)) {
+      $hash_keys = array_merge($hash_keys, $older_hashes);
+    }
+
+    foreach ($hash_keys as $salt) {
+      $hash = Crypt::hashBase64($salt . $code);
+      $key = 'tfa_accepted_code_' . $hash;
+      $result = $this->getUserData('tfa', $key, $this->uid);
+      if (!empty($result)) {
+        $this->alreadyAccepted = TRUE;
+        return TRUE;
+      }
+    }
+
     return FALSE;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function tokenLength(#[\SensitiveParameter] string $password): int {
+    return $this->codeLength;
   }
 
 }

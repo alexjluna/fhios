@@ -4,11 +4,13 @@ namespace Drupal\tfa\Plugin\Tfa;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Lock\LockBackendInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\Url;
+use Drupal\encrypt\EncryptionProfileInterface;
 use Drupal\encrypt\EncryptionProfileManagerInterface;
 use Drupal\encrypt\EncryptServiceInterface;
 use Drupal\tfa\Plugin\TfaSetupInterface;
@@ -31,7 +33,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   }
  * )
  */
-class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, TfaSetupInterface, ContainerFactoryPluginInterface {
+final class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, TfaSetupInterface, ContainerFactoryPluginInterface {
   use TfaRandomTrait;
 
   /**
@@ -39,28 +41,35 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
    *
    * @var int
    */
-  protected $codeLimit = 10;
+  protected int $codeLimit = 10;
 
   /**
    * Encryption profile.
    *
-   * @var \Drupal\encrypt\EncryptionProfileManagerInterface
+   * @var \Drupal\encrypt\EncryptionProfileInterface|null
    */
-  protected $encryptionProfile;
+  protected ?EncryptionProfileInterface $encryptionProfile;
 
   /**
    * Encryption service.
    *
-   * @var \Drupal\encrypt\EncryptService
+   * @var \Drupal\encrypt\EncryptServiceInterface
    */
-  protected $encryptService;
+  protected EncryptServiceInterface $encryptService;
 
   /**
    * Current user.
    *
    * @var \Drupal\Core\Session\AccountProxyInterface
    */
-  protected $currentUser;
+  protected AccountProxyInterface $currentUser;
+
+  /**
+   * The lock service.
+   *
+   * @var \Drupal\Core\Lock\LockBackendInterface
+   */
+  protected $lock;
 
   /**
    * Constructs a new Tfa plugin object.
@@ -81,8 +90,10 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
    *   The configuration factory.
    * @param \Drupal\Core\Session\AccountProxyInterface $current_user
    *   The current user.
+   * @param \Drupal\Core\Lock\LockBackendInterface $lock
+   *   The lock service.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, UserDataInterface $user_data, EncryptionProfileManagerInterface $encryption_profile_manager, EncryptServiceInterface $encrypt_service, ConfigFactoryInterface $config_factory, AccountProxyInterface $current_user) {
+  public function __construct(array $configuration, string $plugin_id, $plugin_definition, UserDataInterface $user_data, EncryptionProfileManagerInterface $encryption_profile_manager, EncryptServiceInterface $encrypt_service, ConfigFactoryInterface $config_factory, AccountProxyInterface $current_user, LockBackendInterface $lock) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->userData = $user_data;
@@ -93,12 +104,13 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
       $this->codeLimit = $codes_amount;
     }
     $this->currentUser = $current_user;
+    $this->lock = $lock;
   }
 
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): static {
     return new static(
       $configuration,
       $plugin_id,
@@ -107,14 +119,15 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
       $container->get('encrypt.encryption_profile.manager'),
       $container->get('encryption'),
       $container->get('config.factory'),
-      $container->get('current_user')
+      $container->get('current_user'),
+      $container->get('lock')
     );
   }
 
   /**
    * {@inheritdoc}
    */
-  public function ready() {
+  public function ready(): bool {
     $codes = $this->getCodes();
     return !empty($codes);
   }
@@ -130,7 +143,7 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
    * @return bool
    *   Returns true if the access is allowed.
    */
-  public function allowUserSetupAccess(RouteMatchInterface $route, AccountInterface $account) {
+  public function allowUserSetupAccess(RouteMatchInterface $route, AccountInterface $account): bool {
     // Only allow user setup access to the 'show codes' if user is self.
     return (($route->getRouteName() !== 'tfa.validation.setup') || ($this->uid === $account->id()));
   }
@@ -138,7 +151,7 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
   /**
    * {@inheritdoc}
    */
-  public function getForm(array $form, FormStateInterface $form_state) {
+  public function getForm(array $form, FormStateInterface $form_state): array {
     $form['code'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Enter one of your recovery codes'),
@@ -161,7 +174,7 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
    * @return array
    *   Form array specific for this validation plugin.
    */
-  public function buildConfigurationForm() {
+  public function buildConfigurationForm(): array {
     $settings_form['recovery_codes_amount'] = [
       '#type' => 'number',
       '#title' => $this->t('Recovery Codes Amount'),
@@ -178,21 +191,15 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array $form, FormStateInterface $form_state) {
+  public function validateForm(array $form, FormStateInterface $form_state): bool {
     $values = $form_state->getValues();
     return $this->validate($values['code']);
   }
 
   /**
-   * Simple validate for web services.
-   *
-   * @param int $code
-   *   OTP Code.
-   *
-   * @return bool
-   *   True if validation was successful otherwise false.
+   * {@inheritdoc}
    */
-  public function validateRequest($code) {
+  public function validateRequest(#[\SensitiveParameter] string $code): bool {
     if ($this->validate($code)) {
       $this->storeAcceptedCode($code);
       return TRUE;
@@ -209,7 +216,7 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
    *
    * @throws \Exception
    */
-  public function generateCodes() {
+  public function generateCodes(): array {
     $codes = [];
 
     for ($i = 0; $i < $this->codeLimit; $i++) {
@@ -231,7 +238,7 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
    * @throws \Drupal\encrypt\Exception\EncryptionMethodCanNotDecryptException
    * @throws \Drupal\encrypt\Exception\EncryptException
    */
-  public function getCodes() {
+  public function getCodes(): array {
     $codes = $this->getUserData('tfa', $this->pluginId, $this->uid) ?: [];
     array_walk($codes, function (&$v, $k) {
       $v = $this->encryptService->decrypt($v, $this->encryptionProfile);
@@ -247,7 +254,7 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
    *
    * @throws \Drupal\encrypt\Exception\EncryptException
    */
-  public function storeCodes(array $codes) {
+  public function storeCodes(array $codes): void {
     $this->deleteCodes();
 
     // Encrypt code for storage.
@@ -262,7 +269,7 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
   /**
    * Delete existing codes.
    */
-  protected function deleteCodes() {
+  protected function deleteCodes(): void {
     // Delete any existing codes.
     $this->deleteUserData('tfa', $this->pluginId, $this->uid);
   }
@@ -270,11 +277,15 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
   /**
    * {@inheritdoc}
    */
-  protected function validate($code) {
-    $this->isValid = FALSE;
+  protected function validate(string $code): bool {
+    $recovery_validation_lock_id = 'tfa_validation_recovery_codes_' . $this->uid;
+    while (!$this->lock->acquire($recovery_validation_lock_id)) {
+      $this->lock->wait($recovery_validation_lock_id);
+    }
     // Get codes and compare.
     $codes = $this->getCodes();
     if (empty($codes)) {
+      $this->lock->release($recovery_validation_lock_id);
       $this->errorMessages['recovery_code'] = $this->t('You have no unused codes available.');
       return FALSE;
     }
@@ -283,14 +294,23 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
     foreach ($codes as $id => $stored) {
       // Remove spaces from stored code.
       if (hash_equals(trim(str_replace(' ', '', $stored)), $code)) {
-        $this->isValid = TRUE;
         unset($codes[$id]);
         $this->storeCodes($codes);
-        return $this->isValid;
+        $this->lock->release($recovery_validation_lock_id);
+        return TRUE;
       }
     }
+    $this->lock->release($recovery_validation_lock_id);
     $this->errorMessages['recovery_code'] = $this->t('Invalid recovery code.');
-    return $this->isValid;
+    return FALSE;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function tokenLength(#[\SensitiveParameter]string $password): int {
+    // Tokens are always 9 digits long.
+    return 9;
   }
 
   /* ================================== SETUP ================================== */
@@ -298,7 +318,7 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
   /**
    * {@inheritdoc}
    */
-  public function getOverview(array $params) {
+  public function getOverview(array $params): array {
     $ret = [
       'heading' => [
         '#type' => 'html_tag',
@@ -359,7 +379,7 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
    * @return array
    *   Form API array.
    */
-  public function getSetupForm(array $form, FormStateInterface $form_state, $reset = 0) {
+  public function getSetupForm(array $form, FormStateInterface $form_state, int $reset = 0): array {
     $codes = $this->getCodes();
 
     // If $reset has a value, we're setting up new codes.
@@ -402,7 +422,7 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
   /**
    * {@inheritdoc}
    */
-  public function validateSetupForm(array $form, FormStateInterface $form_state) {
+  public function validateSetupForm(array $form, FormStateInterface $form_state): bool {
     if (!empty($form_state->getValue('recovery_codes'))) {
       return TRUE;
     }
@@ -413,7 +433,7 @@ class TfaRecoveryCode extends TfaBasePlugin implements TfaValidationInterface, T
   /**
    * {@inheritdoc}
    */
-  public function submitSetupForm(array $form, FormStateInterface $form_state) {
+  public function submitSetupForm(array $form, FormStateInterface $form_state): bool {
     $this->storeCodes($form_state->getValue('recovery_codes'));
     return TRUE;
   }

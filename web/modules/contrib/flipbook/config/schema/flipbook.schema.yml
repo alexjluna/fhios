@@ -1,0 +1,11 @@
+config.flipbook_chooseconfig:
+  type: config_object
+  label: 'Flipbook choose config settings'
+  mapping:
+    pdf:
+      type: mapping
+      label: 'PDF data'
+      mapping:
+        choice:
+          type: boolean
+          label: 'Popup Pdf'

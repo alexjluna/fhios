@@ -7,15 +7,15 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Password\PasswordInterface;
 use Drupal\tfa\TfaUserDataTrait;
-use Drupal\user\Entity\User;
 use Drupal\user\UserDataInterface;
+use Drupal\user\UserInterface;
 use Drupal\user\UserStorageInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * TFA disable form router.
  */
-class TfaDisableForm extends FormBase {
+final class TfaDisableForm extends FormBase {
   use TfaUserDataTrait;
 
   /**
@@ -23,21 +23,21 @@ class TfaDisableForm extends FormBase {
    *
    * @var \Drupal\Core\Password\PasswordInterface
    */
-  protected $passwordChecker;
+  protected PasswordInterface $passwordChecker;
 
   /**
    * The mail manager.
    *
    * @var \Drupal\Core\Mail\MailManagerInterface
    */
-  protected $mailManager;
+  protected MailManagerInterface $mailManager;
 
   /**
    * The user storage.
    *
    * @var \Drupal\user\UserStorageInterface
    */
-  protected $userStorage;
+  protected UserStorageInterface $userStorage;
 
   /**
    * TFA disable form constructor.
@@ -61,7 +61,7 @@ class TfaDisableForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container) {
+  public static function create(ContainerInterface $container): static {
     return new static(
       $container->get('user.data'),
       $container->get('password'),
@@ -73,14 +73,14 @@ class TfaDisableForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function getFormId() {
+  public function getFormId(): string {
     return 'tfa_disable';
   }
 
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, User $user = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, UserInterface $user = NULL): array {
     /** @var \Drupal\user\Entity\User $account */
     $account = $this->userStorage->load($this->currentUser()->id());
 
@@ -141,7 +141,7 @@ class TfaDisableForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
+  public function validateForm(array &$form, FormStateInterface $form_state): void {
     /** @var \Drupal\user\Entity\User $user */
     $user = $this->userStorage->load($this->currentUser()->id());
     $storage = $form_state->getStorage();
@@ -160,7 +160,7 @@ class TfaDisableForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     $storage = $form_state->getStorage();
     $values = $form_state->getValues();
     $account = $storage['account'];
@@ -179,8 +179,10 @@ class TfaDisableForm extends FormBase {
     ]);
 
     // E-mail account to inform user that it has been disabled.
-    $params = ['account' => $account];
-    $this->mailManager->mail('tfa', 'tfa_disabled_configuration', $account->getEmail(), $account->getPreferredLangcode(), $params);
+    if ($account->getEmail()) {
+      $params = ['account' => $account];
+      $this->mailManager->mail('tfa', 'tfa_disabled_configuration', $account->getEmail(), $account->getPreferredLangcode(), $params);
+    }
 
     $this->messenger()->addStatus($this->t('TFA has been disabled.'));
     $form_state->setRedirect('tfa.overview', ['user' => $account->id()]);
@@ -194,9 +196,10 @@ class TfaDisableForm extends FormBase {
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The current state of the form.
    */
-  public function cancelForm(array &$form, FormStateInterface $form_state) {
+  public function cancelForm(array &$form, FormStateInterface $form_state): void {
+    $account = $form_state->get('account');
     $this->messenger()->addWarning($this->t('TFA Disable cancelled.'));
-    $form_state->setRedirect('tfa.overview', ['user' => $this->currentUser()->id()]);
+    $form_state->setRedirect('tfa.overview', ['user' => $account->id()]);
   }
 
 }

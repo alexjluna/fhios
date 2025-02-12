@@ -2,6 +2,10 @@
 
 namespace Drupal\Tests\tfa\Functional;
 
+use Drupal\tfa\Plugin\Tfa\TfaRecoveryCode;
+use Drupal\tfa\TfaPluginManager;
+use Drupal\user\Entity\User;
+
 /**
  * Class TfaRecoveryCodeSetupPluginTest.
  *
@@ -16,28 +20,28 @@ class TfaRecoveryCodePluginTest extends TfaTestBase {
    *
    * @var string
    */
-  protected $validationPluginId = 'tfa_recovery_code';
+  protected string $validationPluginId = 'tfa_recovery_code';
 
   /**
    * Non-admin user account. Standard tfa user.
    *
    * @var \Drupal\user\Entity\User
    */
-  public $userAccount;
+  public User $userAccount;
 
   /**
    * Tfa plugin manager.
    *
    * @var \Drupal\tfa\TfaPluginManager
    */
-  public $tfaValidationManager;
+  public TfaPluginManager $tfaValidationManager;
 
   /**
    * Instance of the validation plugin for the $validationPluginId.
    *
    * @var \Drupal\tfa\Plugin\Tfa\TfaRecoveryCode
    */
-  public $validationPlugin;
+  public TfaRecoveryCode $validationPlugin;
 
   /**
    * {@inheritdoc}
@@ -75,14 +79,14 @@ class TfaRecoveryCodePluginTest extends TfaTestBase {
   /**
    * Test that we can enable the plugin.
    */
-  public function testEnableValidationPlugin() {
+  public function testEnableValidationPlugin(): void {
     $this->canEnableValidationPlugin($this->validationPluginId);
   }
 
   /**
    * Check that recovery code plugin appear on the user overview page.
    */
-  public function testRecoveryCodeOverviewExists() {
+  public function testRecoveryCodeOverviewExists(): void {
     $this->drupalLogin($this->userAccount);
     $this->drupalGet('user/' . $this->userAccount->id() . '/security/tfa');
     $assert = $this->assertSession();
@@ -93,7 +97,7 @@ class TfaRecoveryCodePluginTest extends TfaTestBase {
   /**
    * Check that the user can setup recovery codes.
    */
-  public function testRecoveryCodeSetup() {
+  public function testRecoveryCodeSetup(): void {
     $this->drupalLogin($this->userAccount);
     $this->drupalGet('user/' . $this->userAccount->id() . '/security/tfa/' . $this->validationPluginId . '/1');
     $assert = $this->assertSession();
@@ -126,7 +130,7 @@ class TfaRecoveryCodePluginTest extends TfaTestBase {
   /**
    * Check that the user can login with recovery codes.
    */
-  public function testRecoveryCodeValidation() {
+  public function testRecoveryCodeValidation(): void {
     // Login the user, generate and save some codes, then log back out.
     $this->drupalLogin($this->userAccount);
     $assert = $this->assertSession();

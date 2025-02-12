@@ -3,7 +3,9 @@
 namespace Drupal\tfa\Plugin\Block;
 
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
@@ -21,14 +23,14 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   category = @Translation("Forms")
  * )
  */
-class TfaUserLoginBlock extends UserLoginBlock {
+final class TfaUserLoginBlock extends UserLoginBlock {
 
   /**
    * The config factory.
    *
    * @var \Drupal\Core\Config\ConfigFactoryInterface
    */
-  protected $configFactory;
+  protected ConfigFactoryInterface $configFactory;
 
   /**
    * Constructs a new UserLoginBlock instance.
@@ -46,29 +48,32 @@ class TfaUserLoginBlock extends UserLoginBlock {
    *   The route match.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The configuration factory.
+   * @param \Drupal\Core\Form\FormBuilderInterface $form_builder
+   *   The form builder.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, RouteMatchInterface $route_match, ConfigFactoryInterface $config_factory) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition, $route_match);
+  public function __construct(array $configuration, string $plugin_id, $plugin_definition, RouteMatchInterface $route_match, ConfigFactoryInterface $config_factory, FormBuilderInterface $form_builder) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $route_match, $form_builder);
     $this->configFactory = $config_factory;
   }
 
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): static {
     return new static(
       $configuration,
       $plugin_id,
       $plugin_definition,
       $container->get('current_route_match'),
-      $container->get('config.factory')
+      $container->get('config.factory'),
+      $container->get('form_builder')
     );
   }
 
   /**
    * {@inheritdoc}
    */
-  protected function blockAccess(AccountInterface $account) {
+  protected function blockAccess(AccountInterface $account): AccessResultInterface {
     $access = parent::blockAccess($account);
     $tfaAccess = $this->configFactory->get('tfa.settings')->get('enabled');
 
@@ -83,7 +88,7 @@ class TfaUserLoginBlock extends UserLoginBlock {
   /**
    * {@inheritdoc}
    */
-  public function build() {
+  public function build(): array {
     $form = \Drupal::formBuilder()->getForm('Drupal\tfa\Form\TfaLoginForm');
     unset($form['name']['#attributes']['autofocus']);
     // When unsetting field descriptions, also unset aria-describedby attributes

@@ -106,6 +106,7 @@ class ComposerStaticInitde99d54752bf248e02f2dabfa284d866
             'Psr\\Http\\Client\\' => 16,
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
+            'Psr\\Clock\\' => 10,
             'Psr\\Cache\\' => 10,
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
@@ -117,7 +118,7 @@ class ComposerStaticInitde99d54752bf248e02f2dabfa284d866
         ),
         'O' => 
         array (
-            'Otp\\' => 4,
+            'OTPHP\\' => 6,
         ),
         'M' => 
         array (
@@ -377,6 +378,10 @@ class ComposerStaticInitde99d54752bf248e02f2dabfa284d866
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
+        'Psr\\Clock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/clock/src',
+        ),
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
@@ -409,9 +414,9 @@ class ComposerStaticInitde99d54752bf248e02f2dabfa284d866
         array (
             0 => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src',
         ),
-        'Otp\\' => 
+        'OTPHP\\' => 
         array (
-            0 => __DIR__ . '/..' . '/christian-riesen/otp/src',
+            0 => __DIR__ . '/..' . '/spomky-labs/otphp/src',
         ),
         'Masterminds\\' => 
         array (

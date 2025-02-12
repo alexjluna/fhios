@@ -2,83 +2,95 @@
 
 namespace Drupal\tfa\Form;
 
+use Drupal\Core\Cache\CacheBackendInterface;
+use Drupal\Core\Config\ImmutableConfig;
 use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Lock\LockBackendInterface;
 use Drupal\Core\Url;
+use Drupal\tfa\Plugin\TfaValidationInterface;
 use Drupal\tfa\TfaPluginManager;
 use Drupal\user\UserDataInterface;
 use Drupal\user\UserFloodControlInterface;
 use Drupal\user\UserStorageInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * TFA entry form.
  */
-class EntryForm extends FormBase {
+final class EntryForm extends FormBase {
 
   /**
    * The TFA plugin manager.
    *
    * @var \Drupal\tfa\TfaPluginManager
    */
-  protected $tfaPluginManager;
+  protected TfaPluginManager $tfaPluginManager;
 
   /**
    * The validation plugin object.
    *
    * @var \Drupal\tfa\Plugin\TfaValidationInterface
    */
-  protected $tfaValidationPlugin;
+  protected TfaValidationInterface $tfaValidationPlugin;
 
   /**
    * The login plugins.
    *
-   * @var \Drupal\tfa\Plugin\TfaLoginInterface
+   * @var \Drupal\tfa\Plugin\TfaLoginInterface[]
    */
-  protected $tfaLoginPlugins;
+  protected array $tfaLoginPlugins = [];
 
   /**
    * TFA configuration object.
    *
    * @var \Drupal\Core\Config\ImmutableConfig
    */
-  protected $tfaSettings;
+  protected ImmutableConfig $tfaSettings;
 
   /**
    * The user flood control service.
    *
    * @var \Drupal\user\UserFloodControlInterface
    */
-  protected $flood;
+  protected UserFloodControlInterface $flood;
 
   /**
    * The flood control identifier.
    *
    * @var string
    */
-  protected $floodIdentifier;
+  protected string $floodIdentifier;
 
   /**
    * The date formatter service.
    *
    * @var \Drupal\Core\Datetime\DateFormatterInterface
    */
-  protected $dateFormatter;
+  protected DateFormatterInterface $dateFormatter;
 
   /**
    * User data service.
    *
    * @var \Drupal\user\UserDataInterface
    */
-  protected $userData;
+  protected UserDataInterface $userData;
 
   /**
    * The user storage.
    *
    * @var \Drupal\user\UserStorageInterface
    */
-  protected $userStorage;
+  protected UserStorageInterface $userStorage;
+
+  /**
+   * The lock service.
+   *
+   * @var \Drupal\Core\Lock\LockBackendInterface
+   */
+  protected $lock;
 
   /**
    * EntryForm constructor.
@@ -93,14 +105,19 @@ class EntryForm extends FormBase {
    *   User data service.
    * @param \Drupal\user\UserStorageInterface $user_storage
    *   The user storage.
+   * @param \Drupal\Core\Lock\LockBackendInterface $lock
+   *   The lock service.
+   * @param \Drupal\Core\Cache\CacheBackendInterface $memoryCache
+   *   The tfa memorry cache service.
    */
-  public function __construct(TfaPluginManager $tfa_plugin_manager, UserFloodControlInterface $user_flood_control, DateFormatterInterface $date_formatter, UserDataInterface $user_data, UserStorageInterface $user_storage) {
+  public function __construct(TfaPluginManager $tfa_plugin_manager, UserFloodControlInterface $user_flood_control, DateFormatterInterface $date_formatter, UserDataInterface $user_data, UserStorageInterface $user_storage, LockBackendInterface $lock, protected CacheBackendInterface $memoryCache) {
     $this->tfaPluginManager = $tfa_plugin_manager;
     $this->tfaSettings = $this->config('tfa.settings');
     $this->flood = $user_flood_control;
     $this->dateFormatter = $date_formatter;
     $this->userData = $user_data;
     $this->userStorage = $user_storage;
+    $this->lock = $lock;
   }
 
   /**
@@ -111,30 +128,33 @@ class EntryForm extends FormBase {
    *
    * @return static
    */
-  public static function create(ContainerInterface $container) {
+  public static function create(ContainerInterface $container): static {
     return new static(
       $container->get('plugin.manager.tfa'),
       $container->get('user.flood_control'),
       $container->get('date.formatter'),
       $container->get('user.data'),
-      $container->get('entity_type.manager')->getStorage('user')
+      $container->get('entity_type.manager')->getStorage('user'),
+      $container->get('lock'),
+      $container->get('cache.tfa_memcache')
     );
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getFormId() {
+  public function getFormId(): string {
     return 'tfa_entry_form';
   }
 
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, $uid = NULL, string $hash = '') {
+  public function buildForm(array $form, FormStateInterface $form_state, ?int $uid = NULL, string $hash = ''): array {
     $alternate_plugin = $this->getRequest()->get('plugin');
     $validation_plugin_definitions = $this->tfaPluginManager->getValidationDefinitions();
     $user_settings = $this->userData->get('tfa', $uid, 'tfa_user_settings');
+    /** @var array<string, string> $user_enabled_validation_plugins */
     $user_enabled_validation_plugins = $user_settings['data']['plugins'] ?? [];
 
     // Default validation plugin, then check for enabled alternate plugin.
@@ -146,7 +166,36 @@ class EntryForm extends FormBase {
     }
 
     // Get current validation plugin form.
-    $this->tfaValidationPlugin = $this->tfaPluginManager->createInstance($validation_plugin, ['uid' => $uid]);
+    /** @var \Drupal\tfa\Plugin\TfaValidationInterface $plugin */
+    $plugin = $this->tfaPluginManager->createInstance($validation_plugin, ['uid' => $uid]);
+    $this->tfaValidationPlugin = $plugin;
+
+    // If the current plugin isn't ready we need to find another plugin.
+    if (!$this->tfaValidationPlugin->ready()) {
+      // Find a new plugin.
+      /** @var array<string, string> $enabled_plugins */
+      $enabled_plugins = $this->config('tfa.settings')->get('allowed_validation_plugins');
+      foreach ($enabled_plugins as $plugin_name) {
+        if (!empty($user_enabled_validation_plugins[$plugin_name]) && $plugin_name != $validation_plugin) {
+          /** @var \Drupal\tfa\Plugin\TfaValidationInterface $plugin */
+          $plugin = $this->tfaPluginManager->createInstance($plugin_name, ['uid' => $uid]);
+          if ($plugin->ready()) {
+            $validation_plugin = $plugin_name;
+            $this->tfaValidationPlugin = $plugin;
+            break;
+          }
+        }
+      }
+      if (!$this->tfaValidationPlugin->ready()) {
+        // This should never happen. The EntryForm should never be rendered if
+        // no plugins are ready.
+        $message = $this->t('An unexpected error occurred attempting to display the TFA Entry form.');
+        $this->messenger()->addError($message);
+        $form_state->setResponse(new RedirectResponse(Url::fromRoute('user.login')->toString()));
+        return [];
+      }
+    }
+
     $form = $this->tfaValidationPlugin->getForm($form, $form_state);
 
     foreach ($this->tfaPluginManager->getLoginDefinitions() as $plugin_id => $definition) {
@@ -217,7 +266,7 @@ class EntryForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
+  public function validateForm(array &$form, FormStateInterface $form_state): void {
     $values = $form_state->getValues();
     $window = ($this->tfaSettings->get('tfa_flood_window')) ?: 300;
     $threshold = ($this->tfaSettings->get('tfa_flood_threshold')) ?: 6;
@@ -243,7 +292,12 @@ class EntryForm extends FormBase {
       return;
     }
 
+    $validation_lock_id = 'tfa_validate_' . $this->currentUser()->id();
+    while (!$this->lock->acquire($validation_lock_id)) {
+      $this->lock->wait($validation_lock_id);
+    }
     $validated = $this->tfaValidationPlugin->validateForm($form, $form_state);
+    $this->lock->release($validation_lock_id);
     if (!$validated) {
       // @todo Either define getErrorMessages in the TfaValidationInterface, or don't use it.
       // For now, let's just check that it exists before assuming.
@@ -255,6 +309,11 @@ class EntryForm extends FormBase {
 
       $this->flood->register('tfa.failed_validation', $this->tfaSettings->get('tfa_flood_window'), $this->floodIdentifier);
     }
+
+    if ($validated) {
+      // User has provided a valid token. Set the complete flag.
+      $this->memoryCache->set('tfa_complete', (int) $values['account']->id());
+    }
   }
 
   /**
@@ -262,7 +321,7 @@ class EntryForm extends FormBase {
    *
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     $user = $form_state->getValue('account');
     // @todo This could be improved with EventDispatcher.
     if (!empty($this->tfaLoginPlugins)) {
@@ -285,7 +344,7 @@ class EntryForm extends FormBase {
   /**
    * Run TFA process finalization.
    */
-  protected function finalize() {
+  protected function finalize(): void {
     // Invoke plugin finalize.
     if (method_exists($this->tfaValidationPlugin, 'finalize')) {
       $this->tfaValidationPlugin->finalize();

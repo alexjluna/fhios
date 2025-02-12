@@ -7,6 +7,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
+use Drupal\encrypt\EncryptionProfileInterface;
 use Drupal\encrypt\EncryptionProfileManagerInterface;
 use Drupal\encrypt\EncryptServiceInterface;
 use Drupal\encrypt\Exception\EncryptException;
@@ -38,21 +39,21 @@ class TfaTestValidationPlugin extends TfaBasePlugin implements TfaValidationInte
    *
    * @var \Drupal\user\UserStorageInterface
    */
-  protected $userStorage;
+  protected UserStorageInterface $userStorage;
 
   /**
    * Encryption profile.
    *
-   * @var \Drupal\encrypt\EncryptionProfileManagerInterface
+   * @var \Drupal\encrypt\EncryptionProfileInterface|null
    */
-  protected $encryptionProfile;
+  protected ?EncryptionProfileInterface $encryptionProfile;
 
   /**
    * Encryption service.
    *
-   * @var \Drupal\encrypt\EncryptService
+   * @var \Drupal\encrypt\EncryptServiceInterface
    */
-  protected $encryptService;
+  protected EncryptServiceInterface $encryptService;
 
   /**
    * Constructs a new Tfa plugin object.
@@ -74,7 +75,7 @@ class TfaTestValidationPlugin extends TfaBasePlugin implements TfaValidationInte
    * @param \Drupal\encrypt\EncryptionProfileManagerInterface $encryption_profile_manager
    *   Encryption profile manager.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigFactoryInterface $config_factory, UserDataInterface $user_data, UserStorageInterface $user_storage, EncryptServiceInterface $encrypt_service, EncryptionProfileManagerInterface $encryption_profile_manager) {
+  public function __construct(array $configuration, string $plugin_id, $plugin_definition, ConfigFactoryInterface $config_factory, UserDataInterface $user_data, UserStorageInterface $user_storage, EncryptServiceInterface $encrypt_service, EncryptionProfileManagerInterface $encryption_profile_manager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->userData = $user_data;
@@ -86,7 +87,7 @@ class TfaTestValidationPlugin extends TfaBasePlugin implements TfaValidationInte
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): static {
     return new static(
       $configuration,
       $plugin_id,
@@ -102,7 +103,7 @@ class TfaTestValidationPlugin extends TfaBasePlugin implements TfaValidationInte
   /**
    * {@inheritdoc}
    */
-  public function getForm(array $form, FormStateInterface $form_state) {
+  public function getForm(array $form, FormStateInterface $form_state): array {
     $form['actions']['login'] = [
       '#type' => 'submit',
       '#button_type' => 'primary',
@@ -114,15 +115,29 @@ class TfaTestValidationPlugin extends TfaBasePlugin implements TfaValidationInte
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array $form, FormStateInterface $form_state) {
+  public function validateForm(array $form, FormStateInterface $form_state): bool {
     return TRUE;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function ready() {
+  public function validateRequest(#[\SensitiveParameter] string $code): bool {
     return TRUE;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function ready(): bool {
+    return TRUE;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function tokenLength(string $password): int {
+    return 6;
   }
 
   /* ================================== SETUP ================================== */
@@ -130,7 +145,7 @@ class TfaTestValidationPlugin extends TfaBasePlugin implements TfaValidationInte
   /**
    * {@inheritdoc}
    */
-  public function getSetupForm(array $form, FormStateInterface $form_state) {
+  public function getSetupForm(array $form, FormStateInterface $form_state): array {
     $form['user']['#markup'] = $this->t('<p>TFA Setup for @name</p>', [
       '@name' => $this->userStorage->load($this->configuration['uid'])->getDisplayName(),
     ]);
@@ -151,7 +166,7 @@ class TfaTestValidationPlugin extends TfaBasePlugin implements TfaValidationInte
   /**
    * {@inheritdoc}
    */
-  public function validateSetupForm(array $form, FormStateInterface $form_state) {
+  public function validateSetupForm(array $form, FormStateInterface $form_state): bool {
     $expected_value = $form_state->getValue('expected_field');
 
     if (empty($expected_value)) {
@@ -165,7 +180,7 @@ class TfaTestValidationPlugin extends TfaBasePlugin implements TfaValidationInte
   /**
    * {@inheritdoc}
    */
-  public function submitSetupForm(array $form, FormStateInterface $form_state) {
+  public function submitSetupForm(array $form, FormStateInterface $form_state): bool {
     try {
       $encrypted = $this->encryptService->encrypt($form_state->getValue('expected_field'), $this->encryptionProfile);
     }
@@ -192,7 +207,7 @@ class TfaTestValidationPlugin extends TfaBasePlugin implements TfaValidationInte
    * @throws \Drupal\encrypt\Exception\EncryptionMethodCanNotDecryptException
    * @throws \Drupal\encrypt\Exception\EncryptException
    */
-  public function getExpectedFieldData() {
+  public function getExpectedFieldData(): ?string {
     $data = $this->getUserData($this->pluginDefinition['id'], 'test_data', $this->uid, $this->userData);
     if (!empty($data['expected_field'])) {
       return $this->encryptService->decrypt(base64_decode($data['expected_field']), $this->encryptionProfile);
@@ -204,21 +219,21 @@ class TfaTestValidationPlugin extends TfaBasePlugin implements TfaValidationInte
   /**
    * {@inheritdoc}
    */
-  public function getHelpLinks() {
+  public function getHelpLinks(): array {
     return [];
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getSetupMessages() {
+  public function getSetupMessages(): array {
     return [];
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getOverview(array $params) {
+  public function getOverview(array $params): array {
     return [
       'heading' => [
         '#type' => 'html_tag',

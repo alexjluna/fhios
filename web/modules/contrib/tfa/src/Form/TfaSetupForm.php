@@ -7,11 +7,11 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Password\PasswordInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\tfa\TfaUserDataTrait;
 use Drupal\tfa\TfaPluginManager;
 use Drupal\tfa\TfaSetup;
-use Drupal\user\Entity\User;
+use Drupal\tfa\TfaUserDataTrait;
 use Drupal\user\UserDataInterface;
+use Drupal\user\UserInterface;
 use Drupal\user\UserStorageInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -19,7 +19,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * TFA setup form router.
  */
-class TfaSetupForm extends FormBase {
+final class TfaSetupForm extends FormBase {
   use TfaUserDataTrait;
   use StringTranslationTrait;
 
@@ -28,28 +28,28 @@ class TfaSetupForm extends FormBase {
    *
    * @var \Drupal\tfa\TfaPluginManager
    */
-  protected $tfaPluginManager;
+  protected TfaPluginManager $tfaPluginManager;
 
   /**
    * The password hashing service.
    *
    * @var \Drupal\Core\Password\PasswordInterface
    */
-  protected $passwordChecker;
+  protected PasswordInterface $passwordChecker;
 
   /**
    * The mail manager.
    *
    * @var \Drupal\Core\Mail\MailManagerInterface
    */
-  protected $mailManager;
+  protected MailManagerInterface $mailManager;
 
   /**
    * The user storage.
    *
    * @var \Drupal\user\UserStorageInterface
    */
-  protected $userStorage;
+  protected UserStorageInterface $userStorage;
 
   /**
    * TFA Setup form constructor.
@@ -76,7 +76,7 @@ class TfaSetupForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container) {
+  public static function create(ContainerInterface $container): static {
     return new static(
       $container->get('plugin.manager.tfa'),
       $container->get('user.data'),
@@ -89,14 +89,14 @@ class TfaSetupForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function getFormId() {
+  public function getFormId(): string {
     return 'tfa_setup';
   }
 
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, User $user = NULL, $method = 'tfa_totp', $reset = 0) {
+  public function buildForm(array $form, FormStateInterface $form_state, UserInterface $user = NULL, string $method = 'tfa_totp', int $reset = 0): array {
     /** @var \Drupal\user\Entity\User $account */
     $account = $this->userStorage->load($this->currentUser()->id());
 
@@ -111,7 +111,7 @@ class TfaSetupForm extends FormBase {
     // Always require a password on the first time through.
     if (empty($storage)) {
       // Allow administrators to change TFA settings for another account.
-      if ($account->id() == $user->id() && $account->hasPermission('administer tfa for other users')) {
+      if ($account->id() != $user->id() && $account->hasPermission('administer tfa for other users')) {
         $current_pass_description = $this->t('Enter your current password to
         alter TFA settings for account %name.', ['%name' => $user->getAccountName()]);
       }
@@ -183,6 +183,8 @@ class TfaSetupForm extends FormBase {
       }
       // Record the method in progress regardless of whether in full setup.
       $storage['step_method'] = $method;
+      // Record the plugin label for use in errors.
+      $storage['plugin_label'] = $plugin['label'];
     }
     $form_state->setStorage($storage);
     return $form;
@@ -191,7 +193,7 @@ class TfaSetupForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
+  public function validateForm(array &$form, FormStateInterface $form_state): void {
     /** @var \Drupal\user\Entity\User $user */
     $user = $this->userStorage->load($this->currentUser()->id());
     $storage = $form_state->getStorage();
@@ -238,16 +240,18 @@ class TfaSetupForm extends FormBase {
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The current state of the form.
    */
-  public function cancelForm(array &$form, FormStateInterface $form_state) {
+  public function cancelForm(array &$form, FormStateInterface $form_state): void {
     $account = $form['account']['#value'];
-    $this->messenger()->addWarning($this->t('TFA setup canceled.'));
+    $storage = $form_state->getStorage();
+    $label = $storage['plugin_label'] ?? '';
+    $this->messenger()->addWarning($this->t('Setup of @plugin_label canceled.', ['@plugin_label' => $label]));
     $form_state->setRedirect('tfa.overview', ['user' => $account->id()]);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     $account = $form['account']['#value'];
     $storage = $form_state->getStorage();
     $values = $form_state->getValues();
@@ -302,8 +306,10 @@ class TfaSetupForm extends FormBase {
           '@uid' => $account->id(),
         ]);
 
-        $params = ['account' => $account];
-        $this->mailManager->mail('tfa', 'tfa_enabled_configuration', $account->getEmail(), $account->getPreferredLangcode(), $params);
+        if ($account->getEmail()) {
+          $params = ['account' => $account];
+          $this->mailManager->mail('tfa', 'tfa_enabled_configuration', $account->getEmail(), $account->getPreferredLangcode(), $params);
+        }
       }
     }
   }
@@ -311,7 +317,7 @@ class TfaSetupForm extends FormBase {
   /**
    * Steps eligible for TFA setup.
    */
-  protected function tfaFullSetupSteps() {
+  protected function tfaFullSetupSteps(): array {
     $config = $this->config('tfa.settings');
     $steps = [
       $config->get('default_validation_plugin'),
@@ -339,7 +345,7 @@ class TfaSetupForm extends FormBase {
    * @param bool $skipped_step
    *   Whether the step was skipped.
    */
-  protected function tfaNextSetupStep(FormStateInterface &$form_state, $this_step, TfaSetup $step_class, $skipped_step = FALSE) {
+  protected function tfaNextSetupStep(FormStateInterface &$form_state, string $this_step, TfaSetup $step_class, bool $skipped_step = FALSE): void {
     $storage = $form_state->getStorage();
     // Remove this step from steps left.
     $storage['steps_left'] = array_diff($storage['steps_left'], [$this_step]);

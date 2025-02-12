@@ -4,6 +4,8 @@ namespace Drupal\tfa;
 
 /**
  * Interface for tfa plugins.
+ *
+ * @api
  */
 interface TfaPluginInterface {
 
@@ -13,7 +15,7 @@ interface TfaPluginInterface {
    * @return string
    *   The translated title.
    */
-  public function getLabel();
+  public function getLabel(): string;
 
   /**
    * Returns a list of links containing helpful information for plugin use.
@@ -21,7 +23,7 @@ interface TfaPluginInterface {
    * @return string[]
    *   An array containing help links for e.g., OTP generation.
    */
-  public function getHelpLinks();
+  public function getHelpLinks(): array;
 
   /**
    * Returns a list of messages for plugin step.
@@ -29,6 +31,6 @@ interface TfaPluginInterface {
    * @return string[]
    *   An array containing messages to be used during plugin setup.
    */
-  public function getSetupMessages();
+  public function getSetupMessages(): array;
 
 }

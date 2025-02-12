@@ -12,7 +12,7 @@ use Symfony\Component\Routing\RouteCollection;
  *
  * @package Drupal\tfa\Routing
  */
-class TfaRouteSubscriber extends RouteSubscriberBase {
+final class TfaRouteSubscriber extends RouteSubscriberBase {
 
   /**
    * Overrides user.login route with our custom login form.
@@ -20,7 +20,7 @@ class TfaRouteSubscriber extends RouteSubscriberBase {
    * @param \Symfony\Component\Routing\RouteCollection $collection
    *   Route to be altered.
    */
-  public function alterRoutes(RouteCollection $collection) {
+  public function alterRoutes(RouteCollection $collection): void {
     // Change path of user login to our overridden TFA login form.
     if ($route = $collection->get('user.login')) {
       $route->setDefault('_form', '\Drupal\tfa\Form\TfaLoginForm');

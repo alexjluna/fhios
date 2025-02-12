@@ -7,6 +7,8 @@ use Drupal\user\UserInterface;
 
 /**
  * Provides methods for logging in users.
+ *
+ * @internal
  */
 trait TfaLoginTrait {
 
@@ -19,7 +21,7 @@ trait TfaLoginTrait {
    * @return string
    *   The hash value representing the user.
    */
-  protected function getLoginHash(UserInterface $account) {
+  protected function getLoginHash(UserInterface $account): string {
     // Using account login will mean this hash will become invalid once user has
     // authenticated via TFA.
     $data = implode(':', [

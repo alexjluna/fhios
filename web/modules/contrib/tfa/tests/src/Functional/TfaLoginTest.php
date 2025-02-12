@@ -2,33 +2,39 @@
 
 namespace Drupal\Tests\tfa\Functional;
 
+use Drupal\tfa\TfaUserDataTrait;
+use Drupal\tfa_test_plugins\Plugin\Tfa\TfaTestLoginPlugin;
+use Drupal\user\Entity\User;
+use Drupal\user\RoleInterface;
+
 /**
  * Tests for the tfa login process.
  *
  * @group tfa
  */
 class TfaLoginTest extends TfaTestBase {
+  use TfaUserDataTrait;
 
   /**
    * User doing the TFA Validation.
    *
    * @var \Drupal\user\Entity\User
    */
-  protected $webUser;
+  protected User $webUser;
 
   /**
    * Administrator to handle configurations.
    *
    * @var \Drupal\user\Entity\User
    */
-  protected $adminUser;
+  protected User $adminUser;
 
   /**
    * Super administrator to edit other users TFA.
    *
    * @var \Drupal\user\Entity\User
    */
-  protected $superAdmin;
+  protected User $superAdmin;
 
   /**
    * {@inheritdoc}
@@ -46,7 +52,7 @@ class TfaLoginTest extends TfaTestBase {
   /**
    * Tests the tfa login process.
    */
-  public function testTfaLogin() {
+  public function testTfaLogin(): void {
     $assert_session = $this->assertSession();
     // Check that tfa is not presented if no roles selected.
     $this->drupalLogin($this->webUser);
@@ -79,10 +85,16 @@ class TfaLoginTest extends TfaTestBase {
     // gets prompted with tfa.
     // Disable TFA for all roles.
     $this->drupalLogin($this->adminUser);
-    $roles = user_role_names(TRUE);
-    $edit = [];
-    foreach ($roles as $role_id => $role_name) {
-      $edit['tfa_required_roles[' . $role_id . ']'] = FALSE;
+    /** @var \Drupal\user\RoleStorageInterface $role_storage */
+    $role_storage = \Drupal::service('entity_type.manager')->getStorage('user_role');
+    /** @var \Drupal\user\RoleInterface[]|null $roles */
+    $roles = $role_storage->loadMultiple();
+    $this->assertNotEmpty($roles);
+    foreach ($roles as $role) {
+      if ($role->id() == RoleInterface::ANONYMOUS_ID) {
+        continue;
+      }
+      $edit['tfa_required_roles[' . $role->id() . ']'] = FALSE;
     }
     $edit['tfa_required_roles[authenticated]'] = FALSE;
     $this->drupalGet('admin/config/people/tfa');
@@ -111,6 +123,7 @@ class TfaLoginTest extends TfaTestBase {
     $assert_session->pageTextContains('Status: TFA enabled');
     $assert_session->linkExists('Reset test application');
     $assert_session->pageTextContains('Number of times validation skipped: 0 of 3');
+
     // Check that tfa is presented.
     $this->drupalLogout();
     $edit = [
@@ -122,17 +135,93 @@ class TfaLoginTest extends TfaTestBase {
     $assert_session->statusCodeEquals(200);
     $assert_session->addressMatches('/\/tfa\/' . $this->webUser->id() . '/');
 
+    // We should not see any login plugin forms yet.
+    $assert_session->elementNotExists('css', '[name="tfa_test_login_plugin_checkbox"]');
+    $assert_session->pageTextNotContains('This is a test plugin!');
+    $assert_session->elementNotExists('css', '[name="trust_browser"]');
+    $assert_session->pageTextNotContains('Remember this browser for 30 days?');
+
+    // Set login allowed and verify we still don't skip TFA since the login
+    // plugin is not enabled.
+    TfaTestLoginPlugin::setIsLoginAllowed();
+    $this->drupalGet('user/login');
+    $this->submitForm($edit, 'Log in');
+    $assert_session->statusCodeEquals(200);
+    $assert_session->addressMatches('/\/tfa\/' . $this->webUser->id() . '/');
+
+    // Enable test login plugin.
+    \Drupal::configFactory()->getEditable('tfa.settings')->set('login_plugins', [
+      'tfa_test_login_plugin' => 'tfa_test_login_plugin',
+    ])->save();
+
+    TfaTestLoginPlugin::setIsLoginAllowed(FALSE);
+    $this->drupalGet('user/login');
+    $this->submitForm($edit, 'Log in');
+    $assert_session->statusCodeEquals(200);
+    $assert_session->addressMatches('/\/tfa\/' . $this->webUser->id() . '/');
+    // Form element should only exist for our enabled plugin.
+    $assert_session->elementExists('css', '[name="tfa_test_login_plugin_checkbox"]');
+    $assert_session->pageTextContains('This is a test plugin!');
+    $assert_session->elementNotExists('css', '[name="trust_browser"]');
+    $assert_session->pageTextNotContains('Remember this browser for 30 days?');
+
+    // Test skipping TFA via login plugin.
+    TfaTestLoginPlugin::setIsLoginAllowed();
+    $this->drupalGet('user/login');
+    $this->submitForm($edit, 'Log in');
+    $assert_session->statusCodeEquals(200);
+    $assert_session->addressMatches('/\/user\/' . $this->webUser->id() . '/');
+    $this->drupalLogout();
+
     // Check tfa setup as another user.
     $another_user = $this->createUser();
     $this->drupalLogin($this->superAdmin);
     $this->drupalGet('user/' . $another_user->id() . '/security/tfa');
     $assert_session->statusCodeEquals(200);
     $this->clickLink('Set up test application');
+    $assert_session->statusCodeEquals(200);
+    $assert_session->pageTextContains('Enter your current password to alter TFA settings for account ' . $another_user->getAccountName());
     $edit = [
       'current_pass' => $this->superAdmin->passRaw,
     ];
     $this->submitForm($edit, 'Confirm');
     $assert_session->pageTextContains('TFA Setup for ' . $another_user->getDisplayName());
+  }
+
+  /**
+   * Tests login when the user has the Default plugin disabled.
+   */
+  public function testDefaultPluginDisabled(): void {
+    $test_user = $this->createUser();
+    $settings = $this->config('tfa.settings');
+    $settings->set('enabled', TRUE);
+    $enabled_plugins = [
+      'tfa_test_plugins_validation' => 'tfa_test_plugins_validation',
+      'tfa_test_plugins_validation_false' => 'tfa_test_plugins_validation_false',
+    ];
+    $settings->set('allowed_validation_plugins', $enabled_plugins);
+    $settings->set('default_validation_plugin', 'tfa_test_plugins_validation_false');
+    $settings->save();
+
+    $this->userData = $this->container->get('user.data');
+    // This will be the users 'configured and ready' plugin, it is however
+    // not the 'default' plugin.
+    $this->tfaSaveTfaData($test_user->id(), ['plugins' => 'tfa_test_plugins_validation']);
+    // This will be an unknown/invalid/uninstalled plugin to ensure
+    // that no exceptions occur on unknown plugins.
+    $this->tfaSaveTfaData($test_user->id(), ['plugins' => 'tfa_plugin_does_not_exist']);
+
+    $this->drupalLogout();
+    $edit = [
+      'name' => $test_user->getAccountName(),
+      'pass' => $test_user->passRaw,
+    ];
+    $this->drupalGet('user/login');
+    $this->submitForm($edit, 'Log in');
+    $assert_session = $this->assertSession();
+    $assert_session->statusCodeEquals(200);
+    $this->assertNotEmpty($this->getSessionCookies());
+    $this->matchesRegularExpression('/.*\/user\/' . $test_user->id() . '.*/');
   }
 
 }

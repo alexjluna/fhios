@@ -12,6 +12,7 @@ use Drupal\tfa\Plugin\TfaSetupInterface;
 use Drupal\tfa\TfaBasePlugin;
 use Drupal\user\UserDataInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -27,42 +28,35 @@ use Symfony\Component\HttpFoundation\RequestStack;
  *   }
  * )
  */
-class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaSetupInterface, ContainerFactoryPluginInterface {
-
-  /**
-   * Trust browser.
-   *
-   * @var bool
-   */
-  protected $trustBrowser;
+final class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaSetupInterface, ContainerFactoryPluginInterface {
 
   /**
    * Is cookie allowed in subdomains.
    *
    * @var bool
    */
-  protected $allowSubdomains;
+  protected bool $allowSubdomains;
 
   /**
    * The cookie name.
    *
    * @var string
    */
-  protected $cookieName;
+  protected string $cookieName;
 
   /**
    * Cookie expiration time.
    *
-   * @var string
+   * @var int
    */
-  protected $expiration;
+  protected int $expiration;
 
   /**
    * The current request.
    *
    * @var \Symfony\Component\HttpFoundation\Request
    */
-  protected $request;
+  protected Request $request;
 
   /**
    * Constructs a new Tfa plugin object.
@@ -80,7 +74,7 @@ class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaS
    * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
    *   The request stack.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, UserDataInterface $user_data, ConfigFactoryInterface $config_factory, RequestStack $request_stack) {
+  public function __construct(array $configuration, string $plugin_id, $plugin_definition, UserDataInterface $user_data, ConfigFactoryInterface $config_factory, RequestStack $request_stack) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $plugin_settings = $config_factory->get('tfa.settings')->get('login_plugin_settings');
     $settings = $plugin_settings['tfa_trusted_browser'] ?? [];
@@ -100,7 +94,7 @@ class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaS
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): static {
     return new static(
       $configuration,
       $plugin_id,
@@ -114,7 +108,7 @@ class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaS
   /**
    * {@inheritdoc}
    */
-  public function loginAllowed() {
+  public function loginAllowed(): bool {
     $id = $this->request->cookies->get($this->cookieName);
     if (isset($id) && ($this->trustedBrowser($id) !== FALSE)) {
       // Update browser last used time.
@@ -132,10 +126,10 @@ class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaS
   /**
    * {@inheritdoc}
    */
-  public function getForm(array $form, FormStateInterface $form_state) {
+  public function getForm(array $form, FormStateInterface $form_state): array {
     $form['trust_browser'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('Remember this browser for @time days?', ['@time' => $this->expiration]),
+      '#title' => $this->t('Remember this browser for @time?', ['@time' => $this->formatPlural($this->expiration, '1 day', '@count days')]),
       '#description' => $this->t('Not recommended if you are on a public or shared computer.'),
     ];
     return $form;
@@ -144,13 +138,14 @@ class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaS
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array $form, FormStateInterface $form_state) {
+  public function validateForm(array $form, FormStateInterface $form_state): bool {
+    return TRUE;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array $form, FormStateInterface &$form_state) {
+  public function submitForm(array $form, FormStateInterface &$form_state): void {
     $trust_browser = $form_state->getValue('trust_browser');
     if (!empty($trust_browser)) {
       $this->setTrusted($this->generateBrowserId(), $this->getAgent());
@@ -163,7 +158,7 @@ class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaS
    * @return array
    *   Form array specific for this login plugin.
    */
-  public function buildConfigurationForm() {
+  public function buildConfigurationForm(): array {
     $settings_form['cookie_allow_subdomains'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Allow cookie in subdomains'),
@@ -190,18 +185,6 @@ class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaS
   }
 
   /**
-   * Finalize the browser setup.
-   *
-   * @throws \Exception
-   */
-  public function finalize() {
-    if ($this->trustBrowser) {
-      $name = $this->getAgent();
-      $this->setTrusted($this->generateBrowserId(), $name);
-    }
-  }
-
-  /**
    * Generate a random value to identify the browser.
    *
    * @return string
@@ -209,7 +192,7 @@ class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaS
    *
    * @throws \Exception
    */
-  protected function generateBrowserId() {
+  protected function generateBrowserId(): string {
     $id = base64_encode(random_bytes(32));
     return strtr($id, ['+' => '-', '/' => '_', '=' => '']);
   }
@@ -222,7 +205,7 @@ class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaS
    * @param string $name
    *   The custom browser name.
    */
-  protected function setTrusted($id, $name = '') {
+  protected function setTrusted(string $id, string $name = ''): void {
     // Currently broken.
     // Store id for account.
     $records = $this->getUserData('tfa', 'tfa_trusted_browser', $this->configuration['uid']) ?: [];
@@ -257,7 +240,7 @@ class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaS
    * @return bool
    *   TRUE if ID exists otherwise FALSE.
    */
-  protected function trustedBrowser($id) {
+  protected function trustedBrowser(string $id): bool {
     // Check if $id has been saved for this user.
     $result = $this->getUserData('tfa', 'tfa_trusted_browser', $this->uid);
     if (isset($result[$id])) {
@@ -276,7 +259,7 @@ class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaS
    * @return bool
    *   TRUE is id found and purged otherwise FALSE.
    */
-  protected function deleteTrusted($id = '') {
+  protected function deleteTrusted(string $id = ''): bool {
     $result = $this->getUserData('tfa', 'tfa_trusted_browser', $this->uid);
     if ($id) {
       if (isset($result[$id])) {
@@ -305,7 +288,7 @@ class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaS
    * @return string
    *   Simplified browser name.
    */
-  protected function getAgent($name = '') {
+  protected function getAgent(string $name = ''): string {
     $agent = $this->request->server->get('HTTP_USER_AGENT');
     if (isset($agent)) {
       // Match popular user agents.
@@ -334,16 +317,16 @@ class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaS
   /**
    * {@inheritdoc}
    */
-  public function getSetupForm(array $form, FormStateInterface $form_state) {
+  public function getSetupForm(array $form, FormStateInterface $form_state): array {
     $existing = $this->getTrustedBrowsers();
     $form['info'] = [
       '#type' => 'markup',
       '#markup' => '<p>' . $this->t("Trusted browsers are a method for
       simplifying login by avoiding verification code entry for a set amount of
-      time, @time days from marking a browser as trusted. After @time days, to
+      time, @time from marking a browser as trusted. After @time, to
       log in you'll need to enter a verification code with your username and
       password during which you can again mark the browser as trusted.",
-      ['@time' => $this->expiration]) . '</p>',
+      ['@time' => $this->formatPlural($this->expiration, '1 day', '@count days')]) . '</p>',
     ];
     // Present option to trust this browser if it's not currently trusted.
     $id = $this->request->cookies->get($this->cookieName);
@@ -424,7 +407,7 @@ class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaS
   /**
    * {@inheritdoc}
    */
-  public function validateSetupForm(array $form, FormStateInterface $form_state) {
+  public function validateSetupForm(array $form, FormStateInterface $form_state): bool {
     // Do nothing, no validation required.
     return TRUE;
   }
@@ -432,7 +415,7 @@ class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaS
   /**
    * {@inheritdoc}
    */
-  public function submitSetupForm(array $form, FormStateInterface $form_state) {
+  public function submitSetupForm(array $form, FormStateInterface $form_state): bool {
     $values = $form_state->getValues();
     if (isset($values['existing'])) {
       $count = 0;
@@ -466,14 +449,14 @@ class TfaTrustedBrowser extends TfaBasePlugin implements TfaLoginInterface, TfaS
    * @return array
    *   List of current trusted browsers.
    */
-  public function getTrustedBrowsers() {
+  public function getTrustedBrowsers(): array {
     return $this->getUserData('tfa', 'tfa_trusted_browser', $this->uid) ?: [];
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getOverview(array $params) {
+  public function getOverview(array $params): array {
     $trusted_browsers = [];
     foreach ($this->getTrustedBrowsers() as $device) {
       $date_formatter = \Drupal::service('date.formatter');

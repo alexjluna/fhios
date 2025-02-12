@@ -7,8 +7,10 @@ use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Lock\LockBackendInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Url;
+use Drupal\encrypt\EncryptionProfileInterface;
 use Drupal\encrypt\EncryptionProfileManagerInterface;
 use Drupal\encrypt\EncryptServiceInterface;
 use Drupal\encrypt\Exception\EncryptException;
@@ -17,9 +19,7 @@ use Drupal\tfa\Plugin\TfaValidationInterface;
 use Drupal\tfa\TfaBasePlugin;
 use Drupal\user\UserDataInterface;
 use Drupal\user\UserStorageInterface;
-use Otp\GoogleAuthenticator;
-use Otp\Otp;
-use ParagonIE\ConstantTime\Encoding;
+use OTPHP\TOTP;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -30,9 +30,10 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   label = @Translation("TFA Time-based one-time password (TOTP)"),
  *   description = @Translation("TFA TOTP Validation Plugin"),
  *   helpLinks = {
- *    "Google Authenticator (Android/iOS)" = "https://googleauthenticator.net",
+ *    "Google Authenticator (Android)" = "https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2",
+ *    "Google Authenticator (iOS)" = "https://apps.apple.com/us/app/google-authenticator/id388497605",
  *    "Microsoft Authenticator (Android/iOS)" = "https://www.microsoft.com/en-us/security/mobile-authenticator-app",
- *    "Authy (Android/iOS/Desktop)" = "https://authy.com",
+ *    "Twilio Authy (Android/iOS/Desktop)" = "https://authy.com",
  *    "FreeOTP (Android/iOS)" = "https://freeotp.github.io",
  *    "GAuth Authenticator (Desktop)" = "https://github.com/gbraadnl/gauth",
  *   },
@@ -41,78 +42,80 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *    "skipped" = @Translation("Application codes not enabled."),
  *   }
  * )
+ *
+ * @property int<6> $codeLength
  */
-class TfaTotp extends TfaBasePlugin implements TfaValidationInterface, TfaSetupInterface, ContainerFactoryPluginInterface {
-
-  /**
-   * Object containing the external validation library.
-   *
-   * @var object
-   */
-  public $auth;
+final class TfaTotp extends TfaBasePlugin implements TfaValidationInterface, TfaSetupInterface, ContainerFactoryPluginInterface {
 
   /**
    * The time-window in which the validation should be done.
    *
    * @var int
    */
-  protected $timeSkew;
+  protected int $timeSkew;
 
   /**
    * Whether or not the prefix should use the site name.
    *
    * @var bool
    */
-  protected $siteNamePrefix;
+  protected bool $siteNamePrefix;
 
   /**
    * Name prefix.
    *
    * @var string
    */
-  protected $namePrefix;
+  protected string $namePrefix;
 
   /**
    * Configurable name of the issuer.
    *
-   * @var string
+   * @var non-empty-string
    */
-  protected $issuer;
+  protected string $issuer;
 
   /**
    * The Datetime service.
    *
    * @var \Drupal\Component\Datetime\TimeInterface
    */
-  protected $time;
+  protected TimeInterface $time;
 
   /**
    * The user storage.
    *
    * @var \Drupal\user\UserStorageInterface
    */
-  protected $userStorage;
+  protected UserStorageInterface $userStorage;
 
   /**
    * Un-encrypted seed.
    *
-   * @var string
+   * @var ?non-empty-string
    */
-  protected $seed;
+  protected ?string $seed = NULL;
 
   /**
    * Encryption profile.
    *
-   * @var \Drupal\encrypt\EncryptionProfileManagerInterface
+   * @var \Drupal\encrypt\EncryptionProfileInterface|null
    */
-  protected $encryptionProfile;
+  protected ?EncryptionProfileInterface $encryptionProfile;
 
   /**
    * Encryption service.
    *
-   * @var \Drupal\encrypt\EncryptService
+   * @var \Drupal\encrypt\EncryptServiceInterface
    */
-  protected $encryptService;
+  protected EncryptServiceInterface $encryptService;
+
+  /**
+   * The lock service.
+   *
+   * @var \Drupal\Core\Lock\LockBackendInterface
+   */
+  protected $lock;
 
   /**
    * Constructs a new Tfa plugin object.
@@ -135,13 +138,12 @@ class TfaTotp extends TfaBasePlugin implements TfaValidationInterface, TfaSetupI
    *   The datetime service.
    * @param \Drupal\user\UserStorageInterface $user_storage
    *   The user storage.
+   * @param \Drupal\Core\Lock\LockBackendInterface $lock
+   *   The lock service.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, UserDataInterface $user_data, EncryptionProfileManagerInterface $encryption_profile_manager, EncryptServiceInterface $encrypt_service, ConfigFactoryInterface $config_factory, TimeInterface $time, UserStorageInterface $user_storage) {
+  public function __construct(array $configuration, string $plugin_id, $plugin_definition, UserDataInterface $user_data, EncryptionProfileManagerInterface $encryption_profile_manager, EncryptServiceInterface $encrypt_service, ConfigFactoryInterface $config_factory, TimeInterface $time, UserStorageInterface $user_storage, LockBackendInterface $lock) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
-    $this->auth = new \StdClass();
-    $this->auth->otp = new Otp();
-    $this->auth->ga = new GoogleAuthenticator();
     // Allow codes within tolerance range of 2 * 30 second units.
     $plugin_settings = $config_factory->get('tfa.settings')->get('validation_plugin_settings');
     $settings = $plugin_settings[$plugin_id] ?? [];
@@ -156,21 +158,19 @@ class TfaTotp extends TfaBasePlugin implements TfaValidationInterface, TfaSetupI
     $this->timeSkew = $settings['time_skew'];
     $this->siteNamePrefix = $settings['site_name_prefix'];
     $this->namePrefix = $settings['name_prefix'];
-    $this->issuer = $settings['issuer'];
+    $this->issuer = !empty($settings['issuer']) && is_string($settings['issuer']) ? $settings['issuer'] : 'Drupal';
     $this->time = $time;
     $this->userStorage = $user_storage;
+    $this->lock = $lock;
 
     $this->encryptionProfile = $encryption_profile_manager->getEncryptionProfile($config_factory->get('tfa.settings')->get('encryption'));
     $this->encryptService = $encrypt_service;
-
-    // Generate seed.
-    $this->setSeed($this->createSeed());
   }
 
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): static {
     return new static(
       $configuration,
       $plugin_id,
@@ -180,21 +180,22 @@ class TfaTotp extends TfaBasePlugin implements TfaValidationInterface, TfaSetupI
       $container->get('encryption'),
       $container->get('config.factory'),
       $container->get('datetime.time'),
-      $container->get('entity_type.manager')->getStorage('user')
+      $container->get('entity_type.manager')->getStorage('user'),
+      $container->get('lock')
     );
   }
 
   /**
    * {@inheritdoc}
    */
-  public function ready() {
+  public function ready(): bool {
     return ($this->getSeed() !== FALSE);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getForm(array $form, FormStateInterface $form_state) {
+  public function getForm(array $form, FormStateInterface $form_state): array {
     $message = $this->t('Verification code is application generated and @length digits long.', ['@length' => $this->codeLength]);
     if ($this->getUserData('tfa', 'tfa_recovery_code', $this->uid)) {
       $message .= '<br/>' . $this->t("Can't access your account? Use one of your recovery codes.");
@@ -226,7 +227,7 @@ class TfaTotp extends TfaBasePlugin implements TfaValidationInterface, TfaSetupI
    * @return array
    *   Form array specific for this validation plugin.
    */
-  public function buildConfigurationForm() {
+  public function buildConfigurationForm(): array {
     $settings_form['time_skew'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Number of Accepted Codes'),
@@ -269,9 +270,14 @@ class TfaTotp extends TfaBasePlugin implements TfaValidationInterface, TfaSetupI
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array $form, FormStateInterface $form_state) {
+  public function validateForm(array $form, FormStateInterface $form_state): bool {
     $values = $form_state->getValues();
+    $totp_validation_lock_id = 'tfa_validation_totp_' . $this->uid;
+    while (!$this->lock->acquire($totp_validation_lock_id)) {
+      $this->lock->wait($totp_validation_lock_id);
+    }
     if (!$this->validate($values['code'])) {
+      $this->lock->release($totp_validation_lock_id);
       $this->errorMessages['code'] = $this->t('Invalid application code. Please try again.');
       if ($this->alreadyAccepted) {
         $form_state->clearErrors();
@@ -282,51 +288,83 @@ class TfaTotp extends TfaBasePlugin implements TfaValidationInterface, TfaSetupI
     else {
       // Store accepted code to prevent replay attacks.
       $this->storeAcceptedCode($values['code']);
+      $this->lock->release($totp_validation_lock_id);
       return TRUE;
     }
   }
 
   /**
-   * Simple validate for web services.
-   *
-   * @param int $code
-   *   OTP Code.
-   *
-   * @return bool
-   *   True if validation was successful otherwise false.
+   * {@inheritdoc}
    */
-  public function validateRequest($code) {
+  public function validateRequest(#[\SensitiveParameter] string $code): bool {
+    $totp_validation_lock_id = 'tfa_validation_totp_' . $this->uid;
+    while (!$this->lock->acquire($totp_validation_lock_id)) {
+      $this->lock->wait($totp_validation_lock_id);
+    }
     if ($this->validate($code)) {
       $this->storeAcceptedCode($code);
+      $this->lock->release($totp_validation_lock_id);
       return TRUE;
     }
+    $this->lock->release($totp_validation_lock_id);
     return FALSE;
   }
 
   /**
    * {@inheritdoc}
    */
-  protected function validate($code) {
+  protected function validate($code): bool {
     // Strip whitespace.
     $code = preg_replace('/\s+/', '', $code);
-    if ($this->alreadyAcceptedCode($code)) {
-      $this->isValid = FALSE;
+
+    if (empty($code)) {
+      return FALSE;
     }
-    else {
+
+    if (!$this->alreadyAcceptedCode($code)) {
       // Get OTP seed.
       $seed = $this->getSeed();
-      $this->isValid = ($seed && $this->auth->otp->checkTotp(Encoding::base32DecodeUpper($seed), $code, $this->timeSkew));
+      if ($seed == FALSE) {
+        return FALSE;
+      }
+      $validator = TOTP::createFromSecret($seed);
+      $validator->setDigits($this->codeLength);
+
+      // Get the last validated time window.
+      $last_accepted_window = $this->getUserData('tfa', 'tfa_totp_time_window', $this->uid) ?: 1;
+
+      $process_start_time = $this->time->getRequestTime();
+      for ($i = -$this->timeSkew; $i <= $this->timeSkew; $i++) {
+        $check_timestamp = max($process_start_time + ($validator->getPeriod() * $i), 0);
+        $check_time_window = (int) floor($check_timestamp / $validator->getPeriod());
+        if (!$validator->verify($code, $check_timestamp)) {
+          // Code doesn't validate try the next window.
+          continue;
+        }
+
+        if ($check_time_window > $last_accepted_window) {
+          // Code is newer than last accepted code.
+          $this->setUserData('tfa', ['tfa_totp_time_window' => $check_time_window], $this->uid);
+          return TRUE;
+        }
+        return FALSE;
+      }
     }
-    return $this->isValid;
+    return FALSE;
   }
 
   /**
    * Get seed for this account.
    *
-   * @return string
+   * @return non-empty-string|false
    *   Decrypted account OTP seed or FALSE if none exists.
    */
-  protected function getSeed() {
+  protected function getSeed(): string|FALSE {
+    // A memory based seed is used for the setup form.
+    if ($this->seed !== NULL) {
+      return $this->seed;
+    }
+
     // Lookup seed for account and decrypt.
     $result = $this->getUserData('tfa', $this->pluginId . '_seed', $this->uid);
 
@@ -349,7 +387,7 @@ class TfaTotp extends TfaBasePlugin implements TfaValidationInterface, TfaSetupI
    * @throws \Drupal\encrypt\Exception\EncryptException
    *   Can throw an EncryptException.
    */
-  public function storeSeed($seed) {
+  public function storeSeed(string $seed): void {
     // Encrypt seed for storage.
     $encrypted = $this->encryptService->encrypt($seed, $this->encryptionProfile);
 
@@ -373,7 +411,7 @@ class TfaTotp extends TfaBasePlugin implements TfaValidationInterface, TfaSetupI
   /**
    * Delete the seed of the current validated user.
    */
-  protected function deleteSeed() {
+  protected function deleteSeed(): void {
     $this->deleteUserData('tfa', $this->pluginId . '_seed', $this->uid);
   }
 
@@ -383,7 +421,7 @@ class TfaTotp extends TfaBasePlugin implements TfaValidationInterface, TfaSetupI
    * @return int
    *   The current value of the time skew.
    */
-  public function getTimeSkew() {
+  public function getTimeSkew(): int {
     return $this->timeSkew;
   }
 
@@ -392,7 +430,9 @@ class TfaTotp extends TfaBasePlugin implements TfaValidationInterface, TfaSetupI
   /**
    * {@inheritdoc}
    */
-  public function getSetupForm(array $form, FormStateInterface $form_state) {
+  public function getSetupForm(array $form, FormStateInterface $form_state): array {
+    $this->setSeed($this->createSeed());
+
     $help_links = $this->getHelpLinks();
 
     $items = [];
@@ -412,7 +452,7 @@ class TfaTotp extends TfaBasePlugin implements TfaValidationInterface, TfaSetupI
     ];
     $form['seed'] = [
       '#type' => 'textfield',
-      '#value' => $this->seed,
+      '#value' => $this->getSeed(),
       '#disabled' => TRUE,
       '#description' => $this->t('Enter this code into your two-factor authentication app or scan the QR code below.'),
     ];
@@ -446,8 +486,8 @@ class TfaTotp extends TfaBasePlugin implements TfaValidationInterface, TfaSetupI
   /**
    * {@inheritdoc}
    */
-  public function validateSetupForm(array $form, FormStateInterface $form_state) {
-    if (!$this->validateSetup($form_state->getValue('code'))) {
+  public function validateSetupForm(array $form, FormStateInterface $form_state): bool {
+    if (!$this->validate($form_state->getValue('code'))) {
       $this->errorMessages['code'] = $this->t('Invalid application code. Please try again.');
       return FALSE;
     }
@@ -458,16 +498,11 @@ class TfaTotp extends TfaBasePlugin implements TfaValidationInterface, TfaSetupI
   /**
    * {@inheritdoc}
    */
-  protected function validateSetup($code) {
-    $code = preg_replace('/\s+/', '', $code);
-    return $this->auth->otp->checkTotp(Encoding::base32DecodeUpper($this->seed), $code, $this->timeSkew);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function submitSetupForm(array $form, FormStateInterface $form_state) {
+  public function submitSetupForm(array $form, FormStateInterface $form_state): bool {
     // Write seed for user.
+    if ($this->seed == NULL) {
+      return FALSE;
+    }
     try {
       $this->storeSeed($this->seed);
       return TRUE;
@@ -483,47 +518,58 @@ class TfaTotp extends TfaBasePlugin implements TfaValidationInterface, TfaSetupI
    * @return string
    *   QR-code uri.
    */
-  protected function getQrCodeUri() {
-    return (new QRCode)->render('otpauth://totp/' . $this->accountName() . '?secret=' . $this->seed . '&issuer=' . urlencode($this->issuer));
+  protected function getQrCodeUri(): string {
+    $seed = $this->getSeed();
+    if (!$seed) {
+      $seed = $this->createSeed();
+      $this->setSeed($seed);
+    }
+    $token = TOTP::createFromSecret($seed);
+    $token->setDigits($this->codeLength);
+    $token->setLabel($this->getTokenLabel());
+    $token->setIssuer($this->issuer);
+    return(new QRCode())->render($token->getProvisioningUri());
   }
 
   /**
    * Create OTP seed for account.
    *
-   * @return string
+   * @return non-empty-string
    *   Un-encrypted seed.
    */
   protected function createSeed() {
-    return $this->auth->ga->generateRandom();
+    return TOTP::generate()->getSecret();
   }
 
   /**
    * Setter for OTP secret key.
    *
-   * @param string $seed
+   * @param non-empty-string $seed
    *   The OTP secret key.
    */
-  public function setSeed($seed) {
+  public function setSeed(string $seed): void {
     $this->seed = $seed;
   }
 
   /**
-   * Get account name for QR image.
+   * Get label for QR image.
    *
-   * @return string
-   *   URL encoded string.
+   * @return non-empty-string
+   *   String to be used as label. Contains non-sanitized account name.
    */
-  protected function accountName() {
+  protected function getTokenLabel(): string {
     /** @var \Drupal\user\Entity\User $account */
     $account = $this->userStorage->load($this->configuration['uid']);
-    $prefix = $this->siteNamePrefix ? preg_replace('@[^a-z0-9-]+@', '-', strtolower(\Drupal::config('system.site')->get('name'))) : $this->namePrefix;
-    return urlencode((!empty($prefix) ? $prefix . '-' : '') . $account->getAccountName());
+    $prefix = $this->siteNamePrefix ? preg_replace('@[^a-z0-9-:]+@', '-', strtolower(\Drupal::config('system.site')->get('name'))) : $this->namePrefix;
+    $prefix = !empty($prefix) ? $prefix . '-' : '';
+    $full_label = $prefix . $account->getAccountName();
+    return !empty($full_label) ? $full_label : 'TOTP Token';
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getOverview(array $params) {
+  public function getOverview(array $params): array {
     $plugin_text = $this->t('Validation Plugin: @plugin',
       [
         '@plugin' => str_replace(' Setup', '', $this->getLabel()),

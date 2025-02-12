@@ -1,0 +1,3 @@
+tfa.login.config.tfa_test_login_plugin:
+  type: string
+  label: 'Tfa test login plugin'

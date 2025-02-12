@@ -9,6 +9,8 @@ use Drupal\Core\Form\FormStateInterface;
  *
  * Login plugins interact with the Tfa loginAllowed() process prior to starting
  * a TFA process.
+ *
+ * @api
  */
 interface TfaLoginInterface {
 
@@ -23,7 +25,7 @@ interface TfaLoginInterface {
    * @return array
    *   Form API array.
    */
-  public function getForm(array $form, FormStateInterface $form_state);
+  public function getForm(array $form, FormStateInterface $form_state): array;
 
   /**
    * Validate form.
@@ -36,7 +38,7 @@ interface TfaLoginInterface {
    * @return bool
    *   Whether form passes validation or not
    */
-  public function validateForm(array $form, FormStateInterface $form_state);
+  public function validateForm(array $form, FormStateInterface $form_state): bool;
 
   /**
    * Whether login is allowed.
@@ -44,6 +46,6 @@ interface TfaLoginInterface {
    * @return bool
    *   Whether login is allowed.
    */
-  public function loginAllowed();
+  public function loginAllowed(): bool;
 
 }

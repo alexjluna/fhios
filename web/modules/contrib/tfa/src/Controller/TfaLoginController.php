@@ -14,7 +14,7 @@ use Drupal\user\UserInterface;
  *
  * @package Drupal\tfa\Controller
  */
-class TfaLoginController {
+final class TfaLoginController {
   use TfaLoginTrait;
 
   /**
@@ -28,7 +28,7 @@ class TfaLoginController {
    * @return \Drupal\Core\Access\AccessResult
    *   The access result.
    */
-  public function access(RouteMatchInterface $route, AccountInterface $account) {
+  public function access(RouteMatchInterface $route, AccountInterface $account): AccessResult {
     // Start with a positive access check which is cacheable for the current
     // route, which includes both route name and parameters.
     $access = AccessResult::allowed();
@@ -90,8 +90,9 @@ class TfaLoginController {
    * @return \Drupal\Core\Access\AccessResult
    *   The access result.
    */
-  public function accessSelfOrAdmin(RouteMatchInterface $route, AccountInterface $account) {
+  public function accessSelfOrAdmin(RouteMatchInterface $route, AccountInterface $account): AccessResult {
     $target_user = $route->getParameter('user');
+    $permission = $route->getRouteObject()?->getOption('_tfa_permission');
 
     // Start with a positive access result that can be cached based on the
     // current route, which includes both route name and parameters.
@@ -131,6 +132,18 @@ class TfaLoginController {
     }
 
     $is_admin = $account->hasPermission('administer tfa for other users');
+
+    // Permission might not be there only on the "tfa.entry" route. Otherwise,
+    // must be present.
+    if ($is_self && isset($permission)) {
+      if (is_string($permission)) {
+        return $access->andIf(AccessResult::allowedIf($target_user->hasPermission($permission)));
+      }
+      else {
+        throw new \InvalidArgumentException('The "permission" parameter must be a string.');
+      }
+    }
+
     $is_self_or_admin = AccessResult::allowedIf($is_self || $is_admin);
 
     return $access->andIf($is_self_or_admin);

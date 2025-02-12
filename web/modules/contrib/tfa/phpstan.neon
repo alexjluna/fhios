@@ -1,0 +1,7 @@
+parameters:
+	level: 9
+	ignoreErrors:
+		- '#Unsafe usage of new static\(\)#'
+	checkMissingIterableValueType: false
+includes:
+	- phpstan-baseline.neon

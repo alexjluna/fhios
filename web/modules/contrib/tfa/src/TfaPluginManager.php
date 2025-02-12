@@ -3,13 +3,24 @@
 namespace Drupal\tfa;
 
 use Drupal\Core\Cache\CacheBackendInterface;
+use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Config\ImmutableConfig;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
 
 /**
  * Tfa plugin manager.
+ *
+ * @internal
  */
 class TfaPluginManager extends DefaultPluginManager {
+
+  /**
+   * TFA configuration object.
+   *
+   * @var \Drupal\Core\Config\ImmutableConfig
+   */
+  protected ImmutableConfig $tfaSettings;
 
   /**
    * Constructs TfaPluginManager object.
@@ -21,8 +32,10 @@ class TfaPluginManager extends DefaultPluginManager {
    *   Cache backend instance to use.
    * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
    *   The module handler to invoke the alter hook with.
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The config factory.
    */
-  public function __construct(\Traversable $namespaces, CacheBackendInterface $cache_backend, ModuleHandlerInterface $module_handler) {
+  public function __construct(\Traversable $namespaces, CacheBackendInterface $cache_backend, ModuleHandlerInterface $module_handler, ConfigFactoryInterface $config_factory) {
     parent::__construct(
       'Plugin/Tfa',
       $namespaces,
@@ -32,6 +45,7 @@ class TfaPluginManager extends DefaultPluginManager {
     );
     $this->alterInfo('tfa_info');
     $this->setCacheBackend($cache_backend, 'tfa_plugins');
+    $this->tfaSettings = $config_factory->get('tfa.settings');
   }
 
   /**
@@ -40,18 +54,28 @@ class TfaPluginManager extends DefaultPluginManager {
    * @return array
    *   Array of validation plugin definitions.
    */
-  public function getValidationDefinitions() {
+  public function getValidationDefinitions(): array {
     return $this->getClassDefinitions('\Drupal\tfa\Plugin\TfaValidationInterface');
   }
 
   /**
    * Return plugin definitions for all login plugins.
    *
+   * @param bool $active_only
+   *   Whether to only get active plugins enabled in config.
+   *
    * @return array
    *   Array of login plugin definitions.
    */
-  public function getLoginDefinitions() {
-    return $this->getClassDefinitions('\Drupal\tfa\Plugin\TfaLoginInterface');
+  public function getLoginDefinitions(bool $active_only = TRUE): array {
+    $plugins = $this->getClassDefinitions('\Drupal\tfa\Plugin\TfaLoginInterface');
+    if ($active_only) {
+      $login_plugins = $this->tfaSettings->get('login_plugins');
+      $plugins = array_filter($plugins, function (array $plugin) use ($login_plugins) {
+        return ($login_plugins[$plugin['id']] ?? NULL) === $plugin['id'];
+      });
+    }
+    return $plugins;
   }
 
   /**
@@ -60,7 +84,7 @@ class TfaPluginManager extends DefaultPluginManager {
    * @return array
    *   Array of send plugin definitions.
    */
-  public function getSendDefinitions() {
+  public function getSendDefinitions(): array {
     return $this->getClassDefinitions('\Drupal\tfa\Plugin\TfaSendInterface');
   }
 
@@ -73,7 +97,7 @@ class TfaPluginManager extends DefaultPluginManager {
    * @return array
    *   Array of plugin definitions.
    */
-  public function getClassDefinitions(string $class) {
+  public function getClassDefinitions(string $class): array {
     $all_plugins = $this->getDefinitions();
     $plugins = [];
 
